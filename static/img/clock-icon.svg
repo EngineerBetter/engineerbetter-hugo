@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Clock Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Our-services" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop---Our-services" transform="translate(-236.000000, -1838.000000)" fill="#1D71B8">
+            <g id="Consultancy" transform="translate(-7.000000, 1447.000000)">
+                <g id="Clock-Icon" transform="translate(243.000000, 391.000000)">
+                    <path d="M14,0 C6.2680452,0 0,6.2680452 0,14 C0,21.7319548 6.2680452,28 14,28 C21.7319548,28 28,21.7319548 28,14 C28,6.2680452 21.7319548,0 14,0 M14,1.5819209 C20.8473446,1.5819209 26.4180791,7.15265537 26.4180791,14 C26.4180791,20.8473446 20.8473446,26.4180791 14,26.4180791 C7.15265537,26.4180791 1.5819209,20.8473446 1.5819209,14 C1.5819209,7.15265537 7.15265537,1.5819209 14,1.5819209" id="Fill-1"></path>
+                    <polygon id="Fill-3" points="22 14.3582076 15.76212 14.3582076 14.4395947 12.8617152 14.4395947 4 12.8807482 4 12.8807482 12.8617152 11 14.9898281 13.6601715 18 15.5223694 15.8927569 22 15.8927569"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

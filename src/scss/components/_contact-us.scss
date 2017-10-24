@@ -1,0 +1,192 @@
+.contact-us_wrap {
+  &.menu-banner-top_wrap::after {
+    display: none;
+  }
+  .contact-us_form-outer {
+    position: relative;
+    .contact-us_cloud-left,
+    .contact-us_cloud-right {
+      display: none;
+    }
+    @media screen and (min-width: 750px) {
+      margin-top: -35px;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .contact-us_cloud-left {
+        display: block;
+        position: absolute;
+        bottom: -38vw;
+        left: 0;
+        width: 75%;
+        height: auto;
+        opacity: .6;
+        z-index: 2;
+        @media screen and (min-width: 1200px) {
+          width: 50vw;
+          bottom: -11vw;
+          left: 0;
+        }
+      }
+      .contact-us_cloud-right {
+        display: block;
+        position: absolute;
+        bottom: -25vw;
+        width: 75%;
+        height: auto;
+        right: -25%;
+        z-index: 2;
+        opacity: .6;
+        @media screen and (min-width: 1200px) {
+          width: 50vw;
+          bottom: -5vw;
+          right: -5%;
+        }
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      margin-top: 0;
+    }
+  }
+  .contact-us_form-wrap {
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    z-index: 3;
+    @media screen and (min-width: 750px) {
+      margin-left: 10%;
+      margin-right: 110px;
+    }
+    @media screen and (min-width: 1200px) {
+      margin: 0 auto;
+      max-width: 560px;
+    }
+    input, textarea {
+      &::placeholder {
+        color: #9CB2C4;
+      }
+      outline: none;
+    }
+    .contact-us_input,
+    .contact-us_textarea {
+      width: 100%;
+      display: block;
+      color: #062946;
+      margin: 0;
+      background: transparent;
+      box-sizing: border-box;
+    }
+    .contact-us_input {
+      font-family: 'Raleway-ExtraBold';
+      border: 0;
+      border-bottom: 3px solid rgba(6, 41, 70, .4);
+      font-size: 18px;
+      line-height: 26px;
+      padding: 6px 8px;
+      margin-top: 20px;
+      @media screen and (min-width: 750px) {
+        font-size: 22px;
+      }
+    }
+    .contact-us_textarea {
+      font-family: 'Raleway-Regular';
+      font-size: 18px;
+      padding: 14px 12px;
+      border: 3px solid rgba(6, 41, 70, .4);
+      background-color: rgba(255, 255, 255, .4);
+      margin-top: 50px;
+      margin-bottom: 30px;
+      height: 180px;
+    }
+    .contact-us_footer {
+      .contact-us_alert {
+        color: $cl-light-blue;
+        font-family: 'Raleway-Bold';
+        font-size: 20px;
+        margin-top: 7px;
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: right;
+        @media screen and (min-width: 500px) {
+          text-align: left;
+          float: left;
+          max-width: 370px;
+          margin-bottom: 0;
+        }
+      }
+      .contact-us_submit {
+        display: inline-block;
+        border: none;
+        float: right;
+        padding-top: 0;
+        padding-right: 18px;
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 35px;
+        p {
+          padding-top: 0;
+        }
+        @media screen and (min-width: 750px) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .contact-us_background {
+    display: none;
+    @media screen and (min-width: 750px) {
+      display: block;
+      position: relative;
+      z-index: 1;
+      top: -40px;
+    }
+    @media screen and (min-width: 1200px) {
+      top: -150px;
+    }
+    .contact-us_bot-diamond {
+      display: none;
+      mix-blend-mode: multiply;
+      @media screen and (min-width: 750px) {
+        display: block;
+        position: absolute;
+        left: 10%;
+        top: 15%;
+        width: 225px;
+        height: auto;
+      }
+      @media screen and (min-width: 1200px) {
+        left: 160px;
+        top: 25%;
+      }
+    }
+    img {
+      float: right;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    &:before {
+      content: "";
+      mix-blend-mode: multiply;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+    	height: 260px;
+      opacity: .6;
+      @media screen and (min-width: 750px) {
+        border-left: 225px solid transparent;
+      	border-right: 225px solid transparent;
+      	border-bottom: 260px solid #1e74bd;
+      }
+      @media screen and (min-width: 1200px) {
+      	border-left: 240px solid transparent;
+      	border-right: 240px solid transparent;
+      	border-bottom: 280px solid #1e74bd;
+      }
+    }
+  }
+}

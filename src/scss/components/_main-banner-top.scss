@@ -1,0 +1,183 @@
+.menu-banner-top_wrap {
+  .menu-banner-top_top-rows {
+    .menu-banner-top_top-rows-inner {
+      background-image: url("../img/home-hero-desktop.png");
+      background-size: 320px auto;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      position: relative;
+      z-index: 2;
+      @media screen and (min-width: 750px) {
+        background-size: auto 90%;
+        background-position: bottom center;
+      }
+    }
+    &::after {
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      background-image: url("../img/clouds-left2.png");
+      background-size: 900vw auto;
+      background-repeat: no-repeat;
+      background-position: -60vw -80px;
+      z-index: 0;
+      @media screen and (min-width: 750px) {
+        background-size: 225vw auto;
+        background-repeat: no-repeat;
+        background-position: -200vw 0;
+        animation: animatedBackground 90s linear infinite;
+        animation-delay: 1.5s;
+      }
+    }
+    @media screen and (min-width: 750px) {
+      &::before {
+        content: "";
+        top: 60px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        background-image: url("../img/clouds-right2.png");
+        background-size: 240vw auto;
+        background-repeat: no-repeat;
+        background-position: 60vw 0;
+        animation: animatedBackgroundReverse 90s linear infinite;
+        z-index: 0;
+      }
+    }
+  }
+  &.is-home {
+    @media screen and (min-width: 750px) {
+      background: linear-gradient(180deg, #93C9D9 0%, #D5EAF1 0%, #EFF5F7 100%);
+    }
+    .menu-banner-top_top-rows {
+      padding-bottom: 50px;
+      @media screen and (max-width: 750px) {
+        background: linear-gradient(180deg, #93C9D9 0%, #D5EAF1 0%, #EFF5F7 100%);
+      }
+    }
+  }
+  &.is-page {
+    position: relative;
+    background-color: #DBF1FE;
+    overflow: hidden;
+    @media screen and (min-width: 750px) {
+      display: block;
+      background-image: url("../img/clouds-transp.png");
+      background-size: 100% auto;
+      background-position: center center;
+      background-position-y: 0px;
+      background-repeat: no-repeat;
+    }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -23px;
+      right: -5px;
+      width: 0;
+      height: 0;
+      border-top: 35px solid transparent;
+      border-bottom: 35px solid transparent;
+      border-left: 35px solid #fff;
+      transform: rotate(45deg);
+    }
+    &.is-contact {
+      position: relative;
+      background-color: #DBF1FE;
+      overflow: hidden;
+      padding-bottom: 0;
+      @media screen and (min-width: 750px) and (max-width: 1200px) {
+        display: block;
+        background-image: url("../img/clouds-transp.png"), url("../img/white-banner.jpg");
+        background-size: 100% auto, auto 120px;
+        background-position: center center, center top;
+        background-position-y: 0px, 0px;
+        background-repeat: no-repeat, no-repeat;
+      }
+    }
+  }
+  .menu-banner-top {
+    position: relative;
+    z-index: 2;
+    .menu-banner-top_contact {
+      display: none;
+      @media screen and (min-width: 750px) {
+        display: block;
+        float: right;
+        text-align: right;
+        padding-top: 27px;
+        .menu-banner-top_number {
+          display: inline-block;
+          font-family: 'Raleway-Regular';
+          text-decoration: none;
+          font-size: 14px;
+          color: $cl-dark-blue;
+          border-right: 1px solid  $cl-dark-blue;
+          padding-right: 10px;
+          letter-spacing: 1px;
+        }
+        .menu-banner-top_contact-us {
+          display: inline-block;
+          color: $cl-light-blue;
+          font-size: 15px;
+          font-family: 'Raleway-Bold';
+          padding-right: 30px;
+          padding-left: 6px;
+          text-decoration: none;
+          letter-spacing: 1px;
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        float: none;
+        width: 100%;
+      }
+    }
+    .menu-banner-top_logo {
+      display: none;
+      a {
+        display: block;
+        .logo-img {
+          width: 188px;
+          height: auto;
+        }
+      }
+      @media screen and (min-width: 750px) {
+        display: inline-block;
+        margin-top: 20px;
+        padding-top: 8px;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-left: 6.7%;
+        margin-top: 45px;
+      }
+    }
+    .menu-banner-top_btn-wrap {
+      display: none;
+      vertical-align: top;
+      .menu_header-button {
+        margin-top: 0;
+      }
+      @media screen and (min-width: 750px) {
+        display: inline-block;
+        width: 10%;
+        margin-top: 20px;
+      }
+      @media screen and (min-width: 1200px) {
+        display: none;
+        margin-top: 0;
+      }
+    }
+  }
+}
+@keyframes animatedBackground {
+	from { background-position: -200vw 0; }
+	to { background-position: 0 0; }
+}
+@keyframes animatedBackgroundReverse {
+  from { background-position: 60vw 0; }
+	to { background-position: -140vw 0; }
+}

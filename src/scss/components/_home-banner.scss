@@ -1,0 +1,253 @@
+.home-banner {
+  @media screen and (min-width: 750px) {
+    padding-bottom: 35px;
+  }
+  position: relative;
+  z-index: 2;
+  .home-banner_list {
+    .home-banner_list-category {
+      display: none;
+      width: 26%;
+      float: left;
+      padding-left: 6.7%;
+      padding-top: 70px;
+      ul {
+        li {
+          padding: 10px 0px 10px 0px;
+          a {
+            font-size: 14px;
+            font-family: 'Raleway-Bold';
+            color: $cl-dark-blue;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color .3s;
+            &:hover {
+              color: $cl-light-blue;
+            }
+            &.is-active {
+              color: $cl-light-blue;
+              font-family: 'Raleway-ExtraBold';
+            }
+          }
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        display: block;
+      }
+    }
+    .home-banner_textarea {
+      float: left;
+      padding-top: 160px;
+      padding-left: 20px;
+      position: relative;
+      @media screen and (min-width: 750px) {
+        padding-top: 150px;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-top: 80px;
+      }
+      .home-banner_contact-diamond {
+        display: none;
+        @media screen and (min-width: 750px) {
+          display: block;
+          position: absolute;
+          top: 105px;
+          right: 0;
+          transform: translateX(50%);
+          img {
+            display: block;
+            width: 230px;
+            height: auto;
+          }
+        }
+        @media screen and (min-width: 1200px) {
+          top: 0;
+          img {
+            width: 240px;
+          }
+        }
+      }
+      h1 {
+        font-size: 28px;
+        font-family: 'Raleway-ExtraBold';
+        color: $cl-dark-blue;
+        strong {
+          font-size: 28px;
+          font-family: 'Raleway-ExtraBold';
+          color: $cl-light-blue;
+          line-height: 1.3;
+        }
+        span {
+          font-family: 'custom-icons';
+          font-weight: 900;
+          font-size: 28px;
+          display: inline-block;
+          vertical-align: baseline;
+          line-height: 1;
+          margin-top: -2px;
+          padding-left: 10px;
+        }
+      }
+      h2 {
+        padding-top: 2px;
+        font-size: 28px;
+        font-family: 'Raleway-ExtraBold';
+        color: $cl-light-blue;
+        line-height: 1.3;
+        span {
+          font-family: "custom-icons";
+          font-weight: 300;
+          font-size: 22px;
+          display: inline-block;
+          padding-left: 2px;
+          vertical-align: baseline;
+          line-height: 1;
+        }
+      }
+      .home-banner_textarea-wrap {
+        margin-top: 20px;
+        p {
+          line-height: 1.7;
+          font-size: 16px;
+          font-family: 'Raleway-Regular';
+          color: $cl-dark-blue;
+          letter-spacing: 1;
+          max-width: 650px;
+          padding-bottom: 25px;
+          padding-right: 20px;
+          strong {
+            font-family: 'Raleway-ExtraBold';
+          }
+          @media screen and (min-width: 750px) {
+            max-width: 360px;
+            padding-right: 0;
+          }
+          @media screen and (min-width: 1200px) {
+            min-height: 112px;
+          }
+        }
+      }
+      @media screen and (min-width: 750px) {
+        padding-left: 10%;
+        margin-top: 50px;
+        h1 {
+          font-size: 35px;
+          strong {
+            font-size: 35px;
+          }
+          span {
+            font-size: 42px;
+          }
+        }
+        h2 {
+          font-size: 35px;
+        }
+        .home-banner_textarea-wrap {
+          margin-bottom: 30px;
+          width: 360px;
+          p {
+            font-size: 17px;
+            strong {
+              font-weight: 900;
+            }
+          }
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        padding-top: 30px;
+        padding-left: 6.7%;
+      }
+    }
+  }
+}
+.is-page {
+  padding-bottom: 40px;
+  .home-banner .home-banner_list {
+    .home-banner_textarea {
+      padding-top: 120px;
+      @media screen and (min-width: 750px) {
+        padding-top: 110px;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-top: 80px;
+      }
+      float: left;
+      padding-left: 20px;
+      h1 {
+        font-size: 34px;
+        font-family: 'Raleway-ExtraBold';
+        color: $cl-dark-blue;
+        strong {
+          font-size: 34px;
+          font-family: 'Raleway-ExtraBold';
+          color: $cl-light-blue;
+          line-height: 1.3;
+        }
+        span {
+          font-family: "custom-icons";
+          font-weight: 900;
+          font-size: 22px;
+          display: inline-block;
+          vertical-align: baseline;
+          line-height: 1;
+          margin-top: -2px;
+          padding-left: 10px;
+        }
+      }
+      .home-banner_textarea-wrap {
+        margin-top: 20px;
+        p {
+          line-height: 1.7;
+          font-size: 17px;
+          font-family: 'Raleway-Regular';
+          color: $cl-dark-blue;
+          padding-right: 20px;
+          strong {
+            font-weight: 900;
+          }
+          @media screen and (min-width: 1200px) {
+            min-height: 137px;
+          }
+        }
+        a {
+          color: $cl-light-blue;
+          font-family: 'Raleway-ExtraBold';
+          font-size: 16px;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+      @media screen and (min-width: 750px) {
+        padding-left: 10%;
+        margin-top: 50px;
+        h1 {
+          font-size: 35px;
+          strong {
+            font-size: 35px;
+          }
+          span {
+            font-size: 20px;
+          }
+        }
+        h2 {
+          font-size: 35px;
+        }
+        .home-banner_textarea-wrap {
+          width: 420px;
+          p {
+            max-width: none;
+            font-size: 17px;
+            strong {
+              font-weight: 900;
+            }
+          }
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        padding-top: 30px;
+        padding-left: 6.7%;
+      }
+    }
+  }
+}

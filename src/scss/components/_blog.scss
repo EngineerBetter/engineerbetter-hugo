@@ -1,0 +1,218 @@
+.blog_wrap {
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: 750px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .blog_header {
+    width: 100vw;
+    padding-top: 35px;
+    margin-bottom: 0;
+    position: relative;
+    padding-bottom: 22px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    @media screen and (min-width: 750px) {
+      width: 100%;
+      padding-left: 10%;
+      padding-top: 70px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @media screen and (min-width: 1200px) {
+      padding-left: 20%;
+      .blog_header-triangle-wrap {
+        width: 20%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        .blog_header-triangle {
+          width: 0;
+          height: 0;
+          border-left: 40px solid transparent;
+          border-right: 40px solid transparent;
+          border-bottom: 45px solid $cl-light-blue;
+          display: inline-block;
+          vertical-align: bottom;
+          opacity: .5;
+        }
+      }
+    }
+    &::after {
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      display: block;
+      content: "";
+      border-bottom: 1px solid rgba(6, 41, 70, 0.4);
+      height: 1px;
+      @media screen and (min-width: 750px) {
+        width: 95%;
+      }
+      @media screen and (min-width: 1200px) {
+        width: 94.4%;
+      }
+    }
+    h2 {
+      font-size: 26px;
+      font-family: 'Raleway-ExtraBold';
+      color: $cl-dark-blue;
+    }
+  }
+  .blog_flex-container {
+    &.blog_loaded {
+      display: none;
+    }
+    .blog_flex-row {
+      display: flex;
+      flex-flow: column wrap;
+      @media screen and (min-width: 750px) {
+        flex-flow: row wrap;
+        padding-left: 10%;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-left: 20%;
+      }
+      .blog_flex-col {
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        padding-right: 0;
+        @media screen and (min-width: 750px) {
+          padding-right: 5%;
+          width: 50%;
+        }
+        @media screen and (min-width: 1200px) {
+          padding-right: 7%;
+        }
+        &::after {
+          display: block;
+          content: "";
+          border-bottom: 1px solid rgba(6, 41, 70, 0.4);
+          height: 1px;
+        }
+        .blog_header-link {
+          text-decoration: none;
+          h3 {
+            padding-top: 35px;
+            padding-bottom: 20px;
+            font-size: 22px;
+            font-family: 'Raleway-ExtraBold';
+            color: $cl-light-blue;
+            line-height: 1.5;
+          }
+        }
+        .blog_flex-col-img{
+          display: none;
+          margin-top:auto;
+          padding-bottom: 30px;
+          @media screen and (min-width: 750px) {
+            display: block;
+          }
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+        &:nth-child(1) {
+          background: $cl-white;
+          order: 0;
+        }
+        &:nth-child(2) {
+          background: $cl-white;
+          order: 1;
+        }
+        &.is-img-visible {
+          .blog_flex-col-img {
+            display: block;
+          }
+        }
+      }
+      &:last-child {
+        .blog_flex-col {
+          &::after {
+            @media screen and (min-width: 750px) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .blog_button {
+    margin-top: 40px;
+    margin-bottom: 45px;
+    @media screen and (min-width: 750px) {
+      padding-left: 10%;
+    }
+    @media screen and (min-width: 1200px) {
+      padding-left: 20%;
+    }
+    a {
+      width: 143px;
+      height: 38px;
+      font-family: 'Raleway-Bold';
+      display: block;
+      background: $cl-light-blue;
+      font-size: 17px;
+      color: $cl-white;
+      padding: 10px 14px;
+      text-decoration: none;
+      span {
+        display: inline-block;
+        padding-left: 11px;
+        font-family: 'custom-icons';
+        font-size: 12px;
+        color: white;
+        vertical-align: middle;
+        transform: rotateZ(90deg);
+        transform-origin: center bottom;
+        margin-top: -23px;
+      }
+    }
+  }
+  .blog_banner {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 46px 20px 60px 20px;
+    background-color: $cl-light-blue-banner;
+    @media screen and (min-width: 750px) {
+      margin-left: 0;
+      margin-right: 0;
+      margin-top:50px;
+    }
+    .blog_banner-text {
+      @media screen and (min-width: 750px) {
+        text-align: center;
+      }
+      h2 {
+        font-size: 26px;
+        font-family: 'Raleway-ExtraBold';
+        color: $cl-dark-blue;
+      }
+      >p {
+        padding-top: 20px;
+        font-family: 'Raleway-Regular';
+        color: $cl-gray-mid;
+        font-size: 15px;
+        line-height: 1.5;
+        padding-bottom: 20px;
+        @media screen and (min-width: 750px) {
+          font-size: 17px;
+        }
+        br {
+          @media screen and (min-width: 750px) {
+            display: none;
+          }
+        }
+        span {
+          font-family: 'Raleway-Bold';
+        }
+      }
+    }
+  }
+}

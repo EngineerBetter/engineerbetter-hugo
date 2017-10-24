@@ -1,0 +1,73 @@
+.team_container {
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  @media screen and (min-width: 750px) {
+    max-width: 600px;
+    padding-bottom: 120px;
+  }
+  @media screen and (min-width: 1200px) {
+    max-width: 800px;
+  }
+  .team_content {
+    padding-top: 10px;
+    @media screen and (min-width: 750px) {
+      padding-top: 20px;
+    }
+    h2 {
+      padding-bottom: 20px;
+      font-size: 20px;
+      font-family: 'Raleway-ExtraBold';
+      color: $cl-light-blue;
+      @media screen and (min-width: 750px) {
+        font-size: 22px;
+        padding-bottom: 20px;
+      }
+    }
+    .team_content-list {
+      ul {
+        list-style-type: disc;
+        padding-left: 20px;
+      }
+      li {
+        padding-bottom: 10px;
+        font-size: 14px;
+        font-family: 'Raleway-Regular';
+        color: $cl-gray-mid;
+        line-height: 1.5;
+        letter-spacing: 0.5px;
+        @media screen and (min-width: 750px) {
+          font-size: 16px;
+        }
+      }
+    }
+    p {
+      font-size: 14px;
+      font-family: 'Raleway-Regular';
+      color: $cl-gray-mid;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      padding-bottom: 20px;
+      a {
+        text-decoration: none;
+        font-family: 'Raleway-Bold';
+        color: $cl-light-blue;
+      }
+      @media screen and (min-width: 750px) {
+        font-size: 16px;
+      }
+    }
+    .is-first {
+      padding-bottom: 10px;
+      padding-top: 10px;
+      @media screen and (min-width: 750px) {
+        padding-bottom: 0;
+      }
+    }
+    .is-inside {
+      padding-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,288 @@
+.menu_no-scroll {
+  overflow: hidden;
+}
+.menu {
+  &.fixed-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 60px;
+    background-color: rgba(255,255,255,.9);
+    border-bottom: 1px solid #D8DFE5;
+    z-index: 4;
+    @media screen and (min-width: 750px) {
+      height: 80px;
+      display: none;
+    }
+  }
+  .menu_header {
+    display: inline-block;
+    width: 100%;
+    @media screen and (min-width: 750px) {
+      width: auto;
+    }
+    .menu_header-logo {
+      display: block;
+      width: 145px;
+      padding: 10px 10px 0;
+      height: auto;
+      float: right;
+      img {
+        width: 100%;
+        height: auto;
+      }
+      @media screen and (min-width: 750px) {
+        display: inline-block;
+        float: none;
+        width: 130px;
+        padding: 20px 0 0;
+      }
+    }
+  }
+  .menu_contact {
+    float: right;
+    display: none;
+    &.is-active {
+      display: block;
+    }
+    @media screen and (min-width: 750px) {
+      display: block;
+      text-align: right;
+      padding-top: 32px;
+      .menu_contact-number {
+        display: inline-block;
+        font-family: 'Raleway-Regular';
+        font-size: 14px;
+        color: $cl-dark-blue;
+        border-right: 1px solid  $cl-dark-blue;
+        padding-right: 10px;
+        letter-spacing: 1.29px;
+      }
+      .menu_contact-us {
+        display: inline-block;
+        color: $cl-light-blue;
+        font-size: 15px;
+        font-family: 'Raleway-Bold';
+        padding-right: 30px;
+        padding-left: 6px;
+        text-decoration: none;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+.menu_header-button {
+  width: 40px;
+  height: 40px;
+  margin: 10px 10px 0;
+  position: relative;
+  background-color: $cl-light-blue;
+  border: none;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  @media screen and (min-width: 750px) {
+    margin: 20px 20px 0;
+  }
+  .icon-bar {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 24px;
+    left: 8px;
+    background-color: white;
+    border-radius: 9px;
+    opacity: 1;
+  }
+  span:nth-child(1) {
+    top: 10px;
+  }
+  span:nth-child(2) {
+    top: 18px;
+  }
+  span:nth-child(3) {
+    top: 26px;
+  }
+}
+.menu_list {
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $cl-light-blue;
+  color: white;
+  z-index: 9;
+  @media screen and (min-width: 450px) {
+    overflow-y: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  @media screen and (min-width: 750px) {
+    overflow-y: none;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .menu_list-close {
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    background-color: white;
+    color: $cl-light-blue;
+    padding: 8px;
+    border: 0;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 9;
+    p {
+      font-size: 27px;
+      line-height: 1;
+      display: none;
+    }
+    &::before, &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 18px;
+      top: 5px;
+      width: 3px;
+      height: 32px;
+      background-color: #1E74BD;
+      transform-origin: center;
+    }
+    &::before {
+      transform: rotateZ(45deg);
+    }
+    &::after {
+      transform: rotateZ(-45deg);
+    }
+  }
+  .menu_list-inner-wrap {
+    text-align: center;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    @media screen and (min-width: 450px) {
+      top: 0;
+      transform: none;
+    }
+    @media screen and (min-width: 750px) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .menu_list-phone {
+      font-size: 15px;
+      font-family: 'Raleway-Regular';
+      color: white;
+      letter-spacing: 1px;
+      @media screen and (min-width: 750px) {
+        font-size: 18px;
+      }
+    }
+    .menu_list-contact-btn {
+      padding: 10px 22px 10px 28px;
+      font-size: 18px;
+      text-decoration: none;
+      color: $cl-light-blue;
+      background-color: white;
+      font-family: 'Raleway-ExtraBold';
+      display: inline-block;
+      margin-top: 34px;
+      letter-spacing: 0.53px;
+      span {
+        font-family: 'custom-icons';
+        font-size: 13px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      @media screen and (min-width: 768px) {
+        padding: 18px 40px 16px;
+      }
+    }
+    .menu_list-links {
+      margin-top: 75px;
+      li>a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        font-family: 'Raleway-Regular';
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 25px;
+        letter-spacing: 1.14px;
+        text-transform: uppercase;
+      }
+      @media screen and (min-width: 750px) {
+        margin-top: 80px;
+        li>a {
+          font-family: 'Raleway-Regular';
+          font-weight: 700;
+          font-size: 16px;
+          margin-bottom: 45px;
+          letter-spacing: 1.14px;
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        li>a:hover {
+          text-decoration: underline;
+        }
+        li>a {
+          letter-spacing: 2px;
+        }
+      }
+    }
+    .menu_list-icons {
+      margin-top: 75px;
+      a {
+        display: inline-block;
+        margin: 0 10px;
+        img {
+          width: 32px;
+          height: auto;
+          fill: white;
+        }
+      }
+      @media screen and (min-width: 750px) {
+        margin-top: 100px;
+      }
+    }
+    .menu_list-bot-menu {
+      a, span {
+        display: inline-block;
+        margin-top: 30px;
+        font-size: 16px;
+        font-family: 'Raleway-Regular';
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: white;
+        letter-spacing: 1.14px;
+      }
+      span {
+        padding: 0 15px;
+      }
+      @media screen and (min-width: 750px) {
+        a, span {
+          font-size: 14px;
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        a, span {
+          letter-spacing: 2px;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

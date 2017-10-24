@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="320px"
+   height="210px"
+   viewBox="0 0 320 210"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="financial-services-icon.svg">
+  <metadata
+     id="metadata48">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="961"
+     id="namedview46"
+     showgrid="false"
+     inkscape:zoom="0.76676892"
+     inkscape:cx="212.16321"
+     inkscape:cy="-114.84231"
+     inkscape:window-x="-8"
+     inkscape:window-y="39"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g34" />
+  <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title4">Logo</title>
+  <desc
+     id="desc6">Created with Sketch.</desc>
+  <defs
+     id="defs8" />
+  <g
+     id="Success-stories"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="Desktop---Success-stories"
+       transform="translate(-159.000000, -1307.000000)">
+      <g
+         id="Financial-services"
+         transform="translate(159.000000, 1291.000000)">
+        <g
+           id="Logo"
+           transform="translate(0.000000, 16.000000)">
+          <polygon
+             id="graphic"
+             fill="#7FB7DD"
+             opacity="0.2"
+             transform="translate(160.000000, 104.844720) scale(-1, 1) translate(-160.000000, -104.844720) "
+             points="181.504627 0 0 209.689441 144.238489 209.689441 320 0" />
+          <g
+             id="Financial-service"
+             transform="translate(108.000000, 32.000000)">
+            <g
+               id="g34">
+              <g
+                 id="Finance-Icon"
+                 fill="#1E74BD">
+                <polygon
+                   id="Fill-1"
+                   points="104.783933 128.245614 105.248235 128.245614 105.248235 127.691634" />
+                <polygon
+                   id="Fill-2"
+                   points="0 113.438834 0 128.24559 93.3265167 128.24559 105.248227 114.473715 105.248227 113.438834" />
+                <polygon
+                   id="Fill-3"
+                   points="9.63315844 54.0811516 9.63315844 108.105273 24.4411541 108.105273 24.4411541 36.4162138" />
+                <polygon
+                   id="Fill-4"
+                   points="33.1985708 42.2840755 33.1985708 108.105202 48.0065665 108.105202 48.0065665 25.6331618 47.1564601 25.6331618" />
+                <polygon
+                   id="Fill-5"
+                   points="81.3921957 35.9024034 80.9662668 35.9024034 80.9662668 36.3944495" />
+                <polygon
+                   id="Fill-6"
+                   points="80.9662986 62.3908703 80.9662986 108.105217 95.7742943 108.105217 95.7742943 44.7259325" />
+                <polygon
+                   id="Fill-7"
+                   points="70.8321125 0 57.4008624 16.0225819 57.4008624 108.105241 72.2089376 108.105241 72.2089376 0" />
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

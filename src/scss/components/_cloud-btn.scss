@@ -1,0 +1,30 @@
+.cloud-btn {
+  height: 37px;
+  padding: 0 20px;
+  background-color: #1E74BD;
+  background-image: url('../img/clouds_button.png');
+  background-size: 300% auto;
+  background-position: center;
+  color: $cl-white;
+  font-family: 'Raleway-ExtraBold';
+  font-size: 17px;
+  letter-spacing: .5px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding-top: 9px;
+  padding-bottom: 1px;
+  vertical-align: middle;
+  transition: all .25s;
+  &:hover {
+    background-image: none;
+  }
+  span {
+    display: inline-block;
+    padding-left: 3px;
+    font-family: 'custom-icons';
+    font-size: 11px;
+    color: white;
+    vertical-align: middle;
+  }
+}

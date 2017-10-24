@@ -1,0 +1,111 @@
+.home-header {
+  padding-left: 20px;
+  padding-right: 35px;
+  position: relative;
+  @media screen and (min-width: 750px) {
+    padding-bottom: 35px;
+  }
+  .home-header_cloud1 {
+    top: -220px;
+    left: 0;
+    width: 100vw;
+    height: 140vh;
+    position: absolute;
+    background-image: url("../img/clouds.png");
+    background-size: 200% auto;
+    background-repeat: no-repeat;
+    background-position: 13% 0;
+    z-index: 0;
+    @media screen and (min-width: 750px) {
+      width: 75vw;
+      top: -200px;
+      background-position: -100px 0;
+      background-size: 100% auto;
+    }
+  }
+  .home-header_cloud2 {
+    display: none;
+    @media screen and (min-width: 750px) {
+      top: -160px;
+      right: 0;
+      width: 75vw;
+      height: 140vh;
+      position: absolute;
+      display: block;
+      background-image: url("../img/clouds.png");
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      z-index: 0;
+    }
+  }
+  .home-header_column {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+    @media screen and (min-width: 750px) {
+      padding-right: 5%;
+      float: left;
+      &:first-child {
+        width: 60%;
+        padding-left: 20%;
+      }
+      &:nth-child(2) {
+        width: 40%;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      padding-right: 3.3%;
+      float: left;
+      &:first-child {
+        width: 400px;
+        margin-left: 26%;
+        padding-right: 110px;
+        padding-left: 0;
+      }
+      &:nth-child(2) {
+        width: 290px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    h2 {
+      padding-top: 10px;
+      font-size: 26px;
+      font-family: 'Raleway-ExtraBold';
+      line-height: 1.2;
+      border-bottom: 1px solid rgba(6, 41, 70, .4);
+      padding-bottom: 10px;
+      span {
+        color: $cl-light-blue;
+      }
+    }
+    p {
+      padding-top: 20px;
+      padding-right: 35px;
+      font-size: 14px;
+      font-family: 'Raleway-Regular';
+      color: $cl-gray-mid;
+      line-height: 1.5;
+      font-weight: 500;
+      letter-spacing: .5px;
+    }
+    a {
+      display: block;
+      padding-top: 20px;
+      font-size: 17px;
+      font-family: 'Raleway-Bold';
+      color: $cl-light-blue;
+      text-decoration: none;
+      letter-spacing: .5px;
+      span {
+        display: inline-block;
+        padding-left: 3px;
+        font-family: 'custom-icons';
+        font-size: 11px;
+        color: $cl-light-blue;
+        vertical-align: middle;
+      }
+    }
+  }
+}

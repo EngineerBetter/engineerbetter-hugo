@@ -1,0 +1,156 @@
+.work-tech_outer-wrap {
+  padding-bottom: 40px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  .work-tech_wrap {
+    background-color: #DAEAF8;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -23px;
+      right: -5px;
+      width: 0;
+      height: 0;
+      border-top: 35px solid transparent;
+      border-bottom: 35px solid transparent;
+      border-left: 35px solid #fff;
+      transform: rotate(-45deg);
+    }
+    @media screen and (min-width: 750px) {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -23px;
+        left: -5px;
+        width: 0;
+        height: 0;
+        border-top: 35px solid transparent;
+        border-bottom: 35px solid transparent;
+        border-left: 35px solid #fff;
+        transform: rotate(135deg);
+      }
+    }
+  }
+  .work-tech_inner-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding-top: 60px;
+    .work-tech_col1 {
+      width: 100%;
+      float: left;
+      padding: 0 20px;
+      @media screen and (min-width: 750px) {
+        width: 50%;
+        padding-left: 10%;
+        padding-right: 0;
+      }
+      @media screen and (min-width: 920px) {
+        padding-left: 0;
+      }
+      @media screen and (min-width: 1200px) {
+        width: 560px;
+        padding-left: 0;
+        padding-right: 135px;
+      }
+      .work-tech_header {
+        position: relative;
+        margin-bottom: 25px;
+        h2 {
+          font-family: 'Raleway-ExtraBold';
+          font-size: 26px;
+          color: $cl-dark-blue;
+          padding-bottom: 25px;
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: 250%;
+          height: 1px;
+          right: 0;
+          border-bottom: 1px solid rgba(6, 41, 70, .4);
+          position: absolute;
+          @media screen and (min-width: 1200px) {
+            right: 34%;
+          }
+        }
+      }
+      .work-tech_content {
+        a {
+          display: block;
+          margin-top: 20px;
+          color: #1e74bd;
+          font-family: 'Raleway-ExtraBold';
+          text-decoration: none;
+          font-size: 17px;
+          margin-bottom: 60px;
+          span {
+            font-family: 'custom-icons';
+            font-size: 12px;
+            padding-left: 5px;
+          }
+        }
+        p {
+          font-family: 'Raleway-Regular';
+          font-size: 15px;
+          line-height: 22px;
+          color: #4a4a4a;
+          padding-bottom: 10px;
+          letter-spacing: 0.5px;
+          strong {
+            font-family: 'Raleway-ExtraBold';
+          }
+          br {
+            line-height: 12px;
+          }
+        }
+      }
+    }
+  }
+  .work-tech_col2 {
+    float: right;
+    width: 320px;
+    margin-bottom: -42px;
+    display: none;
+    &.is-footer {
+      display: block;
+      width: 100%;
+    }
+    @media screen and (min-width: 750px) {
+      display: block;
+      &.is-footer {
+        display: none;
+      }
+    }
+    .work-tech_box-top {
+      background-color: white;
+      padding: 40px 30px 40px;
+      >p {
+        font-family: 'Raleway-Regular';
+        font-size: 15px;
+        line-height: 22px;
+        padding-bottom: 20px;
+        color: #4a4a4a;
+        strong {
+          font-family: 'Raleway-ExtraBold';
+        }
+      }
+      h2 {
+        font-family: 'Raleway-ExtraBold';
+        font-size: 26px;
+        color: $cl-dark-blue;
+        padding-bottom: 20px;
+      }
+    }
+    .work-tech_box-img {
+      text-align: right;
+      img {
+        width: 240px;
+        height: auto;
+      }
+    }
+  }
+}

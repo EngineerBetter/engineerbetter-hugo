@@ -1,0 +1,95 @@
+.work-areas_wrap {
+  display: none;
+  width: 750px;
+  margin: 0 auto;
+  @media screen and (min-width: 750px) {
+    display: block;
+  }
+  h2 {
+    margin: 40px auto;
+    font-family: 'Raleway-ExtraBold';
+    font-size: 26px;
+    text-align: center;
+  }
+  .work-areas_slider-wrap {
+    padding-bottom: 25px;
+    background-image: url('../img/areas-widget-background.svg');
+    background-size: cover;
+    .work-areas_slider-col {
+      width: 25%;
+      float: left;
+      cursor: pointer;
+      text-align: center;
+      .work-areas_slider-col-top {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        font-family: 'Raleway-ExtraBold';
+        font-size: 16px;
+        line-height: 1.3;
+        color: $cl-light-blue;
+        text-transform: uppercase;
+        span {
+          font-family: 'Raleway-ExtraBold';
+          font-size: 16px;
+          color: $cl-dark-blue;
+          text-align: center;
+        }
+      }
+      .work-areas_slider-col-bot {
+        font-family: 'Raleway-ExtraBold';
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #8294A2;
+      }
+      .work-areas_slider-icon {
+        display: block;
+        font-family: 'custom-icons';
+        text-align: center;
+        font-size: 28px;
+        padding: 22px 0;
+        color: $cl-light-blue;
+        opacity: .4;
+        transition: all .3s;
+      }
+      &:hover,
+      &.is-active {
+        .work-areas_slider-icon {
+          opacity: 1;
+          transform: scale(1.25);
+          transform-origin: center;
+        }
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+  .work-areas_slider-descriptions {
+    max-width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 140px;
+    height: 88px;
+    position:relative;
+    p {
+      font-family: 'Raleway-Regular';
+      line-height: 22px;
+      font-size: 15px;
+      color: #4a4a4a;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity .4s;
+      letter-spacing: 0.5px;
+      strong {
+        font-family: 'Raleway-ExtraBold';
+      }
+      &.is-active {
+        opacity: 1;
+        transition: opacity .4s;
+      }
+    }
+  }
+}

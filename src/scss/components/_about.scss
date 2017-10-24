@@ -1,0 +1,343 @@
+.about_header {
+  padding-top: 40px;
+  padding-bottom: 15px;
+  @media screen and (min-width: 750px) {
+    padding-top: 70px;
+  }
+  &::after {
+    content: "";
+    height: 1px;
+    border-bottom: 1px solid rgba(6, 41, 70, 0.4);
+    display: block;
+    @media screen and (min-width: 750px) {
+      margin-right: 40px;
+    }
+    @media screen and (min-width: 1200px) {
+      margin-right: 80px;
+    }
+  }
+  @media screen and (min-width: 750px) {
+    padding-bottom: 30px;
+  }
+  .about_header-title {
+    padding-left: 20px;
+    position: relative;
+    h2 {
+      padding-bottom: 20px;
+      font-size: 26px;
+      font-family: 'Raleway-ExtraBold';
+      color: $cl-dark-blue;
+    }
+    @media screen and (min-width: 750px) {
+      padding-left: 10%;
+    }
+    @media screen and (min-width: 1200px) {
+      padding-left: 20%;
+      .about_header-triangle-wrap {
+        width: 20%;
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        text-align: center;
+        .about_header-triangle {
+          width: 0;
+          height: 0;
+          border-left: 40px solid transparent;
+          border-right: 40px solid transparent;
+          border-bottom: 45px solid $cl-light-blue;
+          display: inline-block;
+          vertical-align: bottom;
+          opacity: .5;
+        }
+      }
+    }
+  }
+}
+.about {
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: 750px) {
+    padding-left: 10%;
+    padding-right:0;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-left: 20%;
+  }
+  .about_wrap-row {
+    .about_wrap-col {
+      @media screen and (min-width: 750px) {
+        width: 50%;
+        float: left;
+      }
+      .about_wrap-inner {
+        margin-top: 20px;
+        border-bottom: 1px solid rgba(6, 41, 70, 0.4);
+        margin-bottom: 15px;
+        @media screen and (min-width: 750px) {
+            margin-right: 40px;
+        }
+        @media screen and (min-width: 1200px) {
+            margin-right: 80px;
+        }
+        h2 {
+          font-size: 22px;
+          font-family: 'Raleway-ExtraBold';
+          color: $cl-light-blue;
+          line-height: 1.2;
+          span {
+            padding-right: 10px;
+            color: $cl-light-blue;
+            opacity: 0.5;
+            font-size: 30px;
+            font-family: 'Raleway-ExtraBold';
+          }
+        }
+        p {
+          font-family: 'Raleway-Regular';
+          color: $cl-gray-mid;
+          font-size: 14px;
+          line-height: 1.5;
+          padding-bottom: 20px;
+          padding-top: 15px;
+          letter-spacing: 0.5px;
+          span {
+            font-family: 'Raleway-Bold';
+          }
+          @media screen and (min-width: 750px) {
+              font-size: 15px;
+          }
+        }
+        &.is-odd-desktop {
+          @media screen and (min-width: 750px) {
+            border-bottom: none;
+          }
+        }
+        &.is-odd {
+          border-bottom: none;
+          @media screen and (min-width: 750px) {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+.about_leaders-row {
+  @media screen and (min-width: 1200px) {
+    padding-left: 20%;
+  }
+  .about_leaders-col {
+    &.is-top-img {
+      @media screen and (max-width: 750px) {
+        padding-right: 20px;
+      }
+      @media screen and (min-width: 750px) {
+        width: 48%;
+      }
+      @media screen and (min-width: 1200px) {
+        width: 44%;
+        margin-left:-8%;
+      }
+    }
+    @media screen and (min-width: 750px) {
+      width: 46%;
+      float: left;
+      &.is-text {
+        width: 54%;
+      }
+      &.is-top-text {
+        width: 52%;
+        padding-left: 0;
+      }
+    }
+    @media screen and (min-width: 750px) {
+      &.is-text {
+        width: 56%;
+      }
+      &.is-top-text {
+        width: 52%;
+      }
+    }
+    .about_img {
+       margin-top: 15px;
+       float: left;
+       position: relative;
+       width: 100%;
+       @media screen and (min-width: 750px) {
+         margin-top: 0;
+         width: 100%;
+       }
+       @media screen and (min-width: 1200px) {
+         padding-left: 0;
+       }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .about_icon {
+        position: absolute;
+        bottom: 0;
+        width: 35px;
+        right: 0;
+        display: block;
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+    }
+    &.is-odd {
+      padding-left: 20px;
+      .about_img {
+        padding-right: 0;
+        padding-left: 20px;
+        img{
+          bottom: 0;
+        }
+      }
+      @media screen and (min-width: 750px) {
+        padding-left: 0;
+        padding-right: 0;
+        float: right;
+        width: 41%;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-left: 20px;
+        padding-right: 7%;
+      }
+      .about_img {
+        padding-left: 0;
+        float: right;
+        padding-right: 0;
+        width: 100%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+        .about_icon {
+          margin-right: 0;
+          left: 0;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+  .about_leaders-col {
+    padding-top: 15px;
+    @media screen and (min-width: 750px) {
+      padding-top: 40px;
+    }
+    @media screen and (min-width: 750px) {
+      padding-right: 8%;
+    }
+    @media screen and (min-width: 1200px) {
+      padding-right: 10%;
+    }
+    &.is-text {
+      padding-left: 20px;
+      padding-right: 20px;
+      p {
+        padding-right: 0;
+      }
+      @media screen and (min-width: 750px) {
+        padding-left: 0;
+      }
+    }
+    &.is-top-text {
+      p {
+        padding-left: 0;
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgba(6, 41, 70, 0.4);
+      }
+    }
+    h2 {
+      padding-top: 15px;
+      padding-bottom: 20px;
+      font-size: 22px;
+      font-family: 'Raleway-ExtraBold';
+      color: $cl-light-blue;
+      padding-left: 0;
+      padding-right: 20px;
+      @media screen and (min-width: 750px) {
+        padding-top: 0;
+      }
+    }
+    p {
+      font-family: 'Raleway-Regular';
+      color: $cl-gray-mid;
+      font-size: 14px;
+      line-height: 1.5;
+      padding-bottom: 20px;
+      padding-top: 15px;
+      padding-right: 20px;
+      letter-spacing: 0.5px;
+      @media screen and (min-width: 750px) {
+        padding-right: 40px;
+        font-size: 15px;
+      }
+    }
+    &.is-desktop {
+      @media screen and (min-width: 750px) {
+        padding-left: 10%;
+        h2 {
+          padding-top: 0;
+          padding-left: 0;
+          padding-right: 0;
+        }
+        p {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      @media screen and (min-width: 1200px) {
+        padding-left: 0;
+        h2 {
+          padding-top: 30px;
+        }
+      }
+    }
+  }
+}
+.about_banner {
+  padding: 45px 20px 60px 20px;
+  background-color: $cl-light-blue-banner;
+  @media screen and (min-width: 750px) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 80px;
+  }
+  .blog_banner-text {
+    @media screen and (min-width: 750px) {
+      text-align: center;
+    }
+    h2 {
+      font-size: 26px;
+      font-family: 'Raleway-ExtraBold';
+      color: $cl-dark-blue;
+    }
+    >p {
+      padding-top: 20px;
+      font-family: 'Raleway-Regular';
+      color: $cl-gray-mid;
+      font-size: 15px;
+      line-height: 1.5;
+      padding-bottom: 20px;
+      @media screen and (min-width: 750px) {
+        font-size: 17px;
+      }
+      br {
+        @media screen and (min-width: 750px) {
+          display: none;
+        }
+      }
+      span {
+        font-family: 'Raleway-Bold';
+      }
+    }
+  }
+}

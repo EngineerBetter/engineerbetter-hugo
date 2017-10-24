@@ -1,0 +1,154 @@
+.contact-us_wrap {
+  &.menu-banner-top_wrap::after {
+    display: none;
+  }
+  .contact-us_form-outer {
+    position: relative;
+    .contact-us_cloud-left,
+    .contact-us_cloud-right {
+      display: none;
+    }
+    @media screen and (min-width: 750px) {
+      margin-top: -35px;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .contact-us_cloud-left {
+        display: block;
+        position: absolute;
+        bottom: -38vw;
+        left: 0;
+        width: 75%;
+        height: auto;
+        opacity: .6;
+        z-index: 2;
+        @media screen and (min-width: 1200px) {
+          width: 50vw;
+          bottom: -11vw;
+          left: 0;
+        }
+      }
+      .contact-us_cloud-right {
+        display: block;
+        position: absolute;
+        bottom: -25vw;
+        width: 75%;
+        height: auto;
+        right: -25%;
+        z-index: 2;
+        opacity: .6;
+        @media screen and (min-width: 1200px) {
+          width: 50vw;
+          bottom: -5vw;
+          right: -5%;
+        }
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      margin-top: 0;
+    }
+    .contact-us_thanks {
+      text-align: center;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 30px;
+      padding-bottom: 60px;
+      @media screen and (min-width: 750px) {
+        padding-top: 50px;
+        padding-bottom: 0;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-top: 0;
+      }
+      h2 {
+        position: relative;
+        z-index: 3;
+        padding-bottom: 20px;
+        font-size: 20px;
+        font-family: 'Raleway-ExtraBold';
+        color: $cl-dark-blue;
+        @media screen and (min-width: 750px) {
+          font-size: 26px;
+          padding-bottom: 50px;
+        }
+      }
+      a {
+        position: relative;
+        z-index: 3;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: 'Raleway-Bold';
+        color: $cl-light-blue;
+        margin-bottom: 30px;
+        span {
+          font-family: "custom-icons";
+          font-weight: 300;
+          font-size: 13px;
+          display: inline-block;
+          padding-left: 2px;
+          vertical-align: baseline;
+          line-height: 1;
+        }
+        @media screen and (min-width: 750px) {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+  .contact-us_background {
+    display: none;
+    @media screen and (min-width: 750px) {
+      display: block;
+      position: relative;
+      z-index: 1;
+      top: -40px;
+    }
+    @media screen and (min-width: 1200px) {
+      top: -150px;
+    }
+    .contact-us_bot-diamond {
+      display: none;
+      @media screen and (min-width: 750px) {
+        display: block;
+        position: absolute;
+        left: 10%;
+        top: 15%;
+        width: 225px;
+        height: auto;
+      }
+      @media screen and (min-width: 1200px) {
+        left: 160px;
+        top: 25%;
+      }
+    }
+    img {
+      float: right;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    &:before {
+      content: "";
+      mix-blend-mode: multiply;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+    	height: 260px;
+      opacity: .6;
+      @media screen and (min-width: 750px) {
+        border-left: 225px solid transparent;
+      	border-right: 225px solid transparent;
+      	border-bottom: 260px solid #1e74bd;
+      }
+      @media screen and (min-width: 1200px) {
+      	border-left: 240px solid transparent;
+      	border-right: 240px solid transparent;
+      	border-bottom: 280px solid #1e74bd;
+      }
+    }
+  }
+}

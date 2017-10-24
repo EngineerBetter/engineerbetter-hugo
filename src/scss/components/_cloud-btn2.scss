@@ -1,0 +1,53 @@
+.cloud-btn2 {
+  position: relative;
+  height: 37px;
+  padding: 0 20px;
+  display: inline-block;
+  text-decoration: none;
+  p {
+    position: relative;
+    z-index: 2;
+    color: $cl-white;
+    font-family: 'Raleway-ExtraBold';
+    font-size: 17px;
+    letter-spacing: .5px;
+    text-align: center;
+    padding-top: 9px;
+    padding-bottom: 1px;
+    vertical-align: middle;
+  }
+  &::before, &::after {
+    content: "";
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+  }
+  &::before {
+    background-color: #1E74BD;
+    background-image: url('../img/clouds_button.png');
+    background-size: 300% auto;
+    background-position: center;
+    opacity: 1;
+    z-index: 1;
+    transition: all .25s;
+  }
+  &::after {
+    background-color: #1E74BD;
+    z-index: 0;
+  }
+  &:hover {
+    &::before {
+      opacity: 0;
+    }
+  }
+  span {
+    display: inline-block;
+    padding-left: 3px;
+    font-family: 'custom-icons';
+    font-size: 11px;
+    color: white;
+    vertical-align: middle;
+  }
+}

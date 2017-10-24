@@ -1,0 +1,9 @@
+.fade-on-scroll {
+  @media screen and (min-width: 750px) {
+    opacity: 0;
+    &.is-block-visible {
+      opacity: 1;
+      transition: opacity 1.5s;
+    }
+  }
+}

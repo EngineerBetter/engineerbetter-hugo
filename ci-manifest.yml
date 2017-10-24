@@ -2,4 +2,4 @@
 applications:
 - name: eb-hugo
   memory: 64MB
-  path: public
+  path: ../generated-site/

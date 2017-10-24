@@ -38,5 +38,4 @@ jobs:
         file: tarball/eb-hugo-built.tar.gz
     - put: cf-dev
       params:
-        manifest: eb-hugo/manifest.yml
-        path: generated-site/
+        manifest: eb-hugo/ci-manifest.yml

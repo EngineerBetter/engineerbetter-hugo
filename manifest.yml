@@ -1,0 +1,5 @@
+---
+applications:
+- name: eb-hugo
+  memory: 64MB
+  path: public

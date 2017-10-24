@@ -21,7 +21,7 @@ resources:
     username: systems@engineerbetter.com
     password: {{systems_cf_password}}
     organization: engineerbetter
-    space: dev
+    space: development
     skip_cert_check: false
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
   - aggregate:
     - put: site-tarball
       params:
-        file: generated-site/eb-hugo-built.tar.gz
+        file: tarball/eb-hugo-built.tar.gz
     - put: cf-dev
       params:
         manifest: eb-hugo/manifest.yml

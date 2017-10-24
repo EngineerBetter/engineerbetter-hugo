@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Blog post | Engineer Better</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/main.css?v=4">
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=59dd319bbe590e0012288781&product=sticky-share-buttons"></script>
+  </head>
+  <body>
+    <!-- MENU -->
+    <section id="menu-nav-top" class="menu fixed-menu clearfix">
+      <div class="menu_contact">
+        <p class="menu_contact-number">+44 (0) 20 7846 0140</p>
+        <a href="/contact-us.html" class="menu_contact-us">Contact us</a>
+      </div>
+      <div class="menu_header clearfix">
+        <button class="menu_header-button">
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button>
+        <a href="/" class="menu_header-logo">
+          <img class="logo-header-img" alt="Brand" src="img/engineer-better-logo.svg">
+        </a>
+      </div>
+    </section>
+    <div class="menu_list">
+      <button class="menu_list-close">
+        <p>&#x2716;</p>
+      </button>
+      <div class="menu_list-inner-wrap">
+        <p class="menu_list-phone">+44 (0) 20 7846 0140</p>
+        <a class="menu_list-contact-btn" href="/contact-us.html">Contact us&nbsp;<span>&#xe900;</span></a>
+        <ul class="menu_list-links">
+          <li><a href="/how-we-work.html">How we work</a></li>
+          <li><a href="/our-services.html">Our services</a></li>
+          <li><a href="/success-stories.html">Success stories</a></li>
+          <li><a href="/why-cloud-foundry.html">Why cloud foundry?</a></li>
+          <li><a href="/about-us.html">About us</a></li>
+        </ul>
+        <div class="menu_list-icons">
+          <a href="https://twitter.com/EngineerBetter">
+            <img src="img/twitter.svg" alt="Twitter profile">
+          </a>
+          <a href="https://github.com/EngineerBetter">
+            <img src="img/github.svg" alt="Github profile">
+          </a>
+        </div>
+        <div class="menu_list-bot-menu">
+          <a href="/blog.html">Blog</a><span>|</span><a href="/join-our-team.html">Careers</a><span>|</span><a href="/privacy-policy.html">Privacy</a>
+        </div>
+      </div>
+    </div>
+    <section class="menu-banner-top_wrap parallax is-page">
+      <div class="menu-banner-top">
+        <div class="menu-banner-top_contact">
+          <a class="menu-banner-top_number" href="tel:+44 (0) 20 7846 0140">+44 (0) 20 7846 0140</a>
+          <a class="menu-banner-top_contact-us" href="/contact-us.html">Contact us</a>
+        </div>
+        <div class="menu-banner-top_btn-wrap">
+          <button class="menu_header-button">
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+        </div>
+        <div class="menu-banner-top_logo clearfix">
+          <a href="/" class="home-banner_logo-img">
+            <img class="logo-img" alt="Brand" src="img/engineer-better-logo.svg">
+          </a>
+        </div>
+      </div>
+      <!-- HOME BANNER -->
+      <div class="home-banner">
+        <div class="home-banner_list clearfix">
+          <div class="home-banner_list-category">
+            <ul>
+              <li><a href="/how-we-work.html">How we work</a></li>
+              <li><a href="/our-services.html">Our services</a></li>
+              <li><a href="/success-stories.html">Success stories</a></li>
+              <li><a href="/why-cloud-foundry.html">Why cloud foundry?</a></li>
+              <li><a href="/about-us.html">About us</a></li>
+            </ul>
+          </div>
+          <div class="home-banner_textarea">
+            <h1 class="home-banner_textarea-header">Our <strong>blog&nbsp;<span>&#xe900;</span></strong></h1>
+            <div class="home-banner_textarea-wrap">
+              <p class="home-banner_textarea-description">Get the very latest updates about recent projects, team updates, thoughts  and industry news from our team of Engineer Better experts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ARTICLESS-->
+    <section class="blog-page">
+      <div class="blog-page_container">
+        <h2 class="blog-page_title">Bringing Perpetual Motion to System Upgrades. Self-Upgrading Concourse CI</h2>
+        <p class="blog-page_datails">Sep 18, 2017<span>|</span> Peter Ellis Jones</p>
+        <div class="blog-page_imgage">
+          <img class="blog-page_img" alt="Brand" src="img/blog-img-1.jpg">
+        </div>
+        <p class="blog-page_text">We’ve recently been working on adding functionality to Concourse-Up, based on feedback from users in the community and our own teams who’ve been using it in
+          production with customers. Being able to deploy a Concourse cluster using a single command was great, but not ideal; you still had to run it again to upgrade.
+          What if you could just run a single command, and then never have to think about it again? In pursuit of this goal, we added a self-update feature.
+        </p>
+        <h2 class="blog-page_text-title blog-page_sub-title">Self-update</h2>
+        <p class="blog-page_text">When Concourse-up deploys Concourse, it now adds a pipeline to the new Concourse called concourse-up-self-update.
+          This pipeline continuously monitors our Github repo for new releases and updates.
+        </p>
+        <div class="blog-page_imgage is-odd">
+          <img class="blog-page_img" alt="Brand" src="img/blog-page-img1.png">
+        </div>
+        <p class="blog-page_text">This means that our own <a href="https://ci.engineerbetter.com/" class="blog-page_link">ci.engineerbetter.com</a> not only continuously builds, tests and releases new versions of concourse-up whenever it finds a new component or stemcell on bosh.io, but that same CI server then continuously upgrades itself using the concourse-up releases it has built.</p>
+      </div>
+      <div class="blog-page_banner clearfix">
+        <div class="blog_banner-text">
+          <h2>Get in touch</h2>
+          <p>See how much we can help you.<br> Call <span>+44 (0) 20 7846 0140</span> or</br></p>
+          <a href="/contact-us.html" class="cloud-btn2"><p>Contact us <span>&#xe900;</span></p></a>
+        </div>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-background">
+      </div>
+      <div class="footer_wrap clearfix">
+       <div class="footer_column-list-desktop">
+         <ul class="list">
+           <li><a href="/how-we-work.html"><span>&mdash;</span>  How we work</a></li>
+           <li><a href="/our-services.html"><span>&mdash;</span>  Our services</a></li>
+           <li><a href="/success-stories.html"><span>&mdash;</span>  Success stories</a></li>
+           <li><a href="/why-cloud-foundry.html"><span>&mdash;</span>  Why Cloud Foundry?</a></li>
+           <li><a href="/about-us.html"><span>&mdash;</span>  About us</a></li>
+         </ul>
+       </div>
+       <div class="footer_column-list">
+         <ul class="list">
+           <li><a href="/contact-us.html"><span>&mdash;</span>  Contact us</a></li>
+           <li><a href="/blog.html"><span>&mdash;</span>  Blog</a></li>
+           <li><a href="/join-our-team.html"><span>&mdash;</span>  Join our team</a></li>
+           <li><a href="/privacy-policy.html"><span>&mdash;</span>  Privacy Policy</a></li>
+         </ul>
+       </div>
+       <div class="footer_column-icon-wrap">
+         <a href="https://twitter.com/EngineerBetter" class="footer_column-icon">
+           <img class="footer_column-icon-img" alt="Brand" src="img/icon-twitter.png">
+         </a>
+         <a href="https://github.com/EngineerBetter" class="footer_column-icon">
+           <img class="footer_column-icon-img" alt="Brand" src="img/icon-git-hub.png">
+         </a>
+       </div>
+       <div class="footer_column-text">
+         <p>&copy; Copyright EngineerBetter Ltd</p>
+         <p>Registered England &amp; Wales 10141478</p>
+       </div>
+      </div>
+    </footer>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/site.js?v=4"></script>
+  </body>
+</html>

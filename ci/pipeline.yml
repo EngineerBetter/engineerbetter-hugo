@@ -53,12 +53,13 @@ jobs:
         file: tarball/eb-hugo-built.tar.gz
     - put: cf-dev
       params:
-        manifest: eb-hugo/ci/hugo-manifest-dev.yml
+        manifest: eb-hugo/ci/assets/hugo-manifest-dev.yml
 
 - name: build-blog
   public: false
   serial: true
   plan:
+  - get: eb-hugo
   - get: eb-blog
     trigger: true
   - task: jekyll-build

@@ -7,7 +7,7 @@ applications:
   path: ../../../generated-blog/
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack
   routes:
-  - route: eb-blog-prod.cfapps.io
+  - route: eb-blog-dev.cfapps.io
   - route: eb-hugo-dev.engineerbetter.com/update
 
 language: staticfile

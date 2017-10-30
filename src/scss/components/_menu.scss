@@ -80,6 +80,7 @@
   position: relative;
   background-color: $cl-light-blue;
   border: none;
+  border-radius:0px;
   display: inline-block;
   vertical-align: top;
   position: relative;
@@ -95,7 +96,6 @@
     width: 24px;
     left: 8px;
     background-color: white;
-    border-radius: 9px;
     opacity: 1;
   }
   span:nth-child(1) {
@@ -140,6 +140,7 @@
     color: $cl-light-blue;
     padding: 8px;
     border: 0;
+	border-radius: 0px;
     box-shadow: none;
     cursor: pointer;
     z-index: 9;

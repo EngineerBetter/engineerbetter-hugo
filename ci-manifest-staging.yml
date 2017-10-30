@@ -4,5 +4,5 @@ applications:
   memory: 64MB
   path: ../generated-site/
   routes:
-    eb-hugo-staging.cfapps.io
-    eb-hugo-staging.engineerbetter.com
+  - eb-hugo-staging.cfapps.io
+  - eb-hugo-staging.engineerbetter.com

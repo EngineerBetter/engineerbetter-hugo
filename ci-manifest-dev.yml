@@ -1,0 +1,8 @@
+---
+applications:
+- name: eb-hugo
+  memory: 64MB
+  path: ../generated-site/
+  routes:
+    eb-hugo-dev.cfapps.io
+    eb-hugo-dev.engineerbetter.com

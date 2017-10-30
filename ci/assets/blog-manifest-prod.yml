@@ -5,7 +5,7 @@ applications:
   memory: 64M
   instances: 2
   path: ../../../generated-blog/
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
+  buildpack: staticfile_buildpack
   routes:
   - route: eb-blog-prod.cfapps.io
   - route: eb-hugo-prod.cfapps.io/2017

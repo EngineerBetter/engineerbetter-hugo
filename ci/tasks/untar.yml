@@ -14,4 +14,4 @@ outputs:
 - name: output
 
 run:
-  path: eb-hugo/ci/scripts/untar.sh
+  path: eb-hugo/ci/tasks/untar.sh

@@ -8,6 +8,12 @@ applications:
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack
   routes:
   - route: eb-blog-prod.cfapps.io
-  - route: www.engineerbetter.com/update
+  - route: eb-hugo-prod.cfapps.io/2017
+  - route: eb-hugo-prod.cfapps.io/2016
+  - route: eb-hugo-prod.cfapps.io/2015
+  - route: eb-hugo-prod.engineerbetter.com/update
+  - route: eb-hugo-prod.engineerbetter.com/2017
+  - route: eb-hugo-prod.engineerbetter.com/2016
+  - route: eb-hugo-prod.engineerbetter.com/2015
 
 language: staticfile

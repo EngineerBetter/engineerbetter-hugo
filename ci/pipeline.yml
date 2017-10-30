@@ -60,6 +60,7 @@ jobs:
   serial: true
   plan:
   - get: eb-hugo
+    trigger: true
   - get: eb-blog
     trigger: true
   - task: jekyll-build
@@ -75,3 +76,13 @@ jobs:
     - put: cf-dev
       params:
         manifest: eb-hugo/ci/assets/blog-manifest-dev.yml
+
+- name: test-dev
+  public: false
+  serial: true
+  plan:
+  - get: eb-hugo
+    passed: [build-site, build-blog]
+    trigger: true
+  - task: smoke-tests
+    file: eb-hugo/ci/tasks/smoke-tests.yml

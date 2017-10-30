@@ -14,6 +14,21 @@ resources:
     access_key_id: {{concourse_ci_s3_access_key}}
     secret_access_key: {{concourse_ci_s3_secret_key}}
 
+- name: eb-blog
+  type: git
+  source:
+    uri: https://github.com/engineerbetter/engineerbetter.com.git
+    branch: blog-only
+
+- name: blog-tarball
+  type: s3
+  source:
+    bucket: engineerbetter-jekyll-builds
+    region_name: eu-west-1
+    versioned_file: engineerbetter-blog-built.tar.gz
+    access_key_id: {{concourse_ci_s3_access_key}}
+    secret_access_key: {{concourse_ci_s3_secret_key}}
+
 - name: cf-dev
   type: cf
   source:
@@ -38,4 +53,24 @@ jobs:
         file: tarball/eb-hugo-built.tar.gz
     - put: cf-dev
       params:
-        manifest: eb-hugo/ci-manifest-dev.yml
+        manifest: eb-hugo/ci/hugo-manifest-dev.yml
+
+- name: build-blog
+  public: false
+  serial: true
+  plan:
+  - get: eb-blog
+    trigger: true
+  - task: jekyll-build
+    file: eb-blog/ci/tasks/jekyll-build.yml
+    input_mapping:
+      engineerbetter.com: eb-blog
+    output_mapping:
+      jekyll-built: blog-tarball
+  - aggregate:
+    - put: blog-tarball
+      params:
+        file: blog-tarball/engineerbetter-blog-built.tar.gz
+    - put: cf-dev
+      params:
+        manifest: eb-hugo/ci/assets/blog-manifest-dev.yml

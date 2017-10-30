@@ -2,7 +2,7 @@
 applications:
 - name: eb-hugo
   memory: 64MB
-  path: ../generated-site/
+  path: ../../generated-site/
   routes:
   - route: eb-hugo-staging.cfapps.io
   - route: eb-hugo-staging.engineerbetter.com

@@ -1,0 +1,13 @@
+---
+applications:
+- name: eb-blog
+  disk: 128M
+  memory: 64M
+  instances: 1
+  path: ../../generated-blog/
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
+  routes:
+  - route: eb-blog-staging.cfapps.io
+  - route: eb-hugo-staging.engineerbetter.com/update
+
+language: staticfile

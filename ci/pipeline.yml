@@ -32,12 +32,19 @@ resources:
 - name: cf-dev
   type: cf
   source:
-    api: https://api.run.pivotal.io
-    username: systems@engineerbetter.com
-    password: {{systems_cf_password}}
-    organization: engineerbetter
+    <<: &cf-params
+      api: https://api.run.pivotal.io
+      username: systems@engineerbetter.com
+      password: {{systems_cf_password}}
+      organization: engineerbetter
+      skip_cert_check: false
     space: development
-    skip_cert_check: false
+
+- name: cf-staging
+  type: cf
+  source:
+    <<: *cf-params
+    space: staging
 
 jobs:
 - name: build-site
@@ -82,9 +89,65 @@ jobs:
   serial: true
   plan:
   - get: eb-hugo
-    passed: [build-site, build-blog]
+  - get: site-tarball
+    passed: [build-site]
+    trigger: true
+  - get: blog-tarball
+    passed: [build-blog]
     trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
       HOST: eb-hugo-dev.engineerbetter.com
+
+- name: deploy-site-staging
+  public: false
+  serial: true
+  plan:
+  - get: eb-hugo
+  - get: site-tarball
+    passed: [test-dev]
+    trigger: true
+  - task: untar
+    file: eb-hugo/ci/tasks/untar.yml
+    input_mapping:
+      input: site-tarball
+    output_mapping:
+      output: generated-site
+  - put: cf-staging
+    params:
+      manifest: eb-hugo/ci/assets/hugo-manifest-staging.yml
+
+- name: deploy-blog-staging
+  public: false
+  serial: true
+  plan:
+  - get: eb-hugo
+  - get: blog-tarball
+    passed: [test-dev]
+    trigger: true
+  - task: untar
+    file: eb-hugo/ci/tasks/untar.yml
+    input_mapping:
+      input: blog-tarball
+    output_mapping:
+      output: generated-blog
+  - put: cf-staging
+    params:
+      manifest: eb-hugo/ci/assets/blog-manifest-staging.yml
+
+- name: test-staging
+  public: false
+  serial: true
+  plan:
+  - get: eb-hugo
+  - get: site-tarball
+    passed: [deploy-site-staging]
+    trigger: true
+  - get: blog-tarball
+    passed: [deploy-blog-staging]
+    trigger: true
+  - task: smoke-tests
+    file: eb-hugo/ci/tasks/smoke-tests.yml
+    params:
+      HOST: eb-hugo-staging.engineerbetter.com

@@ -86,3 +86,5 @@ jobs:
     trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
+    params:
+      HOST: eb-hugo-dev.engineerbetter.com

@@ -11,9 +11,17 @@ applications:
   - route: eb-hugo-prod.cfapps.io/2017
   - route: eb-hugo-prod.cfapps.io/2016
   - route: eb-hugo-prod.cfapps.io/2015
-  - route: eb-hugo-prod.engineerbetter.com/update
-  - route: eb-hugo-prod.engineerbetter.com/2017
-  - route: eb-hugo-prod.engineerbetter.com/2016
-  - route: eb-hugo-prod.engineerbetter.com/2015
+  - route: eb-hugo-prod.cfapps.io/bosh-concourse2.html
+  - route: eb-hugo-prod.cfapps.io/bosh-concourse.html
+  - route: eb-hugo-prod.cfapps.io/why-eb.html
+  - route: eb-hugo-prod.cfapps.io/bad
+  - route: www.engineerbetter.com/update
+  - route: www.engineerbetter.com/2017
+  - route: www.engineerbetter.com/2016
+  - route: www.engineerbetter.com/2015
+  - route: www.engineerbetter.com/bosh-concourse2.html
+  - route: www.engineerbetter.com/bosh-concourse.html
+  - route: www.engineerbetter.com/why-eb.html
+  - route: www.engineerbetter.com/bad
 
 language: staticfile

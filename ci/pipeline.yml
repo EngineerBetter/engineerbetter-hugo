@@ -46,6 +46,12 @@ resources:
     <<: *cf-params
     space: staging
 
+- name: cf-prod
+  type: cf
+  source:
+    <<: *cf-params
+    space: production
+
 jobs:
 - name: build-site
   serial: true
@@ -151,3 +157,53 @@ jobs:
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
       HOST: eb-hugo-staging.engineerbetter.com
+
+- name: deploy-site-prod
+  public: false
+  serial: true
+  plan:
+  - get: eb-hugo
+  - get: site-tarball
+    passed: [test-staging]
+  - task: untar
+    file: eb-hugo/ci/tasks/untar.yml
+    input_mapping:
+      input: site-tarball
+    output_mapping:
+      output: generated-site
+  - put: cf-prod
+    params:
+      manifest: eb-hugo/ci/assets/hugo-manifest-prod.yml
+
+- name: deploy-blog-prod
+  public: false
+  serial: true
+  plan:
+  - get: eb-hugo
+  - get: blog-tarball
+    passed: [test-staging]
+  - task: untar
+    file: eb-hugo/ci/tasks/untar.yml
+    input_mapping:
+      input: blog-tarball
+    output_mapping:
+      output: generated-blog
+  - put: cf-staging
+    params:
+      manifest: eb-hugo/ci/assets/blog-manifest-prod.yml
+
+- name: test-prod
+  public: false
+  serial: true
+  plan:
+  - get: eb-hugo
+  - get: site-tarball
+    passed: [deploy-site-prod]
+    trigger: true
+  - get: blog-tarball
+    passed: [deploy-blog-prod]
+    trigger: true
+  - task: smoke-tests
+    file: eb-hugo/ci/tasks/smoke-tests.yml
+    params:
+      HOST: www.engineerbetter.com

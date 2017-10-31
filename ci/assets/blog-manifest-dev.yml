@@ -23,5 +23,3 @@ applications:
   - route: eb-hugo-dev.engineerbetter.com/bosh-concourse.html
   - route: eb-hugo-dev.engineerbetter.com/why-eb.html
   - route: eb-hugo-dev.engineerbetter.com/bad
-
-language: staticfile

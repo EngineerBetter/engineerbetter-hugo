@@ -16,6 +16,8 @@ applications:
   - route: eb-hugo-dev.cfapps.io/bosh-concourse.html
   - route: eb-hugo-dev.cfapps.io/why-eb.html
   - route: eb-hugo-dev.cfapps.io/bad
+  - route: eb-hugo-dev.cfapps.io/brain-aligned-delivery
+  - route: eb-hugo-dev.cfapps.io/7-stages-of-bosh
   - route: eb-hugo-dev.engineerbetter.com/update
   - route: eb-hugo-dev.engineerbetter.com/2017
   - route: eb-hugo-dev.engineerbetter.com/2016
@@ -24,3 +26,5 @@ applications:
   - route: eb-hugo-dev.engineerbetter.com/bosh-concourse.html
   - route: eb-hugo-dev.engineerbetter.com/why-eb.html
   - route: eb-hugo-dev.engineerbetter.com/bad
+  - route: eb-hugo-dev.engineerbetter.com/brain-aligned-delivery
+  - route: eb-hugo-dev.engineerbetter.com/7-stages-of-bosh

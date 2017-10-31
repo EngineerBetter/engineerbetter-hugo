@@ -188,7 +188,7 @@ jobs:
       input: blog-tarball
     output_mapping:
       output: generated-blog
-  - put: cf-staging
+  - put: cf-prod
     params:
       manifest: eb-hugo/ci/assets/blog-manifest-prod.yml
 

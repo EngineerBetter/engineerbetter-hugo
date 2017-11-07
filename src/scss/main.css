@@ -2473,24 +2473,24 @@ table {
     color: #4A4A4A;
     letter-spacing: 0.5px; }
     @media screen and (min-width: 750px) {
-      .blog-page .blog-page_container .blog-page_datails {
+      .blog-page .blog-page_container .blog-page_details {
         padding-top: 30px;
         padding-bottom: 30px; } }
-    .blog-page .blog-page_container .blog-page_datails span {
+    .blog-page .blog-page_container .blog-page_details span {
       padding-left: 10px;
       padding-right: 10px; }
-  .blog-page .blog-page_container .blog-page_imgage {
+  .blog-page .blog-page_container .blog-page_image {
     padding-bottom: 20px; }
     @media screen and (min-width: 750px) {
-      .blog-page .blog-page_container .blog-page_imgage {
+      .blog-page .blog-page_container .blog-page_image {
         padding-bottom: 50px; } }
-    .blog-page .blog-page_container .blog-page_imgage img {
+    .blog-page .blog-page_container .blog-page_image img {
       width: 100%;
       height: auto; }
-    .blog-page .blog-page_container .blog-page_imgage.is-odd {
+    .blog-page .blog-page_container .blog-page_image.is-odd {
       padding-bottom: 15px; }
       @media screen and (min-width: 750px) {
-        .blog-page .blog-page_container .blog-page_imgage.is-odd {
+        .blog-page .blog-page_container .blog-page_image.is-odd {
           padding-bottom: 30px; } }
   .blog-page .blog-page_container p {
     padding-bottom: 15px;

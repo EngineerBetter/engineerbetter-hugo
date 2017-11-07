@@ -9,6 +9,8 @@ assert_non_error_response() {
 assert_non_error_response /
 assert_non_error_response /about-us.html
 assert_non_error_response /about-us/
+assert_non_error_response /how-we-work.html
+assert_non_error_response /how-we-work/
 
 # Routes that point to blog app
 assert_non_error_response /bad

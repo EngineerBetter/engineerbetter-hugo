@@ -2465,7 +2465,7 @@ table {
     @media screen and (min-width: 750px) {
       .blog-page .blog-page_container .blog-page_sub-title {
         font-size: 22px; } }
-  .blog-page .blog-page_container .blog-page_datails {
+  .blog-page .blog-page_container .blog-page_details {
     padding-top: 10px;
     padding-bottom: 15px;
     font-size: 17px;

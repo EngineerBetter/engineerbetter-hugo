@@ -24,8 +24,10 @@
       font-family: 'Raleway-ExtraBold';
       color: $cl-light-blue;
       line-height: 1.2;
+      padding-bottom: 15px;
       @media screen and (min-width: 750px) {
         font-size: 22px;
+        padding-bottom: 30px;
       }
     }
     .blog-page_details {

@@ -62,6 +62,11 @@
         }
       }
     }
+    .image.fit {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
     ol {
       list-style-type: decimal;
       list-style-position: inside;

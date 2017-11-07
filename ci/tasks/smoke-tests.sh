@@ -16,10 +16,12 @@ assert_non_error_response_and_contains() {
 }
 
 assert_non_error_response_and_contains / EngineerBetter
-assert_non_error_response /about-us.html "About us"
+assert_non_error_response_and_contains /about-us.html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/about-us/\" />"
 assert_non_error_response_and_contains /about-us/ "About us"
-assert_non_error_response /how-we-work.html
+assert_non_error_response_and_contains /how-we-work.html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/how-we-work/\" />"
 assert_non_error_response_and_contains /how-we-work/ "How we work"
+assert_non_error_response_and_contains /our-services.html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/our-services/\" />"
+assert_non_error_response_and_contains /our-services/ "How we work"
 
 # Routes that point to blog app
 assert_non_error_response /bad

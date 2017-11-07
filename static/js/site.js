@@ -38,7 +38,7 @@ $(document).ready(function () {
     }, 2500);
     setTimeout(function() {
       $('.work-operations_left-slider-top p.is-active').addClass('has-strikethrough');
-    }, 2200);
+    }, 0);
     setTimeout(function() {
       $('.work-operations_left-slider-top p.is-active').removeClass('has-strikethrough');
     }, 5000);
@@ -61,7 +61,7 @@ $(document).ready(function () {
       }, 2500);
       setTimeout(function() {
         $('.work-operations_left-slider-top p.is-active').addClass('has-strikethrough');
-      }, 2200);
+      }, 0);
       setTimeout(function() {
         $('.work-operations_left-slider-top p.is-active').removeClass('has-strikethrough');
       }, 5000);

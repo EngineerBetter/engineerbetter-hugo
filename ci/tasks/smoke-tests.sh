@@ -15,13 +15,18 @@ assert_non_error_response_and_contains() {
   fi
 }
 
+assert_section_exists_with_redirect() {
+  SECTION=$1
+  TEXT=$2
+  assert_non_error_response_and_contains /"${SECTION}".html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/${SECTION}/\" />"
+  assert_non_error_response_and_contains /"${SECTION}"/ "${TEXT}"
+}
+
 assert_non_error_response_and_contains / EngineerBetter
-assert_non_error_response_and_contains /about-us.html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/about-us/\" />"
-assert_non_error_response_and_contains /about-us/ "About us"
-assert_non_error_response_and_contains /how-we-work.html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/how-we-work/\" />"
-assert_non_error_response_and_contains /how-we-work/ "How we work"
-assert_non_error_response_and_contains /our-services.html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/our-services/\" />"
-assert_non_error_response_and_contains /our-services/ "How we work"
+assert_section_exists_with_redirect about-us "<title>About us"
+assert_section_exists_with_redirect how-we-work "<title>How we work"
+assert_section_exists_with_redirect our-services "<title>Our services"
+assert_section_exists_with_redirect success-stories "<title>Success Stories"
 
 # Routes that point to blog app
 assert_non_error_response /bad

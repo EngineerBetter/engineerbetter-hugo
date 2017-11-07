@@ -30,6 +30,7 @@ assert_section_exists_with_redirect our-services "<title>Our services"
 assert_section_exists_with_redirect success-stories "<title>Success Stories"
 assert_section_exists_with_redirect why-cloud-foundry "<title>Why Cloud Foundry"
 assert_section_exists_with_redirect join-our-team "<title>Join our team"
+assert_section_exists_with_redirect blog "<title>Blog"
 
 # Routes that point to blog app
 assert_non_error_response /bad

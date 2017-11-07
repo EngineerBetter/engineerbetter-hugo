@@ -18,7 +18,8 @@ assert_non_error_response_and_contains() {
 assert_section_exists_with_redirect() {
   SECTION=$1
   TEXT=$2
-  assert_non_error_response_and_contains /"${SECTION}".html "<meta http-equiv=\"refresh\" content=\"0; url=${HOST}/${SECTION}/\" />"
+  # Quite a faff to pass a regex through so we don't need to care which domain we're testing against
+  assert_non_error_response_and_contains /"${SECTION}".html "/${SECTION}/\" />"
   assert_non_error_response_and_contains /"${SECTION}"/ "${TEXT}"
 }
 

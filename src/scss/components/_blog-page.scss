@@ -60,7 +60,15 @@
         }
       }
     }
-    p {
+    ol {
+      list-style-type: decimal;
+      list-style-position: inside;
+    }
+    ul {
+      list-style-type: square;
+      list-style-position: inside;
+    }
+    ol, ul, p {
       padding-bottom: 15px;
       font-size: 14px;
       font-family: 'Raleway-Regular';

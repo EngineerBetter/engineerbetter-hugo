@@ -1,8 +1,8 @@
 ---
 title:  Bringing Perpetual Motion to System Upgrades - Self-Upgrading Concourse CI
+heroImage: /update/images/blog/perpetual-motion.jpg
+date: "2017-09-18"
 ---
-
-<img src="/update/images/blog/perpetual-motion.jpg" class="image fit" />
 
 We've recently been working on adding functionality to [Concourse-Up](https://github.com/EngineerBetter/concourse-up), based on feedback from users in the community and our own teams who've been using it in production with customers. Being able to deploy a Concourse cluster using a single command was great, but not ideal; you still had to run it again to upgrade. What if you could just run a single command, and then _never have to think about it again_? In pursuit of this goal, we added a self-update feature.
 

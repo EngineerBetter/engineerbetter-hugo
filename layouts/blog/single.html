@@ -6,10 +6,10 @@
     {{ partial "menu-list.html" . }}
     <section class="blog-page">
       <div class="blog-page_container">
-        <h1>Bringing Perpetual Motion to System Upgrades. Self-Upgrading Concourse CI</h1>
-        <p class="blog-page_details">Sep 18, 2017<span>|</span> Peter Ellis Jones</p>
+        <h1>{{ .Title }}</h1>
+        <p class="blog-page_details">{{ .Date.Format "Jan 1, 2006" }}<span>|</span> Peter Ellis Jones</p>
         <div class="blog-page_image">
-          <img alt="Brand" src="img/blog-img-1.jpg">
+          <img alt="Brand" src="{{ .Params.heroImage }}">
         </div>
         {{ .Content }}
       </div>

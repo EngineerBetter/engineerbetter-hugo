@@ -7,6 +7,10 @@ assert_non_error_response() {
 }
 
 assert_non_error_response /
+assert_non_error_response /about-us.html
+assert_non_error_response /about-us/
+
+# Routes that point to blog app
 assert_non_error_response /bad
 assert_non_error_response /update/2017/10/05/post-devops.html
 assert_non_error_response /why-eb.html

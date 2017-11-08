@@ -1,7 +1,7 @@
 ---
 author: Daniel Jones
 date: "2017-10-05"
-heroImage: /update/images/blog/post-devops/post-devops.png
+heroImage: /img/blog/post-devops/post-devops.png
 title: Post-DevOps - A Definition
 ---
 
@@ -59,13 +59,13 @@ I think it's fair to say that in our ecosystem we've struggled with this dichoto
 
 In the pre-DevOps world application **developers did the development**, and **system admins did the operations**. Progress was slow, no-one had complete ownership, and reliability was poor.
 
-<img src="/update/images/blog/post-devops/pre-devops.png" class="fit image">
+<img src="/img/blog/post-devops/pre-devops.png" class="fit image">
 
 ## DevOps
 
 DevOps brought the unification of these two responsibilities into **one team, performing both application development _and_ operations**. This soon leads to cognitive overload within teams as they need to know an ever-larger tech stack, and becomes hard to scale. Often each team creates bespoke operational tools such as deployment scripts, and these become hard to share effectively.
 
-<img src="/update/images/blog/post-devops/devops.png" class="fit image">
+<img src="/img/blog/post-devops/devops.png" class="fit image">
 
 ## A Platform with no DevOps
 
@@ -75,13 +75,13 @@ We've got **big gaps where no-one is taking responsibility** for apps on day two
 
 All we've achieved here is letting Pre-DevOps folks deploy things faster, and allowed unreliable apps to self-heal.
 
-<img src="/update/images/blog/post-devops/platform-no-devops.png" class="fit image">
+<img src="/img/blog/post-devops/platform-no-devops.png" class="fit image">
 
 ## Post-DevOps
 
 A platform introduces two new responsibilities: **app operations** and **platform development**:
 
-<img src="/update/images/blog/post-devops/post-devops.png" class="fit image">
+<img src="/img/blog/post-devops/post-devops.png" class="fit image">
 
 Firstly the platform needs to be developed, extended, and maintained. It isn't a matter of hoping that someone else's platform works out of the box for you, it's performing integration and customisation. Similarly **it's not building your own platform from scratch**; rather it's treating the **platform as a product** and **listening to the needs of your users** (the app developers).
 

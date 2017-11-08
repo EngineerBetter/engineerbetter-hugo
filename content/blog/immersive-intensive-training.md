@@ -1,7 +1,7 @@
 ---
 author: Daniel Jones
 date: "2017-09-15"
-heroImage: /update/images/blog/mobbing-window.jpg
+heroImage: /img/blog/mobbing-window.jpg
 title: Intensive, Immersive Training with Mob Programming
 ---
 
@@ -26,13 +26,13 @@ The students decided what it was that they wanted to build. This meant that they
 
 Ahead of their arrival, we expressed their ideas as stories in a backlog, taking care to make sure that we struck a balance between delivering their desired app whilst still covering all the learning outcomes.
 
-<img src="/update/images/blog/mobbing-stories.png" class="image">
+<img src="/img/blog/mobbing-stories.png" class="image">
 
 ## Mobbing
 
 The key to transferring so much knowledge was our use of **mob programming**. Whilst the first day mostly consisted of orientation, covering the wide range of tools and techniques we’d be using, by the afternoon we split into two mobs: three students, and one EngineerBetter team leader. From then on, it was coding all-the-way.
 
-<img src="/update/images/blog/mobbing-in-room.jpg" class="fit image">
+<img src="/img/blog/mobbing-in-room.jpg" class="fit image">
 
 Each team occupied their own room, with a single computer, mouse, keyboard, and one very large screen.
 
@@ -40,7 +40,7 @@ In the mobbing process, one team member is appointed '**driver**', and the rest 
 
 That the driver can only follow instructions means that **every implemented idea must be vocalised**. In order to get some code written, someone has to say something, thus allowing the team to discuss it. The driver is of course allowed to have ideas, but they’re not allowed to put them into the code without getting a navigator to tell them to - again, forcing discussion. This process **makes all decisions transparent** and explicit, and **every member** of the team **is part of the thinking process**.
 
-<img src="/update/images/blog/mobbing-java.jpg" class="fit image">
+<img src="/img/blog/mobbing-java.jpg" class="fit image">
 
 Each of our teams worked from an **ordered backlog** in Pivotal Tracker, which is exactly how we work and exactly how we recommend that product teams work. The backlog was populated with stories created ahead-of-time from the customer’s requirements, in the form “As a factory owner, I can see the data dashboard” with step-by-step acceptance criteria. The students were enthused about this aspect of our working practice - they were excited that clearly stating a thing that a user can or cannot do as a small batch of work would make for big improvements on their prior model of working from long, wide-ranging requirements documents.
 

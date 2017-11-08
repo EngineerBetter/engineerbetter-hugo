@@ -1,7 +1,7 @@
 ---
 author: Peter Ellis Jones
 date: "2017-09-18"
-heroImage: /update/images/blog/perpetual-motion.jpg
+heroImage: /img/blog/perpetual-motion.jpg
 title:  Bringing Perpetual Motion to System Upgrades - Self-Upgrading Concourse CI
 ---
 
@@ -11,7 +11,7 @@ We've recently been working on adding functionality to [Concourse-Up](https://gi
 
 ## Self-update
 
-<img src="/update/images/blog/self-update.png" class="image fit" />
+<img src="/img/blog/self-update.png" class="image fit" />
 
 When Concourse-up deploys Concourse, it now adds a pipeline to the new Concourse called `concourse-up-self-update`. This pipeline continuously monitors our Github repo for new releases and updates Concourse in place whenever a new version of Concourse-up comes out.
 
@@ -45,7 +45,7 @@ In addition to self-update, we also added a whole bunch of other features:
 
 ## Metrics
 
-<img src="/update/images/blog/ci-metrics.png" class="image fit" />
+<img src="/img/blog/ci-metrics.png" class="image fit" />
 
 Concourse-up now automatically deploys Influxdb, Riemann, and Grafana on the web node. You can access Grafana on port 3000 of your regular concourse URL using the same username and password as your Concourse admin user. We put in a default dashboard that tracks
 

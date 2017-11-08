@@ -1,6 +1,7 @@
 ---
 author: Daniel Jones
 date: "2017-05-05"
+heroImage: /img/blog-img-4.png
 title:  The Anthropic Sympathy of Platforms
 ---
 

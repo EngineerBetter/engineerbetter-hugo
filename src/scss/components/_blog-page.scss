@@ -67,6 +67,12 @@
       height: auto;
       display: block;
     }
+    strong {
+      font-weight: 900;
+    }
+    em {
+      font-style: italic;
+    }
     ol {
       list-style-type: decimal;
       list-style-position: inside;

@@ -9,7 +9,7 @@
         <h1>{{ .Title }}</h1>
         <p class="blog-page_details">{{ .Date.Format "Jan 1, 2006" }}<span>|</span> {{ .Params.author }}</p>
         <div class="blog-page_image">
-          <img alt="Brand" src="{{ .Params.heroImage }}">
+          <img src="{{ .Params.heroImage }}">
         </div>
         {{ .Content }}
       </div>

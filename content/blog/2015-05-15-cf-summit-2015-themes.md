@@ -8,9 +8,7 @@ title: Cloud Foundry Summit 2015 Themes
 I'm back from the excellent [Cloud Foundry Summit 2015](http://cfsummit.com), and have been back in the country long enough to catch up on some sleep. That picture up there is the poolside area where I may have sipped a few pints of Californian IPA between presentations.
 
 There were plenty of interesting talks about specific subjects (CC V3 API, Service Broker API updates), but I wanted to recount some common topics that cropped up.
-
 <!--more-->
-
 ## Diversity
 
 I'd like to stick this one in early. It was great to see diversity in the community being taken seriously. As Sam Ramji pointed out in a breakout session most technology movements also have philosophical believes driving them, and that the Cloud Foundry Foundation is new and so can determine its own destiny. As a middle-class white male I'm keen to listen to how folks like me can make things better.
@@ -31,7 +29,9 @@ Concourse is a pipeline-oriented CI system, comprising coordination and UI serve
 
 You should really go check out [the Concourse website](http://concourse.ci); although be warned that as a pre-1.0 product the docs aren't always up-to-date. It's also unlikely to be suitable if you want plug-ins for everything, as you might get on Jenkins - I gather it is deliberately supposed to be simple and cruft-free.
 
-<iframe class="image fit" width="640" height="390" src="https://www.youtube.com/embed/mYTn3qBxPhQ?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+<figure class="retain-aspect-ratio">
+  <iframe src="https://www.youtube.com/embed/mYTn3qBxPhQ?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+</figure>
 
 ## Scheduling Persistent Services
 
@@ -39,11 +39,15 @@ It was telling that two talks converged around the same point - how do twelve-fa
 
 CloudCredo's Colin Humphreys and Marco Hochstrasser gave a talk entitled "Service Foundry", hypothesising about *ten*-factor apps, what these would look like, and how they might work on CF. It was a thought-provoking talk as much as a call-to-action amongst the community to work together on the problem.
 
-<iframe class="image fit" width="640" height="390" src="https://www.youtube.com/embed/806zRJpUdKg?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+<figure class="retain-aspect-ratio">
+  <iframe src="https://www.youtube.com/embed/806zRJpUdKg?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+</figure>
 
 The next day two Pivots presented "Persistent Services in Diego," detailing a spike they'd done on enabling exactly that. Their work doesn't magically solve the consistency/availability conundrum, but it did demonstrate how cells in Diego could offer themselves for workloads based on the requirement for either fixed or floating volumes.
 
-<iframe class="image fit" width="640" height="390" src="https://www.youtube.com/embed/806zRJpUdKg?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+<figure class="retain-aspect-ratio">
+  <iframe src="https://www.youtube.com/embed/806zRJpUdKg?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+</figure>
 
 I gather that these features are on the Diego backlog, so will definitely be happening.
 
@@ -67,4 +71,6 @@ App state was another question with both a simple and a complex answer. My propo
 
 Duncan Winn and Haydon Ryan gave a talk that discussed dual versus split datacentre Cloud Foundry:
 
-<iframe class="image fit" width="640" height="390" src="https://www.youtube.com/embed/1hYG4y7vm5w?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+<figure class="retain-aspect-ratio">
+  <iframe src="https://www.youtube.com/embed/1hYG4y7vm5w?list=PLhuMOCWn4P9g-UMN5nzDiw78zgf5rJ4gR" frameborder="0" allowfullscreen></iframe>
+</figure>

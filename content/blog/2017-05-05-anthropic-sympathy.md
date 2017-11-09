@@ -9,8 +9,8 @@ The way **most enterprises** operate is **wasting both the time and money** that
 
 The commonly-accepted working practices of today are born of the industrial revolution and the post-war era of mass production. It's no surprise that these methods are best suited to <em>paperwork factories</em> and not the creative endeavour of solving business problems with software.
 
-<figure>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/QWMUYl0BkEI" frameborder="0" allowfullscreen class="image fit"></iframe>
+<figure class="retain-aspect-ratio">
+  <iframe src="https://www.youtube.com/embed/QWMUYl0BkEI" frameborder="0" allowfullscreen></iframe>
   <figcaption style="font-size: .8em">Anthropic Sympathy delivered as a keynote at Cloud Foundry Summit Europe 2016</figcaption>
 </figure>
 

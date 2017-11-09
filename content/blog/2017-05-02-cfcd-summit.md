@@ -9,11 +9,7 @@ EngineerBetter are teaming up with [Resilient Scale](https://rscale.io/) to deli
 
 It's **$1,975 for all three days** with **lunch** provided. The course is held at the Santa Clara Convention Center, which is conveniently the **same location as CF Summit**. [You can **enrol via Eventbrite**](https://www.eventbrite.com/e/cloud-foundry-for-developers-cf-summit-tickets-33932914260).
 
-<section class="special boxout" style="padding: 0">
-  <a class="button special" href="https://www.eventbrite.com/e/cloud-foundry-for-developers-cf-summit-tickets-33932914260">Enrol Now</a>
-</section>
-
-It'll be a packed few days, full of **hands-on practical exercises**, interactive walk-throughs, and **surprisingly few slides**. The course is **programming-language agnostic**, and students also get the pick the brains of **two highly-experienced Cloud Foundry consultants** - [Steve Greenberg](https://www.linkedin.com/in/sgreenberg/) and I.
+It'll be a packed few days, full of **hands-on practical exercises**, interactive walk-throughs, and **surprisingly few slides**. The course is **programming-language agnostic**, and students also get the pick the brains of **two highly-experienced Cloud Foundry consultants** - [Steve Greenberg](https://www.linkedin.com/in/sgreenberg/)&nbsp;and&nbsp;I.
 <!--more-->
 ## What's on the course?
 
@@ -38,10 +34,6 @@ The syllabus:
 * Non-breaking changes
 * Continuous integration, delivery and deployment
 
-<section class="special boxout" style="padding: 0">
-  <a class="button special" href="https://www.eventbrite.com/e/cloud-foundry-for-developers-cf-summit-tickets-33932914260">Enrol Now</a>
-</section>
-
 ## What's the course like?
 
 The course consists of a few activities:
@@ -62,7 +54,3 @@ We encourage students to collaborate and help each other. There's [good evidence
 Interactive architectural walk-throughs offer a recap of what was just learnt in an exercise, allowing instructors to make sure everyone is brought up to the same level of understanding, whilst also providing an opportunity for clarifications and more-detailed explanations of what happened 'under the hood'. These recaps also allow us to leverage both the [compressed spacing effect](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3782739/) and [pre-testing](http://learninglab.uchicago.edu/Pre-Testing_files/RichlandKornellKao.pdf) by asking questions as we perform the walk-through.
 
 Not only are EngineerBetter and Resilient Scale the only companies licensed to deliver the Certified Developer course, but **we also _created_ it**. We're intimately familiar with both the material and the psychology behind the techniques it employs.
-
-<section class="special boxout" style="padding: 0">
-  <a class="button special" href="https://www.eventbrite.com/e/cloud-foundry-for-developers-cf-summit-tickets-33932914260">Enrol Now</a>
-</section>

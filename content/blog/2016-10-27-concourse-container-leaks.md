@@ -19,36 +19,36 @@ name                                  containers  platform  tags  team
 0a04d3fd-d485-4976-b4a0-84e12c37c05c  242         linux     none  none
 ```
 
-<section class="wrapper style2 special boxout">
-  **Lesson 1**
+<section class="boxout">
+  <h3>Lesson 1</h3>
 
-  `fly containers` is scoped to teams, and there is no way to get a global view of containers, even if you _are_ in the 'main' team.
+  <p><code>fly containers</code> is scoped to teams, and there is no way to get a global view of containers, even if you _are_ in the 'main' team.</p>
 </section>
 
 A quick bit of Googling (other search engines are available) led us to [a GitHub issue citing the same error message](https://github.com/cloudfoundry/guardian/issues/53), but with no conclusive resolution. The issue pointed out that there's a hard limit in the defaults of Garden (the underlying container-running implementation behind Concourse) of 250 containers, and that there's also a limit on the subnets that can be assigned to those containers. This at least explained why the error message was about subnets.
 
-<section class="wrapper style2 special boxout">
-  **Lesson 2:**
+<section class="boxout">
+  <h3>Lesson 2:</h3>
 
-  Garden defaults to 250 concurrent containers.
+  <p>Garden defaults to 250 concurrent containers.</p>
 </section>
 
 Our next question was: "_What are all these containers doing?_" This Concourse instance has around 10 modest pipelines, each with no more that 5 resources to be polled. A quick survey of the teams yielded that no-one had set `check_every` on their resources to anything other than the default, so we were able to rule out a user DoSing Garden with excessive resource polling.
 
 We `bosh ssh`'d onto the Worker VM to investigate further, first poking around in the Garden logs in `/var/vcap/sys/log/garden`. We then downloaded the very-handy [`gaol` CLI](https://github.com/contraband/gaol) to interact with the Garden server running on the Worker - it connected automatically, presumably defaulting to conventional settings for the server.
 
-<section class="wrapper style2 special boxout">
-  **Lesson 3:**
+<section class="boxout">
+  <h3>Lesson 3:</h3>
 
-  `gaol` is invaluable for poking around Garden.
+  <p>`gaol` is invaluable for poking around Garden.</p>
 </section>
 
 We used `gaol list` to have a look at the containers this Garden instance was running, and found a very long list of UUIDs. All of the UUIDs from `fly containers` appeared in `gaol list`, which would have to be a Universe-breaking coincidence if Concourse wasn't exposing Garden UUIDs via its UI. We're rather glad that it does, as this made debugging a little easier.
 
-<section class="wrapper style2 special boxout">
-  **Lesson 4:**
+<section class="boxout">
+  <h3>Lesson 4:</h3>
 
-  Concourse container UUIDs are Garden container UUIDs.
+  <p>Concourse container UUIDs are Garden container UUIDs.</p>
 </section>
 
 `gaol properties` revealed that our containers had a `grace-time` of `300000000000`. The only snafu is that there are no _units_ specified, so we had to trawl through the Garden and Concourse code to try and find out what the default unit of measurement was. Sadly it was quicker to work out that 5 minutes is equal to 300,000,000,000 nanoseconds than it was to find any conclusive proof, so we made the assumption that Concourse was setting the grace time of Garden containers in line with its advertised TTL.

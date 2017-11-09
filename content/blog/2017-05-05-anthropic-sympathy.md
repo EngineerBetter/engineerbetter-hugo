@@ -11,14 +11,14 @@ The commonly-accepted working practices of today are born of the industrial revo
 
 <figure class="retain-aspect-ratio">
   <iframe src="https://www.youtube.com/embed/QWMUYl0BkEI" frameborder="0" allowfullscreen></iframe>
-  <figcaption style="font-size: .8em">Anthropic Sympathy delivered as a keynote at Cloud Foundry Summit Europe 2016</figcaption>
+  <figcaption>Anthropic Sympathy delivered as a keynote at Cloud Foundry Summit Europe 2016</figcaption>
 </figure>
 
 <!--more-->
 
 _**Warning: this post is 4,000 words long**, and is a loose transcription of my keynote. If you've watched the video, then you won't gain much more by reading this._
 
-# TL;DR Summary
+## TL;DR Summary
 
 * Platforms allow self-sufficient product teams, which are more empathic and more productive
 * Self-service platforms allow us to move to small-batch feature-based workflows, exploiting the present bias
@@ -27,13 +27,13 @@ _**Warning: this post is 4,000 words long**, and is a loose transcription of my 
 
 Right, that's the provocative bold statements out of the way. Let's start this proper.
 
-# Silos Breed Apathy
+## Silos Breed Apathy
 
 Many enterprises' technology activities are structured into silos - functional teams, each with a particular speciality. These teams typically don't sit together, and often communicate via the dreaded _service ticket_ system.
 
 <figure>
   <img src="/img/blog/as/as.004.jpeg" class="fit image">
-  <figcaption style="font-size: .8em">Silo'd functional teams on the critical path to business value</figcaption>
+  <figcaption>Silo'd functional teams on the critical path to business value</figcaption>
 </figure>
 
 Very often members of one team don't feel like the people in other teams really care about their frustrations and problems. Why is this? They're all part of the same company, so they should be working together... Right?
@@ -54,13 +54,13 @@ This experiment suggests that **we care less about outgroups**. We do not feel t
 
 Cast your mind back to our enterprise operating in silos. **Organisations dividing up their staff in this way are creating outgroups**: my team, your team; my tribe, your tribe. The **teams do not _see_ each other's pains** and frustrations because they don't work alongside one another, and **even when they do see that pain, they will not care** as much.
 
-# Product Teams Encourage Empathy
+## Product Teams Encourage Empathy
 
 Thankfully we can do something about this. Instead of working in functional teams, we can instead work in cross-functional product teams that have all the skills we need to deliver value. This is much easier to achieve if you have a Platform-as-a-Service to reduce the breadth and depth of skills needed to push apps into production.
 
 <figure>
   <img src="/img/blog/as/as.017.jpeg" class="fit image">
-  <figcaption style="font-size: .8em">Skills required to deploy apps on a PaaS are highlighted in blue</figcaption>
+  <figcaption>Skills required to deploy apps on a PaaS are highlighted in blue</figcaption>
 </figure>
 
 Compare the skills that are on the critical path of a feature delivering business value in an old, manually-deploying organisation, and one with a self-service platform. The **problem space is smaller**, allowing us to concentrate resources into a cross-functional product team.
@@ -71,7 +71,7 @@ A common half-way step towards product teams is to create virtual teams - member
 
 Anyone who has worked in a virtual team, especially one which communicates by email or service requests, will know that they don't feel terribly productive. Co-locating team members can help them be more productive.
 
-# Empathy begets Sociability begets Productivity
+## Empathy begets Sociability begets Productivity
 
 [A trio of European scientists performed a study](http://homes.chass.utoronto.ca/~agreve/Greve-Benassi_soc&hum.pdf) of consultancies that explored the correlation between productivity and human capital (the experience and expertise of staff), and between productivity and social capital (how frequently staff communicate, and with how many others).
 
@@ -79,7 +79,7 @@ In all three cases, **social capital correlated positively with productivity**. 
 
 <figure>
   <img src="/img/blog/as/as.028.jpeg" class="fit image">
-  <figcaption style="font-size: .8em">A network's value is determined by the number of nodes and connections</figcaption>
+  <figcaption>A network's value is determined by the number of nodes and connections</figcaption>
 </figure>
 
 This all makes perfect sense if you compare an organisation to an economic network. An economic network's value is determined by the number of nodes it has, and the number of connections between those nodes. A transport network with only two depots is not as valuable as one with two hundred. A transport network where you can't get from one depot to certain others isn't as useful as one where every destination is reachable from every other.
@@ -88,13 +88,13 @@ The **more we communicate with each other**, and so the more social we are, the 
 
 Now consider our network to be a communications network. We can make a communications network more reliable and thus more valuable by increasing the success rate of messages sent upon it - if we can avoid messages being misinterpreted or corrupted, then we waste less time and energy on resending them.
 
-# Human Contact Improves Communication Efficiency
+## Human Contact Improves Communication Efficiency
 
 It turns out that humans appear to possess some pretty sophisticated mechanisms for adding redundancy to communications, and for ensuring that messages are understood as the originator intended.
 
 <figure>
   <img src="/img/blog/as/as.029.jpeg" class="fit image">
-  <figcaption style="font-size: .8em">Did your eyebrows raise when looking at this picture?</figcaption>
+  <figcaption>Did your eyebrows raise when looking at this picture?</figcaption>
 </figure>
 
 Picture the scene: you're walking through a busy train station, and ahead of you two friends are bidding each other farewell with a firm handshake and shared laughter. One of them turns towards you, still laughing, and makes eye contact. Before you know it, you realise you've inexplicably smiled at the person, despite not being in on their joke. This happened to me on the morning I wrote this paragraph.
@@ -121,7 +121,7 @@ By **co-locating collaborating team members**, we can **decrease the latency** i
 
 None of this is new, by the way. Cross-functional product teams might be the term that's in vogue now, but NASA were talking about [tiger teams](https://en.wikipedia.org/wiki/Tiger_team) back in the 1960's.
 
-# Silos Create High Transaction Costs
+## Silos Create High Transaction Costs
 
 So now we know to have a co-located product team with a shared identity and sense of purpose, but how many of their working practices are now no longer fit for purpose?
 
@@ -135,7 +135,7 @@ Each batch gets bigger, each bar on the Gantt chart gets longer, and activities 
 
 "_But this is waterfall! There was a requirements document that everybody signed!_" Why would **things at the end of the project** be more **likely to fail**?
 
-# The Present Bias
+## The Present Bias
 
 You may have heard of the **present bias**, which is a well-observed psychological phenomenon whereby **people value things that are close to them more highly** than things that are distant.
 
@@ -157,7 +157,7 @@ If the **present bias is part of our neural make-up**, then there is no escaping
 
 Given that we can't escape the present bias, can we instead turn it to our advantage?
 
-# Continuous Delivery Exploits the Present Bias
+## Continuous Delivery Exploits the Present Bias
 
 Let's think back to our Gantt chart. It's a wonder that load testing ever succeeds when it's so far away from the development upon which it depends. The engineering decisions being made during development are being made by people with different and more pressing concerns (such as a looming deadline that affects only their silo).
 
@@ -167,7 +167,7 @@ Self-service access to resources on demand changes the economics of our team. Ou
 
 <figure>
   <img src="/img/blog/as/as.047.jpeg" class="fit image">
-  <figcaption style="font-size: .8em">Use of a platform causes most of the tasks to disappear altogether</figcaption>
+  <figcaption>Use of a platform causes most of the tasks to disappear altogether</figcaption>
 </figure>
 
 Working on individual features means that **everything that is important to that feature is important <em>now</em>** - not in three months' time.
@@ -176,7 +176,7 @@ Self-service platforms like Cloud Foundry raise the level of abstraction, create
 
 An automated platform allows teams to deploy into production with a single command and zero downtime, which is a far cry from antiquated practices like scheduled downtime and weekend releases. Now that deployments need not be painful, they can become increasingly frequent - our teams can move to a continous delivery model that gets features into the hands of users sooner.
 
-# Deadlines Make Developers Dumb, Forgetful and Ill-Disciplined
+## Deadlines Make Developers Dumb, Forgetful and Ill-Disciplined
 
 Continuous delivery isn't just good for delivering business value more quickly, or allowing faster feedback from customers. It turns out that **continuous delivery can help us reduce technical debt**.
 
@@ -190,7 +190,7 @@ Respondents were categorised by their income into two groups: rich and poor. Hal
 
 <figure>
   <img src="/img/blog/as/as.054.jpeg" class="fit image">
-  <figcaption style="font-size: .8em">An example of Raven's Progressive Matrices, in which the objective is to identify the next pattern</figcaption>
+  <figcaption>An example of Raven's Progressive Matrices, in which the objective is to identify the next pattern</figcaption>
 </figure>
 
 After answering the quandry on financing the car repairs, the respondents were given a fluid intelligence test. The test in question was an example of Raven's Progressive Matrices, which is often used to measure IQ.
@@ -213,7 +213,7 @@ Just think for a moment what happens in an engineer's head if you remind them th
 
 Why would we do such a thing?
 
-# Waterfall and Scrum are Harmful
+## Waterfall and Scrum are Harmful
 
 If you're practicing waterfall, there would have been knock-on effects for being late - the next silo's activity would be delayed, causing a cascade of rescheduling costs. With a self-service platform and cross-functional team, we don't have that problem.
 
@@ -225,7 +225,7 @@ Continuous delivery of complete features allows us to _demonstrate_ progress, ra
 
 **If you want to know how fast a team is going, look at what we've delivered into production in the last two weeks**. Look at how much business value is now in the hands of customers. I can't predict the future, and nor can you. A continuously-delivering team can however point to recent past performance.
 
-# Doing the Most Important Thing in the Simplest Way
+## Doing the Most Important Thing in the Simplest Way
 
 The lack of trust intrinsic to Scrum can be addressed by two very simple and powerful ideas.
 
@@ -249,7 +249,7 @@ It's a little like shouting at a satellite to orbit the Earth faster - we can ei
 
 Continuously delivering the most important thing in the simplest way allows us to **escape the tyranny of deadlines**, and the technical debt that scarcity of time causes.
 
-# Continuous Delivery Increases Motivation and Reduces Technical Debt
+## Continuous Delivery Increases Motivation and Reduces Technical Debt
 
 When working with a platform that enables continuous delivery we can **replace the stick of deadlines** with the **carrot of intrinsic motivation**.
 
@@ -263,7 +263,7 @@ It turns out that there may be more to it than this.
 
 <figure>
   <img src="/img/blog/as/as.066.jpeg" class="fit image">
-  <figcaption style="font-size: .8em">An illustration of a test that provokes <a href="https://en.wikipedia.org/wiki/Stroop_effect">the Stroop effect</a></figcaption>
+  <figcaption>An illustration of a test that provokes <a href="https://en.wikipedia.org/wiki/Stroop_effect">the Stroop effect</a></figcaption>
 </figure>
 
 A [more-recent study](http://pss.sagepub.com/content/early/2012/10/19/0956797612450034.extract) asked subjects to perform an exhaustive Stroop test, wherein a person observes the names of colours printed in a different colour, and has to name the written word rather than the colour it's printed in. This exercises self-control, as the subject has to inhibit more immediate responses.
@@ -286,7 +286,7 @@ Continuous delivery allows engineers to get reward of completing a task on a dai
 
 **Continuous delivery gives engineers a sense of reward daily**, and perhaps even several times a day. This **increases their self-control**, reducing technical debt, and also makes the act of getting a feature into production more compelling.
 
-# (Not) Wasting People's Lives
+## (Not) Wasting People's Lives
 
 When Daniel Young and I founded EngineerBetter we spent time working out what we wanted to achieve and why.
 

@@ -151,6 +151,13 @@
     section.boxout p {
       padding: 0;
     }
+    section.boxout a {
+      color: $cl-light-blue;
+      line-height: 1.2;
+    }
+    section.boxout a + p {
+      margin-top: 1em;
+    }
   }
   .blog_banner {
     margin-top: 20px;

@@ -32,13 +32,33 @@ assert_section_exists_with_redirect why-cloud-foundry "<title>Why Cloud Foundry"
 assert_section_exists_with_redirect join-our-team "<title>Join our team"
 assert_section_exists_with_redirect blog "<title>Blog"
 
-# Routes that point to blog app
-assert_non_error_response /bad
+# Redirects from old blog posts
 assert_non_error_response /update/2017/10/05/post-devops.html
-assert_non_error_response /why-eb.html
+assert_non_error_response /2017/09/18/perpetual-motion-software-updates.html
+assert_non_error_response /update/2017/09/15/immersive-training-mobbing.html
+assert_non_error_response /2017/05/08/rings-cloud-native.html
+assert_non_error_response /2017/05/05/anthropic-sympathy.html
 assert_non_error_response /2017/05/03/introducing-concourse-up.html
+assert_non_error_response /2017/05/02/cfcd-summit.html
+assert_non_error_response /2017/01/05/high-performance-ops.html
+assert_non_error_response /2016/12/14/continuously-deploying-pivotal-cloudfoundry.html
+assert_non_error_response /2016/10/27/concourse-container-leaks.html
+assert_non_error_response /2016/10/18/pipelining-platforms.html
 assert_non_error_response /2016/09/20/engineerbetter-hazelcast-cloud-foundry.html
+assert_non_error_response /2016/09/15/engineerbetter-cloud-foundry-foundation.html
+assert_non_error_response /2016/09/14/hiring.html
+assert_non_error_response /bad
+assert_non_error_response /update/2016/07/01/brain-aligned-delivery.html
+assert_non_error_response /bosh-concourse2.html
+assert_non_error_response /bosh-concourse.html
+assert_non_error_response /why-eb.html
+assert_non_error_response /update/2015/10/31/cf-summit-berlin.html
+assert_non_error_response /update/2015/08/19/overflowing-buildpack_cache.html
+assert_non_error_response /update/2015/08/04/a-flood-of-droplets.html
+assert_non_error_response /update/2015/05/18/openjdk-kerberos-bug.html
 assert_non_error_response /update/2015/05/15/cf-summit-2015-themes.html
+
+#Presentations
 assert_non_error_response /brain-aligned-delivery
 assert_non_error_response /7-stages-of-bosh
 

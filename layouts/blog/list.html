@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+{{ partial "head.html" . }}
+  <body>
+    {{ partial "menu-nav-top.html" . }}
+    {{ partial "menu-list.html" . }}
+    <!-- ARTICLESS-->
+    <section class="blog_wrap">
+      <div class="blog_header">
+        <h2>Latest thoughts</h2>
+        <div class="blog_header-triangle-wrap">
+          <div class="blog_header-triangle"></div>
+        </div>
+      </div>
+      <div class="blog_flex-container">
+      {{ $.Scratch.Set "length" (.Data.Pages | len) }}
+      {{ range $count, $page := .Data.Pages }}
+        {{ if mod $count 2 | eq 0 }}
+        <div class="blog_flex-row">
+        {{ end }}
+          <div class="blog_flex-col is-img-visible ">
+            <a href="{{.Permalink}}" class="blog_header-link">
+              <h3>{{.Title}}</h3>
+            </a>
+              <a href="{{.Permalink}}" class="blog_flex-col-img">
+                <img class="blog-img" src="{{ .Params.heroImage }}">
+              </a>
+          </div>
+        {{ if (or (mod $count 2 | eq 1 ) ( (add $count 1) | eq ($.Scratch.Get "length") ))}}
+        </div>
+        {{ end }}
+      {{ end }}
+
+      </div>
+      <div class="blog_button">
+        <a href="#" class="blog_button-load">Load more <span>&#xe900;</span></a>
+      </div>
+
+      <div class="blog_banner">
+        <div class="blog_banner-text">
+          <h2>Get in touch</h2>
+          <p>See how much we can help you.<br> Call <span>+44 (0) 20 7846 0140</span> or</br></p>
+          <a href="mailto:contact@engineerbetter.com" class="cloud-btn2"><p>Contact us <span>&#xe900;</span></p></a>
+        </div>
+      </div>
+    </section>
+    {{ partial "footer.html" . }}
+    <script src="/js/jquery-1.11.3.min.js?v=4"></script>
+    <script src="/js/site.js"></script>
+  </body>
+</html>

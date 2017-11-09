@@ -8,9 +8,7 @@ title: A Flood of Droplets
 If you play the dangerous game of scaling Cloud Foundry DEAs up instead of out, make sure you have plenty of headroom in the CPU department to start with. If you don't then there's a good chance you'll see a heap of `no available stagers` errors upon `cf push` and `insufficient resources to start` errors upon `cf start`. This will last for an hour before magically fixing itself.
 
 Why is this? What causes all these errors, and what can be done if one gets it wrong?
-
 <!--more-->
-
 First a little background. A PaaS operations team I work with received customer reports that apps could no longer be pushed, citing a `no available stagers` error message.
 
 Upon investigation we realised that we had let our CF usage exceed the load that was reasonable for our DEAs and that they had started running out of ephemeral disk.

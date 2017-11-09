@@ -6,14 +6,12 @@ title: Brain-Aligned Delivery Notes
 ---
 
 I'm giving a talk entitled [Brain-Aligned Delivery](http://sparkthechange.co.uk/sessions/brain-aligned-delivery/) at [Spark The Change](http://sparkthechange.co.uk/). The presentation is an aggregration of various cognitive psychology and neuroscience findings that apply to working practices, and this post serves as accompanying notes, with links to its many **references**.
-
 <!--more-->
-
 Explaining the talk in a blog-style format is a large undertaking, and something that I may consider later. In the meantime I've written this to save attendees taking notes. There are some ideas in here that likely didn't make the final cut of the talk, or I didn't have time for.
 
 The [slides are available online](http://www.engineerbetter.com/brain-aligned-delivery), but won't make a huge amount of sense without these notes.
 
-# The Problem
+## The Problem
 
 I make the case that the Western world is in the midst of a productivity crisis, perhaps caused by its financial and human capital being tied up in the incumbent enterprises that were born of the industrial revolution, the baby-boom generation, mass production, and assured growth.
 
@@ -30,7 +28,7 @@ It is my belief that a great many organisations use their human resources ineffi
   <p>LMAX created a high-throughput system by adopting mechanical sympathy.</p> <a class="button special" href="https://lmax-exchange.github.io/disruptor/">LMAX Disruptor</a>
 </section>
 
-# Reward
+## Reward
 
 Reward and motivation are key to getting humans to do the 'right thing'. Giving people financial rewards in return for doing something they ought to enjoy (work!) has been demonstrated to reduce their motivation to do that thing in the long-term. Similarly financial punishments have been shown to be counter-productive, increasing the disincentivised behaviour perhaps by replacing a strong social contract with a weak monetary one.
 
@@ -40,7 +38,7 @@ Reward and motivation are key to getting humans to do the 'right thing'. Giving 
 to Modify Behavior</a>
 </section>
 
-# Organising Activities
+## Organising Activities
 
 Planning is a large part of cooperation and achieving complex goals. In this section I discuss various findings that explain why several planning activities should be considered anti-patterns.
 
@@ -144,7 +142,7 @@ I highlight a study that correlated social connectedness more positively with pr
   <a class="button special" href="http://homes.chass.utoronto.ca/~agreve/Greve-Benassi_soc&hum.pdf">Exploring the Contributions of Human and Social Capital to Productivity</a>
 </section>
 
-# The Alternative
+## The Alternative
 
 Having discussed various business practices that create friction between work and the human brain, I go on to suggest some practices that align better with our biology.
 

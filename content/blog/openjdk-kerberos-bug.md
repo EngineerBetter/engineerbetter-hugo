@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2015-05-18"
 heroImage: /img/blog/cerberus.jpg
 title: OpenJDK 1.8.0_u40 Kerberos MS Auth Bug
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 I discovered an [OpenJDK 1.8.0_u40 bug](https://bugs.openjdk.java.net/browse/JDK-8078439) whereby only the first OID in a Kerberos ticket will be considered for supportability; if your server can only authenticate using mechanisms further down the OID list in the ticket then you're bang out of luck.

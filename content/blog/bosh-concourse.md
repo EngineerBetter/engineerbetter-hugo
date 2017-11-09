@@ -3,6 +3,10 @@ author: Dan Young
 date: "2016-05-05"
 heroImage: /img/blog/concourse-example.png
 title:  Up and running with BOSH and Concourse - Part 1
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 The Cloud Foundry ecosystem has given rise to some amazing things. This series of posts is about two of them - BOSH and Concourse. Together with CF, they form an awesome triangle of tools that will change the way you think about how to get things done when delivering software.

@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2017-05-02"
 heroImage: /img/blog/cfcd-summit.png
 title:  Cloud Foundry Certified Developer Training at CF Summit
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 EngineerBetter are teaming up with [Resilient Scale](https://rscale.io/) to deliver the **full three-day** Cloud Foundry Certified Developer training course in the **days before the Cloud Foundry Silicon Valley Summit 2017**.

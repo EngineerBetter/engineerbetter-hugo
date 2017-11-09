@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2016-09-20"
 heroImage: /img/blog/HazelcastLogo-Orange_Dark.svg
 title:  EngineerBetter become Hazelcast Partners
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 [EngineerBetter is now a systems integration partner of Hazelcast, Inc.](https://hazelcast.com/partners/systems-integrators/), specialising in helping people leverage the Hazelcast in-memory data-grid alongside their Cloud Foundry deployments.

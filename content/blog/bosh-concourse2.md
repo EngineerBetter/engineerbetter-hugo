@@ -3,6 +3,10 @@ author: Dan Young
 date: "2016-06-01"
 heroImage: /img/blog/phoenix-sky-harbor.jpg
 title:  Up and running with BOSH and Concourse - Part 2
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 In [Part 1](/bosh-concourse.html) of this tutorial we set up a new BOSH director from scratch on AWS. Now it's time to deploy Concourse!

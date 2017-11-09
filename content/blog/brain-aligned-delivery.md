@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2016-07-01"
 heroImage: /img/blog/brain.jpg
 title: Brain-Aligned Delivery Notes
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 I'm giving a talk entitled [Brain-Aligned Delivery](http://sparkthechange.co.uk/sessions/brain-aligned-delivery/) at [Spark The Change](http://sparkthechange.co.uk/). The presentation is an aggregration of various cognitive psychology and neuroscience findings that apply to working practices, and this post serves as accompanying notes, with links to its many **references**.

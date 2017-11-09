@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2017-05-05"
 heroImage: /img/blog-img-4.png
 title:  The Anthropic Sympathy of Platforms
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 The way **most enterprises** operate is **wasting both the time and money** that they are made from. By learning from cognitive psychology and neuroscience we can find better, more productive ways of working.

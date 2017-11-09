@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2015-10-31"
 heroImage: /img/blog/cfsummit_splash.png
 title: Cloud Foundry Summit Berlin
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 I'm talking at [Cloud Foundry Summit Berlin 2015](http://berlin2015.cfsummit.com/) - please do feel free to stop me for a chat!

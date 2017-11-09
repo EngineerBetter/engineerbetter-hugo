@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2016-09-14"
 heroImage: /img/blog/wantsyou.jpg
 title:  Hiring
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 We're looking for people to **join the EngineerBetter team**.

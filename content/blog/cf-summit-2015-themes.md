@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2015-05-15"
 heroImage: /img/blog/hyattregencypool.jpg
 title: Cloud Foundry Summit 2015 Themes
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 I'm back from the excellent [Cloud Foundry Summit 2015](http://cfsummit.com), and have been back in the country long enough to catch up on some sleep. That picture up there is the poolside area where I may have sipped a few pints of Californian IPA between presentations.

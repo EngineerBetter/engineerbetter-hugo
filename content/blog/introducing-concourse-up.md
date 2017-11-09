@@ -3,6 +3,10 @@ author: Peter Ellis Jones
 date: "2017-05-03"
 heroImage: /img/blog/bessie_coleman.jpg
 title:  Introducing Concourse-Up - Deploy Concourse CI in a Single Command
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 <figure>

@@ -3,6 +3,10 @@ author: Dan Young
 date: "2017-01-05"
 heroImage: /img/blog/lego-cf-team.jpg
 title:  High Performance Ops for Enterprise PaaS
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 Last month I spoke at the excellent [London Continuous Delivery](https://www.meetup.com/London-Continuous-Delivery/) meetup about how EngineerBetter have recently been helping one of our financial services customers [continuously deploy Cloud Foundry](/2016/12/14/continuously-deploying-pivotal-cloudfoundry.html).

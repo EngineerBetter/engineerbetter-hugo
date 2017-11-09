@@ -3,6 +3,10 @@ author: Dan Young
 date: "2016-10-18"
 heroImage: /img/blog/iceland-pipeline.jpg
 title:  Pipelining Platforms, just like Apps
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 Imagine you're responsible for operating shared IT services in a global enterprise, providing a self-service platform to your internal developers. If you were to continuously deliver this platform, in exactly the same way as cloud native apps themselves, what would it mean to your teams and your business?

@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2016-10-27"
 heroImage: /img/blog/containers.jpg
 title:  Concourse Container Leak
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 A customer of ours recently had trouble with their Concourse instance which resulted in us raising a [GitHub issue](https://github.com/concourse/baggageclaim/issues/6) describing how containers may get orphaned and that users may experience the error message `insufficient subnets remaining in the pool`.

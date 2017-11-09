@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2017-10-05"
 heroImage: /img/blog/post-devops/post-devops.png
 title: Post-DevOps - A Definition
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 Post-DevOps describes a level of **maturity** that achieves **agility beyond traditional DevOps** by a **platform product team** providing a self-service, automatable platform which enables application product teams to perform all operational activities. Traditional **DevOps is still practiced** by both application product teams and the platform product team, above and below the 'platform line' respectively.

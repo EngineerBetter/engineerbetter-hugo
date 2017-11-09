@@ -3,6 +3,10 @@ author: Dan Young
 date: "2016-09-15"
 heroImage: /img/blog/cffoundation.png
 title:  EngineerBetter Join the Cloud Foundry Foundation
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 We're very pleased to announce that EngineerBetter Ltd is now a <strong>silver member</strong> of the <a href="https://www.cloudfoundry.org/membership/members/">Cloud Foundry Foundation</a>.

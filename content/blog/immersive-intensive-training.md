@@ -3,6 +3,10 @@ author: Daniel Jones
 date: "2017-09-15"
 heroImage: /img/blog/mobbing-window.jpg
 title: Intensive, Immersive Training with Mob Programming
+
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
 EngineerBetter recently had the pleasure of delivering a novel training course that **bridges the gap between** the one-to-one mentoring of **pair-programming**, and the more scalable one-to-many knowledge transfer of an **instructor-led training** course.

@@ -3,17 +3,12 @@ author: Daniel Jones
 date: "2016-10-27"
 heroImage: /img/blog/containers.jpg
 title:  Concourse Container Leak
-
-
 ---
-{::options parse_block_html="true" /}
 
 A customer of ours recently had trouble with their Concourse instance which resulted in us raising a [GitHub issue](https://github.com/concourse/baggageclaim/issues/6) describing how containers may get orphaned and that users may experience the error message `insufficient subnets remaining in the pool`.
 
 This can mostly easily be remedied by performing `bosh recreate` on the Worker VM, or if you're not sensible enough to have deployed your Concourse with BOSH, by locating and killing all the orphaned container processes. The debugging journey was rather fun and exposed some of the innards of Concourse and Garden, so we've decided to share it.
-
 <!--more-->
-
 Before going any further I should point out that all of the Bash-fu is the work of my colleague [Jonathan Matthews](https://twitter.com/jpluscplusm).
 
 Our first instinct was to check `fly containers` to see how many were in existence. We only saw 14 in total, which shouldn't be enough to starve Concourse of any resources. So we then used `fly workers` to get a second view of how many containers were active:

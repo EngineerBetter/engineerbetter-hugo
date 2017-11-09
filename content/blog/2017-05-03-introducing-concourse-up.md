@@ -6,7 +6,6 @@ title:  Introducing Concourse-Up - Deploy Concourse CI in a Single Command
 ---
 
 <figure>
-    <img src="/img/blog/bessie_coleman.jpg" class="image fit" />
     <figcaption style="font-size: 8pt">
     <a href="https://en.wikipedia.org/wiki/Bessie_Coleman">Bessie Coleman, c.1922</a></figcaption>
 </figure>
@@ -14,9 +13,7 @@ title:  Introducing Concourse-Up - Deploy Concourse CI in a Single Command
 It's no secret that we love [Concourse](https://concourse.ci). Concourse is a new kind of continuous integration server that treats pipelines as a first class citizen. It uses declarative config and a minimal UI to ensure that your builds can always be repeated, and your CI server always recoverable.
 
 Concourse is notoriously easy to get started with, but as soon as you want your team to use it in production you've previously had to learn [BOSH](https://bosh.io) (which is notoriously hard to get started with). Teams who just want great CI shouldn't need to think about this, so we built a tool called [Concourse-Up](https://github.com/engineerbetter/concourse-up) to get your cluster up and keep it running, using a single command.
-
 <!--more-->
-
 The motivation for creating this tool began with our own needs, because we needed an easy button for setting up CI on new customer engagements. We'd also met many people who'd had a great intro to Concourse, but were put off by the complexity of setting up BOSH for a [production environment](http://concourse.ci/clusters-with-bosh.html) in the cloud. Recently, while chatting with folks at the [Concourse London User Group](https://www.meetup.com/Concourse-London-User-Group/), the feedback echoed what we'd heard elsewhere: "Concourse is too hard to deploy".
 
 Setting up Concourse locally is easy enough using [Vagrant](https://www.vagrantup.com) or [Docker Compose](https://docs.docker.com/compose/). The problem is when you're at the next stage of adoption. Whilst BOSH has many features that puppet, chef, ansible and others lack, taking the time to learn it is an investment not everyone wants to make. We knew that [BOSH Bootloader](https://github.com/cloudfoundry/bosh-bootloader) had simplified the process, but we wanted a user experience that avoided any manual steps at all.

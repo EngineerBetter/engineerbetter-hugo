@@ -7,16 +7,14 @@ title:  Up and running with BOSH and Concourse - Part 2
 
 In [Part 1](/bosh-concourse.html) of this tutorial we set up a new BOSH director from scratch on AWS. Now it's time to deploy Concourse!
 
-### What will we do next?
+## What will we do next?
 
 - Create a deployment manifest for Concourse
 - Upload stemcells and releases, then deploy using BOSH
 - Install and get started with the fly cli
 - Try a more complex deployment
-
 <!--more-->
-
-### Setting up
+## Setting up
 
 The terraform configuration in [Part 1](/bosh-concourse.html) will have already created the necessary security groups, subnets and ELB. Set the Concourse URL and a password for postgresql in these environment variables. Your public `$CONCOURSE_URL` should match the `ci_hostname` terraform variable that you used earlier, to configure Route53. For example, https://ci.engineerbetter.com.
 
@@ -35,7 +33,7 @@ $GITHUB_CLIENT_ID
 $GITHUB_CLIENT_SECRET
 ```
 
-### Create a manifest and upload stemcells & releases
+## Create a manifest and upload stemcells & releases
 
 Now you're ready to create a concourse manifest for a simple, single server deployment:
 
@@ -53,7 +51,7 @@ $ bosh upload release https://bosh.io/d/github.com/cloudfoundry-incubator/garden
 
 The commands `bosh stemcells` and `bosh releases` will let you know what the BOSH director has in its blobstore.
 
-### Deploy
+## Deploy
 
 You're ready to deploy concourse.
 
@@ -72,7 +70,7 @@ If you can't see anything yet check your AWS ELB - it's probably that your new i
 
 <img src="/img/blog/no-pipelines-configured.png" class="image fit">
 
-### Install `fly` cli and log in
+## Install `fly` cli and log in
 
 Now, it's time to get familiar with the `fly` cli tool if you're not already. You'll find the download link on landing page of your new Concourse GUI (known as the ATC/Air Traffic Control). Put it somewhere suitable in your path like `~/bin`.
 
@@ -84,7 +82,7 @@ $ fly -t target_name login -c https://<your-concourse-url>
 
 If you haven't already looked at the excellent Concourse documentation, you'll find they have a great [hello world tutorial](http://concourse.ci/hello-world.html)
 
-### What next?
+## What next?
 
 Try replacing your single instance with a cluster, allowing you to run a scalable deployment. An example manifest can be generated with the script `bin/make_manifest_concourse-cluster.sh`. Notice how this manifest uses multiple instance groups to distribute the BOSH jobs across a cluster of instances.
 

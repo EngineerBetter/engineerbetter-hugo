@@ -8,9 +8,7 @@ title: Overflowing buildpack_cache
 Between versions 206 and 211 of Cloud Foundry a bug causes `buildpack_cache` files to be orphaned, increasing persistent disk usage unless manual remedial action is taken.
 
 Users will get the error message `Staging error: cannot get instances since staging failed` when trying to push or restage apps. Depending on your setup you could get higher AWS S3 bills, or you may run out of persistent disk on your Cloud Controller or NFS Server VMs.
-
 <!--more-->
-
 Are you sitting comfortably? Then I'll begin.
 
 Monday morning on-site at a client, I came in to find that continuous acceptance tests for the 'app push' workflow were failing. They weren't just failing on one Cloud Foundry; they were failing on three quarters of all environments being tested.
@@ -75,7 +73,7 @@ Just to be sure I did some tests on a BOSH Lite Cloud Foundry, and observed the 
 
 A quick...
 
-```
+```shell_session
 rm -rf /var/vcap/store/shared/cc-droplets/buildpack_cache/cf/li/*
 ```
 

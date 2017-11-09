@@ -1,3 +1,5 @@
 baseURL = "http://www.engineerbetter.com/"
 languageCode = "en-gb"
 title = "EngineerBetter"
+pygmentsUseClasses = true
+pygmentsCodefences = true

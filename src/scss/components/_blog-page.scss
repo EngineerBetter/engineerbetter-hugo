@@ -73,6 +73,11 @@
     em {
       font-style: italic;
     }
+    pre {
+      font-family: monospace;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
     figure.retain-aspect-ratio {
       position: relative;
       width: 100%;

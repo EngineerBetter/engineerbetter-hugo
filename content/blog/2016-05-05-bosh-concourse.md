@@ -10,16 +10,14 @@ The Cloud Foundry ecosystem has given rise to some amazing things. This series o
 BOSH is the distributed systems powerhouse that makes Cloud Foundry possible. It answers the impossible question: How do you continuously deliver not just an app, but *an entire platform* of distributed virtual infrastructure?
 
 Concourse is a intuitive, cloud-native CI tool that has a powerful simplicity to it. Actually, I'd go so far as to say it's more than just an automation tool, it's a medium for artistic expression! Just have a look at some of the vast Pivotal pipelines (e.g. [the Buildpacks team](https://buildpacks.ci.cf-app.com/)) and marvel at their aesthetic value.
-
 <!--more-->
-
 If you haven’t used Concourse yet you should [visit their site](http://concourse.ci/) and try the Vagrant box locally - you’ll be up and running in just  a few minutes. If you're not familiar with BOSH, stop right now and read about [why you need it](https://bosh.io/docs/about.html). If you want to try out BOSH locally and have a fast laptop with 8-16GB RAM, you should play with [bosh-lite](https://github.com/cloudfoundry/bosh-lite). I can also highly recommend this brilliant [intro tutorial](http://mariash.github.io/learn-bosh/) by [Maria Shaldibina](https://twitter.com/marynixie) at Pivotal.
 
 If you follow this tutorial and deploy a BOSH Director on IaaS, you can then use it to deploy any other [available release](https://bosh.io/releases).  Be careful though - once you’re wielding your new weapon you may want to just go crazy and deploy your whole life using BOSH. You should be aware that there are '7 stages of BOSH’ you must endure to achieve mastery, as [humorously explained](/update/2015/10/31/cf-summit-berlin.html) by [Daniel Jones](http://www.twitter.com/DanielJonesEB) (EngineerBetter) and [Chris Hedley ](http://www.twitter.com/CGHSystems) (Pivotal) at CFSummit Berlin 2015.
 
 The Concourse Vagrant box works like a dream for testing - being able to test your whole pipeline or just individual jobs locally is a killer feature - but eventually you’ll need to take things to the cloud. The aim of this tutorial is to get you up and running with a BOSH director and a fresh deployment of Concourse on AWS. Please remember, the examples provided here are for demo purposes and should not be considered production-ready.
 
-### What does this tutorial cover?
+## What does this tutorial cover?
 
 In Part 1 we will do the following:
 
@@ -33,7 +31,7 @@ In Part 2 we will:
 - Install and get started with the fly cli
 - Create a pipeline in Concourse
 
-### Setting up
+## Setting up
 
 First, clone the GitHub repo accompanying this tutorial:
 
@@ -54,7 +52,7 @@ Once you have these, it's time to install some tools! You’ll need to use eithe
 - Install [bosh-init](https://bosh.io/docs/install-bosh-init.html)
 - Install the [bosh_cli](https://bosh.io/docs/bosh-cli.html) Ruby gem
 
-### Using Terraform to configure AWS
+## Using Terraform to configure AWS
 
 The Terraform config needs to know about some parameters that are specific to you and your AWS environment. These are defined in `variables.tf` and we set the corresponding values either in environment variables, or a file. You can use the example tfvars file:
 
@@ -81,7 +79,7 @@ Which produces this:
 
 You should check the terraform output values and make a note of the elastic IP we'll use for the BOSH director using `terraform output`
 
-###  Deploying a BOSH Director
+## Deploying a BOSH Director
 
 Now we should have an EIP, VPC, Subnet and Security Groups ready for BOSH.
 We're going to create a manifest for `bosh-init`. First you should set the following environment variables:

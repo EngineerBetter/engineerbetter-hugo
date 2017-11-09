@@ -13,9 +13,7 @@ At EngineerBetter we generally categorise cloud-native transformation challenges
 - Organisational Change
 
 Through our experiences with enterprises, we began to arrange these problem spaces into a mental model formed of concentric rings. We've found it useful to structure our thinking like this when we talk to customers, because it helps highlight how platform adoption tends to reveal new problems and constraints, in an ever wider context.
-
 <!--more-->
-
 In addition to sensemaking this model actually helps us do the work, by encouraging initial focus on achieving small wins within the immediate context of the platform team. We can then use this as a vantage point to observe and respond, working outward to address the more distant or pervasive issues once we understand more about the situation.
 
 It's important to remember that each enterprise is a complex adaptive system; in reality nobody finds such neat boundaries in their contexts, especially at the outer ring. Rather than implying we should silo our thinking, the purpose of the model is to shine a light on common patterns and anti-patterns so we can surface and anticipate issues and cross-cutting concerns.

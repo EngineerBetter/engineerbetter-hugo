@@ -8,9 +8,7 @@ title:  Continuously Deploying Pivotal Cloud Foundry
 EngineerBetter recently helped a large financial organisation **fully automate** their Pivotal Cloud Foundry deployments, taking a manual process that took a whole team more than a week, and replacing it with an **hands-off** continuous depoyment pipeline that **took mere hours**, often **overnight whilst the team slept**. We didn't just automate the deployment of their PCF: we **automated** the creation of their **cloud infrastructure**; deployment of **upgrades**; installation of **security updates**; and all with **full testing**.
 
 Cloud Foundry enables continuous delivery for developers. **EngineerBetter bring continuous delivery to platform operators** and traditional IT teams. Here's how.
-
 <!--more-->
-
 ## Traditional Ops
 
 The customer has a lot of experience with Cloud Foundry and some very large deployments. However they were using a traditional, release-oriented approach when it came to deploying and maintaining Cloud Foundry. When a new PCF release came out the team would deploy it to a staging environment, test it, and "release" it to separate ops teams managing prod environments around the world. The upgrade would take around a week, and tied up nearly all of the team's time while it was being done.
@@ -52,7 +50,7 @@ The IaaSs we used all had pretty good APIs and tooling. If you're on AWS, this p
 
 Ops Manager is a GUI-based application with a limited API (we deployed version 1.7 — later versions have a better API). We used [opsmgr gem](https://rubygems.org/gems/opsmgr) to automate it — this gem is a command line tool uses the API where possible, and Capybara (browser automation) otherwise. Getting Capybara to run in Docker can be tricky, but the short of it is you need [XFVB](https://en.wikipedia.org/wiki/Xvfb) for a virtual display server, and run all your scripts within *xvfb-run*.
 
-```
+```bash
 xfvb-run bundle exec rake opsmgr...
 ```
 
@@ -69,7 +67,7 @@ ops_manager:
 
 ERB is part of the ruby standard library and has it's own CLI command so writing a template such as the one above is as simple as:
 
-```
+```bash
 erb template.yml.erb > output.yml
 ```
 
@@ -98,9 +96,9 @@ Our code is not pretty. We've used some hacky methods to glue together tools tha
 
 Since we're now continuously upgrading Cloud Foundry, when we add features likes related to security or availability, it's not enough to accept those features on the current version. We need to write tests to assert the functionality so we can catch regressions. One of our requirements is that we can withstand loss of an availability zone (AZ). So after each deployment we run a test that:
 
-1. 1) Destroys all VMs in an AZ
-1. 2) Checks the [smoke tests](https://github.com/cloudfoundry/cf-smoke-tests) still pass
-1. 3) Re-creates the VMs
+1. Destroys all VMs in an AZ
+1. Checks the [smoke tests](https://github.com/cloudfoundry/cf-smoke-tests) still pass
+1. Re-creates the VMs
 
 Replacing manual tests with automated tests does take a while (especially for infrastructure), but you quickly build up the tooling to make each subsequent test easier to implement.
 

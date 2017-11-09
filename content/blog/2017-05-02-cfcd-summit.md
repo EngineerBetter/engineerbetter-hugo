@@ -14,9 +14,7 @@ It's **$1,975 for all three days** with **lunch** provided. The course is held a
 </section>
 
 It'll be a packed few days, full of **hands-on practical exercises**, interactive walk-throughs, and **surprisingly few slides**. The course is **programming-language agnostic**, and students also get the pick the brains of **two highly-experienced Cloud Foundry consultants** - [Steve Greenberg](https://www.linkedin.com/in/sgreenberg/) and I.
-
 <!--more-->
-
 ## What's on the course?
 
 Everything you need to cover in order to stand a good chance of achieving [Cloud Foundry Certified Developer](https://www.cloudfoundry.org/certification/) status. It's _significantly_ more in-depth than Zero To Hero.

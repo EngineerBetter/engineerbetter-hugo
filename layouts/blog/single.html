@@ -12,6 +12,7 @@
           <img src="{{ .Params.heroImage }}">
         </div>
         {{ .Content }}
+        {{ template "_internal/disqus.html" . }}
       </div>
       <div class="blog-page_banner clearfix">
         <div class="blog_banner-text">

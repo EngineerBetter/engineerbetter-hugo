@@ -3,3 +3,4 @@ languageCode = "en-gb"
 title = "EngineerBetter"
 pygmentsUseClasses = true
 pygmentsCodefences = true
+disqusShortname = "engineerbettercom"

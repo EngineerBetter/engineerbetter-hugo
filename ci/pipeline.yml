@@ -14,21 +14,6 @@ resources:
     access_key_id: {{concourse_ci_s3_access_key}}
     secret_access_key: {{concourse_ci_s3_secret_key}}
 
-- name: eb-blog
-  type: git
-  source:
-    uri: https://github.com/engineerbetter/engineerbetter.com.git
-    branch: blog-only
-
-- name: blog-tarball
-  type: s3
-  source:
-    bucket: engineerbetter-jekyll-builds
-    region_name: eu-west-1
-    versioned_file: engineerbetter-blog-built.tar.gz
-    access_key_id: {{concourse_ci_s3_access_key}}
-    secret_access_key: {{concourse_ci_s3_secret_key}}
-
 - name: cf-dev
   type: cf
   source:
@@ -68,28 +53,6 @@ jobs:
       params:
         manifest: eb-hugo/ci/assets/hugo-manifest-dev.yml
 
-- name: build-blog
-  public: false
-  serial: true
-  plan:
-  - get: eb-hugo
-    trigger: true
-  - get: eb-blog
-    trigger: true
-  - task: jekyll-build
-    file: eb-blog/ci/tasks/jekyll-build.yml
-    input_mapping:
-      engineerbetter.com: eb-blog
-    output_mapping:
-      jekyll-built: blog-tarball
-  - aggregate:
-    - put: blog-tarball
-      params:
-        file: blog-tarball/engineerbetter-blog-built.tar.gz
-    - put: cf-dev
-      params:
-        manifest: eb-hugo/ci/assets/blog-manifest-dev.yml
-
 - name: test-dev
   public: false
   serial: true
@@ -97,9 +60,6 @@ jobs:
   - get: eb-hugo
   - get: site-tarball
     passed: [build-site]
-    trigger: true
-  - get: blog-tarball
-    passed: [build-blog]
     trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
@@ -124,24 +84,6 @@ jobs:
     params:
       manifest: eb-hugo/ci/assets/hugo-manifest-staging.yml
 
-- name: deploy-blog-staging
-  public: false
-  serial: true
-  plan:
-  - get: eb-hugo
-  - get: blog-tarball
-    passed: [test-dev]
-    trigger: true
-  - task: untar
-    file: eb-hugo/ci/tasks/untar.yml
-    input_mapping:
-      input: blog-tarball
-    output_mapping:
-      output: generated-blog
-  - put: cf-staging
-    params:
-      manifest: eb-hugo/ci/assets/blog-manifest-staging.yml
-
 - name: test-staging
   public: false
   serial: true
@@ -149,9 +91,6 @@ jobs:
   - get: eb-hugo
   - get: site-tarball
     passed: [deploy-site-staging]
-    trigger: true
-  - get: blog-tarball
-    passed: [deploy-blog-staging]
     trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
@@ -175,23 +114,6 @@ jobs:
     params:
       manifest: eb-hugo/ci/assets/hugo-manifest-prod.yml
 
-- name: deploy-blog-prod
-  public: false
-  serial: true
-  plan:
-  - get: eb-hugo
-  - get: blog-tarball
-    passed: [test-staging]
-  - task: untar
-    file: eb-hugo/ci/tasks/untar.yml
-    input_mapping:
-      input: blog-tarball
-    output_mapping:
-      output: generated-blog
-  - put: cf-prod
-    params:
-      manifest: eb-hugo/ci/assets/blog-manifest-prod.yml
-
 - name: test-prod
   public: false
   serial: true
@@ -199,9 +121,6 @@ jobs:
   - get: eb-hugo
   - get: site-tarball
     passed: [deploy-site-prod]
-    trigger: true
-  - get: blog-tarball
-    passed: [deploy-blog-prod]
     trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml

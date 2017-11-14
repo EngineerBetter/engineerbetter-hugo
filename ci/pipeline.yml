@@ -38,7 +38,7 @@ resources:
     space: production
 
 jobs:
-- name: build-site
+- name: dev
   serial: true
   plan:
   - get: eb-hugo
@@ -52,27 +52,18 @@ jobs:
     - put: cf-dev
       params:
         manifest: eb-hugo/ci/assets/hugo-manifest-dev.yml
-
-- name: test-dev
-  public: false
-  serial: true
-  plan:
-  - get: eb-hugo
-  - get: site-tarball
-    passed: [build-site]
-    trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
       HOST: http://eb-hugo-dev.engineerbetter.com
 
-- name: deploy-site-staging
+- name: staging
   public: false
   serial: true
   plan:
   - get: eb-hugo
   - get: site-tarball
-    passed: [test-dev]
+    passed: [dev]
     trigger: true
   - task: untar
     file: eb-hugo/ci/tasks/untar.yml
@@ -83,27 +74,18 @@ jobs:
   - put: cf-staging
     params:
       manifest: eb-hugo/ci/assets/hugo-manifest-staging.yml
-
-- name: test-staging
-  public: false
-  serial: true
-  plan:
-  - get: eb-hugo
-  - get: site-tarball
-    passed: [deploy-site-staging]
-    trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
       HOST: http://eb-hugo-staging.engineerbetter.com
 
-- name: deploy-site-prod
+- name: prod
   public: false
   serial: true
   plan:
   - get: eb-hugo
   - get: site-tarball
-    passed: [test-staging]
+    passed: [staging]
   - task: untar
     file: eb-hugo/ci/tasks/untar.yml
     input_mapping:
@@ -113,15 +95,6 @@ jobs:
   - put: cf-prod
     params:
       manifest: eb-hugo/ci/assets/hugo-manifest-prod.yml
-
-- name: test-prod
-  public: false
-  serial: true
-  plan:
-  - get: eb-hugo
-  - get: site-tarball
-    passed: [deploy-site-prod]
-    trigger: true
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:

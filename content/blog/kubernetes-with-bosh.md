@@ -13,7 +13,7 @@ As the popularity of containerization continues to rise, so too has the use of s
 
 In a traditional scenario, the death of a sickly Kubernetes node would have to be brought to the attention of a platform operator, who would then have to follow a number of manual (and not always fully documented) steps to bring it back to life. Since March this year, additional resilience has been offered in the form of [Cloud Foundry Container Runtime (CFCR)](https://docs-kubo.cfapps.io/), which makes Kubernetes available as a BOSH release. Formerly known as Kubo, CFCR is a collaboration between Pivotal and Google, who have since donated the project to the Cloud Foundry Foundation.
 
-As enthusiastic young juniors at EngineerBetter still finding our feet in the world of cloud platforms, we decided to take a tour around the release and find out what it has to offer.
+As enthusiastic new starters at EngineerBetter still finding our feet in the world of cloud platforms, we decided to take a tour around the release and find out what it has to offer.
 
 Just as with Cloud Foundry, BOSH takes care of the deployment of the platform, while also monitoring its health, spinning up new virtual machines and installing updates as required. To make clusters even more resilient to unexpected failures, BOSH can also deploy CFCR over multiple different cloud providers and even alongside a Cloud Foundry deployment.
 

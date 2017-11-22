@@ -55,7 +55,7 @@ New PIN
 PIN changed.
 ```
 
-If you enter this PIN incorrectly 3 times. The PIN will be locked and you must unlock it using the admin PIN.
+If you enter this PIN incorrectly 3 times. The PIN will be locked and you must unlock it using the admin PIN, which is defaulted to `12345678`.
 You should change this also.
 
 ```

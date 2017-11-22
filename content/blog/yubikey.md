@@ -28,7 +28,7 @@ If you use zsh you will need to append these lines to `~/.zshrc` instead.
 ```
 $ cat <<EOF >> ~/.bashrc
 export GPG_TTY=$(tty)
-gpg-connect-agent /bye
+gpg-connect-agent updatestartuptty /bye
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 EOF

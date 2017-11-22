@@ -17,18 +17,6 @@ If you're amassing a plethora of user accounts that require two-factor authentic
 <p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines.</p>
 </section>
 
-An increasing number of sites support [U2F]. It is more secure, and users are able to authenticate faster compared with any other 2FA method.
-
-<span class="pure-table">
-
-  Attack               | Google Authenticator | Hardware OTP Generator | U2F
-  ---------------------|----------------------|------------------------|----
-  Weak/stolen password | ☑                    | ☑                      | ☑
-  Phishing             | ☒                    | ☒                      | ☑
-  TLS MitM             | ☒                    | ☒                      | ?
-
-</span>
-
 ## Two-Factor Authentication with One-Time Passwords
 
 Traditional OTPs protect against password reuse, weak passwords and credential leakage.
@@ -93,6 +81,14 @@ Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] app to 
 ## Why U2F?
 
 Google performed a two year [study][googU2F] on U2F devices which are widely deployed within Google. They found that compared with a app based OTP like Google Authenticator, users authenticated faster using a U2F device, U2F devices were inherently less suceptible to MitM attacks and users raised support tickets for authentication problems far less frequently.
+
+An increasing number of sites support [U2F]. It is more secure, and users are able to authenticate faster compared with any other 2FA method.
+
+Attack               | Google Authenticator | Hardware OTP Generator | U2F
+---------------------|----------------------|------------------------|----
+Weak/stolen password | &#x2714; |   &#x2714; |   &#x2714;
+Phishing             | &#x2717; |   &#x2717; |  &#x2714;
+TLS MitM             | &#x2717; |   &#x2717; | ?
 
 [cvpwn]: https://thejh.net/misc/website-terminal-copy-paste
 [githubkeys]: https://github.com/settings/keys

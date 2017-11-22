@@ -113,7 +113,7 @@
       list-style-type: square;
       list-style-position: inside;
     }
-    ol, ul, p, figcaption {
+    ol, ul, p, table, figcaption {
       padding-bottom: 15px;
       font-size: 14px;
       font-family: 'Raleway-Regular';
@@ -130,6 +130,13 @@
         padding-bottom: 30px;
         font-size: 16px;
       }
+    }
+    table {
+      width: 100%;
+    }
+    th {
+      font-family: 'Raleway-Bold';
+      text-align: left;
     }
     figcaption {
       font-size: 0.9em;

@@ -25,7 +25,7 @@ A Yubikey *almost* turns a digital security problem into a physical security one
 If your SSH key is stored on a Yubikey it cannot be copied, it cannot be stolen remotely and the software on whatever machine you stick it into cannot read it.
 You can even PIN protect the key, which means that if somebody physically steals your Yubikey then they have to guess the PIN correctly to be able to use it, and even then, they will be unable to extract the key.
 
-# SSH key on Yubikey
+## SSH key on Yubikey
 Firstly, you need to configure `ssh` to use `gpg-agent` to handle authentication.
 If you use zsh you will need to append these lines to `~/.zshrc` instead.
 
@@ -183,7 +183,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy7PhCvbb+R0UIsQdBvIpWQNSBOZkfV+7E0d55Gxzp
 
 You can put this in `~/.authorized_keys` of any machine you want to be able to log in to. You can
 
-# 2FA
+## 2FA
 An increasing number of sites support [U2F]. It is more secure, and users are able to authenticate faster compared with any other 2FA method.
 
 <span class="pure-table">
@@ -246,7 +246,7 @@ Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] to gene
 
 Google performed a two year [study][googU2F] on U2F devices which are widely deployed within Google. They found that compared with a app based OTP like Google Authenticator, Users authenticated faster using a U2F device, U2F devices were inherently less suceptible to MitM attacks and users raised support tickets for authentication problems far less frequently.
 
-### ROCA <a name="roca"></a>
+## ROCA <a name="roca"></a>
 Recently (2017-10-15) a serious problem was found in a library used by Yubikey firmware responsible for generating RSA keys.
 The [ROCA][ROCA] (Revenge of Coppersmith's Attack) hack enables computing the private part of a RSA keypair from the public part alone.
 This has now been fixed, hence why I am recommending generating RSA keys on your Yubikey.

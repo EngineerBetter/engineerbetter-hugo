@@ -2,7 +2,7 @@
 author: Paddy Steed
 date: "2017-11-15"
 heroImage: /img/blog/yubikey4.png
-title: Yubikeys for DevOps
+title: Yubikeys for SSH Auth
 
 draft: true
 
@@ -19,7 +19,7 @@ You can use a Yubikey USB device to securely _generate_ and store your SSH key. 
 
 In this post I will show you how to use your Yubikey to generate and store an RSA key, and then configure your computer to use GPG to load that key and authenticate with remote SSH servers. Each time you authenticate you'll need to have Yubikey inserted, and you'll be prompted for a PIN.
 
-I'll assume you have a [Yubikey 4][yubi4].
+I'll assume you have a [Yubikey 4][yubi4]. Some of the terminal output will differ slightly depending on your operating system; these snippets are captured on Fedora.
 
 ## Why store your RSA key on a Yubikey?
 
@@ -197,7 +197,7 @@ sub   2048R/4746682A 2017-11-14 [expires: 2018-11-14]
 gpg/card> quit
 ```
 
-Your PGP key is now generated and the public key is stored on your GPG keychain.
+Your RSA key is now generated and the public key is stored on your GPG keychain.
 
 ## Viewing the public key
 

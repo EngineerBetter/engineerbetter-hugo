@@ -12,13 +12,13 @@ Not only can a Yubikey be used as your 2FA device, it can be used to secure your
 This guide will show you how to use your Yubikey to generate and store a PGP key and then configure your computer to use that key to authenticate to remote SSH servers.
 This post assumes you have a [Yubikey 4][yubi4].
 Digital security is generally much more difficult than physical security.
-If I have a secret written on a piece of paper, I could hide that paper somewhere, I could keep it on my person, I could put it in safety depoit box.
+If I have a secret written on a piece of paper, I could hide that paper somewhere, I could keep it on my person, I could put it in safety deposit box.
 All of these are pretty good ways to make sure nobody reads whatever is on the paper and all are simple to reason about.
 If I have that same secret on a file on my laptop however, there is much more to think about.
 Every piece of software I run has permission to read that file.
 My laptop has a network connection, so an attacker does not need to ever meet me to steal my secret.
 A Yubikey *almost* turns a digital security problem into a physical security one.
-If you're SSH key is stored on a Yubikey it cannot be copied, it cannot be stolen remotely and the software on whatever machine you stick it into cannot read it.
+If your SSH key is stored on a Yubikey it cannot be copied, it cannot be stolen remotely and the software on whatever machine you stick it into cannot read it.
 You can even PIN protect the key, which means that if somebody physically steals your Yubikey then they have to guess the PIN correctly to be able to use it, and even then, they will be unable to extract the key.
 
 # SSH key on Yubikey
@@ -65,7 +65,8 @@ Admin PIN changed.
 ```
 If you enter the admin PIN incorrectly 3 times you will need to factory reset the Yubikey.
 Next, generate a RSA key on your Yubikey.
-I reccomend [generating the key on the card](#roca), rather than generating the key on your computer then copying it to the card.
+I recommend [generating the key on the card](#roca), rather than generating the key on your computer and then copying it to the card.
+
 ```
 $ gpg --card-edit
 gpg: detected reader `Yubico Yubikey 4 OTP+U2F+CCID 00 00'
@@ -93,9 +94,11 @@ gpg/card> admin
 Admin commands are allowed
 gpg/card> generate
 ```
+
 You will be asked if you want to backup the encryption key.
-If you are only using this key for SSH authentication I would recomend you do not do this.
-It is fairly easy to go though this process again if you loose your Yubikey and it means your key will not ever leave your Yubikey.
+If you are only using this key for SSH authentication I would recommend you do not do this.
+It is fairly easy to go though this process again if you lose your Yubikey and it means your key will not ever leave your Yubikey.
+
 ```
 Make off-card backup of encryption key? (Y/n) n
 Please note that the factory settings of the PINs are
@@ -113,7 +116,9 @@ Please specify how long the key should be valid.
       <n>m = key expires in n months
       <n>y = key expires in n years
 ```
-By default, your key will not expire. I would recomend setting an expiry date.
+
+By default, your key will not expire. I would recommend setting an expiry date.
+
 ```
 Key is valid for? (0) 1y
 Key expires at Wed 14 Nov 2018 14:18:02 GMT
@@ -179,12 +184,12 @@ An increasing number of sites support [U2F]. It is more secure, and users are ab
 </span>
 
 Traditional one time passwords (OTPs) protect against password reuse, weak passwords and credential leakage.
-Enabling 2FA on your online accounts is a huge improvement on using static passwords alone, however it makes the most common form of account compomise only marginally more difficult.
-According [research][goog_phishing] by Google, phishing is by far the most common way from an online account to be compromised.
+Enabling 2FA on your online accounts is a huge improvement on using static passwords alone, however it makes the most common form of account compromise only marginally more difficult.
+According to [research][goog_phishing] by Google, phishing is by far the most common way from an online account to be compromised.
 Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked, they were responsible for [Hillary Clinton's][clinton] campaign email's being hacked.
 Even if you are a Republican you are still not safe as [Sarah Palin's][palin] email account was hacked via a phising attack.
 
-Despite what the victims will tell you, these attacks are not sophisitiacted and they don't require "state sponsorship".
+Despite what the victims will tell you, these attacks are not sophisticated and they don't require "state sponsorship".
 The industry standard advice seems to be to train staff to recognise phishing attacks.
 This is expensive and companies that do this still get phished.
 The FIDO Universal 2nd Factor standard completely eliminates the possibility of phising with no user training required.
@@ -193,13 +198,13 @@ The login procedure using a traditional OTP is usually something like this:
 1. User navigates to example.com
 2. User enters username and password
 3. User is promted for OTP
-4. User reads short numeric code from OTP generator.
+4. User reads short numeric code from OTP generator
 5. User types OTP into web page
 
 If the user is tricked into entering their login details on phishing site, 2FA does no good.
 They will have given their password and OTP to the phising site, which can then forward that on to the real site and impersonate the user.
-The only frustration OTP's provide to an attacker attempting this is they have a short window to forward those credentials before the OTP is expired.
-In practice this is not an issue as the easiest way of phising a site is setting up a reverse proxy to it, in which case the credentials are forwared in real time.
+The only frustration OTPs provide to an attacker attempting this is they have a short window to forward those credentials before the OTP is expired.
+In practice this is not an issue as the easiest way of phishing a site is setting up a reverse proxy to it, in which case the credentials are forwared in real time.
 
 The login procedure using a U2F token goes like this:
 1. User navigates to example.com
@@ -211,8 +216,7 @@ The U2F token signs a message containing a random string from the server, the se
 The browser then forwards that signiture to the server.
 
 
-
-Your Yubikey is also a [U2F] token. U2F is a open standard for 
+Your Yubikey is also a [U2F] token. U2F is a open standard for
 An increasing number of sites support [U2F].
 This is the most user friendly way to use a Yubikey as your 2FA device.
 The latest versions of Chrome, Opera and Firefox support [U2F], however, in Firefox it is not enabled by default and you must enable the following options in the <about:config> page.
@@ -222,15 +226,15 @@ The latest versions of Chrome, Opera and Firefox support [U2F], however, in Fire
 [Github][githubU2F], [Gitlab][gitlabU2F], [Google Cloud Platform][GCPU2F] all support [U2F] as a 2FA option.
 [Amazon Web Services][AWS] does not yet, but you can still use your Yubikey as your 2FA device.
 [AWS] supports the [TOTP] standard.
-It is not possible for a smart card with no battery to implement TOTP by it's self as it requires a real time clock.
+It is not possible for a smart card with no battery to implement TOTP by itself as it requires a real time clock.
 Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] to generate TOTP tokens from the secrets on your Yubikey. You can store up to 32 different TOTP accounts on your Yubikey, nothing is stored on the computer you use, you can insert your Yubikey into any machine with the [Yubico Authenticator][yubico_authenticator] installed and all your TOTP tokens will be availible.
 
 Google performed a two year [study][googU2F] on U2F devices which are widely deployed within Google. They found that compared with a app based OTP like Google Authenticator, Users authenticated faster using a U2F device, U2F devices were inherently less suceptible to MitM attacks and users raised support tickets for authentication problems far less frequently.
 
 ### ROCA <a name="roca"></a>
 Recently (2017-10-15) a serious problem was found in a library used by Yubikey firmware responsible for generating RSA keys.
-The [ROCA][ROCA] (Revenge of Coppersmith's attack) hack enables computing the private part of a RSA keypair from the public part alone.
-This has now been fixed, hence why I am reccomending generating RSA keys on your Yubikey.
+The [ROCA][ROCA] (Revenge of Coppersmith's Attack) hack enables computing the private part of a RSA keypair from the public part alone.
+This has now been fixed, hence why I am recommending generating RSA keys on your Yubikey.
 
 [cvpwn]: https://thejh.net/misc/website-terminal-copy-paste
 [githubkeys]: https://github.com/settings/keys

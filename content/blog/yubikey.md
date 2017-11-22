@@ -24,6 +24,7 @@ You can even PIN protect the key, which means that if somebody physically steals
 # SSH key on Yubikey
 Firstly, you need to configure `ssh` to use `gpg-agent` to handle authentication.
 If you use zsh you will need to append these lines to `~/.zshrc` instead.
+
 ```
 $ cat <<EOF >> ~/.bashrc
 export GPG_TTY=$(tty)
@@ -33,7 +34,9 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 EOF
 $ . ~/.bashrc
 ```
+
 Install `gpg` using your operating systems package manager. Plug in your Yubikey. You should change the PIN from the default of `123456`.
+
 ```
 $ gpg --change-pin
 1 - change PIN
@@ -47,8 +50,10 @@ New PIN
 New PIN
 PIN changed.
 ```
+
 If you enter this PIN incorrectly 3 times. The PIN will be locked and you must unlock it using the admin PIN.
 You should change this also.
+
 ```
 $ gpg --change-pin
 1 - change PIN
@@ -63,6 +68,7 @@ New Admin PIN
 New Admin PIN
 Admin PIN changed.
 ```
+
 If you enter the admin PIN incorrectly 3 times you will need to factory reset the Yubikey.
 Next, generate a RSA key on your Yubikey.
 I recommend [generating the key on the card](#roca), rather than generating the key on your computer and then copying it to the card.
@@ -162,12 +168,15 @@ sub   2048R/0A3CA35A 2017-11-14 [expires: 2018-11-14]
 sub   2048R/4746682A 2017-11-14 [expires: 2018-11-14]
 gpg/card> quit
 ```
+
 Your PGP key is now generated and the public key is stored on your GPG keychain.
 Assuming you have configured `gpg-agent` correctly. `ssh-add -L` will display the public key in SSH format.
+
 ```
 $ ssh-add -L
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy7PhCvbb+R0UIsQdBvIpWQNSBOZkfV+7E0d55Gxzppt9tvQHbWJwzi/… cardno:000606917466
 ```
+
 You can put this in `~/.authorized_keys` of any machine you want to be able to log in to. You can
 
 # 2FA

@@ -11,13 +11,17 @@ Description: Get the very latest updates about recent projects, team updates, th
 Not only can a Yubikey be used as your 2FA device, it can be used to secure your SSH credentials.
 This guide will show you how to use your Yubikey to generate and store a PGP key and then configure your computer to use that key to authenticate to remote SSH servers.
 This post assumes you have a [Yubikey 4][yubi4].
+
+
 Digital security is generally much more difficult than physical security.
 If I have a secret written on a piece of paper, I could hide that paper somewhere, I could keep it on my person, I could put it in safety deposit box.
 All of these are pretty good ways to make sure nobody reads whatever is on the paper and all are simple to reason about.
 If I have that same secret on a file on my laptop however, there is much more to think about.
 Every piece of software I run has permission to read that file.
+
 My laptop has a network connection, so an attacker does not need to ever meet me to steal my secret.
 A Yubikey *almost* turns a digital security problem into a physical security one.
+
 If your SSH key is stored on a Yubikey it cannot be copied, it cannot be stolen remotely and the software on whatever machine you stick it into cannot read it.
 You can even PIN protect the key, which means that if somebody physically steals your Yubikey then they have to guess the PIN correctly to be able to use it, and even then, they will be unable to extract the key.
 

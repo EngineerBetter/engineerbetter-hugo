@@ -203,22 +203,24 @@ The industry standard advice seems to be to train staff to recognise phishing at
 This is expensive and companies that do this still get phished.
 The FIDO Universal 2nd Factor standard completely eliminates the possibility of phising with no user training required.
 
-The login procedure using a traditional OTP is usually something like this:
-1. User navigates to example.com
-2. User enters username and password
-3. User is promted for OTP
-4. User reads short numeric code from OTP generator
-5. User types OTP into web page
+A user's login procedure using a traditional OTP is usually something like this:
+
+1. Navigate to example.com
+2. Enter username and password
+3. Receive prompt for OTP
+4. Read short numeric code from OTP generator
+5. Type OTP into web page
 
 If the user is tricked into entering their login details on phishing site, 2FA does no good.
 They will have given their password and OTP to the phising site, which can then forward that on to the real site and impersonate the user.
 The only frustration OTPs provide to an attacker attempting this is they have a short window to forward those credentials before the OTP is expired.
 In practice this is not an issue as the easiest way of phishing a site is setting up a reverse proxy to it, in which case the credentials are forwared in real time.
 
-The login procedure using a U2F token goes like this:
-1. User navigates to example.com
-2. User enters username and password
-3. User touches U2F token
+When using a U2F token, a user's experience goes like this:
+
+1. Navigate to example.com
+2. Enter username and password
+3. Touch U2F token
 
 A lot happens when that token is pressed.
 The U2F token signs a message containing a random string from the server, the servers address from the browsers perspective and some other things.

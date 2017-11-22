@@ -11,14 +11,17 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
+You can use a Yubikey USB device to securely _generate_ and store your SSH key. This can be used to load your private key on-demand, protected by a PIN. Perfect for pair-programming on shared machines!
+
 <section class="boxout">
 <p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines.</p>
 </section>
 
-Not only can a Yubikey be used as your 2FA device, it can be used to secure your SSH credentials.
-This guide will show you how to use your Yubikey to generate and store a PGP key and then configure your computer to use that key to authenticate to remote SSH servers.
-This post assumes you have a [Yubikey 4][yubi4].
+In this post I will show you how to use your Yubikey to generate and store an RSA key, and then configure your computer to use GPG to load that key and authenticate with remote SSH servers. Each time you authenticate you'll need to have Yubikey inserted, and you'll be prompted for a PIN.
 
+I'll assume you have a [Yubikey 4][yubi4].
+
+## Why store your RSA key on a Yubikey?
 
 Digital security is generally much more difficult than physical security.
 If I have a secret written on a piece of paper, I could hide that paper somewhere, I could keep it on my person, I could put it in safety deposit box.
@@ -33,26 +36,16 @@ If your SSH key is stored on a Yubikey it cannot be copied, it cannot be stolen 
 You can even PIN protect the key, which means that if somebody physically steals your Yubikey then they have to guess the PIN correctly to be able to use it, and even then, they will be unable to extract the key.
 
 <section class="boxout">
-<p>On the 15th October 2017 a serious problem was found in a library used by Yubikey firmware responsible for generating RSA keys. The <a href="https://www.yubico.com/support/security-advisories/ysa-2017-01/">ROCA (Revenge of Coppersmith's Attack)</a> hack enables computing the private part of a RSA keypair from the public part alone.</p>
+<p>On the 15th October 2017 a serious problem was announced in a library used by Yubikey firmware responsible for generating RSA keys. The <a href="https://www.yubico.com/support/security-advisories/ysa-2017-01/">ROCA (Revenge of Coppersmith's Attack)</a> hack enables computing the private part of a RSA keypair from the public part alone.</p>
 <p>&nbsp;</p>
-<p>This has <strong>now been fixed</strong>, and I am comfortable recommending generating RSA keys on your Yubikey.</p>
+<p>This <strong>is fixed in all Yubikeys manufactured since June</strong>, and I am comfortable recommending generating RSA keys on your Yubikey.</p>
 </section>
 
-## SSH key on Yubikey
-Firstly, you need to configure `ssh` to use `gpg-agent` to handle authentication.
-If you use zsh you will need to append these lines to `~/.zshrc` instead.
+## Set Yubikey PINs
 
-```
-$ cat <<EOF >> ~/.bashrc
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-EOF
-$ . ~/.bashrc
-```
+Install `gpg` using your operating system's package manager so you can interact with your Yubikey.
 
-Install `gpg` using your operating systems package manager. Plug in your Yubikey. You should change the PIN from the default of `123456`.
+Plug in your Yubikey, and run `gpg --change-pin` to change the PIN from the default of `123456`. This is the PIN you'll be asked to enter whenever you need to access the private key, for example when doing `git push`.
 
 ```
 $ gpg --change-pin
@@ -68,8 +61,9 @@ New PIN
 PIN changed.
 ```
 
-If you enter this PIN incorrectly 3 times. The PIN will be locked and you must unlock it using the admin PIN, which is defaulted to `12345678`.
-You should change this also.
+If you enter your newly-set PIN incorrectly 3 times then the Yubikey will be locked and you must unlock it using the admin PIN, which is `12345678` by default.
+
+You should change the admin PIN too, by running the same command again, this time selecting option 3:
 
 ```
 $ gpg --change-pin
@@ -86,9 +80,26 @@ New Admin PIN
 Admin PIN changed.
 ```
 
-If you enter the admin PIN incorrectly 3 times you will need to factory reset the Yubikey.
+If you later enter the admin PIN incorrectly 3 times you will need to factory-reset the Yubikey.
+
+## Generate an RSA key on your Yubikey
+
+Firstly, you need to configure `ssh` on the machines you'll be working on to use `gpg-agent` to handle authentication, which will in turn load an RSA key from your Yubikey - provided that you enter the correct PIN.
+
+The below snippet appends the appropriate config to your `.bashrc` (if you use zsh you will need to append these lines to `~/.zshrc` instead).
+
+```
+$ cat <<EOF >> ~/.bashrc
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+EOF
+$ . ~/.bashrc
+```
+
 Next, generate a RSA key on your Yubikey.
-I recommend [generating the key on the card](#roca), rather than generating the key on your computer and then copying it to the card.
+I recommend [generating the key on the card](#roca), rather than generating the key on your computer and then copying it to the card. This way you know that it has never been on the filesystem where it could be snooped upon.
 
 ```
 $ gpg --card-edit
@@ -187,6 +198,9 @@ gpg/card> quit
 ```
 
 Your PGP key is now generated and the public key is stored on your GPG keychain.
+
+## Viewing the public key
+
 Assuming you have configured `gpg-agent` correctly. `ssh-add -L` will display the public key in SSH format.
 
 ```
@@ -194,7 +208,7 @@ $ ssh-add -L
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy7PhCvbb+R0UIsQdBvIpWQNSBOZkfV+7E0d55Gxzppt9tvQHbWJwzi/… cardno:000606917466
 ```
 
-You can put this in `~/.authorized_keys` of any machine you want to be able to log in to. You can
+You can put this in `~/.authorized_keys` of any machine you want to be able to log in to, and paste it into GitHub, GitLab, and similar tools.
 
 [cvpwn]: https://thejh.net/misc/website-terminal-copy-paste
 [githubkeys]: https://github.com/settings/keys

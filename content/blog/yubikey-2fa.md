@@ -2,7 +2,7 @@
 author: Paddy Steed
 date: "2017-11-15"
 heroImage: /img/blog/yubikey4.png
-title: Yubikeys for DevOps
+title: Yubikeys for Two-Factor Auth
 
 draft: true
 
@@ -10,6 +10,8 @@ heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
+
+If you're amassing a plethora of user accounts that require two-factor authentication (2FA) and let's face it, you _should_, then you'll be pleased to learn how you can use a USB Yubikey to avoid having to type in as many one-time-passwords (OTPs).
 
 <section class="boxout">
 <p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines.</p>
@@ -27,16 +29,9 @@ An increasing number of sites support [U2F]. It is more secure, and users are ab
 
 </span>
 
-Traditional one time passwords (OTPs) protect against password reuse, weak passwords and credential leakage.
-Enabling 2FA on your online accounts is a huge improvement on using static passwords alone, however it makes the most common form of account compromise only marginally more difficult.
-According to [research][goog_phishing] by Google, phishing is by far the most common way from an online account to be compromised.
-Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked, they were responsible for [Hillary Clinton's][clinton] campaign email's being hacked.
-Even if you are a Republican you are still not safe as [Sarah Palin's][palin] email account was hacked via a phising attack.
+## Two-Factor Authentication with One-Time Passwords
 
-Despite what the victims will tell you, these attacks are not sophisticated and they don't require "state sponsorship".
-The industry standard advice seems to be to train staff to recognise phishing attacks.
-This is expensive and companies that do this still get phished.
-The FIDO Universal 2nd Factor standard completely eliminates the possibility of phising with no user training required.
+Traditional OTPs protect against password reuse, weak passwords and credential leakage.
 
 A user's login procedure using a traditional OTP is usually something like this:
 
@@ -46,41 +41,58 @@ A user's login procedure using a traditional OTP is usually something like this:
 4. Read short numeric code from OTP generator
 5. Type OTP into web page
 
-If the user is tricked into entering their login details on phishing site, 2FA does no good.
-They will have given their password and OTP to the phising site, which can then forward that on to the real site and impersonate the user.
+Enabling 2FA on your online accounts is a huge improvement on using static passwords alone, however it makes the most common form of account compromise only marginally more difficult.
+
+### OTP and phishing
+
+According to [research][goog_phishing] by Google, phishing is by far the most common way from an online account to be compromised.
+Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked, they were responsible for [Hillary Clinton's][clinton] campaign email's being hacked.
+Even if you are a Republican you are still not safe as [Sarah Palin's][palin] email account was hacked via a phising attack.
+
+Despite what the victims will tell you, these attacks are not sophisticated and they don't require "state sponsorship".
+The industry standard advice seems to be to train staff to recognise phishing attacks.
+This is expensive and companies that do this still get phished.
+
+If the user is tricked into entering their login details on phishing site then OTP 2FA does no good.
+They will have given their password and OTP to the phishing site, which can then forward that on to the real site and impersonate the user.
 The only frustration OTPs provide to an attacker attempting this is they have a short window to forward those credentials before the OTP is expired.
 In practice this is not an issue as the easiest way of phishing a site is setting up a reverse proxy to it, in which case the credentials are forwared in real time.
 
-When using a U2F token, a user's experience goes like this:
+## The U2F alternative
+
+The FIDO Universal 2nd Factor (U2F) standard for simplifying 2FA using hardware devices that eliminates the possibility of phishing with no user training required.
+
+When using a certified U2F device, a user's experience goes like this:
 
 1. Navigate to example.com
 2. Enter username and password
-3. Touch U2F token
+3. Touch U2F device
 
-A lot happens when that token is pressed.
-The U2F token signs a message containing a random string from the server, the servers address from the browsers perspective and some other things.
+A lot happens when that device is pressed.
+The U2F device signs a message containing a random string from the server, the servers address from the browsers perspective and some other things.
 The browser then forwards that signiture to the server.
 
-
-Your Yubikey is also a [U2F] token. U2F is a open standard for
+Your Yubikey is also a [U2F] device.
 An increasing number of sites support [U2F].
-This is the most user friendly way to use a Yubikey as your 2FA device.
-The latest versions of Chrome, Opera and Firefox support [U2F], however, in Firefox it is not enabled by default and you must enable the following options in the <about:config> page.
-- security.webauth.u2f
-- security.webauth.webauthn
+This is the most user-friendly way to use a Yubikey as your 2FA device.
+The latest versions of Chrome, Opera and Firefox support [U2F], however, in Firefox it is not enabled by default and you must enable the following options in the <about:config> page:
 
-[Github][githubU2F], [Gitlab][gitlabU2F], [Google Cloud Platform][GCPU2F] all support [U2F] as a 2FA option.
+- `security.webauth.u2f`
+- `security.webauth.webauthn`
+
+[GitHub][githubU2F], [Gitlab][gitlabU2F], [Google Cloud Platform][GCPU2F] all support [U2F] as a 2FA option.
 [Amazon Web Services][AWS] does not yet, but you can still use your Yubikey as your 2FA device.
+
+## Falling back to Time-based OTP
+
 [AWS] supports the [TOTP] standard.
-It is not possible for a smart card with no battery to implement TOTP by itself as it requires a real time clock.
-Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] to generate TOTP tokens from the secrets on your Yubikey. You can store up to 32 different TOTP accounts on your Yubikey, nothing is stored on the computer you use, you can insert your Yubikey into any machine with the [Yubico Authenticator][yubico_authenticator] installed and all your TOTP tokens will be availible.
+It is not possible for a smart card without a battery to implement TOTP by itself as it requires a real time clock.
 
-Google performed a two year [study][googU2F] on U2F devices which are widely deployed within Google. They found that compared with a app based OTP like Google Authenticator, Users authenticated faster using a U2F device, U2F devices were inherently less suceptible to MitM attacks and users raised support tickets for authentication problems far less frequently.
+Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] app to generate TOTP tokens from the secrets on your Yubikey. You can store up to 32 different TOTP accounts on your Yubikey, nothing is stored on the computer you use, you can insert your Yubikey into any machine with the [Yubico Authenticator][yubico_authenticator] installed and all your TOTP tokens will be availible.
 
-## ROCA <a name="roca"></a>
-Recently (2017-10-15) a serious problem was found in a library used by Yubikey firmware responsible for generating RSA keys.
-The [ROCA][ROCA] (Revenge of Coppersmith's Attack) hack enables computing the private part of a RSA keypair from the public part alone.
-This has now been fixed, hence why I am recommending generating RSA keys on your Yubikey.
+## Why U2F?
+
+Google performed a two year [study][googU2F] on U2F devices which are widely deployed within Google. They found that compared with a app based OTP like Google Authenticator, users authenticated faster using a U2F device, U2F devices were inherently less suceptible to MitM attacks and users raised support tickets for authentication problems far less frequently.
 
 [cvpwn]: https://thejh.net/misc/website-terminal-copy-paste
 [githubkeys]: https://github.com/settings/keys

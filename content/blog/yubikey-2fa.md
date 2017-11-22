@@ -35,7 +35,7 @@ Enabling 2FA on your online accounts is a huge improvement on using static passw
 
 According to [research][goog_phishing] by Google, phishing is by far the most common way from an online account to be compromised.
 Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked, they were responsible for [Hillary Clinton's][clinton] campaign email's being hacked.
-Even if you are a Republican you are still not safe as [Sarah Palin's][palin] email account was hacked via a phising attack.
+Even if you are a Republican you are still not safe as [Sarah Palin's][palin] email account was hacked via a phishing attack.
 
 Despite what the victims will tell you, these attacks are not sophisticated and they don't require "state sponsorship".
 The industry standard advice seems to be to train staff to recognise phishing attacks.

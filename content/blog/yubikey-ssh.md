@@ -1,6 +1,6 @@
 ---
 author: Paddy Steed
-date: "2017-11-15"
+date: "2017-11-28"
 heroImage: /img/blog/yubikey4.png
 title: Yubikeys for SSH Auth
 
@@ -14,7 +14,11 @@ Description: Get the very latest updates about recent projects, team updates, th
 You can use a Yubikey USB device to securely _generate_ and store your SSH key. This can be used to load your private key on-demand, protected by a PIN. Perfect for pair-programming on shared machines!
 
 <section class="boxout">
-<p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines.</p>
+<p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines:</p>
+<ul>
+  <li><a href="/blog/yubikey-2fa/">Yubikeys for two-factor authentication</a></li>
+  <li><a href="/blog/yubikey-static-secret/">Yubikeys for static secrets</a></li>
+</ul>
 </section>
 
 In this post I will show you how to use your Yubikey to generate and store an RSA key, and then configure your computer to use GPG to load that key and authenticate with remote SSH servers. Each time you authenticate you'll need to have Yubikey inserted, and you'll be prompted for a PIN.
@@ -209,6 +213,10 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy7PhCvbb+R0UIsQdBvIpWQNSBOZkfV+7E0d55Gxzp
 ```
 
 You can put this in `~/.authorized_keys` of any machine you want to be able to log in to, and paste it into GitHub, GitLab, and similar tools.
+
+## Putting it all together
+
+
 
 [cvpwn]: https://thejh.net/misc/website-terminal-copy-paste
 [githubkeys]: https://github.com/settings/keys

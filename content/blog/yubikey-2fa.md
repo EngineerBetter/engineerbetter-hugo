@@ -1,7 +1,7 @@
 ---
 author: Paddy Steed
 date: "2017-11-29"
-heroImage: /img/blog/yubikey4.png
+heroImage: /img/blog/yubikey-with-keys.png
 title: Yubikeys for Two-Factor Auth
 
 draft: true
@@ -74,6 +74,16 @@ The latest versions of Chrome, Opera and Firefox support [U2F], however, in Fire
 
 [GitHub][githubU2F], [Gitlab][gitlabU2F], [Google Cloud Platform][GCPU2F] all support [U2F] as a 2FA option.
 [Amazon Web Services][AWS] does not yet, but you can still use your Yubikey as your 2FA device.
+
+## Configuring GitHub for U2F
+
+Setting up GitHub to recognise your Yubikey is really simple:
+
+1. Go to [GitHub's two-factor authentication settings](https://github.com/settings/two_factor_authentication/configure)
+1. Scroll down to _Security Keys_
+1. Click _Register new device_, give your key a nickname, and click _Add_
+1. When prompted, press the button on your Yubikey
+1. You're done!
 
 ## Falling back to Time-based OTP
 

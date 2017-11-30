@@ -1,7 +1,7 @@
 ---
 author: Paddy Steed
 date: "2017-11-28"
-heroImage: /img/blog/yubikey4.png
+heroImage: /img/blog/yubikey-github.jpg
 title: Yubikeys for SSH Auth
 
 draft: true

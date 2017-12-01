@@ -14,11 +14,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 You can use your Yubikey to remember and type an arbitrary string, as well as using it as a OTP generator and a secure store for your SSH key. We use this so that we don't have to remember our 1Password secret keys.
 
 <section class="boxout">
-<p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines:</p>
-<ul>
-  <li><a href="/blog/yubikey-ssh/">Yubikeys for securely storing and loading SSH keys</a></li>
-  <li><a href="/blog/yubikey-2fa/">Yubikeys for two-factor authentication</a></li>
-</ul>
+<p>This post is part of <a href="/blog/yubikey-all-the-things/">a series on using Yubikeys</a> to secure development whilst pair-programming on shared machines.</p>
 </section>
 
 We use 1Password as our team secrets-management tool. It's great, but every user needs to remember not only their username and password, but a 40-character secret key too. Normally this is saved on your machine, which is not ideal when you're using shared computers.

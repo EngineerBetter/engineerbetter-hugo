@@ -14,11 +14,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 You can use a Yubikey USB device to securely _generate_ and store your SSH key. This can be used to load your private key on-demand, protected by a PIN. Perfect for pair-programming on shared machines!
 
 <section class="boxout">
-<p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines:</p>
-<ul>
-  <li><a href="/blog/yubikey-2fa/">Yubikeys for two-factor authentication</a></li>
-  <li><a href="/blog/yubikey-static-secret/">Yubikeys for static secrets</a></li>
-</ul>
+<p>This post is part of <a href="/blog/yubikey-all-the-things/">a series on using Yubikeys</a> to secure development whilst pair-programming on shared machines.</p>
 </section>
 
 In this post I will show you how to use your Yubikey to generate and store an RSA key, and then configure your computer to use GPG to load that key and authenticate with remote SSH servers. Each time you authenticate you'll need to have Yubikey inserted, and you'll be prompted for a PIN.

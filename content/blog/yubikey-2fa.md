@@ -14,11 +14,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 If you're amassing a plethora of user accounts that require two-factor authentication (2FA) and let's face it, you _should_, then you'll be pleased to learn how you can use a USB Yubikey to avoid having to type in as many one-time-passwords (OTPs).
 
 <section class="boxout">
-<p>This post is part of a series on using Yubikeys to secure development whilst pair-programming on shared machines:</p>
-<ul>
-  <li><a href="/blog/yubikey-ssh/">Yubikeys for securely storing and loading SSH keys</a></li>
-  <li><a href="/blog/yubikey-static-secret/">Yubikeys for static secrets</a></li>
-</ul>
+<p>This post is part of <a href="/blog/yubikey-all-the-things/">a series on using Yubikeys</a> to secure development whilst pair-programming on shared machines.</p>
 </section>
 
 ## Two-Factor Authentication with One-Time Passwords

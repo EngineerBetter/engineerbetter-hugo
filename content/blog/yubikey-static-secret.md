@@ -26,7 +26,7 @@ The following steps show you how to configure a Yubikey to store your 1Password 
 1. Insert your Yubikey, checking that it shows up in the right-hand side of the window: <img src="/img/blog/yubikey-1password/ypt-inserted.png" class="image fit">
 1. Click **Static Password**:<img src="/img/blog/yubikey-1password/ypt-static-password.png" class="image fit">
 1. Click **Scan Code**: <img src="/img/blog/yubikey-1password/ypt-scan-code.png" class="image fit">
-1. **Select "Configuration Slot 2"**. If you accidentally use the first slot, you'll overwrite the configuration that allows your Yubikey to work as a OTP generator. That would be _bad_. <img src="/img/blog/yubikey-1password/ypt-slot-2.png" class="image fit">
+1. **Select "Configuration Slot 2"**. If you accidentally use the first slot, you'll overwrite the configuration that allows your Yubikey to work as an OTP generator. That would be _bad_. <img src="/img/blog/yubikey-1password/ypt-slot-2.png" class="image fit">
 1. Choose a **keyboard layout**: <img src="/img/blog/yubikey-1password/ypt-keyboard-layout.png" class="image fit">
 1. Log in to 1Password: <img src="/img/blog/yubikey-1password/1password-login.png" class="image fit">
 1. Click on your name and then **select "My Profile"** from the dropdown menu: <img src="/img/blog/yubikey-1password/1password-logged-in.png" class="image fit">

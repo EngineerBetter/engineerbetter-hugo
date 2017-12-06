@@ -29,26 +29,26 @@ A user's login procedure using a traditional OTP is usually something like this:
 4. Read short numeric code from OTP generator
 5. Type OTP into web page
 
-Enabling 2FA on your online accounts is a huge improvement on using static passwords alone, however it makes the most common form of account compromise only marginally more difficult.
+Enabling 2FA on your online accounts is a huge improvement on using static passwords alone. However, it makes the most common form of account compromise only marginally more difficult.
 
 ### OTP and phishing
 
-According to [research][goog_phishing] by Google, phishing is by far the most common way from an online account to be compromised.
-Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked, they were responsible for [Hillary Clinton's][clinton] campaign email's being hacked.
-Even if you are a Republican you are still not safe as [Sarah Palin's][palin] email account was hacked via a phishing attack.
+According to [research][goog_phishing] by Google, phishing is by far the most common way for an online account to be compromised.
+Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked, they were responsible for [Hillary Clinton's][clinton] campaign emails being hacked.
+Even if you are a Republican you are still not safe, as [Sarah Palin's][palin] email account was hacked via a phishing attack.
 
 Despite what the victims will tell you, these attacks are not sophisticated and they don't require "state sponsorship".
 The industry standard advice seems to be to train staff to recognise phishing attacks.
 This is expensive and companies that do this still get phished.
 
-If the user is tricked into entering their login details on phishing site then OTP 2FA does no good.
+If the user is tricked into entering their login details on a phishing site then OTP 2FA does no good.
 They will have given their password and OTP to the phishing site, which can then forward that on to the real site and impersonate the user.
 The only frustration OTPs provide to an attacker attempting this is they have a short window to forward those credentials before the OTP is expired.
-In practice this is not an issue as the easiest way of phishing a site is setting up a reverse proxy to it, in which case the credentials are forwared in real time.
+In practice this is not an issue as the easiest way of phishing a site is setting up a reverse proxy to it, in which case the credentials are forwarded in real time.
 
 ## The U2F alternative
 
-The FIDO Universal 2nd Factor (U2F) standard for simplifying 2FA using hardware devices that eliminates the possibility of phishing with no user training required.
+The FIDO Universal 2nd Factor (U2F) standard for simplifying 2FA uses hardware devices that eliminates the possibility of phishing, with no user training required.
 
 When using a certified U2F device, a user's experience goes like this:
 
@@ -57,18 +57,18 @@ When using a certified U2F device, a user's experience goes like this:
 3. Touch U2F device
 
 A lot happens when that device is pressed.
-The U2F device signs a message containing a random string from the server, the servers address from the browsers perspective and some other things.
-The browser then forwards that signiture to the server.
+The U2F device signs a message containing a random string from the server, the server's address from the browser's perspective, and some other things.
+The browser then forwards that signature to the server.
 
 Your Yubikey is also a [U2F] device.
 An increasing number of sites support [U2F].
 This is the most user-friendly way to use a Yubikey as your 2FA device.
-The latest versions of Chrome, Opera and Firefox support [U2F], however, in Firefox it is not enabled by default and you must enable the following options in the <about:config> page:
+The latest versions of Chrome, Opera and Firefox support [U2F]. However, in Firefox it is not enabled by default, and you must enable the following options in the <about:config> page:
 
 - `security.webauth.u2f`
 - `security.webauth.webauthn`
 
-[GitHub][githubU2F], [Gitlab][gitlabU2F], [Google Cloud Platform][GCPU2F] all support [U2F] as a 2FA option.
+[GitHub][githubU2F], [Gitlab][gitlabU2F], and [Google Cloud Platform][GCPU2F] all support [U2F] as a 2FA option.
 [Amazon Web Services][AWS] does not yet, but you can still use your Yubikey as your 2FA device.
 
 ## Configuring GitHub for U2F
@@ -84,13 +84,13 @@ Setting up GitHub to recognise your Yubikey is really simple:
 ## Falling back to Time-based OTP
 
 [AWS] supports the [TOTP] standard.
-It is not possible for a smart card without a battery to implement TOTP by itself as it requires a real time clock.
+It is not possible for a smart card with no battery to implement TOTP by itself, as this requires a realtime clock.
 
-Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] app to generate TOTP tokens from the secrets on your Yubikey. You can store up to 32 different TOTP accounts on your Yubikey, nothing is stored on the computer you use, you can insert your Yubikey into any machine with the [Yubico Authenticator][yubico_authenticator] installed and all your TOTP tokens will be availible.
+Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] app to generate TOTP tokens from the secrets on your Yubikey. You can store up to 32 different TOTP accounts on your Yubikey. Nothing is stored on the computer you use. You can insert your Yubikey into any machine with the [Yubico Authenticator][yubico_authenticator] installed, and all your TOTP tokens will be available.
 
 ## Why U2F?
 
-Google performed a two year [study][googU2F] on U2F devices which are widely deployed within Google. They found that compared with a app based OTP like Google Authenticator, users authenticated faster using a U2F device, U2F devices were inherently less suceptible to MitM attacks and users raised support tickets for authentication problems far less frequently.
+Google performed a two-year [study][googU2F] on U2F devices, which are widely deployed within Google. They found that, compared with an app-based OTP like Google Authenticator, users authenticated faster using a U2F device. U2F devices were inherently less susceptible to MitM attacks, and users raised support tickets for authentication problems far less frequently.
 
 An increasing number of sites support [U2F]. It is more secure, and users are able to authenticate faster compared with any other 2FA method.
 

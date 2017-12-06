@@ -28,7 +28,7 @@ The following steps show you how to configure a Yubikey to store your 1Password 
 1. Choose a **keyboard layout**: <img src="/img/blog/yubikey-1password/ypt-keyboard-layout.png" class="image fit">
 1. Log in to 1Password: <img src="/img/blog/yubikey-1password/1password-login.png" class="image fit">
 1. Click on your name and then **select "My Profile"** from the dropdown menu: <img src="/img/blog/yubikey-1password/1password-logged-in.png" class="image fit">
-1. **Copy your Secret Key** from under the "Sign-In Details" section: <img src="/img/blog/yubikey-1password/1password-singin-details.png" class="image fit">
+1. **Copy your Secret Key** from under the "Sign-In Details" section: <img src="/img/blog/yubikey-1password/1password-signin-details.png" class="image fit">
 1. Paste your Secret Key into the Password box of the Yubikey Personalization Tool. I've obfuscated mine for obvious reasons! <img src="/img/blog/yubikey-1password/ypt-pasted.png" class="image fit">
 1. **Remove all the dashes**, as these are not needed and cause the key to be too long. You should end up with a string of 34 characters. <img src="/img/blog/yubikey-1password/ypt-dashes-removed.png" class="image fit">
 1. Double-check that you've selected **Configuration Slot 2**, otherwise you'll b0rk your OTP functionality.

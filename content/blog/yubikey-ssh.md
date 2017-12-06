@@ -82,7 +82,7 @@ Admin PIN changed.
 
 If you later enter the admin PIN incorrectly 3 times you will need to factory-reset the Yubikey.
 
-## Generate an RSA key on your Yubikey
+## Configure Machines to use GPG Agent
 
 Firstly, you need to configure `ssh` on the machines you'll be working on to use `gpg-agent` to handle authentication, which will in turn load an RSA key from your Yubikey - provided that you enter the correct PIN.
 
@@ -98,8 +98,19 @@ EOF
 $ . ~/.bashrc
 ```
 
-Next, generate a RSA key on your Yubikey.
-I recommend [generating the key on the card](#roca), rather than generating the key on your computer and then copying it to the card. This way you know that it has never been on the filesystem where it could be snooped upon.
+## Install a PIN entry GUI
+
+You may also want to install a GUI for entering your Yubikey's PIN.
+
+The default `pinentry-curses` CLI tool always uses the `tty` it was started in, which gets problematic when changing terminals or when PIN entry was prompted by a background process (such as Git Radar, which we use at EngineerBetter).
+
+To install a PIN entry GUI on **macOS**, run `brew install pinentry-mac`. On Linux you might want to install `pinentry-gui`.
+
+<img src="/img/blog/pinentry-mac.png" class="image fit">
+
+## Generate an RSA key on your Yubikey
+
+I recommend [generating your RSA key on the Yubikey itself](#roca), rather than generating the key on your computer and then copying it to the Yubikey. This way you know that it has never been on the filesystem where it could be snooped upon.
 
 ```
 $ gpg --card-edit
@@ -210,8 +221,17 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy7PhCvbb+R0UIsQdBvIpWQNSBOZkfV+7E0d55Gxzp
 
 You can put this in `~/.authorized_keys` of any machine you want to be able to log in to, and paste it into GitHub, GitLab, and similar tools.
 
-## Putting it all together
+## In action
 
+1. Start a terminal, or `source ~/.bashrc` if you're using the same terminal as earlier
+1. Open a git repository with a remote that uses an ssh URI
+1. Do a `git pull`, and see that authentication fails (you shouldn't have any keys loaded at this point - you can list loaded keys with `ssh-add -l`)
+1. Insert your Yubikey
+1. Do a `git pull`
+1. Observe the PIN entry GUI
+1. Enter your PIN
+1. Observe the GUI disappear, and the `git pull` complete successfully.
+1. Remove your Yubikey when you're done working on that machine.
 
 
 [cvpwn]: https://thejh.net/misc/website-terminal-copy-paste

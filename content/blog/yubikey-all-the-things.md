@@ -11,7 +11,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Paddy Steed is one of the newer members of EngineerBetter, and has a keen eye for all things related to security and cryptography. Soon after joining us he'd outlined a great way for us to securely use shared machines whilst pairing.
+Paddy Steed is one of the newer members of EngineerBetter, and has a keen eye for all things related to security and cryptography. Soon after joining us he outlined a great way for us to securely use shared machines whilst pairing.
 
 Each team member now has a single [Yubikey USB security device](https://www.yubico.com/products/yubikey-hardware/yubikey4/) that does all of the following:
 
@@ -33,7 +33,7 @@ Having to use one's phone every few minutes to enter a 2FA code for the myriad s
 
 ## Static secrets
 
-The Yubikey can be configured to type in a string when its button is long-pressed. This is a great way to get your (very long, very hard to remember) 1Password secret key when using a shared machine. This means your password vault can be accessed with you only remember your email address and password, but with all the benefits of an extra secret for higher entropy.
+The Yubikey can be configured to type in a string when its button is long-pressed. This is a great way to get your (very long, very hard to remember) 1Password secret key when using a shared machine. This means you only have to remember your email address and password to access your password vault, but with all the benefits of an extra secret for higher entropy.
 
 [Yubikeys for static secrets][static]
 

@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones
-date: "2017-11-30"
+date: "2017-12-05"
 heroImage: /img/blog/yubikey4.png
 title: Yubikeys for Static Secrets
 

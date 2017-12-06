@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones
-date: "2017-11-30"
+date: "2017-12-06"
 heroImage: /img/blog/yubikey-all-the-things.jpg
 title: Yubikey All the Things
 

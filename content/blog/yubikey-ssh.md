@@ -1,6 +1,6 @@
 ---
 author: Paddy Steed
-date: "2017-11-28"
+date: "2017-12-05"
 heroImage: /img/blog/yubikey-github.jpg
 title: Yubikeys for SSH Auth
 

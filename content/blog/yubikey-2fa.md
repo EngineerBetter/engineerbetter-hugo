@@ -1,6 +1,6 @@
 ---
 author: Paddy Steed
-date: "2017-11-29"
+date: "2017-12-05"
 heroImage: /img/blog/yubikey-with-keys.png
 title: Yubikeys for Two-Factor Auth
 

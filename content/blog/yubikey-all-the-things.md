@@ -2,7 +2,7 @@
 author: Daniel Jones
 date: "2017-12-06"
 heroImage: /img/blog/yubikey-all-the-things.jpg
-title: Yubikey All the Things
+title: Yubikey All The Things
 
 heading: Our
 headingBold: blog

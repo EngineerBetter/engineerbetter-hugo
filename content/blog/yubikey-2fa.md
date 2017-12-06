@@ -34,7 +34,7 @@ Enabling 2FA on your online accounts is a huge improvement on using static passw
 ### OTP and phishing
 
 According to [research][goog_phishing] by Google, phishing is by far the most common way for an online account to be compromised.
-Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked, they were responsible for [Hillary Clinton's][clinton] campaign emails being hacked.
+Phishing attacks were responsible for [John Podesta's][podesta] email getting hacked. They were responsible for [Hillary Clinton's][clinton] campaign emails being hacked.
 Even if you are a Republican you are still not safe, as [Sarah Palin's][palin] email account was hacked via a phishing attack.
 
 Despite what the victims will tell you, these attacks are not sophisticated and they don't require "state sponsorship".

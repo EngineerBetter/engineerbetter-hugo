@@ -4,8 +4,6 @@ date: "2017-12-05"
 heroImage: /img/blog/yubikey4.png
 title: Yubikeys for Static Secrets
 
-draft: true
-
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

@@ -4,8 +4,6 @@ date: "2017-12-06"
 heroImage: /img/blog/yubikey-all-the-things.jpg
 title: Yubikey All the Things
 
-draft: true
-
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

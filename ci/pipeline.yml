@@ -11,8 +11,8 @@ resources:
     bucket: eb-hugo-builds
     region_name: eu-west-2
     versioned_file: eb-hugo-built.tar.gz
-    access_key_id: {{concourse_ci_s3_access_key}}
-    secret_access_key: {{concourse_ci_s3_secret_key}}
+    access_key_id: ((concourse_ci_s3_access_key))
+    secret_access_key: ((concourse_ci_s3_secret_key))
 
 - name: cf-dev
   type: cf
@@ -20,7 +20,7 @@ resources:
     <<: &cf-params
       api: https://api.run.pivotal.io
       username: systems@engineerbetter.com
-      password: {{systems_cf_password}}
+      password: ((systems_cf_password))
       organization: engineerbetter
       skip_cert_check: false
     space: development

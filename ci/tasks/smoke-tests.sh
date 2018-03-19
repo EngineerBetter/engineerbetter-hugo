@@ -48,6 +48,7 @@ assert_non_error_response /2016/09/20/engineerbetter-hazelcast-cloud-foundry.htm
 assert_non_error_response /2016/09/15/engineerbetter-cloud-foundry-foundation.html
 assert_non_error_response /2016/09/14/hiring.html
 assert_non_error_response /bad
+assert_non_error_response /brain
 assert_non_error_response /update/2016/07/01/brain-aligned-delivery.html
 assert_non_error_response /bosh-concourse2.html
 assert_non_error_response /bosh-concourse.html

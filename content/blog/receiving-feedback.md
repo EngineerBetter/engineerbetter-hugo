@@ -104,13 +104,13 @@ Additionally we ourselves are not fixed. We learn, we grow, and we change. Altho
 
 Criticism without love and empathy is a scary thing. It leaves us feeling exposed and vulnerable. _"If these people think I'm rubbish, do they like me? Will they tell the manager? Will I lose my job?"_
 
-It's no wonder then that criticism elicits defensive and counter-offensive responses in people, which lead to friction in the workplace: a lack of receptiveness to change, or new ideas.
+It's no wonder then that criticism elicits defensive and counter-offensive responses in people, which lead to friction in the workplace. That friction is manifested as a lack of receptiveness to change and new ideas.
 
-Feedback and the ability to act upon it are fundamental features of any anti-fragile system. Feedback (or information from the world) allows a system to adapt and reinforce beneficial behaviours, and this 'doubling-down' on doing what works leads to the non-linearity characteristic of a complex adaptive system. Any system that can't learn, that can't invest more effort in the positive, and move away from the negative, is at best robust and at worst fragile. It will eventually be disrupted by a change in its environment it was oblivious to, and will fail.
+Feedback and the ability to act upon it are fundamental features of any anti-fragile system. Feedback (or information from the world) allows a system to adapt by reinforcing beneficial behaviours, and this 'doubling-down' on doing what works leads to the non-linearity characteristic of a complex adaptive system. **Any system that can't learn, that can't invest more effort in the positive, and move away from the negative, is at best robust and at worst fragile**. It will eventually be disrupted by a change in its environment that it was oblivious to, and will fail.
 
 Nowerdays we recognise this in systems design, and use techniques like fast-failing, chaos engineering, self-healing and team retrospectives and post-mortems to enable our systems and organisations to learn and adapt. How seriously does the IT industry take these concerns at the personal level, though?
 
-Feedback loops are exponential. Much like compound interest, the earlier feedback is sought and the more frequently it is delivered, the larger the returns. The organisation that can learn sooner and quicker will have an exponential return on this learning, as explored in the book Exponential Organisations.
+Feedback loops are exponential. Much like compound interest, the earlier feedback is sought and the more frequently it is delivered, the larger the returns. The organisation that can learn sooner and quicker will have an exponential return on this learning, as explored in the book [Exponential Organisations](https://www.amazon.co.uk/Exponential-Organizations-organizations-better-cheaper/dp/1626814236/).
 
 At EngineerBetter we see on a daily basis how increasing the rate at which organisations introspect and learn increases their productivity and ability to adapt. If we can innoculate people against the fear of criticism by teaching them how to deliver, receive, and think about feedback, then we can enable a step-change in individual's personal development too.
 

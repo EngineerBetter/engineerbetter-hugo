@@ -83,7 +83,7 @@ Projects like [Eirini](https://docs.google.com/document/d/1qs6UQQDWMkfOpY19XqS3C
 
 ## Non-zero
 
-Some of my friends, who I have great admiration and respect for, have seen the overlap between Kubernetes and the Cloud Foundry ecosystem of tools, and talked about "wars" and "battles". This is nothing of the sort. **This is a positive-sum game.** Anything where the end users benefit is non-zero sum.
+Some of my friends, who I have great admiration and respect for, have seen the overlap between Kubernetes and the Cloud Foundry ecosystem of tools, and talked about "wars" and "battles". This is nothing of the sort. **This is a positive-sum game** where end-users' productivity benefits.
 
 * The Cloud Foundry ecosystem gets to adopt new mature implementations of its innards, freeing developers to work on new user-facing problems.
 * The Kubernetes ecosystem will benefit greatly from having a ready-made solution for the vast majority of apps.

@@ -1,7 +1,7 @@
 ---
 author: Daniel Jones
-date: "2018-04-30"
-heroImage: /img/blog/post-devops/post-devops.png
+date: "2018-05-08"
+heroImage: /img/blog/feedback.jpg
 title: Receiving Feedback
 draft: true
 
@@ -11,6 +11,8 @@ Description: Get the very latest updates about recent projects, team updates, th
 ---
 
 People aren't scared of failure - they're scared of criticism. Defensiveness increases the transaction costs of getting even the simplest problem solved. If we can better equip people to receive feedback, then we can remove a major source of lost productivity and lost potential.
+
+At EngineerBetter we have [a Git repo of documentation to provoke thought about whether we're doing the best we can](https://github.com/EngineerBetter/introspection). This blog post is an expansion of one of the docs in that repo.
 
 People aren't scared of failure, or at least, they're not scared of being involved in failing projects. If they were, then I dare say we'd see far fewer failed IT projects in the industry. Rather they're scared of criticism and the devaluing of us as peers that goes with it. Seth Godin makes this point well in Tribes.
 
@@ -109,3 +111,10 @@ Feedback and the ability to act upon it are fundamental features of any anti-fra
 Nowerdays we recognise this in systems design, and use techniques like fast-failing, chaos engineering, self-healing and team retrospectives and post-mortems to enable our systems and organisations to learn and adapt. How seriously does the IT industry take these concerns at the personal level, though?
 
 Feedback loops are exponential. Much like compound interest, the earlier feedback is sought and the more frequently it is delivered, the larger the returns. The organisation that can learn sooner and quicker will have an exponential return on this learning, as explored in the book Exponential Organisations.
+
+At EngineerBetter we see on a daily basis how increasing the rate at which organisations introspect and learn increases their productivity and ability to adapt. If we can innoculate people against the fear of criticism by teaching them how to deliver, receive, and think about feedback, then we can enable a step-change in individual's personal development too.
+
+### Further Reading
+
+* [Thanks For The Feedback](https://www.amazon.co.uk/Thanks-Feedback-Science-Receiving-Well/dp/0670922633/)
+* [Difficult Conversations](https://www.amazon.co.uk/Difficult-Conversations-Discuss-What-Matters/dp/0670921343/)

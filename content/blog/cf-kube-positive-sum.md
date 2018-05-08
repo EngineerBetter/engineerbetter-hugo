@@ -2,7 +2,7 @@
 author: Daniel Jones
 date: "2018-05-08"
 heroImage: /img/blog/kubecon-eu-2018.png
-title: Cloud Foundry and Kubernetes is Positive-Sum
+title: Cloud Foundry + Kubernetes is Positive-Sum
 
 heading: Our
 headingBold: blog
@@ -11,11 +11,11 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 Cloud Foundry's sweet spot has always been making stateless twelve-factor apps as easy to deploy as they _should be_. This functionality is as needed now as it's ever been - if not more so.
 
-There is a huge potential to bring the benefits of Cloud Foundry to those folks handcrafting their own platforms on Kubernetes, saving them vast amounts of time and money as a result. As Cloud Foundry's [ dear friend Sam Ramji would likely say: **this is a positive-sum game**](https://www.youtube.com/watch?v=qvvwAUZYdNk).
+There is a huge potential to bring the benefits of Cloud Foundry to those folks handcrafting their own platforms on Kubernetes, saving them vast amounts of time and money as a result. As Cloud Foundry's [dear friend Sam Ramji would likely say: **this is a positive-sum game**](https://www.youtube.com/watch?v=qvvwAUZYdNk).
 
 Kubernetes presents a lower-level abstraction than Cloud Foundry, from which folks can make their own platforms. It offers a container-scheduling _lingua franca_, and the ability for more granular concerns such as ensuring GPUs are available to a running process.
 
-Hundreds of organisations are making [mind-boggling money savings](https://youtu.be/V8w4jf5clJk?t=1316) through the agility that Cloud Foundry brings. Some people have invested months of effort in building successful Kubernetes platforms; if each of those months was costing them $6m in lost efficiencies, I wonder if they would have made the same decision.
+Hundreds of organisations are making [mind-boggling money savings](https://youtu.be/V8w4jf5clJk?t=1314) through the agility that Cloud Foundry brings. Some people have invested months of effort in building successful Kubernetes platforms; if each of those months was costing them $6m in lost efficiencies, I wonder if they would have made the same decision.
 
 ## CF Summit, JAX, KubeCon, oh my!
 
@@ -26,8 +26,8 @@ At Cloud Foundry Summit I was amongst my CF ecosystem pals, where it seemed ever
 At KubeCon I helped facilitate the Cloud Foundry Day, where we saw:
 
 * Abby Kearns, Julz Friedman, Sanjay Patil and Caleb Miles discuss if and how Cloud Foundry and Kubernetes should blend
-* Julz showed us the newly-renamed [Project Eirini](), which allows CF to deploy apps to Kubernetes instead of using the Diego runtime
-* Dr. Max demonstrated Cloud Foundry deployed to Kubernetes using the BOSH Kube CPI
+* Julz showed us the newly-renamed [Project Eirini](https://github.com/Andrew-Edgar/cube-release), which allows CF to deploy apps to Kubernetes instead of using the Diego runtime
+* Dr. Max demonstrated Cloud Foundry deployed to Kubernetes using the [BOSH Kube CPI](https://github.com/bosh-cpis/bosh-kubernetes-cpi-release)
 
 I hours with the awesome Cloud Foundry Foundation and Grape Up folks on the Cloud Foundry booth, explaining to Kubes fans what Cloud Foundry is, how it works, and what value it can offer.
 
@@ -41,7 +41,7 @@ My ex-colleague [Daniel Bryant](https://twitter.com/danielbryantuk), who is a ve
 
 If you implemented the ideas in Daniel's book you'd have a great solution.
 
-Or, you could just use _buildpacks_. Wouldn't it be lovely if they worked more nicely with OCI images?
+Or, you could just use a platform that leverages _buildpacks_. Oh, and wouldn't it be lovely if they worked more nicely with OCI images?
 
 Cloud Foundry has a number of CI/CD challenges _solved_ as runtime concerns. Without buildpacks, everyone has to solve the same problems in every CI/CD pipeline.
 

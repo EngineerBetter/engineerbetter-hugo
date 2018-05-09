@@ -1,9 +1,8 @@
 ---
 author: Daniel Jones
-date: "2018-05-08"
+date: "2018-05-09"
 heroImage: /img/blog/feedback.jpg
 title: Receiving Feedback
-draft: true
 
 heading: Our
 headingBold: blog

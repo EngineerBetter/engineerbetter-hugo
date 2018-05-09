@@ -29,7 +29,7 @@ At KubeCon I helped facilitate the Cloud Foundry Day, where we saw:
 * Julz showed us the newly-renamed [Project Eirini](https://github.com/Andrew-Edgar/cube-release), which allows CF to deploy apps to Kubernetes instead of using the Diego runtime
 * Dr. Max demonstrated Cloud Foundry deployed to Kubernetes using the [BOSH Kube CPI](https://github.com/bosh-cpis/bosh-kubernetes-cpi-release)
 
-I hours with the awesome Cloud Foundry Foundation and Grape Up folks on the Cloud Foundry booth, explaining to Kubes fans what Cloud Foundry is, how it works, and what value it can offer.
+I spent hours with the awesome Cloud Foundry Foundation and Grape Up folks on the Cloud Foundry booth, explaining to Kubes fans what Cloud Foundry is, how it works, and what value it can offer.
 
 I spent time talking to those using Kubernetes and considering using it. Many of them were interested very much in the technical details, and relishing the challenge of building their own platform that does _all the cool things_. Many of them didn't share [Alexis Richardson's cryptomnesic reference](https://youtu.be/qUK-F40oLVQ?t=572) of [Onsi Fakhouri's famous haiku](https://twitter.com/onsijoe/status/598235841635360768?lang=en).
 

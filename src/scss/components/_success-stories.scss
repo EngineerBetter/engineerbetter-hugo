@@ -449,4 +449,11 @@
       }
     }
   }
+  .stories_parallax-banner {
+    @media screen and (min-width: 750px) {
+      margin-top: 0;
+      margin-bottom: 25px;
+      background-image: url('../img/DW_6612_processed.jpg');
+    }
+  }
 }

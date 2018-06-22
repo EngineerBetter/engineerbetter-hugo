@@ -176,7 +176,7 @@
     .work-operations_col1-anchor {
       display: block;
       margin-top: 25px;
-      margin-bottom: 55px;
+      margin-bottom: 0;
       padding-left: 20px;
       color: $cl-light-blue;
       font-family: 'Raleway-ExtraBold';
@@ -276,12 +276,13 @@
             transition: opacity .8s;
             top: 0;
             left: 0;
-            z-index: 99;
+            z-index: 1;
           }
           &.after-strikethrough {
             text-decoration: line-through;
             opacity: 1;
             transition: opacity .8s;
+            z-index: 1;
           }
         }
         &.work-operations_left-slider-top {
@@ -331,6 +332,12 @@
         }
       }
     }
+  }
+}
+.work-operations_parallax-banner {
+  @media screen and (min-width: 750px) {
+    margin-bottom: 60px;
+    background-image: url('../img/DW_6799_processed.jpg');
   }
 }
 @keyframes animatedSlideLeft {

@@ -1,6 +1,15 @@
 .about_header {
   padding-top: 40px;
   padding-bottom: 15px;
+  &.mob-padding-top {
+    padding-bottom: 35px;
+    @media screen and (max-width: 750px) {
+      padding-top: 10px;
+    }
+    @media screen and (min-width: 750px) {
+      padding-bottom: 45px;
+    }
+  }
   @media screen and (min-width: 750px) {
     padding-top: 70px;
   }
@@ -303,13 +312,292 @@
     }
   }
 }
+.about_parallax-banner {
+  @media screen and (min-width: 750px) {
+    background-image: url('../img/AboutUs_Window@2x.jpg');
+  }
+}
+.about_team-grid-outer {
+  background-position: center;
+  background-size: auto 74%;
+  background-repeat: no-repeat;
+  @media screen and (min-width: 750px) {
+    &:not(.is-modal) {
+      background-image: url('../img/OurTeam_BG_Graphic_Desktop.png');
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    background-size: auto 80%;
+  }
+  position: relative;
+  &.is-mobile {
+    @media screen and (min-width: 749px) {
+      display: none !important;
+    }
+  }
+  .about_modal-outer-wrap {
+    position: absolute;
+    top: -62px;
+    visibility: hidden;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    transition: opacity .3s;
+    z-index: 4;
+    &.is-visible {
+      visibility: visible;
+      opacity: 1;
+    }
+    .about_modal-wrap {
+      position: relative;
+      padding-top: 62px;
+      min-height: 300px;
+      background: #4fa8ff; /* Old browsers */
+      background: -moz-linear-gradient(top, rgba(79,168,255,.9) 0%, rgba(255,255,255,.9) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(79,168,255,.9) 0%,rgba(255,255,255,.9) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(79,168,255,.9) 0%,rgba(255,255,255,.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4fa8ff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+      .about_modal-close-btn {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: 1px solid $cl-white;
+        cursor: pointer;
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          height: 2px;
+          width: 100%;
+          top: 50%;
+          left: 0;
+          margin-top: -1px;
+          background: $cl-white;
+        }
+        &::before {
+          transform: rotate(45deg);
+        }
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+  .about_modal-overlay {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #1E74BD;
+    transition: opacity .3s;
+    &.is-visible {
+      visibility: visible;
+      opacity: .5;
+    }
+  }
+}
+.about_team-grid-wrap {
+  max-width: 540px;
+  margin: 0 auto;
+  @media screen and (min-width: 750px) {
+    margin-right: 40px;
+    max-width: none;
+    margin-left: 0;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-right: 13vw;
+    max-width: 1000px;
+  }
+  .about_icon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+  .about_modal-name {
+    font-family: 'Raleway-ExtraBold';
+    color: $cl-white;
+    font-size: 20px;
+    line-height: 23px;
+    display: none;
+    @media screen and (min-width: 750px) {
+      display: block;
+      font-size: 22px;
+      line-height: 26px;
+    }
+    &.about_modal-name-absolute {
+      position: absolute;
+      left: 110%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: block;
+      @media screen and (min-width: 750px) {
+        display: none;
+      }
+    }
+  }
+  div.about_modal-content {
+    width: 100%;
+    padding: 0 0 100px !important;
+    @media screen and (min-width: 750px) {
+      width: 66.6%;
+      padding-bottom: 120px;
+      padding-left: 6% !important;
+    }
+    @media screen and (min-width: 1200px) {
+      padding-bottom: 100px;
+    }
+    .about_modal-list-wrap {
+      padding-top: 0;
+      padding-bottom: 30px;
+      padding-left: 25px;
+      list-style-type: none;
+      list-style-position: inside;
+      @media screen and (min-width: 750px) {
+        padding-top: 10px;
+      }
+      li {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        line-height: 18px;
+        color: $cl-gray-mid;
+        font-family: 'Raleway-Regular';
+        margin-top: 15px;
+        &::before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          background-color: $cl-white;
+          border-radius: 6px;
+          display: inline-block;
+          margin-left: -22px;
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+  & > a, > div {
+    display: block;
+    width: 50%;
+    float: left;
+    padding-bottom: 20px;
+    &:nth-child(2n + 1) {
+      padding-right: 10px;
+    }
+    &:nth-child(2n + 2) {
+      padding-left: 10px;
+    }
+    @media screen and (min-width: 750px) {
+      width: 33.3%;
+      padding-bottom: 32px;
+      &:nth-child(2n + 1) {
+        padding-right: 0;
+      }
+      &:nth-child(2n + 2) {
+        padding-left: 0;
+      }
+      &:nth-child(3n + 1) {
+        padding-right: 21.3px;
+      }
+      &:nth-child(3n + 2) {
+        padding-left: 10.7px;
+        padding-right: 10.7px;
+      }
+      &:nth-child(3n + 3) {
+        padding-left: 21.3px;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      padding-bottom: 40px;
+      &:nth-child(3n + 1) {
+        padding-right: 26.6px;
+      }
+      &:nth-child(3n + 2) {
+        padding-left: 13.3px;
+        padding-right: 13.3px;
+      }
+      &:nth-child(3n + 3) {
+        padding-left: 26.6px;
+      }
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+  & > a:hover {
+    opacity: .65;
+    transition: .3s opacity !important;
+  }
+  & > div > div {
+    position: relative;
+    padding-bottom: 32%;
+    @media screen and (min-width: 750px) {
+      padding-bottom: 24%;
+    }
+  }
+  & > div > div > div {
+    position: relative;
+    .about_modal-img-overlay {
+      position: absolute;
+      bottom: -32%;
+      right: -20%;
+      height: 64%;
+      width: auto;
+      @media screen and (min-width: 750px) {
+        bottom: -24%;
+        right: -20%;
+        height: 48%;
+      }
+    }
+  }
+}
+
+.about_join {
+  color: $cl-gray-mid;
+  font-family: 'Raleway-Regular';
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: 0.53px;
+  font-weight: 500;
+  text-align: center;
+  padding: 20px 20px 0;
+  & > a {
+    color: $cl-light-blue;
+    text-decoration: underline;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 0.53px;
+    font-family: 'Raleway-Bold';
+  }
+  .mob-visible {
+    @media screen and (min-width: 550px) {
+      display: none;
+    }
+  }
+}
 .about_banner {
   padding: 45px 20px 60px 20px;
   background-color: $cl-light-blue-banner;
+  margin-top: 40px;
   @media screen and (min-width: 750px) {
     margin-left: 0;
     margin-right: 0;
-    margin-top: 80px;
+    margin-top: 65px;
   }
   .blog_banner-text {
     @media screen and (min-width: 750px) {

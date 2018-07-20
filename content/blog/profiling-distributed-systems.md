@@ -10,7 +10,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Since introducing Credhub into the concourse-up distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish. Being distributed system engineers, we did what came naturally and scaled. In concourse-up we colocate the Concourse ATC, Credhub, UAA, and some other components on the web VM. We tried scaling this VM to be a larger instance type but saw little to no improvement. We also tried scaling the RDS instance where credhub stores its credentials to no avail. Even though vertical scaling didn't offer large speed improvement, our Concourse installation was still usable so we didn't worry about it too much.
+Since introducing Credhub into the [concourse-up](10) distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish. Being distributed system engineers, we did what came naturally and scaled. In concourse-up we colocate the Concourse ATC, Credhub, UAA, and some other components on the web VM. We tried scaling this VM to be a larger instance type but saw little to no improvement. We also tried scaling the RDS instance where credhub stores its credentials to no avail. Even though vertical scaling didn't offer large speed improvement, our Concourse installation was still usable so we didn't worry about it too much.
 
 This changed when Concourse v3.14.0 was released. This version contained a new feature which allowed the Concourse to start even if the Credhub was down. After upgrading we noticed that our Concourse was slower than ever and that both concourse-up and the upstream Concourse repo got bug reports about the slowness.
 
@@ -115,3 +115,4 @@ The cloudwatch graph for this change is below.
 [7]: https://tools.ietf.org/html/rfc7230#section-6.3
 [8]: https://github.com/cloudfoundry-incubator/credhub-cli/pull/45
 [9]: https://gist.github.com/takeyourhatoff/3c8a83a0eab0b3630658531793a926eb
+[10]: https://github.com/EngineerBetter/concourse-up

@@ -45,7 +45,7 @@ At EngineerBetter we often discover that our customers have a management approac
 
 ## Flow efficiency, not resource efficiency
 
-When IT leadership teams have been tasked with reducing costs, helping them acquire knowledge of the organisation as a *system* can provide some much needed enlightenment. To make this visible we can use the lean-management technique of [Value Stream Mapping](https://en.wikipedia.org/wiki/Value_stream_mapping) to discover which parts of an organisation are on the critical path to delivering something useful and understand the impediments to flow.
+When IT leadership teams have been tasked with reducing costs, helping them acquire knowledge of the organisation as a *system* can provide some much needed enlightenment. To make this visible we can use the lean-management technique of [Value Stream Mapping](https://en.wikipedia.org/wiki/Value_stream_mapping) to discover which parts of an organisation are on the critical path to delivering something useful and understand the impediments to *flow*.
 
 If enterprise IT delivered physical things we'd have visibility of flow, but unfortunately information is invisible which usually leads to some unfortunate management decisions.
 
@@ -59,13 +59,13 @@ If you can understand the way in which value flows through your system you can b
 
 ## Communicating the direction of travel
 
-Studying the system gives us appreciation of *flow* and visibility of where waste occurs in our system. One of the most common sources of waste is excessive planning and analysis. Usually a series of decisions and commitments become dependent on this plan, but it soon ends up becoming irrelevant, as the world changes around us.
+Studying the system gives us appreciation of flow and visibility of where waste occurs in our system. One of the most common sources of waste is excessive planning and analysis. Usually a series of decisions and commitments become dependent on this plan, but it soon ends up becoming irrelevant, as the world changes around us.
 
 How might we change the way we define our objectives, to cope with change and reduce this waste?
 
 We often talk about defining **outcomes instead of outputs** when describing agility in senior leadership, but how is this done? Often folks have a shopping list of things to be done, but the business intent behind them is poorly communicated. We’ve found that [Impact Mapping](https://www.impactmapping.org/) is a fast way to reverse engineer an exec leadership shopping list into the desired *outcomes* before building a backlog.
 
-Humans like to jump to solutions rather than understand problems and the iron triangle compounds this effect by encouraging a bias for action. Traditional management systems reward having certainty over *the plan* for delivery. It's understandable why communication of ideas as outcomes instead of outputs is not something most people are accustomed to.
+Humans like to jump to solutions rather than understand problems and the iron triangle compounds this effect by encouraging a bias for action. Traditional management systems reward having certainty over *the plan* for delivery. It's understandable why communication of ideas as outcomes instead of outputs is not something most people are used to.
 
 One technique we've used to help surface intent and outcomes is to ask folks to tell stories about the business after their solution has been implemented. What would be different in the world as a result of having this thing?
 

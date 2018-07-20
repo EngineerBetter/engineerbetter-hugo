@@ -10,9 +10,9 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Since introducing Credhub into the concourse-up distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish. Being distributed system engineers, we did what came naturally and scaled. In concourse-up we colocate the Concourse ATC, Credhub, UAA, and some other components on the web vm. We tried scaling this vm to be a larger instance type but saw little to no improvement. We also tried scaling the RDS instance where credhub stores its credentials to no avail. Even though vertical scaling didn't offer large speed improvement, our Concourse installation was still usable so we didn't worry about it too much.
+Since introducing Credhub into the concourse-up distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish. Being distributed system engineers, we did what came naturally and scaled. In concourse-up we colocate the Concourse ATC, Credhub, UAA, and some other components on the web VM. We tried scaling this VM to be a larger instance type but saw little to no improvement. We also tried scaling the RDS instance where credhub stores its credentials to no avail. Even though vertical scaling didn't offer large speed improvement, our Concourse installation was still usable so we didn't worry about it too much.
 
-This changed when concourse v3.14.0 was released. This version contained a new feature which allowed the Concourse to start even if the Credhub was down. After upgrading we noticed that our Concourse was slower than ever and that both concourse-up and the upstream Concourse repo got bug reports about the slowness.
+This changed when Concourse v3.14.0 was released. This version contained a new feature which allowed the Concourse to start even if the Credhub was down. After upgrading we noticed that our Concourse was slower than ever and that both concourse-up and the upstream Concourse repo got bug reports about the slowness.
 
 Concourse's implementation of Credhub allows for credentials to be stored in either a team level or a pipeline level path with the latter taking precedence over the former. We knew that this implementation results in a surprising number of requests off of a small number of resources as Concourse will check both path possibilities for each secret. For example, suppose you have a Concourse pipeline with the following resource:
 
@@ -99,7 +99,7 @@ With this in mind we took a look at the credhub-cli and found that it was fallin
 
 Now the ATC is free to spend all its processing power on ATC-related activities. It no longer has to contend with TLS handshakes and Credhub client creation.
 
-As a real-world example we built a version of ATC containing all these fixes and patched the EngineerBetter Concourse installation with it. We saw an immediate drop in CPU utilisation on the web vm.
+As a real-world example we built a version of ATC containing all these fixes and patched the EngineerBetter Concourse installation with it. We saw an immediate drop in CPU utilisation on the web VM.
 
 The cloudwatch graph for this change is below.
 

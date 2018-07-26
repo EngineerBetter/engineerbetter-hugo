@@ -44,11 +44,37 @@ docker run uber/go-torch -u http://$ATC_EIP:8079 -p > flame.svg
 The resulting graph was:
 <embed style="width: 100%" src="/img/blog/profiling/before.svg" type="image/svg+xml" />
 
-If you haven't encountered flame graphs before, Brendan Gregg wrote a [good primer to them][3]
+If you haven't encountered flame graphs before, Brendan Gregg wrote a [good primer to them][3].
 
 This graph indicated that new CredHub clients were being constructed very frequently, and during the constructon of this client, a lot of work was done. The ATC only really needs to construct this client once, then it can reuse the client every time it needs to fetch credentials.
 
-We noticed that this issue was [already being tracked][4] by the Concourse team. The intitial solutions to this issue had inadvertently reintroduced a [previous bug][5]. We submitted [a fix for this][6] on the ATC component. Then we patched our test Concourse environment and collected a new profile. This generated the following flame graph:
+We noticed that the high CPU usage issue was [already being tracked][4] by the Concourse team, which had been introduced in an attempt to fix a [previous bug][5]. It also introduced another, more subtle bug.
+
+Given that `lazyCredhub` is a struct, can you spot the bug in this method that will cause `lc.credhub` to _always_ be nil?
+
+```golang
+func (lc lazyCredhub) CredHub() (*credhub.CredHub, error) {
+	if lc.credhub != nil {
+		return lc.credhub, nil
+	}
+
+	var err error
+	credhubOnce.Do(func() {
+		credhubInstance, err = credhub.New(lc.url, lc.options...)
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	lc.credhub = credhubInstance
+
+	return lc.credhub, nil
+}
+```
+
+The method has a _value_ receiver, and not a _pointer_ receiver. Thus, on each method invocation a new copy of the struct was being created, and the method executed against that. When the method returns, our new instance pops off the stack and the `lazyCredhub` instance in the calling scope remains completely unchanged.
+
+We submitted [a fix for this][6] on the ATC component. Then we patched our test Concourse environment and collected a new profile. This generated the following flame graph:
 
 <embed style="width: 100%" src="/img/blog/profiling/before_keepalive.svg" type="image/svg+xml" />
 

@@ -10,11 +10,15 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Since introducing CredHub into the [concourse-up](10) distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish. Being distributed system engineers, we did what came naturally and scaled. In concourse-up we colocate the Concourse ATC, CredHub, UAA, and some other components on the web VM. We tried scaling this VM to be a larger instance type but saw little to no improvement. We also tried scaling the RDS instance where CredHub stores its credentials to no avail. Even though vertical scaling didn't offer large speed improvement, our Concourse installation was still usable so we didn't worry about it too much.
+Since introducing CredHub into the [concourse-up](10) distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish.
+
+In concourse-up we colocate the Concourse ATC, CredHub, UAA, and some other components on the web VM. We tried scaling this VM to be a larger instance type but saw little to no improvement. We also tried scaling the RDS instance where CredHub stores its credentials to no avail. Even though vertical scaling didn't offer large speed improvement, our Concourse installation was still usable so we didn't worry about it too much.
+
+## Performance Regression
 
 This changed when Concourse v3.14.0 was released. This version contained a new feature which allowed Concourse to start even if CredHub was down. After upgrading we noticed that our Concourse was slower than ever and that both concourse-up and the upstream Concourse repo got bug reports about the slowness.
 
-Concourse's implementation of CredHub allows for credentials to be stored in either a team level or a pipeline level path with the latter taking precedence over the former. We knew that this implementation results in a surprising number of requests off of a small number of resources as Concourse will check both path possibilities for each secret. For example, suppose you have a Concourse pipeline with the following resource:
+Concourse's usage of CredHub allows for credentials to be stored in either a team level or a pipeline level path with the latter taking precedence over the former. We knew that this implementation results in a surprising number of requests off of a small number of resources as Concourse will check both path possibilities for each secret. For example, suppose you have a Concourse pipeline with the following resource:
 
 ```yaml
 - name: concourse-up
@@ -25,7 +29,12 @@ Concourse's implementation of CredHub allows for credentials to be stored in eit
     private_key: ((github_private_key))
 ```
 
-Every time Concourse checks for a new version of this resource (once per minute by default) it will query CredHub for secrets on `/concourse/TEAM/github_private_key` _and_ on `/concourse/TEAM/PIPELINE/github_private_key`
+Every time Concourse checks for a new version of this resource (once per minute by default) it will query CredHub for secrets on:
+
+* `/concourse/TEAM/PIPELINE/github_private_key` _and_ on
+* `/concourse/TEAM/github_private_key`
+
+## Investigation, Profiling
 
 When we first set out trying to fix this problem in concourse-up we thought we would have to implement a cache for credential lookups. The hope was that this would help to relieve the pressure on CredHub as had been done for Vault. However, we know that because of [Amdahl's law][0], if we don't understand the problem before we start trying to solve it, we likely won't achieve the best improvements.
 
@@ -45,6 +54,8 @@ The resulting graph was:
 <embed style="width: 100%" src="/img/blog/profiling/before.svg" type="image/svg+xml" />
 
 If you haven't encountered flame graphs before, Brendan Gregg wrote a [good primer to them][3].
+
+## A Subtle Bug
 
 This graph indicated that new CredHub clients were being constructed very frequently, and during the constructon of this client, a lot of work was done. The ATC only really needs to construct this client once, then it can reuse the client every time it needs to fetch credentials.
 
@@ -79,6 +90,8 @@ We submitted [a fix for this][6] on the ATC component. Then we patched our test 
 <embed style="width: 100%" src="/img/blog/profiling/before_keepalive.svg" type="image/svg+xml" />
 
 As you can see this fix eliminated the parsing activities but a large proportion of time is being spent on TLS handshakes.
+
+## A Subtle Performance Gotcha
 
 Both Concourse and the CredHub CLI are written in Go where TLS operations are handled by `net/http`. This package uses a goroutine to perform TLS handshakes so we couldn't tell from the profiling data which functions were initiating them. However, since we only saw this behaviour when CredHub was used, we suspected that it was calls to obtain credentials which were initiating these handshakes.
 
@@ -119,7 +132,11 @@ if err != nil {
 }
 ```
 
-With this in mind we took a look at the credhub-cli and found that it was falling into this trap. We [raised a PR][8] to fix it. Once our fix was merged we patched our test Concourse again, collected a new profile, and generated the following flame graph:
+With this in mind we took a look at the credhub-cli and found that it was falling into this trap. We [raised a PR][8] to fix it.
+
+## A Dramatic Improvement
+
+Once our fix was merged we patched our test Concourse again, collected a new profile, and generated the following flame graph:
 
 <embed style="width: 100%" src="/img/blog/profiling/after_keepalive.svg" type="image/svg+xml" />
 

@@ -150,6 +150,10 @@ The cloudwatch graph for this change is below.
 
 <img style="width: 100%" src="/img/blog/profiling/cloudwatch.png" />
 
+## All Fixed!
+
+Our fix got merged courtesy of the fine folks on the Concourse team, and now [Concourse v4.0.0][14] should be _significantly_ faster when using CredHub.
+
 [0]: https://en.wikipedia.org/wiki/Amdahl%27s_law
 [1]: https://blog.golang.org/profiling-go-programs
 [2]: https://github.com/uber/go-torch
@@ -161,3 +165,4 @@ The cloudwatch graph for this change is below.
 [8]: https://github.com/cloudfoundry-incubator/credhub-cli/pull/45
 [9]: https://gist.github.com/takeyourhatoff/3c8a83a0eab0b3630658531793a926eb
 [10]: https://github.com/EngineerBetter/concourse-up
+[11]: https://concourse-ci.org/download.html#v400

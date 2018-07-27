@@ -2,7 +2,7 @@
 author: Paddy Steed & Colin Simmons
 date: "2018-07-18"
 heroImage: /img/blog/profiling/before_keepalive.svg
-title: Profiling Distributed Systems
+title: Improving Concourse Performance
 draft: true
 
 heading: Our

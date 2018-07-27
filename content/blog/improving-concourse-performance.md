@@ -18,7 +18,9 @@ In concourse-up we colocate the Concourse ATC, CredHub, UAA, and some other comp
 
 This changed when Concourse v3.14.0 was released. This version contained a new feature which allowed Concourse to start even if CredHub was down. After upgrading we noticed that our Concourse was slower than ever and that both concourse-up and the upstream Concourse repo got bug reports about the slowness.
 
-Concourse's usage of CredHub allows for credentials to be stored in either a team level or a pipeline level path with the latter taking precedence over the former. We knew that this implementation results in a surprising number of requests off of a small number of resources as Concourse will check both path possibilities for each secret. For example, suppose you have a Concourse pipeline with the following resource:
+Concourse's usage of CredHub allows for credentials to be stored in either a team level or a pipeline level path with the latter taking precedence over the former. We knew that this implementation results in a surprising number of requests off of a small number of resources as Concourse will check both path possibilities for each secret.
+
+For example, suppose you have a Concourse pipeline with the following resource:
 
 ```yaml
 - name: concourse-up

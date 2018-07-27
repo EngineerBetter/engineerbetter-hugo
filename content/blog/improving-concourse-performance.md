@@ -1,9 +1,9 @@
 ---
 author: Paddy Steed & Colin Simmons
-date: "2018-07-18"
+date: "2018-07-27"
 heroImage: /img/blog/profiling/before_keepalive.svg
 title: Improving Concourse Performance
-draft: true
+
 
 heading: Our
 headingBold: blog

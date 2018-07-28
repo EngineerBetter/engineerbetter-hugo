@@ -10,7 +10,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Since introducing CredHub into the [concourse-up](10) distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish.
+Since introducing CredHub into the [concourse-up][10] distribution, we became aware of some performance issues with it. We noticed if you had lots of resouces, the load on the ATC would be very high, and the system would feel very sluggish.
 
 In concourse-up we colocate the Concourse ATC, CredHub, UAA, and some other components on the web VM. We tried scaling this VM to be a larger instance type but saw little to no improvement. We also tried scaling the RDS instance where CredHub stores its credentials to no avail. Even though vertical scaling didn't offer large speed improvement, our Concourse installation was still usable so we didn't worry about it too much.
 

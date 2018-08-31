@@ -1,6 +1,7 @@
 ---
 author: Eva Dinckel
 date: "2018-08-31"
+heroImage: /img/blog/manifest_pipeline.jpg
 title:  Concourse-Up Manifest for beginners
 
 heading: Our

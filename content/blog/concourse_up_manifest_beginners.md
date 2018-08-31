@@ -1,6 +1,12 @@
-***Concourse-Up Manifest for beginners***
+---
+author: Eva Dinckel
+date: "2018-08-31"
+title:  Concourse-Up Manifest for beginners
 
-
+heading: Our
+headingBold: blog
+Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
+---
 
 Concourse-Up was born a few years ago and is a project that keeps on being nurtured by our team of engineers. EngineerBetter is proud to make a difference by working on a CI tool that makes the life of our users easier, because life is too short for long Concourse and BOSH deployments!
 

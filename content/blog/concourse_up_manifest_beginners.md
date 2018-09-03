@@ -9,7 +9,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Concourse-Up was born in May 2017 and is a project that keeps on being nurtured by our team. We're proud to make a difference to our users working on a tool that makes their lives easier, because life is too short for worrying about your Concourse deployments!
+[Concourse-Up](https://github.com/EngineerBetter/concourse-up) was born in May 2017 and is a project that keeps on being nurtured by our team. We're proud to make a difference to our users working on a tool that makes their lives easier, because life is too short for worrying about your [Concourse](https://concourse-ci.org/)deployments!
 
 To understand Concourse-Up, it is important to acknowledge the value of the Concourse-Up manifest, which is how we describe the exact combination of components that Concourse-Up deploys. This manifest used to be bundled as part of the tool, but we recently decoupled it and now maintain it as an independently deployable unit.
 
@@ -18,9 +18,9 @@ To make Concourse-Up as easy as possible to use, we've built a lot of opinions a
 Using the metaphor of a set menu in a restaurant might help comprehend the flow of activity in our Concourse-Up Manifest pipeline. So here is the story:
 
 - Picture yourself in a **restaurant**. An amazing restaurant that prides itself in always serving the freshest recipes by continuously updating them, to stay on top of its game.
-- We will also need a **restaurant manager**, which in our situation will be the Concourse-Up manifest **pipeline**: the manager streamlines the whole process; it is in charge of orchestrating the flow of recipe updates by constantly keeping an eye on our **recipe book** of reference, called Bosh.io
+- We will also need a **restaurant manager**, which in our situation will be the Concourse-Up manifest **pipeline**: the manager streamlines the whole process; it is in charge of orchestrating the flow of recipe updates by constantly keeping an eye on our **recipe book** of reference, called [Bosh.io](https://bosh.io/docs/).
 - Our restaurant has a **menu** of dishes, which is in this case the Concourse-Up manifest.
-	For the purpose of the explanation, let’s say that our menu only contains 5 **dishes**, corresponding to **releases** (or simply software). These releases include things like Concourse itself, but also things like Credhub, Grafana and UAA.
+	For the purpose of the explanation, let’s say that our menu only contains 5 **dishes**, corresponding to **releases** (or simply software). These releases include things like Concourse itself, but also things like [Credhub](https://docs.cloudfoundry.org/credhub/), [Grafana](https://grafana.com/) and [UAA](https://github.com/cloudfoundry/uaa).
 	Each dish is produced according to a list of ingredients and instructions taken from Bosh.io, our ‘bible’ as mentioned above.
 - Let’s say that in the course of time, a Bosh.io release (=recipe in our menu) gets updated: we will need to react accordingly!
 

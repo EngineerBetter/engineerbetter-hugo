@@ -9,7 +9,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-[Concourse-Up](https://github.com/EngineerBetter/concourse-up) was born in May 2017 and is a project that keeps on being nurtured by our team. We're proud to make a difference to our users working on a tool that makes their lives easier, because life is too short for worrying about your [Concourse](https://concourse-ci.org/)deployments!
+[Concourse-Up](https://github.com/EngineerBetter/concourse-up) was born in May 2017 and is a project that keeps on being nurtured by our team. We're proud to make a difference to our users working on a tool that makes their lives easier, because life is too short for worrying about your [Concourse](https://concourse-ci.org/) deployments!
 
 To understand Concourse-Up, it is important to acknowledge the value of the Concourse-Up manifest, which is how we describe the exact combination of components that Concourse-Up deploys. This manifest used to be bundled as part of the tool, but we recently decoupled it and now maintain it as an independently deployable unit.
 

@@ -75,4 +75,4 @@ _“In such situations, each manager will tend to optimise for what is visible t
 
 It is a painful irony that it is the largest organisations today that need the most help, but no one person understands how they actually work and, therefore, how to make them better. It is a frequent pattern that consultants are called in to assist, rolling out large change programmes that are plagued with the assumptions of senior executives.
 
-**Systems Thinking is an approach for pushing back the fog of war** by assembling pieces of the puzzle. It allows individuals to understand the organisation as a whole so they can identify and focus on the biggest problem first, and mobilise a solution that will have the intended effects.
+**<a href="https://www.slideshare.net/thekua/systems-thinking-primer">Systems Thinking</a> is an approach for pushing back the fog of war** by assembling pieces of the puzzle. It allows individuals to understand the organisation as a whole so they can identify and focus on the biggest problem first, and mobilise a solution that will have the intended effects.

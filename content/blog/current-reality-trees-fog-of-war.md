@@ -3,7 +3,6 @@ author: Simon Copsey
 date: "2018-11-23"
 heroImage: /img/blog/treefog.jpeg
 title:  Current Reality Trees to Lift the Fog of War
-draft: true
 
 heading: Our
 headingBold: blog

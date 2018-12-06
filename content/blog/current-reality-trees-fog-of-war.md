@@ -53,7 +53,9 @@ The **root cause of incentivising the outsourcer to cut corners was also causing
 
 We were able to share this story with our client executive in a digestible form using a [**Current Reality Tree visualisation** (a Theory of Constraints tool)](https://en.wikipedia.org/wiki/Current_reality_tree_(theory_of_constraints)) along with a proposal for treating the underlying root cause, and providing temporary relief to the platform team.
 
-Whilst our client was aware of the symptoms, **it had not been clear until that moment how the symptoms interrelated and each stemmed from the same single root cause**. The proposal was quickly accepted and we hope to begin enacting the proposal over the coming weeks.
+Whilst many people we'd encountered in the customer organisation were aware of the symptoms, **it had not been clear until that moment how the symptoms interrelated and each stemmed from the same single root cause**. 
+
+<a href="/img/blog/simplified-crt.jpg"><img src="/img/blog/simplified-crt.jpg" class="fit image"></a>
 
 ## The Fog of War
 

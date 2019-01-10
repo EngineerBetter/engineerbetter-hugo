@@ -2,7 +2,7 @@
 author: Daniel Jones
 date: "2019-01-10"
 heroImage: /img/blog/taisun-gantry-crane.jpeg
-title:  PKS
+title:  PKS - a Painkiller for Kubernetes
 draft: true
 
 heading: Our

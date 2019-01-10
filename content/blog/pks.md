@@ -33,15 +33,15 @@ Thankfully PKS addresses all of these points with the exception of managing data
 
 **Solution: PKS makes it easy to manage many clusters**
 
-Kubernetes is not as safely multi-tenant as Cloud Foundry, and so best practice is currently to have one cluster per untrusted tenant. PKS brings the Kubernetes-as-a-Service experience that Amazon and Google offer to the enterprise. With a command-line tool operators can spin up new Kubernetes clusters effortlessly.
+Unlike Cloud Foundry, Kubernetes isn't safely multi-tenant - and so best practice is currently to have one cluster per untrusted tenant. PKS brings the Kubernetes-as-a-Service experience that Amazon and Google offer to the enterprise. With a command line tool operators can spin up new Kubernetes clusters effortlessly.
 
-Because all of these clusters are managed by PKS, keeping them upgraded and in-sync is significantly easier than manually-deployed clusters. Combine the PKS CLI with a Concourse pipeline, and you've got GitOps-driven, self-healing, auto-updating Kubernetes as-a-service inside the enterprise.
+Because all of these clusters are managed by PKS, keeping them upgraded and in sync is significantly easier than manually deployed clusters. Combine the PKS CLI with a Concourse pipeline, and you've got GitOps-driven, self-healing, auto-updating Kubernetes-as-a-service inside the enterprise.
 
 ### Developer locality
 
 **Solution: PKS can deploy Kubernetes to local private cloud**
 
-As spinning up new clusters is a breeze, there's no reason to _not_ have clusters for development teams. Because BOSH (and so PKS) can deploy on internal infrastructure like vSphere, developers can access clusters on the local internal network without having to reach out to the nearest AWS/GCP/Azure datacentre, lowering latency and increasing responsiveness.
+Because spinning up new clusters is a breeze, there's no reason _not_ to have clusters for development teams. Because BOSH (hence also PKS) can deploy on internal infrastructure like vSphere, developers can access clusters on the local internal network without having to reach out to the nearest AWS/GCP/Azure datacentre, lowering latency and increasing responsiveness.
 
 ### Day-two operations
 

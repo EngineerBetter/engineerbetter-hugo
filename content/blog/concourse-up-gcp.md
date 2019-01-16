@@ -11,11 +11,13 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 ## Going Multi-Cloud
 
-In May 2017 we [announced Concourse-Up](/blog/introducing-concourse-up) - the fastest way to go from nothing to a fully working Concourse CI using just a single command. Since then, we’ve kept adding operational features to improve the lives of folks running Concourse CI in their organisations, including the ability for Concourse to automatically upgrade itself.
+In May 2017 we [announced Concourse-Up](/blog/introducing-concourse-up) - the fastest way to go from zero to a fully working production Concourse CI, using just a single command. 
 
-[Concourse-Up](https://github.com/EngineerBetter/concourse-up) has previously only been available for AWS, but last year our team made the decision to pursue multi-cloud support and began thinking about how to bring the same experience to users of other infrastructure platforms like Google Cloud Platform, Azure and vSphere. 
+Since then, we’ve kept adding operational features to help folks spend as little time as possible thinking about CI administration. This includes the ability for a Concourse-Up deployment (which includes UAA, Credhub and Grafana) to automatically upgrade itself when new versions of Concourse-Up are released.
 
-**Today we are pleased to announce GCP support for Concourse-Up, with all the same features we offer on AWS**
+[Concourse-Up](https://github.com/EngineerBetter/concourse-up) has previously only been available for AWS, but last year our team made the decision to pursue multi-cloud support. Now we're bringing the same fire-and-forget experience to other infrastructure platforms like Google Cloud Platform, Azure and vSphere. 
+
+**Today we are pleased to announce GCP support for Concourse-Up, with all the same features we offer on AWS.**
 
 ## Set up Concourse on GCP, in one command
 
@@ -42,7 +44,7 @@ Our goal is to bring feature partity across all the IaaS platforms we support. O
 
 * Scaling out workers with `--workers`
 * Scaling up the Concourse database with `--db-size`
-* Changing worker size or instance type with `--worker-type`
+* Changing worker size or instance type with `--worker-size` or `--worker-type`
 * Apply firewall policy using `--allow-ips`
 * Providing a TLS cert rather than letting Concourse-Up generate it
 * Resource tagging (coming soon!)

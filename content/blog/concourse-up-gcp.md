@@ -13,11 +13,11 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 In 2017 we [announced Concourse-Up](/blog/introducing-concourse-up) - the fastest way to go from nothing to a fully working production Concourse CI, using just a single command. 
 
-Since then, we’ve kept adding operational features to help folks spend as little time as possible thinking about CI administration. This includes the ability for a Concourse-Up deployment to automatically upgrade itself when new versions of Concourse-Up are released, keeping you up to date with Concourse and all the components (UAA, Credhub, Grafana, etc).
+Since then, we added a lot of operational features to help folks spend as little time as possible thinking about CI administration. This includes the ability for a [Concourse-Up](https://github.com/EngineerBetter/concourse-up) deployment to automatically upgrade itself when new versions of Concourse-Up are released, keeping you up to date with Concourse and all the components (UAA, Credhub, Grafana, etc).
 
-[Concourse-Up](https://github.com/EngineerBetter/concourse-up) has previously only been available for AWS, but last year our team made the decision to pursue multi-cloud support, to serve a wider range of users. Now we're bringing the same fire-and-forget experience to other infrastructure platforms like Google Cloud Platform, Azure and vSphere. 
+Last year our team made the decision to pursue multi-cloud support, to serve a wider range of users.  Concourse-Up used to be an AWS-specific tool, but now we're bringing the same fire-and-forget experience to the other major public clouds.
 
-**Today we are pleased to announce GCP support for Concourse-Up, with all the same features we offer on AWS.**
+**Today we are pleased to announce GCP support for Concourse-Up, including all the same features we offer on AWS.**
 
 ## Set up Concourse on GCP, in one command
 

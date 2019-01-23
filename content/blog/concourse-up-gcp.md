@@ -49,7 +49,7 @@ Our goal is to bring feature partity across all the IaaS platforms we support. O
 * Providing a TLS cert rather than letting Concourse-Up generate it
 * Resource tagging (coming soon!)
 
-By default, Concourse-Up will deploy your Concourse on GCP preemptible instances for cost efficiency, but you can disable this with `--preemptible false`.
+By default, Concourse-Up will deploy your Concourse on GCP preemptible instances for cost efficiency, but you can disable this with `--preemptible=false`.
 
 ## What gets deployed?
 

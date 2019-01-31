@@ -1,6 +1,6 @@
 ---
 author: Eva Dinckel and Dan Young
-date: "2019-01-16"
+date: "2019-01-31"
 heroImage: /img/blog/gcp-logo.png
 title:  Announcing Concourse-Up for GCP
 draft: true
@@ -58,9 +58,9 @@ The deployment looks remarkably similar to what you get on AWS. The high level p
 
 ## Testing, Testing, Testing
 
-We do *a lot* of system testing. In fact, this is one of the ways we work towards our vision of being the world's easiest way to run Concourse in production. It should just work first time, and you should never have to worry about it again.
+We do *a lot* of system testing. In fact, this is one of the ways we work towards our vision of being the world's easiest way to run your own Concourse in production. We think it should *just work* first time, and you should never have to worry about it again.
 
-Whichever IaaS you choose, by the time you grab a `concourse-up` release we've already created, upgraded, modified and deleted many Concourses over many hours using the same code. Optimising our testing is a relentless task, for the point of view of both feedback loops and IaaS costs.
+Whichever IaaS you choose, by the time you receive a `concourse-up` release we've already created, upgraded, modified and deleted many Concourses over many hours using the same code. We do this on our own Concourse-Up deployment [ci.engineerbetter.com](https://ci.engineerbetter.com). Optimising our testing is a relentless task, for the point of view of both feedback loops and IaaS costs.
 
 We integrate new releases of Concourse-Up components into [our manifest](/blog/concourse_up_manifest_beginners/) immediately, so sometimes our rigorous testing catches Concourse upstream issues earlier than the rest of the community.
 

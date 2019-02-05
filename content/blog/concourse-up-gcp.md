@@ -1,6 +1,6 @@
 ---
 author: Eva Dinckel and Dan Young
-date: "2019-01-31"
+date: "2019-02-05"
 heroImage: /img/blog/gcp-logo.png
 title:  Announcing Concourse-Up for GCP
 heading: Our

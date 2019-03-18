@@ -16,8 +16,7 @@ Introducing...🥁 **Control-Tower for Concourse**! 🎉
 ## Change is the only constant...
 
 You probably have noticed that Control-Tower has been through [exciting changes](http://www.engineerbetter.com/blog/concourse-up-gcp/) over the last few months, and this is another stepping stone in the development of our product.
-As change is the only constant, this is something we embrace through this name change, to approach the nurture the growth of our product in an Agile way.
-
+As change is the only constant, this is something we embrace through this name change and continue developing our tool in an Agile fashion.
 
 Control-Tower also supports deployments using the latest version of Concourse [(5.0)](https://concourse-ci.org/download.html)
 
@@ -25,9 +24,10 @@ Control-Tower also supports deployments using the latest version of Concourse [(
 
 
 ## What's next?
-A name change is synonym of hefty technical work, as well as anticipating all situations that would arise from the transformation of Control-Tower (such as the migration of )
-This ambitious project is supported by our team of dedicated engineers who are working on ensuring a smooth transition on all levels.
 
+Changing the name of our product means,
+and this project is still ongoing at the time of the publication of this post. Our team of engineers is working on ensuring a smooth transition from Concourse-Up to Control Tower, on all levels ().
+You will soon be able to use
 
 
 

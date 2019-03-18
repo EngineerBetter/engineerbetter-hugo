@@ -23,7 +23,7 @@ We approach the development of Control-Tower in an Agile way, with various goals
 
 Excitingly, Control-Tower supports deployments using the latest version of Concourse, that has been recently released [(5.0)](https://concourse-ci.org/download.html).
 
-As well as AWS, Control-Tower supports deployments on GCP as of recently. We are now moving towards a more 'IaaS agnostic' product with the introduction of a new feature: an `--iaas` flag that requires users to choose between the two IaaSes that we currently support, for the sake of parity.
+As well as AWS, Control-Tower supports deployments on GCP as of recently. We are now moving towards a more 'IaaS agnostic' product with the introduction of a new feature: an ```--iaas``` flag that requires users to choose between the two IaaSes that we currently support, for the sake of parity.
 
 
 ## What's next?

@@ -15,18 +15,21 @@ Introducing...🥁 **Control-Tower for Concourse**! 🎉
 
 ## Change is the only constant...
 
-You probably have noticed that Control-Tower has been through [exciting changes](http://www.engineerbetter.com/blog/concourse-up-gcp/) over the last few months, and this is another stepping stone in the development of our product.
-As change is the only constant, this is something we embrace through this name change and continue developing our tool in an Agile fashion.
-
-Control-Tower also supports deployments using the latest version of Concourse [(5.0)](https://concourse-ci.org/download.html)
+You probably have noticed that Control-Tower has been through [exciting changes](http://www.engineerbetter.com/blog/concourse-up-gcp/) over the last few months, and this is another stepping stone in the life of our product.
+We approach the development of Control-Tower in an Agile way, with various ambitions for our product; we embrace change, as it is the only constant..
 
 
+## What's new?
+
+- Excitingly, Control-Tower supports deployments using the latest version of Concourse that has been recently released [(5.0)](https://concourse-ci.org/download.html).
+
+- As well as AWS, Control-Tower supports deployments on GCP as of recently. We are now moving towards a more 'IaaS agnostic' product with the introduction of a new feature: an `--iaas` flag that requires users to choose between either IaaS that we currently support, for the sake of parity.
 
 
 ## What's next?
 
-Changing the name of our product means,
-and this project is still ongoing at the time of the publication of this post. Our team of engineers is working on ensuring a smooth transition from Concourse-Up to Control Tower, on all levels ().
+Changing the name of our product
+and this project is still ongoing at the time of the publication of this post. Our team of engineers is working on ensuring a smooth transition from Concourse-Up to Control Tower, on all levels (especially for a transitions from existing Concourse-Up deployment to Control-Tower)
 You will soon be able to use
 
 

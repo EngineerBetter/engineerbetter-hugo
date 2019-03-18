@@ -2,14 +2,14 @@
 author: Eva Dinckel and Dan Young
 date: "2019-03-18"
 heroImage: /img/blog/cup-renamed-to-ct.png
-title: Concourse-Up, now called Control-Tower
+title: Concourse-Up, now called Control-Tower 
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Hello dear Concourse-Up users!
-We have exciting news to share with you: Concourse-up has changed name!
+Hello dear Concourse-Up users!</br>
+We have exciting news to share with you: Concourse-up has changed name!</br>
 Introducing...🥁 **Control-Tower for Concourse**! 🎉
 
 
@@ -21,9 +21,9 @@ We approach the development of Control-Tower in an Agile way, with various goals
 
 ## What else is new?
 
-- Excitingly, Control-Tower supports deployments using the latest version of Concourse, that has been recently released [(5.0)](https://concourse-ci.org/download.html).
+* Excitingly, Control-Tower supports deployments using the latest version of Concourse, that has been recently released [(5.0)](https://concourse-ci.org/download.html).
 
-- As well as AWS, Control-Tower supports deployments on GCP as of recently. We are now moving towards a more 'IaaS agnostic' product with the introduction of a new feature: an `--iaas` flag that requires users to choose between the two IaaSes that we currently support, for the sake of parity.
+* As well as AWS, Control-Tower supports deployments on GCP as of recently. We are now moving towards a more 'IaaS agnostic' product with the introduction of a new feature: an `--iaas` flag that requires users to choose between the two IaaSes that we currently support, for the sake of parity.
 
 
 ## What's next?

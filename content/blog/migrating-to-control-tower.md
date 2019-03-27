@@ -12,7 +12,9 @@ We recently announced that we are deprecating Concourse-up and are [moving over 
 
 You can see the other blog post for more details on what this change means from a product perspective. If you are currently running a Concourse using Concourse-up and are wondering how to migrate over to Control-Tower then keep reading.
 
-Under the hood Control-Tower is Concourse-up with the name word-replaced and a handful of bugfixes/updates. Unfortunately due to some changes such as bucket name changes, deploying with Control-Tower over top of Concourse-up will not work. We did discuss creating an automated self-update to migrate users to Control-Tower but a number of roadblocks and complications led us to abondon that option for the time being.
+Under the hood Control-Tower is Concourse-up with the name word-replaced and a handful of bugfixes/updates. Unfortunately due to some changes such as bucket name changes, deploying with Control-Tower over top of Concourse-up will not work. 
+
+We are looking at an automated self-update process to migrate users to Control-Tower, but since this is non-trivial and we're keen to hear feedback from users on how valuable this would be.
 
 I recently transitioned our own Concourse over at `https://ci.engineerbetter.com` from Concourse-up to Control-Tower using some backup tooling that we wrote. These are the steps I followed.
 

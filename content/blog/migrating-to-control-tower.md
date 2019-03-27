@@ -3,14 +3,14 @@ author: Colin Simmons
 date: "2019-03-26"
 heroImage: /img/blog/migrating.jpeg
 title: Migrating from Concourse-up to Control-Tower
-draft: true
-
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-You may have heard that [we are deprecating Concourse-up and are moving over to Control-Tower](/blog/concourse-up-renamed-to-control-tower). You can see the other blog post for more details on what this change means from a product perspective. If you are currently running a Concourse using Concourse-up and are wondering how to migrate over to Control-Tower then keep reading.
+We recently announced that we are deprecating Concourse-up and are [moving over to Control-Tower](/blog/concourse-up-renamed-to-control-tower). 
+
+You can see the other blog post for more details on what this change means from a product perspective. If you are currently running a Concourse using Concourse-up and are wondering how to migrate over to Control-Tower then keep reading.
 
 Under the hood Control-Tower is Concourse-up with the name word-replaced and a handful of bugfixes/updates. Unfortunately due to some changes such as bucket name changes, deploying with Control-Tower over top of Concourse-up will not work. We did discuss creating an automated self-update to migrate users to Control-Tower but a number of roadblocks and complications led us to abondon that option for the time being.
 
@@ -90,3 +90,5 @@ I recently transitioned our own Concourse over at `https://ci.engineerbetter.com
 At this point your original domain is pointing to the new Concourse and all the teams, pipelines, and Credhub secrets have been moved across. Pipelines have been unpaused and exposed according to what was configured on your old Concourse. All pipelines on your old Concourse have been paused. The ATC password will have changed but password rotation is a good thing right?
 
 If you are happy with your new Control-Tower deployment, you can use `concourse-up` one final time to destroy your old Concourse.
+
+To chat with our team and other users about Control Tower, please join our community on Slack [Concourse-Up User Slack](https://join.slack.com/t/concourse-up/shared_invite/enQtNDMzNjY1MjczNDU3LTA1NzIxYTZkYjFkMjA2ODBmY2E2OTM3OGE3YTc2OGViNTMxYTY4MjYwNGNjOTAxNDNiOGE5NzhmMTQ2NWVhNzQ) and share your thoughts!

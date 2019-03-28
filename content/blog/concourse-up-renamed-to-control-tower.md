@@ -2,7 +2,7 @@
 author: Eva Dinckel and Dan Young
 date: "2019-03-25"
 heroImage: /img/blog/control-tower-photo.jpg
-title: Concourse-Up becomes Control-Tower
+title: Concourse-Up becomes Control Tower
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
@@ -26,7 +26,7 @@ The main reason for doing this is the [Concourse CI trademark guidelines](https:
 
 ## What else is new?
 
-As well as containing a collection of bug fixes and improvements, Control-Tower also supports the long awaited [Concourse 5.0](https://concourse-ci.org/download.html#v500), which introduces a number of improvements and the first steps towards Role Base Access Control (RBAC).
+As well as containing a collection of bug fixes and improvements, Control Tower also supports the long awaited [Concourse 5.0](https://concourse-ci.org/download.html#v500), which introduces a number of improvements and the first steps towards Role Base Access Control (RBAC).
 
 Control Tower [supports deployments on GCP](/blog/concourse-up-gcp/) as well as AWS. As part of our new IaaS-provider agnostic direction, we now *require* users to provide the ```--iaas``` flag when deploying.
 

@@ -16,7 +16,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 ## What happened?
 
-Concourse-Up has changed its name to **[Control Tower](https://github.com/EngineerBetter/control-tower) for Concourse**. The repo and release naming has changed, along with all mention of concourse-up in the codebase, and the resources that Control Tower creates. In all other ways, Control-Tower is the same thing as Concouse-Up.
+Concourse-Up has changed its name to **[Control Tower](https://github.com/EngineerBetter/control-tower) for Concourse**. The repo and release naming has changed, along with all mention of concourse-up in the codebase, and the resources that Control Tower creates. In all other ways, Control Tower is the same thing as Concouse-Up.
 
 
 ## Why have we done this?
@@ -28,7 +28,7 @@ The main reason for doing this is the [Concourse CI trademark guidelines](https:
 
 As well as containing a collection of bug fixes and improvements, Control-Tower also supports the long awaited [Concourse 5.0](https://concourse-ci.org/download.html#v500), which introduces a number of improvements and the first steps towards Role Base Access Control (RBAC).
 
-Control-Tower [supports deployments on GCP](/blog/concourse-up-gcp/) as well as AWS. As part of our new IaaS-provider agnostic direction, we now *require* users to provide the ```--iaas``` flag when deploying.
+Control Tower [supports deployments on GCP](/blog/concourse-up-gcp/) as well as AWS. As part of our new IaaS-provider agnostic direction, we now *require* users to provide the ```--iaas``` flag when deploying.
 
 ## How do I upgrade to Control Tower?
 

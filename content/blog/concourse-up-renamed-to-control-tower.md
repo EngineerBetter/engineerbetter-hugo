@@ -32,7 +32,7 @@ Control-Tower [supports deployments on GCP](/blog/concourse-up-gcp/) as well as 
 
 ## How do I upgrade to Control Tower?
 
-We are currently looking at ways to provide smooth, automated process to migrate your *Concourse-Up* deployment to a *Control Tower* deployment. If this is very important to you, please let us know your thoughts. In the meantime, Colin Simmons from our team has written a post describing [how we migrated our own deployment](/blog/migrating-to-control-tower/).
+We are currently looking at ways to provide a smooth, automated process to migrate your *Concourse-Up* deployment to a *Control Tower* deployment. If this is very important to you, please let us know your thoughts. In the meantime, Colin Simmons from our team has written a post describing [how we migrated our own deployment](/blog/migrating-to-control-tower/).
 
 ## What's next?
 

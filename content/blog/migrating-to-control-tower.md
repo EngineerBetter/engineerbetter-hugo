@@ -12,11 +12,11 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 We recently announced that we are replacing Concourse-Up with [Control Tower](/blog/concourse-up-renamed-to-control-tower). 
 
-You can see the other blog post for more details on what this change means from a product perspective. If you are currently running a Concourse using Concourse-up and are wondering how to migrate over to Control Tower then keep reading.
+If you are currently running a Concourse using Concourse-up you might be wondering how to migrate over to Control Tower.
 
 Under the hood Control Tower is Concourse-up with the name word-replaced and a handful of bugfixes/updates. Unfortunately due to some changes such as bucket name changes, deploying with Control Tower over top of Concourse-up will not work. 
 
-We are looking at an automated self-update process to migrate users to Control Tower, but since this is non-trivial and we're keen to hear feedback from users on how valuable this would be.
+We are looking at an automated self-update process to migrate users to Control Tower, but since this is non-trivial and we're keen to hear feedback from users on how valuable this would be, before we spend a lot of engineering effort on this.
 
 I recently transitioned our own Concourse over at [https://ci.engineerbetter.com](https://ci.engineerbetter.com) from Concourse-up to Control Tower using some backup tooling that we wrote. These are the steps I followed.
 
@@ -94,7 +94,7 @@ Deploy the new Concourse with the original domain. For example, I ran
 control-tower deploy --iaas aws --region eu-west-2 --domain=https://ci.engineerbetter.com ebci
 ```
 
-## Step 8 - Unpause and expose the correct pipelines
+### Step 8 - Unpause and expose the correct pipelines
 
 From `ct-backup` run the following to unpause + expose pipelines on the new Concourse to match what the old Concourse was set as
 
@@ -106,7 +106,7 @@ examples/unpause_expose.rb target pipelines.json
 
 At this point your original domain is pointing to the new Concourse and all the teams, pipelines, and Credhub secrets have been moved across. Pipelines have been unpaused and exposed according to what was configured on your old Concourse. All pipelines on your old Concourse have been paused. The ATC password will have changed but password rotation is a good thing right?
 
-## Step 9 - Clean up
+### Step 9 - Clean up
 
 If you are happy with your new Control Tower deployment, you can use `concourse-up` one final time to destroy your old Concourse.
 

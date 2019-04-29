@@ -128,13 +128,13 @@ For our purposes, the theory of multiple intelligences serves as a useful framew
 
 In his book, Gardner helpfully enumerates some ways to representationally redescribe an idea. Being able to describe an idea in all of these ways greatly improves its chances of effecting change.
 
-1. Narrative: are there stories about the idea? What about the journey someone went on when adopting it? What happened to the people that adopted continuous delivery?
-1. Quantitative: facts and figures. How much faster is continuous delivery? How much rework did it avoid? How much more money did the business make as a result?
-1. Logic: does the idea stand up to scrutiny? Does it align with other accepted methods of reasoning? How does working in small, frequent batches reduce risk rather than increase it?
-1. Existential: what does this _mean_ for people? Does it help us lead better lives? Does practising continuous delivery lead to increased motivation and less wasted time at work?
-1. Aesthetic: is the idea beautiful? Does it show elegance? Does continuous delivery allow us to strip away ugly, complicated, manual processes?
-1. Hands-on: showing the idea in action. This is why [our immersive week-in-the-life training courses](http://www.engineerbetter.com/blog/immersive-intensive-training/) work so well.
-1. Social: what impact could this have on other people? What groups will it make you a part of? Once you're continuously delivering cloud-native software, will you be part of a bigger community? Will continuously delivering features in record time help the lives of your customers?
+1. **Narrative**: are there stories about the idea? What about the journey someone went on when adopting it? What happened to the people that adopted continuous delivery?
+1. **Quantitative**: facts and figures. How much faster is continuous delivery? How much rework did it avoid? How much more money did the business make as a result?
+1. **Logic**: does the idea stand up to scrutiny? Does it align with other accepted methods of reasoning? How does working in small, frequent batches reduce risk rather than increase it?
+1. **Existential**: what does this _mean_ for people? Does it help us lead better lives? Does practising continuous delivery lead to increased motivation and less wasted time at work?
+1. **Aesthetic**: is the idea beautiful? Does it show elegance? Does continuous delivery allow us to strip away ugly, complicated, manual processes?
+1. **Hands-on**: showing the idea in action. This is why [our immersive week-in-the-life training courses](http://www.engineerbetter.com/blog/immersive-intensive-training/) work so well.
+1. **Social**: what impact could this have on other people? What groups will it make you a part of? Once you're continuously delivering cloud-native software, will you be part of a bigger community? Will continuously delivering features in record time help the lives of your customers?
 
 When Dan Young and I founded EngineerBetter, we lamented that other folks would shrug their shoulders and say things like _"It's a people problem! Culture change is hard!"_
 

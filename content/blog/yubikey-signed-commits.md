@@ -27,7 +27,7 @@ ssb>  rsa2048/AF5A4B5AA8A8C5BF 2017-11-22 [A] [expires: 2021-04-29]
 ssb>  rsa2048/BA53B2D6734C8A8E 2017-11-22 [E] [expires: 2021-04-29]
 ```
 
-Then,** get your public key** so that you can tell GitHub about it. The argument here is the long ID from the above command:
+Then, **get your public key** so that you can tell GitHub about it. The argument here is the long ID from the above command:
 
 ```terminal
 $ gpg --armor --export FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
@@ -42,7 +42,7 @@ DVeNShSNf4K9uOS62gEQROZQClA/
 
 Copy the above public key, including the begin and end blocks, and then [**add it as a new key on GitHub**](https://github.com/settings/gpg/new).
 
-We then need to** tell Git to use GPG to sign commits**, and specifically this key. Use the _short_ ID from the output of the `--list-secret-keys` command we ran earlier. In my example, it follows after `rsa2048`:
+We then need to **tell Git to use GPG to sign commits**, and specifically this key. Use the _short_ ID from the output of the `--list-secret-keys` command we ran earlier. In my example, it follows after `rsa2048`:
 
 ```terminal
 git config --global commit.gpgsign true

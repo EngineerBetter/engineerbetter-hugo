@@ -7,3 +7,5 @@ applications:
   routes:
   - route: eb-hugo-prod.cfapps.io
   - route: www.engineerbetter.com
+  env:
+    FORCE_HTTPS: true

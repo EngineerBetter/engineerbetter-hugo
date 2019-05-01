@@ -49,12 +49,6 @@ git config --global commit.gpgsign true
 git config --global user.signingkey ADD0D0CAFEDECADE
 ```
 
-For convenience, let's **configure Git to _always_ sign commits**, without us having to remember to pass the right flag:
-
-```terminal
-git config --global alias.commit commit -S
-```
-
 Nearly there! Let's now **restart the GPG agent**:
 
 ```terminal

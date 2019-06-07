@@ -28,7 +28,7 @@ assert_section_exists_with_redirect about-us "<title>About us"
 assert_section_exists_with_redirect how-we-work "<title>How we work"
 assert_section_exists_with_redirect our-services "<title>Our services"
 assert_section_exists_with_redirect success-stories "<title>Success Stories"
-assert_section_exists_with_redirect why-cloud-native "<title>why cloud-native"
+assert_section_exists_with_redirect why-cloud-native "<title>Why Cloud-Native?"
 assert_section_exists_with_redirect join-our-team "<title>Join our team"
 assert_section_exists_with_redirect blog "<title>Blog"
 

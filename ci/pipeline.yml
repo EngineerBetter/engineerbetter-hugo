@@ -109,4 +109,4 @@ jobs:
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
-      HOST: http://www.engineerbetter.com
+      HOST: https://www.engineerbetter.com

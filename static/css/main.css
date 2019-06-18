@@ -4177,7 +4177,7 @@ table {
   }
 }
 
-.blog-page .blog-page_container h2 {
+.blog-page .blog-page_container h1 {
   font-size: 20px;
   font-family: Raleway-ExtraBold;
   color: #1e74bd;
@@ -4185,22 +4185,42 @@ table {
 }
 
 @media screen and (min-width:750px) {
-  .blog-page .blog-page_container h2 {
+  .blog-page .blog-page_container h1 {
     font-size: 40px
   }
 }
 
-.blog-page .blog-page_container .blog-page_sub-title {
-  font-size: 20px
+.blog-page .blog-page_container h2 {
+  font-size: 20px;
+  font-family: Raleway-ExtraBold;
+  color: #1e74bd;
+  line-height: 1.2;
+  padding-bottom: 15px
 }
 
 @media screen and (min-width:750px) {
-  .blog-page .blog-page_container .blog-page_sub-title {
-    font-size: 22px
+  .blog-page .blog-page_container h2 {
+    font-size: 22px;
+    padding-bottom: 30px
   }
 }
 
-.blog-page .blog-page_container .blog-page_datails {
+.blog-page .blog-page_container h3 {
+  font-size: 16px;
+  font-family: Raleway-ExtraBold;
+  color: #1e74bd;
+  line-height: 1.2;
+  padding-bottom: 15px
+}
+
+@media screen and (min-width:750px) {
+  .blog-page .blog-page_container h3 {
+    font-size: 18px;
+    padding-bottom: 30px
+  }
+}
+
+.blog-page .blog-page_container .blog-page_details {
   padding-top: 10px;
   padding-bottom: 15px;
   font-size: 17px;
@@ -4210,43 +4230,97 @@ table {
 }
 
 @media screen and (min-width:750px) {
-  .blog-page .blog-page_container .blog-page_datails {
+  .blog-page .blog-page_container .blog-page_details {
     padding-top: 30px;
     padding-bottom: 30px
   }
 }
 
-.blog-page .blog-page_container .blog-page_datails span {
+.blog-page .blog-page_container .blog-page_details span {
   padding-left: 10px;
   padding-right: 10px
 }
 
-.blog-page .blog-page_container .blog-page_imgage {
+.blog-page .blog-page_container .blog-page_image {
   padding-bottom: 20px
 }
 
 @media screen and (min-width:750px) {
-  .blog-page .blog-page_container .blog-page_imgage {
+  .blog-page .blog-page_container .blog-page_image {
     padding-bottom: 50px
   }
 }
 
-.blog-page .blog-page_container .blog-page_imgage img {
+.blog-page .blog-page_container .blog-page_image img {
   width: 100%;
   height: auto
 }
 
-.blog-page .blog-page_container .blog-page_imgage.is-odd {
+.blog-page .blog-page_container .blog-page_image.is-odd {
   padding-bottom: 15px
 }
 
 @media screen and (min-width:750px) {
-  .blog-page .blog-page_container .blog-page_imgage.is-odd {
+  .blog-page .blog-page_container .blog-page_image.is-odd {
     padding-bottom: 30px
   }
 }
 
-.blog-page .blog-page_container p {
+.blog-page .blog-page_container .image.fit {
+  width: 100%;
+  height: auto;
+  display: block
+}
+
+.blog-page .blog-page_container strong {
+  font-weight: 900;
+  font-family: Raleway-Bold
+}
+
+.blog-page .blog-page_container em {
+  font-style: italic
+}
+
+.blog-page .blog-page_container pre {
+  font-family: monospace;
+  padding: 1em;
+  margin-bottom: 1em
+}
+
+.blog-page .blog-page_container code {
+  font-family: monospace
+}
+
+.blog-page .blog-page_container figure.retain-aspect-ratio {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 51%
+}
+
+.blog-page .blog-page_container figure.retain-aspect-ratio iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0
+}
+
+.blog-page .blog-page_container ol {
+  list-style-type: decimal;
+  list-style-position: inside
+}
+
+.blog-page .blog-page_container ul {
+  list-style-type: square;
+  list-style-position: inside
+}
+
+.blog-page .blog-page_container figcaption,
+.blog-page .blog-page_container ol,
+.blog-page .blog-page_container p,
+.blog-page .blog-page_container table,
+.blog-page .blog-page_container ul {
   padding-bottom: 15px;
   font-size: 14px;
   font-family: Raleway-Regular;
@@ -4255,7 +4329,11 @@ table {
   letter-spacing: .5px
 }
 
-.blog-page .blog-page_container p .blog-page_link {
+.blog-page .blog-page_container figcaption .blog-page_link,
+.blog-page .blog-page_container ol .blog-page_link,
+.blog-page .blog-page_container p .blog-page_link,
+.blog-page .blog-page_container table .blog-page_link,
+.blog-page .blog-page_container ul .blog-page_link {
   font-family: Raleway-Bold;
   color: #1e74bd;
   text-decoration: none;
@@ -4263,10 +4341,29 @@ table {
 }
 
 @media screen and (min-width:750px) {
-  .blog-page .blog-page_container p {
+
+  .blog-page .blog-page_container figcaption,
+  .blog-page .blog-page_container ol,
+  .blog-page .blog-page_container p,
+  .blog-page .blog-page_container table,
+  .blog-page .blog-page_container ul {
     padding-bottom: 30px;
     font-size: 16px
   }
+}
+
+.blog-page .blog-page_container table {
+  width: 100%
+}
+
+.blog-page .blog-page_container th {
+  font-family: Raleway-Bold;
+  text-align: left
+}
+
+.blog-page .blog-page_container figcaption {
+  font-size: .9em;
+  text-align: center
 }
 
 .blog-page .blog-page_container .blog-page_text-title {
@@ -4277,6 +4374,26 @@ table {
   .blog-page .blog-page_container .blog-page_text-title {
     padding-bottom: 30px
   }
+}
+
+.blog-page .blog-page_container section.boxout {
+  background-color: #daeaf8;
+  font-family: Raleway-Regular;
+  padding: 1em;
+  margin-bottom: 1em
+}
+
+.blog-page .blog-page_container section.boxout p {
+  padding: 0
+}
+
+.blog-page .blog-page_container section.boxout a {
+  color: #1e74bd;
+  line-height: 1.2
+}
+
+.blog-page .blog-page_container section.boxout a+p {
+  margin-top: 1em
 }
 
 .blog-page .blog_banner {

@@ -6,16 +6,26 @@
   @media screen and (min-width: 750px) {
     margin-left: 0;
   }
+  @media screen and (min-width: 1200px) {
+    margin-top: 60px;
+  }
   .home-articles_1 {
     .home-articles_1-col-1 {
-      display: none;
-      height: 280px;
-      padding-right: 30px;
+      display: block;
+      height: 250px;
       position: relative;
+//      float: right;
+         @media screen and (max-width: 758px) {
+             float: left;
+        }
       @media screen and (min-width: 750px) {
-        display: block;
-        width: 50%;
-        float: left;
+          width: 50%;
+          float: left;
+          padding-right: 30px;
+          height: 280px;
+      }
+      @media screen and (min-width: 1200px) {
+        padding-top: 15px;
       }
       img {
         display: block;
@@ -26,6 +36,7 @@
         z-index: 2;
       }
       &::after {
+          @media screen and (min-width: 750px) {
         content: "";
         height: 1px;
         width: 90%;
@@ -35,7 +46,50 @@
         left: 0;
         border-bottom: 1px solid rgba(6, 41, 70, .4);
         z-index: -1;
+          }
       }
+        .home-articles_1-tech {
+            @media screen and (max-width: 750px) {
+                width: 280px;
+                padding: 0;
+                margin: 0;
+                margin-left: -10px;
+                float: left;
+            }
+            @media screen and (min-width: 750px) {
+                 left: unset;
+            }
+            position: absolute;
+            left: 0;
+            right: 100px;
+            top: 60px;
+            width: 360px;
+            z-index:4;
+            img {
+                width: 140px;
+                height: auto;
+                float: right;
+            } 
+            img.kb {
+                margin-top: 2px;
+            } 
+            img.cf {
+                width: 132px;
+                margin-top: -18px;
+                margin-bottom: -32px;
+                margin-left: 15px;
+                margin-right: -15px;
+            }
+             img.cc {
+                width: 120px;
+                margin-right: -6px;
+            }
+            img.bo {
+                margin-top: 10px;
+                text-align: center;
+                padding-right: 35px;
+            } 
+        }
       .home-articles_slider {
         position: absolute;
         right: 145px;
@@ -48,22 +102,37 @@
         }
       }
     }
+      img.home-articles_1-col-1-bg {
+         display: none;
+          @media screen and (min-width: 750px) {
+             float: right;
+             display: block;
+      }
+      }
     .home-articles_1-col-2 {
       @media screen and (min-width: 750px) {
+          position: relative;
         width: 50%;
         float: left;
       }
       @media screen and (min-width: 1200px) {
-        width: 46,5%;
+        width: 46.5%;
         padding-right: 16%;
       }
       .home-articles_1-col-2-header {
         @media screen and (min-width: 750px) {
           margin-top: 45px;
-          margin-left: -150px;
+//          margin-left: -150px;
         }
+        @media screen and (min-width: 1200px) {
+            width: 200%;
+            margin-top: -45px;
+            margin-left: -100%;
+            padding: 35px;
+            overflow: hidden;
+            }
         h2 {
-          width: 50%;
+//          width: 50%;
           font-size: 22px;
           font-family: 'Raleway-ExtraBold';
           line-height: 1.2;
@@ -72,6 +141,9 @@
           @media screen and (min-width: 750px) {
             font-size: 26px;
             width: 100%;
+          }
+          @media screen and (min-width: 1200px) {
+            text-align: center;
           }
         }
         .home-articles_1-col-2-header-slider {
@@ -100,10 +172,14 @@
           padding-right: 20px;
           @media screen and (min-width: 750px) {
             font-size: 15px;
-            max-width: 350px;
+            max-width: 340px;
             padding-right: 0;
           }
         }
+        strong {
+            font-weight: 900; 
+            font-family: 'Raleway-ExtraBold';
+          }
         a {
           margin-top: 20px;
           display: block;

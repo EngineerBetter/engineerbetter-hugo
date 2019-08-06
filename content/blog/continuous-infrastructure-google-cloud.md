@@ -70,6 +70,10 @@ In practice, this means some sophisticated tricks with Concourse, such as either
 
 ### Promoting Versions
 
+<figure class="retain-aspect-ratio">
+  <iframe src="https://www.youtube.com/embed/ae1c5XfJBDQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+
 Versions of components in an environment should **only be promoted if they are known to work together**. We need to integration test everything that goes into that environment, and then promote that _set_ of versions to the next tier.
 
 The simple view of this is that the version of every resource (Git repo, Helm chart, BOSH release) that we're interested in is written to a YAML file upon completion of integration tests.
@@ -77,6 +81,10 @@ The simple view of this is that the version of every resource (Git repo, Helm ch
 This file is then uploaded to S3, or committed to Git. This act of creating a new version of the file triggers the _next_ pipeline in the chain: so perhaps the `dev` pipeline writes a file that triggers the `staging` pipeline. _Only_ this set of versions is used in the subsequent pipeline.
 
 ### Canaries and Rolling Upgrades
+
+<figure class="retain-aspect-ratio">
+  <iframe src="https://www.youtube.com/embed/8A2S74xpqIE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
 
 One production environment is the designated 'canary' environment. This is live, has real users, and is also the first of the production environments to deploy a new set of components. Only once this canary environment has been successfully updated do we consider upgrading the others.
 
@@ -97,6 +105,10 @@ Our pipelines are also atomic. We make further use of the Concourse Pool Resourc
 Addressing this consistency issue is of such importance that [setting pipelines is on the roadmap to become a first-class construct in Concourse](https://blog.concourse-ci.org/core-roadmap-towards-v10/#rfc-31-set_pipeline-step).
 
 ### On-Demand Production Environments
+
+<figure class="retain-aspect-ratio">
+  <iframe src="https://youtube.com/embed/tG8TilYioqo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
 
 Environments in any tier are defined via YAML. In fact, what makes each environment unique is a set of parameters to the pipeline itself - so things like name, region, cluster size, and so on.
 

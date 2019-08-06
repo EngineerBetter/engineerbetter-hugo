@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones
-date: "2019-08-01"
+date: "2019-08-06"
 heroImage: /img/blog/crayta.png
 title:  Continuous Infrastructure on Google Cloud
 
@@ -10,6 +10,12 @@ Description: Get the very latest updates about recent projects, team updates, th
 ---
 
 Recently we helped the folks at [Unit 2 Games](https://unit2games.com/) **automate the creation** of their **Google Cloud** and **Kubernetes** infrastructure by using Concourse and EngineerBetter's own best-practice approach to reliably deploying platforms.
+
+{{% boxout %}}
+"We've managed to take a huge step forward in our infrastructure automation with the help of EngineerBetter. Where our environments were once hand-crafted and fragile, they are now reliable, easy and flexible, and we're getting really confident with the tooling they recommended."
+
+Tom Gummery - Senior Software Engineer at Unit 2 Games
+{{% /boxout %}}
 
 Before going into [how we worked](#how-we-worked) and [how we achieved this](#the-implementation), here's a summary of how Unit 2's pipelines now work:
 
@@ -24,6 +30,12 @@ Unit 2 Games are in the midst of making [Crayta](https://crayta.com/), and aweso
 The folks at Unit 2 need to be able to deploy rock-solid Kubernetes-based platforms for large numbers of users. As a Game-as-a-Service, these platforms need to be updated continuously whilst live game sessions are going on.
 
 A global online game doesn't need just one monolithic platform - instead, multiple production environments are required in a number of geographies in order to provide low-latency to users around the world. Not only that, but due to the viral nature of such a social experience, the folks at Unit 2 need to be able to deploy new environments in new territories at a moment's notice.
+
+{{% boxout %}}
+"Mobbing over a remote video link turned out to be a effective way of skills transfer and education, whilst also building towards a real deliverable. It has been particularly easy to schedule these sessions in around other work, allowing us to maintain normal service while we develop improvements."
+
+Tom Gummery - Senior Software Engineer at Unit 2 Games
+{{% /boxout %}}
 
 EngineerBetter always work collaboratively, so we used **remote mob-programming** to team up with Unit 2. We simultaneously helped build their infrastructure automation solution whilst sharing our experiences and educating their Kubernetes-savvy engineers in the ways of Concourse.
 

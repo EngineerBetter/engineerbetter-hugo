@@ -15,11 +15,11 @@ Before going into [how we worked](#how-we-worked) and [how we achieved this](#th
 
 * **All infrastructure is defined in code**, and deployed automatically for **complete auditability and reproducibility**.
 * The **many production environments are defined as YAML**, and adding a new environment is as simple as making a Git commit.
-* All infrastructure changes are tested in multiple environments _before_ a **canary deployment in production**, followed by a **rolling update**.
+* All infrastructure changes are tested in multiple environments _before_ a **canary deployment in production**, followed by a **rolling update**.z
 
 ## How We Worked
 
-Unit 2 Games are in the midst of making [Crayta](https://crayta.com/), and awesomely-powerful collaborative gameplay creation tool. Powered by Unreal engine, Crayta allows anyone to create and share online gaming experiences - think a much more advanced and aesthetically-pleasing Roblox.
+Unit 2 Games are in the midst of making [Crayta](https://crayta.com/), and awesomely-powerful collaborative gameplay creation tool. Using the Unreal engine, Crayta offers collaborative game creation for all - think a much more advanced and aesthetically-pleasing Roblox.
 
 The folks at Unit 2 need to be able to deploy rock-solid Kubernetes-based platforms for large numbers of users. As a Game-as-a-Service, these platforms need to be updated continuously whilst live game sessions are going on.
 

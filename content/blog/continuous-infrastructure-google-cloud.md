@@ -118,6 +118,10 @@ Of course, the meta-pipeline also sets itself in order to ensure consistency wit
 
 ## Bringing it Together
 
+<img src="/img/blog/unit2-pipemania.jpg" class="fit image">
+
+[You can expand the image for a full view](/img/blog/unit2-pipemania.jpg) of this rough design diagram.
+
 Unit 2 Games already had a capable infrastructure automation team, and EngineerBetter were able to accelerate their progress towards having fully-automated GitOps-style infrastructure-as-code on Google Cloud.
 
 The patterns that we use have been tried and tested in banking, fintech, security, publishing and now gaming. Our technical approach transcends IAASes, and once again mob-programming has proven a flexible method to both upskill and deliver.

@@ -21,7 +21,8 @@ Before going into [how we worked](#how-we-worked) and [how we achieved this](#th
 
 * **All infrastructure is defined in code**, and deployed automatically for **complete auditability and reproducibility**.
 * The **many production environments are defined as YAML**, and adding a new environment is as simple as making a Git commit.
-* All infrastructure changes are tested in multiple environments _before_ a **canary deployment in production**, followed by a **rolling update**.
+* Production environments can **_only_ accept changes tested and proven** in multiple prior pipelines.
+* **Production** is changed via a **canary deployment**, followed by a **rolling update**.
 
 ## How We Worked
 

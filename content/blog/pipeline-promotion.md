@@ -1,8 +1,9 @@
 ---
 author: Colin Simmons
-date: "2019-08-07"
+date: "2019-08-08"
 heroImage: /img/blog/promotion/flow.png
 title: Properly Promoting Pipelines
+
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

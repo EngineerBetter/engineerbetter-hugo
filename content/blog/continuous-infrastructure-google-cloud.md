@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones
-date: "2019-08-06"
+date: "2019-08-07"
 heroImage: /img/blog/crayta.png
 title:  Continuous Infrastructure on Google Cloud
 

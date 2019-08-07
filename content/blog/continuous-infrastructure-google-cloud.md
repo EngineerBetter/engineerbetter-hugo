@@ -95,7 +95,7 @@ In practice, this means some sophisticated tricks with Concourse, such as either
 
 Versions of components in an environment should **only be promoted if they are known to work together**. We need to integration test everything that goes into that environment, and then promote that _set_ of versions to the next tier.
 
-The simple view of this is that the version of every resource (Git repo, Helm chart, BOSH release) that we're interested in is written to a YAML file upon completion of integration tests.
+The simple view of this is that the version of every resource (Git repo, Helm chart, BOSH release) that we're interested in is written to a YAML file upon completion of integration tests. We've written a [tool to do this called Stopover](https://github.com/EngineerBetter/stopover), which we'll be writing about in more detail some time soon.
 
 This file is then uploaded to S3, or committed to Git. This act of creating a new version of the file triggers the _next_ pipeline in the chain: so perhaps the `dev` pipeline writes a file that triggers the `staging` pipeline. _Only_ this set of versions is used in the subsequent pipeline.
 

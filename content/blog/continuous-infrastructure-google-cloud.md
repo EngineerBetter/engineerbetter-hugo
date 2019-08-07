@@ -9,7 +9,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Recently we helped the folks at [Unit 2 Games](https://unit2games.com/) **automate the creation** of their **Google Cloud** and **Kubernetes** infrastructure by using Concourse and EngineerBetter's own best-practice approach to reliably deploying platforms.
+Recently we helped the folks at [Unit 2 Games](https://unit2games.com/) **automate the creation** of their **Google Cloud** and **Kubernetes** infrastructure by using [Concourse](https://concourse-ci.org/) and EngineerBetter's own best-practice approach to reliably deploying platforms.
 
 {{% boxout %}}
 "We've managed to take a huge step forward in our infrastructure automation with the help of EngineerBetter. Where our environments were once hand-crafted and fragile, they are now reliable, easy and flexible, and we're getting really confident with the tooling they recommended."

@@ -87,7 +87,7 @@ In order to have a cast-iron guarantee that production will work you need to be 
 
 In practice, this means some sophisticated tricks with Concourse, such as either pipelines that set themselves, or pipelines that set other pipelines. This is explained later.
 
-### Promoting Versions
+### Promoting Versions with Stopover
 
 <figure class="retain-aspect-ratio">
   <iframe src="https://www.youtube.com/embed/ae1c5XfJBDQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

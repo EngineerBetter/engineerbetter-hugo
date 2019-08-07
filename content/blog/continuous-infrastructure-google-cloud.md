@@ -14,7 +14,7 @@ Recently we helped the folks at [Unit 2 Games](https://unit2games.com/) **automa
 {{% boxout %}}
 "We've managed to take a huge step forward in our infrastructure automation with the help of EngineerBetter. Where our environments were once hand-crafted and fragile, they are now reliable, easy and flexible, and we're getting really confident with the tooling they recommended."
 
-Tom Gummery - Senior Software Engineer at Unit 2 Games
+_Tom Gummery - Senior Software Engineer, Unit 2 Games_
 {{% /boxout %}}
 
 Before going into [how we worked](#how-we-worked) and [how we achieved this](#the-implementation), here's a summary of how Unit 2's pipelines now work:
@@ -32,9 +32,9 @@ The folks at Unit 2 need to be able to deploy rock-solid Kubernetes-based platfo
 A global online game doesn't need just one monolithic platform - instead, multiple production environments are required in a number of geographies in order to provide low-latency to users around the world. Not only that, but due to the viral nature of such a social experience, the folks at Unit 2 need to be able to deploy new environments in new territories at a moment's notice.
 
 {{% boxout %}}
-"Mobbing over a remote video link turned out to be a effective way of skills transfer and education, whilst also building towards a real deliverable. It has been particularly easy to schedule these sessions in around other work, allowing us to maintain normal service while we develop improvements."
+"Undertaking this work was initially a daunting prospect, but with EngineerBetter's help we broke the work down and delivered great value back to the business.  We greatly reduced our fear of change, and so now reap many benefits such as being able to rapidly provision environments, audit infrastructure changes, and tighten system access control."
 
-Tom Gummery - Senior Software Engineer at Unit 2 Games
+_Steve McDowell - Web Systems Director, Unit 2 Games_
 {{% /boxout %}}
 
 EngineerBetter always work collaboratively, so we used **remote mob-programming** to team up with Unit 2. We simultaneously helped build their infrastructure automation solution whilst sharing our experiences and educating their Kubernetes-savvy engineers in the ways of Concourse.
@@ -42,6 +42,12 @@ EngineerBetter always work collaboratively, so we used **remote mob-programming*
 Unit 2 engineers booked out a meeting room, EngineerBetter dialled in via Zoom, and then we proceeded with usual mobbing rules - 10-minute turns on the keyboard, and you can only type something if someone else has told you.
 
 Engineering days were not contiguous, and we'd spend maybe a few days a week collaborating in this way. This allowed the Unit 2 engineers to attend to other matters, and prevented us from getting remote-work fatigue. It also allowed ideas to percolate, meaning we got 'creative tunnel vision' less often.
+
+{{% boxout %}}
+"Mobbing over a remote video link turned out to be a effective way of skills transfer and education, whilst also building towards a real deliverable. It has been particularly easy to schedule these sessions in around other work, allowing us to maintain normal service while we develop improvements."
+
+_Tom Gummery - Senior Software Engineer, Unit 2 Games_
+{{% /boxout %}}
 
 ## The Implementation
 

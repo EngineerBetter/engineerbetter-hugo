@@ -4,7 +4,6 @@ date: "2019-08-22"
 heroImage: /img/blog/wantsyou.jpg
 title:  Hiring Golang Infrastructure Devs
 
-draft: true
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

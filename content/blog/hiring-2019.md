@@ -19,12 +19,30 @@ Specifically we're looking to hire for two streams of work, so we have two profi
 Whilst we've got general background info on our <a href="/join-our-team/">Join Us</a> page, this post will give a bit more detail about the streams of work we're looking at.
 
 As with most of our work, it'll be **based in London** with _some_ scope for **remote work**, and will involve **pair-programming** around 80% of the time.
-<!--more-->
+
+{{% boxout %}}
+_"Being an engineer at EB means automating your way through the latest tech in a culture of intrinsic kindness."_
+
+Jess Stenning, Engineer
+{{% /boxout %}}
+
 Whilst in the past we've hired for consultancy work that will require some amount of travel and variability of tasks, we've got enough lined up that for the first time **travel _won't_ be a requirement**.
+
+{{% boxout %}}
+_"EngineerBetter is a diverse consultancy that has brought the best out of me and helped me make a change in the industry."_
+
+Eva Dinckel, Product Manager
+{{% /boxout %}}
 
 Of course, we'll still be doing consultancy too, so if you _do_ enjoying visiting European cities during the working week, we can definitely provide that experience! And you could switch between these. One of the benefits of a small company is we can shape roles to individuals' needs, and try to match you up with the work you most enjoy.
 
 There's also the possibility looming of **delivering more training**. We're passionate that instructors should be practitioners, so if you're interested in doing more than just engineering, we should have some work for you.
+
+{{% boxout %}}
+_"I love working at EB. It has the culture of Google, Pivotal and Thoughtworks in a friendly, little consultancy where I get to work with the latest cloud and automation technologies."_
+
+Will Gant, Engineer
+{{% /boxout %}}
 
 ## Golang/Google Cloud work
 

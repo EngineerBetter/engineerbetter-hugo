@@ -2,7 +2,7 @@
 author: Eva Dinckel
 date: "2019-08-31"
 heroImage: /img/blog/.png
-title:  The user story: a window into the product
+title:  "The user story: a window into the product"
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

@@ -27,10 +27,10 @@ It is a channel of communication:
 
 
 ### Structure ###
-I have noticed some key elements of a structure that I believe can be reused for most stories
+I have noticed some key elements of a structure that I believe can be reused for most stories:
 
 - The “Why”:
-	It is important to put it at the top. It is the value statement of the story, the reason behind why the story exists, and the solution it will bring.
+	It is important to put it at the top. It is the value statement of the story, and helps understand the solution it will bring.
 	It puts the persona first, the end user
 
 -  The use of scenarios:
@@ -45,4 +45,5 @@ That’s why I see the IPM as a moment of birth: after the story is discussed an
 
 
 
-Writing user stories is more complex than it seems, at least that’s what I have learned and observed
+Writing user stories is more complex than it seems, at least that’s what I have learned and observed.
+But they can also be incredibly rewarding

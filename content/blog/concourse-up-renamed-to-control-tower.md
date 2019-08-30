@@ -1,38 +1,42 @@
 ---
 author: Eva Dinckel and Dan Young
-date: "2019-03-18"
-heroImage: /img/blog/cup-renamed-to-ct.png
-title: Concourse-Up, now called Control-Tower
+date: "2019-03-25"
+heroImage: /img/blog/control-tower-photo.jpg
+title: Concourse-Up becomes Control Tower
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Hello dear Concourse-Up users!</br>
-We have exciting news to share with you: Concourse-up has changed name!</br>
-Introducing...🥁 **Control-Tower for Concourse**! 🎉
+<figure>
+    <figcaption style="font-size: 8pt">
+    Photo by <a href="https://unsplash.com/photos/Wc4WBReAMUw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cassie Matias</a> on Unsplash
+    </figcaption>
+</figure>
+
+## What happened?
+
+Concourse-Up has changed its name to **[Control Tower](https://github.com/EngineerBetter/control-tower) for Concourse**. The repo and release naming has changed, along with all mention of concourse-up in the codebase, and the resources that Control Tower creates. In all other ways, Control Tower is the same thing as Concouse-Up.
 
 
-## Change is the only constant...
+## Why have we done this?
 
-You probably have noticed that Control-Tower has been through [exciting changes](http://www.engineerbetter.com/blog/concourse-up-gcp/) over the last few months, and this is another stepping stone in the life of our product.
-We approach the development of Control-Tower in an Agile way, with various goals for our product; we embrace change, as it is the only constant..
+The main reason for doing this is the [Concourse CI trademark guidelines](https://concourse-ci.org/trademarks.html). By meeting these guidelines, we now have more freedom over the direction we can take Control Tower as a product, including how we distribute or commercialise it in the future.
 
 
 ## What else is new?
 
-Excitingly, Control-Tower supports deployments using the latest version of Concourse, that has been recently released [(5.0)](https://concourse-ci.org/download.html).
+As well as containing a collection of bug fixes and improvements, Control Tower also supports the long awaited [Concourse 5.0](https://concourse-ci.org/download.html#v500), which introduces a number of improvements and the first steps towards Role Base Access Control (RBAC).
 
-As well as AWS, Control-Tower supports deployments on GCP as of recently. We are now moving towards a more 'IaaS agnostic' product with the introduction of a new feature: an ```--iaas``` flag that requires users to choose between the two IaaSes that we currently support, for the sake of parity.
+Control Tower [supports deployments on GCP](/blog/concourse-up-gcp/) as well as AWS. As part of our new IaaS-provider agnostic direction, we now *require* users to provide the ```--iaas``` flag when deploying.
 
+## How do I upgrade to Control Tower?
+
+We are currently looking at ways to provide a smooth, automated process to migrate your *Concourse-Up* deployment to a *Control Tower* deployment. If this is very important to you, please let us know your thoughts. In the meantime, Colin Simmons from our team has written a post describing [how we migrated our own deployment](/blog/migrating-to-control-tower/).
 
 ## What's next?
 
-A new name for our product means intricate changes from a technical standpoint.
-This project will be ongoing at the time of the publication of this post. Our team of engineers is working on ensuring a smooth transition from Concourse-Up to Control Tower, on all levels (especially for existing Concourse-Up deployments to Control-Tower).
-The new name is only the beginning of this period of change, so watch this space!
+We're still committed to providing support for Azure users, so stay tuned for that. We're also working on providing Control Tower via channels other than Github, to reach a wider set of users and would be interested to get your feedback on issues such as commercial support or other useful enterprise features.
 
 
-
-Thanks for reading, we hope that you are as excited as we are!</br>
-Join our community on Slack [Concourse-Up User Slack](https://join.slack.com/t/concourse-up/shared_invite/enQtNDMzNjY1MjczNDU3LTA1NzIxYTZkYjFkMjA2ODBmY2E2OTM3OGE3YTc2OGViNTMxYTY4MjYwNGNjOTAxNDNiOGE5NzhmMTQ2NWVhNzQ) and share your thoughts!
+To chat with our team and other users about Control Tower, please join our community on Slack [Concourse-Up User Slack](https://join.slack.com/t/concourse-up/shared_invite/enQtNDMzNjY1MjczNDU3LTA1NzIxYTZkYjFkMjA2ODBmY2E2OTM3OGE3YTc2OGViNTMxYTY4MjYwNGNjOTAxNDNiOGE5NzhmMTQ2NWVhNzQ) and share your thoughts!

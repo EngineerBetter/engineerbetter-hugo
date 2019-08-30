@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="pl">
 {{ partial "head.html" . }}
-  <body>
-    {{ partial "menu-nav-top.html" . }}
-    {{ partial "menu-list.html" . }}
-    <section class="blog-page">
-      <div class="blog-page_container">
-        <h1>{{ .Title }}</h1>
-        <p class="blog-page_details">{{ .Date.Format "Jan 2, 2006" }}<span>|</span> {{ .Params.author }}</p>
-        <div class="blog-page_image">
-          <img src="{{ .Params.heroImage }}">
-        </div>
-        {{ .Content }}
-        {{ template "_internal/disqus.html" . }}
+
+<body>
+  {{ partial "menu-nav-top.html" . }}
+  {{ partial "menu-list.html" . }}
+  <section class="blog-page">
+    <div class="blog-page_container">
+      <h1>{{ .Title }}</h1>
+      <p class="blog-page_details">{{ .Date.Format "Jan 2, 2006" }}<span>|</span> {{ .Params.author }}</p>
+      <div class="blog-page_image">
+        <img src="{{ .Params.heroImage }}">
       </div>
-      <div class="blog-page_banner clearfix">
-        <div class="blog_banner-text">
-          <h2>Get in touch</h2>
-          <p>See how much we can help you.<br> Call <span>+44 (0) 20 7846 0140</span> or</br></p>
-          <a href="mailto:contact@engineerbetter.com" class="cloud-btn2"><p>Contact us <span>&#xe900;</span></p></a>
-        </div>
+      {{ .Content }}
+    </div>
+    <div class="blog-page_banner clearfix">
+      <div class="blog_banner-text">
+        <h2>Get in touch</h2>
+        <p>See how much we can help you.<br> Call <span>+44 (0) 20 7846 0140</span> or</br></p>
+        <a href="mailto:contact@engineerbetter.com" class="cloud-btn2">
+          <p>Contact us <span>&#xe900;</span></p>
+        </a>
       </div>
-    </section>
-    {{ partial "footer.html" . }}
-    <script src="/js/jquery-1.11.3.min.js?v=4"></script>
-    <script src="/js/site.js"></script>
-  </body>
+    </div>
+  </section>
+  {{ partial "footer.html" . }}
+  <script src="/js/jquery-1.11.3.min.js?v=4"></script>
+  <script src="/js/site.js"></script>
+</body>
+
 </html>

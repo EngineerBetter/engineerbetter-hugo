@@ -59,7 +59,7 @@
       float: left;
       &:first-child {
         width: 400px;
-        margin-left: 26%;
+        margin-left: 33%;
         padding-right: 110px;
         padding-left: 0;
       }
@@ -108,4 +108,171 @@
       }
     }
   }
+  .home-vend_rectangle {
+        margin-bottom: 60px;
+     
+  }
+}
+ .home-vend {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: -115px;
+    position: relative;
+    z-index: 4;
+     
+     @media screen and (min-width: 750px) {
+        margin-top: -50px;
+        padding-left: 20px;
+         padding-right: 0;
+     }
+     
+    .home-vend_rectangle-bar {
+         
+    @media screen and (min-width: 750px) {
+        position: relative;
+        height: 70px;
+        width: 80%;
+        max-width: 1000px;
+        margin-left: 14%; 
+        border-top: 70px solid rgba(255, 255, 255, 0.6);
+        border-right: 70px solid transparent;
+        margin-bottom: 60px;
+    } 
+        
+    @media screen and (min-width: 1200px) {
+        max-width: 850px;
+        margin-left: 20%; 
+    }  
+    @media screen and (min-width: 1400px) {
+        max-width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+    } 
+        
+    @media screen and (min-width: 2000px) {
+        max-width: 1100px;
+    } 
+     
+    .home-vend_square {
+        width: 180px;
+        position: relative;
+        left: -59px;
+        top: -102px;
+        z-index: 4;
+        
+        @media screen and (max-width: 750px) {
+             position: absolute;
+            width: 1px;
+            height: 1px;
+        }
+     }
+               
+    .home-vend_rectangle_logos {  
+        
+        position: relative;
+        width: 88%;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: space-between;
+        
+        left: 0;
+        
+        .home-vend_rectangle_logos > div {
+                flex: unset;
+            }
+         @media screen and (max-width: 749px) {
+             flex-wrap: wrap;
+             width: 100%;
+            .home-vend_rectangle_logo-1, .home-vend_rectangle_logo-2, .home-vend_rectangle_logo-3, .home-vend_rectangle_logo-4  {
+                flex: 50%;
+                padding-bottom: 15px;
+            }
+        }
+        
+//        @media screen and (max-width: 749px) { 
+//                width: 100%;
+//        }
+        
+        @media screen and (min-width: 750px) {
+            position: absolute;
+            z-index: 10;
+            top: -56px;
+//            left: 100px;
+//            width: 88%;
+            left: 18%;
+            width: 80%;
+            text-align: center;
+        }
+        
+        .home-vend_rectangle_logo-1 {
+            text-align: center;
+            margin: auto; 
+            @media screen and (min-width: 750px) {
+                margin-left: 0;
+                margin-right: auto;
+                text-align: left;
+            }
+            .home-vend_rectangle_logo-img1 {
+                
+            flex: 0 50%;
+            @media screen and (max-width: 480px) {
+//                width: 60px;
+                width: 92px;
+                height: auto;
+            }
+                width: 92px;
+                height: auto;
+            }
+        }
+        
+        .home-vend_rectangle_logo-2 {
+
+            margin: auto; 
+               text-align: center;
+            .home-vend_rectangle_logo-img2 {
+                flex: 0 50%;
+                @media screen and (max-width: 480px) {
+//                    width: 102px;
+                    width: 160px;
+                    height: auto;
+                }
+                    width: 160px;
+                    height: auto;
+                }
+        }
+        
+        .home-vend_rectangle_logo-3 {
+
+           margin: auto; 
+               text-align: center;
+          .home-vend_rectangle_logo-img3 {
+              flex: 0 50%;
+            @media screen and (max-width: 480px) {
+//                width: 45px;
+                height: auto;
+                 width: 82px;
+            }
+                width: 82px;
+                height: auto;
+          }
+        }
+        
+        .home-vend_rectangle_logo-4 {
+
+           margin: auto; 
+   text-align: center;
+          .home-vend_rectangle_logo-img4 {
+             flex: 0 50%;
+            @media screen and (max-width: 480px) {
+                width: auto;
+                height: 42px;
+            }
+                width: auto;
+                height: 42px;
+          }
+        }
+      }
+    }
 }

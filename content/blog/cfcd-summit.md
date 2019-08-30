@@ -58,3 +58,4 @@ We encourage students to collaborate and help each other. There's [good evidence
 Interactive architectural walk-throughs offer a recap of what was just learnt in an exercise, allowing instructors to make sure everyone is brought up to the same level of understanding, whilst also providing an opportunity for clarifications and more-detailed explanations of what happened 'under the hood'. These recaps also allow us to leverage both the [compressed spacing effect](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3782739/) and [pre-testing](http://learninglab.uchicago.edu/Pre-Testing_files/RichlandKornellKao.pdf) by asking questions as we perform the walk-through.
 
 Not only are EngineerBetter and Resilient Scale the only companies licensed to deliver the Certified Developer course, but **we also _created_ it**. We're intimately familiar with both the material and the psychology behind the techniques it employs.
+

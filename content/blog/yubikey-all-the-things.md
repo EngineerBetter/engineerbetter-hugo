@@ -16,6 +16,7 @@ Each team member now has a single [Yubikey USB security device](https://www.yubi
 * [Stores and loads our personal SSH keys][ssh]
 * [Provides one-touch two-factor authentication][2fa]
 * [Stores and recalls our 1Password secret keys][static]
+* [Allows Git commits to be signed, proving the author's identity][signing]
 
 ## SSH
 
@@ -35,6 +36,13 @@ The Yubikey can be configured to type in a string when its button is long-presse
 
 [Yubikeys for static secrets][static]
 
+## Commit signing
+
+You can use the GPG key created on the Yubikey to sign your Git commits, meaning that you can prove that you really are the author of commits with your name on, and that no-one is masquerading as you.
+
+[Yubikeys for signed Git commits][signing]
+
 [ssh]: /blog/yubikey-ssh/
 [2fa]: /blog/yubikey-2fa/
 [static]: /blog/yubikey-static-secret/
+[signing]: /blog/yubikey-signed-commits/

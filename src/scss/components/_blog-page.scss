@@ -81,6 +81,7 @@
     }
     strong {
       font-weight: 900;
+      font-family: 'Raleway-Bold'
     }
     em {
       font-style: italic;
@@ -98,6 +99,7 @@
       width: 100%;
       height: 0;
       padding-bottom: 51%;
+      margin-bottom: 30px;
     }
     figure.retain-aspect-ratio iframe {
       position: absolute;
@@ -155,15 +157,20 @@
       padding: 1em;
       margin-bottom: 1em;
     }
-    section.boxout p {
+    section.boxout > * {
       padding: 0;
+      margin-bottom: 1em;
     }
     section.boxout a {
       color: $cl-light-blue;
       line-height: 1.2;
     }
-    section.boxout a + p {
-      margin-top: 1em;
+    section.quote > * {
+      padding: 0px;
+      margin: 0em;
+    }
+    section.boxout p:last-child {
+      margin-bottom: 0em;
     }
   }
   .blog_banner {

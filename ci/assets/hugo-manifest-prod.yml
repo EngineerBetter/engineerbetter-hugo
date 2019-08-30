@@ -1,9 +1,12 @@
 ---
 applications:
 - name: eb-hugo
-  buildpack: staticfile_buildpack
+  buildpacks:
+  - staticfile_buildpack
   memory: 64MB
   path: ../../../generated-site/
   routes:
   - route: eb-hugo-prod.cfapps.io
   - route: www.engineerbetter.com
+  env:
+    FORCE_HTTPS: true

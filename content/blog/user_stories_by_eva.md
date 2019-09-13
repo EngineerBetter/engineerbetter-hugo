@@ -18,7 +18,7 @@ Being a Product Manager, in the context of consulting work, has been the occasio
 - After that project, I have spent a few weeks shadowing some of my fellow PMs at Pivotal. It brought me a fresh perspective on what I had internalised as a young Product Manager.
 
 The combination of these experiences made me see that a few of my practices are becoming new areas of improvement.
-One of them catches my attention: writing user stories.
+There is one that I want to keep on exploring: user stories.
 
 
 ### User stories and backlog ###
@@ -27,15 +27,15 @@ I see the backlog as the skeleton of a product, and the user stories are to me t
 A story is a channel of communication:
 
 - it builds the essential, shared understanding needed between the PM and the engineers.
-- it is a vehicle of transparency: each story is a *window into the product*, that stakeholders and people outside of the core team, can open at any time.
+- it is a vehicle of transparency: each story is a *window into the product*, that stakeholders, and people outside of the core team, can open at any time.
 
 
 ### Structure ###
 At this stage of my journey, I'm coming to the conclusion that some key elements of a user story's structure stand out:
 
 1. The “Why”:
-	It is important to have this at the top of the story. It is a *value statement* that helps understand the solution we aim to bring.
-	The statement should be short, and keep in mind our end user (or persona):
+	It is important to have this at the top of the story. I see it as a *value statement* that helps understand the solution we aim to bring.
+	This statement should be short, and keep in mind our end user (or persona):
 	```"As [persona]"
 			I can [what]
 			So that I can [why, goal]
@@ -43,16 +43,16 @@ At this stage of my journey, I'm coming to the conclusion that some key elements
 	Having this top section gives a sense of purpose to each story.
 
 2. The use of scenarios:
-	This segment of the story helps *define the scope of a story*.
+	This segment helps *define the scope of a story*.
 	The scenarios are part of the acceptance criteria. If a story is ready for acceptance, then the user should be able to do, step by step, what is described in the scenario.
 	The structure is often as follows:
 	```
+	Scenario (1, 2,...)
 	Given []
 	When []
 	Then []
 	```
-	I realise the importance and value of this section: having specific, detailed scenarios leaves much less room for misunderstandings between all the people involved in the development of a product. It is a clear reference point.
-
+	I realise the importance and value of this section: having specific, detailed scenarios leaves much less room for misunderstandings between all the people involved with a product. It is a clear reference point.
 
 3. The use of notes:
 	Notes are allowed! I used to put notes in a comment section, way below the space dedicated to the "official story". If constructive, I realise they can be as important as the sections above.
@@ -67,5 +67,5 @@ Writing stories takes a significant amount of time. They need to mature in the m
 - That’s why I see the IPM as a moment of birth: after the story is discussed and pointed, it is ready to go and live its life in “the real world”!
 
 
-Writing user stories is more complex than it seems. From what I have learned and observed, a good structure and solid discussions around each of them is the  best way to  
+Writing user stories is complex. From what I have learned and observed, a good structure is what will give meaning to each of them.
 On the journey that is product development, each story is a step further in the direction of our North star: the product we are dedicated to build.

@@ -2,7 +2,7 @@
 author: Jessica Stenning
 date: "2019-09-04"
 heroImage: /img/blog/.png
-title:  "kpack: an indicator Pivotal is bridging the CF/K8's gap?"
+title:  "kpack: another indicator Pivotal is bridging the CF/K8's gap?"
 draft: true
 heading: Our
 headingBold: blog
@@ -13,10 +13,10 @@ Pivotal recently announced the open-sourcing of kpack, a Kubernetes-native conta
 
 We've tried it, it works. But perhaps more interesting than the product's functionality is the wider business context it's been born into: kpack is a product bridging functionality between the worlds of Cloud Foundry (CF) and Kubernetes. It's built on the foundation of Cloud Native Buildpacks (CNBs), a Cloud Foundry fundamental - push your source code and let buildpacks create your container image for you. kpack aims to bring these benefits (developer productivity, security compliance, automated OS/app level dependency upgrades and so on) to Kubernetes deployments.
 
-Kpack is the one of a number of Pivotal components that have been [cited](https://content.pivotal.io/announcements/pivotal-makes-kubernetes-easier-for-developers-and-operators) as undergoing a 'K8's native' adaptation in the past 6 months, the others being:
+Kpack is the one of a number of Pivotal components that have been [cited](https://content.pivotal.io/announcements/pivotal-makes-kubernetes-easier-for-developers-and-operators) as undergoing a K8's adaptation in the past 6 months, the others being:
 - RabbitMQ on Kubernetes: automates the deployment and maintenance of RabbitMQ, with self-service and configurability available for developers.
-- Service Mesh: automates the setup and configuration of Istio, enabling developers to get apps deployed to production quickly and securely.
-- Pivotal Build Service: provides automation for the creation of container images while providing enterprises the audit and security controls necessary to run with confidence at scale.
+- Service Mesh: automates the setup and configuration of [Istio](https://istio.io/).
+- Pivotal Build Service: kpack's commercial counterpart, automates the creation of container images while providing the additional functionality of the Kubernetes permissions model and a dedicated cli.
 
 In fact, in this [blog post](https://content.pivotal.io/blog/introducing-kpack-a-kubernetes-native-container-build-service) Pivotal announced The Cloud Foundry community's plans to utilise kpack as the new app staging mechanism in the Cloud Foundry Application Runtime (presumably meaning an imminent move to an official CF repository).
 

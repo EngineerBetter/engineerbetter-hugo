@@ -1,9 +1,8 @@
 ---
 author: Jessica Stenning
-date: "2019-09-24"
+date: "2019-09-25"
 heroImage: /img/blog/packing-robot.jpg
 title:  "kpack: another indicator Pivotal is bridging the CF/K8s gap"
-draft: true
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

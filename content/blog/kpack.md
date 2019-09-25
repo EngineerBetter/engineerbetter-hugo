@@ -34,4 +34,4 @@ In fact their [press release](https://www.vmware.com/company/news/releases/vmw-n
 
 Yes, a company with a brand built on virtualisation needs to make a big statement about its transition to containerisation. Looking at that statement of intent alongside VMware's recent acquisitions (Heptio in November 2018, and packaging service Bitnami in May of this year) paints a pretty consistent picture... VMware is making big investments in _Kubernetes_, why wouldn't we expect that to translate to Pivotal products too?
 
-_If you're looking for an intro to using kpack, this [Stark & Wayne tutorial](https://starkandwayne.com/blog/investigating-kpack-automatically-updating-kubernetes-pods-with-buildpacks/) gives a good run through and provides some useful context not included in the kpack readme_
+_If you're looking for an intro to using kpack, this [Stark & Wayne tutorial](https://starkandwayne.com/blog/investigating-kpack-automatically-updating-kubernetes-pods-with-buildpacks/) provides some useful context not included in the kpack readme_

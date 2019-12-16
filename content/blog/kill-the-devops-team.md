@@ -76,6 +76,8 @@ This is worse than just _not_ doing DevOps - you're creating a blind spot for th
 
 No. (Unless they're time-travelling robots sent from the future to slow human productivity whilst artificial intelligence trundles away on becoming sentient and enslaving the human race, in which case I'd argue that more assertive action may be justified.)
 
+Let's kill the notion of _The_ DevOps Team.
+
 Let's **stop calling them The DevOps Team**.
 
 Let's ensure that those people are **enabling self-service of developers** by building reusable automation.

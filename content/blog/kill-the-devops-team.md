@@ -82,7 +82,7 @@ This is worse than just _not_ doing DevOps - you're creating a blind spot for th
 >>>
 The superbly intelligent and thoughtful [Matthew Skelton](https://www.linkedin.com/in/matthewskelton/) of [Conflux Digital](https://confluxdigital.net/) has gone into a lot more detail in defining the various ways of doing NotDevOps, handily summarised in [a list of DevOps Anti-Types](https://web.devopstopologies.com/#anti-types). Matthew more importantly co-authored [Team Topologies](https://www.amazon.co.uk/Team-Topologies-Organizing-Business-Technology/dp/1942788819/) which will tell you how to structure teams to achieve great flow efficiency.
 
-EngineerBetter are often asked to help organisations figure out how to deliver value faster. One of the most frequent inhibitors of value delivery is poor flow efficiency - more time is spent waiting rather than working. Separating the development and operations activities into different silos is a common cause of these waits. To then name this team by abusing the very term that should fix the issue is salt into the wound!
+EngineerBetter are often asked to help organisations figure out how to deliver value faster. One of the most frequent inhibitors of value delivery is poor flow efficiency - more time is spent waiting rather than working. Separating the development and operations activities into different silos is a common cause of these waits. To then name this team by abusing the very term that should fix the issue is to add salt into the wound!
 
 ## So, should we actually kill them?
 

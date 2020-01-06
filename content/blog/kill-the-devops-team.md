@@ -114,10 +114,10 @@ At EngineerBetter we would choose to call TTFKATDT a **platform team** - althoug
 
 To pre-empt responses to this article - if you _do_ have a 'DevOps Team' that is doing the good things outlined above, then why are you calling them a 'DevOps Team'? Surely they should be named after the product they deliver?
 
-## In Summary
+## Doing The Right Thing
 
 Look beyond the buzzwords and the trends, and take the time to understand the terms being used. No amount of expensive DevOps Engineer contractors will improve your value delivery if the organisation isn't focusing on removing wait times and reducing lead-time-to-production.
 
-If you need help delivering value faster, then [get in touch with us at EngineerBetter](mailto:contact@engineerbetter.com). We can use systems thinking techniques to understand your development practice, ascertain the [current reality of the organisation](/blog/current-reality-trees-fog-of-war/) and identify ways to start removing the blockages.
+If you need help delivering value faster, then [get in touch with us at EngineerBetter](mailto:contact@engineerbetter.com). We use systems thinking techniques to **understand your development practice**, ascertain the [current reality of the organisation](/blog/current-reality-trees-fog-of-war/) and expose that for discussion. From there we make recommendations and suggestions of **how to fix your specific issues**, which we find yields much better results than cargo-culting the latest development trend.
 
 In the meantime, can we all stop using terms incorrectly, and stop suggesting that we're doing virtuous things when we are not?

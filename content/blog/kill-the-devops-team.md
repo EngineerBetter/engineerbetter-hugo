@@ -58,8 +58,8 @@ How many of the following **signs of NotDevOps** can you spot at your organisati
 * A team exists called "The DevOps Team"
 * There is a job title of "DevOps Engineer"
 * 'The DevOps Team' does not write the applications running in production
-* 'The DevOps Team' does not get paged at 4am when something goes wrong
-* App development teams have to ask 'The DevOps Team' to do things for them
+* The app development team does not get paged at 4am when something goes wrong
+* The app development team has to ask 'The DevOps Team' to do things for them
 
 If you counted one or more of the above, then commiserations: you're doing NotDevOps! On the up side you're not alone, given the [thousands of job adverts for "DevOps Engineers"](https://www.itjobswatch.co.uk/default.aspx?q=DevOps+Engineer&l=&id=0&p=6).
 
@@ -114,7 +114,7 @@ To pre-empt responses to this article - if you _do_ have a 'DevOps Team' that is
 
 ## In Summary
 
-Look beyond the buzzwords and the trends, and understand the terms being used. No amount of expensive DevOps Engineer contractors will improve your value delivery if the organisation isn't focusing on removing wait times and reducing lead-time-to-production.
+Look beyond the buzzwords and the trends, and take the time to understand the terms being used. No amount of expensive DevOps Engineer contractors will improve your value delivery if the organisation isn't focusing on removing wait times and reducing lead-time-to-production.
 
 If you need help delivering value faster, then [get in touch with us at EngineerBetter](mailto:contact@engineerbetter.com). We can use systems thinking techniques to understand your development practice, ascertain the [current reality of the organisation](/blog/current-reality-trees-fog-of-war/) and identify ways to start removing the blockages.
 

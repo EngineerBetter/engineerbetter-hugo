@@ -19,7 +19,7 @@ The continued existence of _The_ DevOps Team allows the misguided, the lazy and 
 * _Do we have a Kubernetes strategy?_ Check! Apparently we need just one more month and then it'll be in production.
 * _Are we DevOps?_ Check! We've hired a bunch of DevOps Engineers to work in a siloed team to write YAML and run Ansible playbooks.
 
-The DevOps team is an all-too-common anti-pattern, co-opting a virtuous term of good practice in order to convince the C-suite that they're at the cutting edge of buzzword bingo, when in reality  responsibilities and culture linger on from previous decades.
+The DevOps Team is an all-too-common anti-pattern, co-opting a virtuous term of good practice in order to convince the C-suite that they're at the cutting edge of buzzword bingo, when in reality  responsibilities and culture linger on from previous decades.
 
 If you have a team called "_The_ DevOps Team", then we can be sure as damnit that you're not actually practising DevOps, and the chances are that you're doing _the exact opposite_.
 

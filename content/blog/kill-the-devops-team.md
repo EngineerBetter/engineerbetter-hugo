@@ -1,5 +1,4 @@
 ---
-draft: true
 author: Daniel Jones
 date: "2020-01-06"
 heroImage: /img/blog/devops-team-must-die.png

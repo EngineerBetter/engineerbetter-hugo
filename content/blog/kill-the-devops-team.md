@@ -2,7 +2,7 @@
 author: Daniel Jones
 date: "2020-01-06"
 heroImage: /img/blog/devops-team-must-die.png
-title: Kill the DevOps Team
+title: Kill The DevOps Team
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

@@ -25,7 +25,9 @@ If you have a team called "_The_ DevOps Team", then we can be sure as damnit tha
 
 ## _Actual_ DevOps
 
-Now we've got the provocative click-bait opening out of the way, let's define what DevOps _actually_ is:
+Phew - we've got the provocative click-bait opening out of the way. I can now let slip that some of my best friends are DevOps Engineers. Honest!
+
+Let's define what DevOps _actually_ is:
 
 > You write it, you run it, you get woken up at 4am by it.
 

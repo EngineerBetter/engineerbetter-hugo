@@ -42,7 +42,7 @@ Now feels like the right time to resolve the issue of geographic balance.
 
 When Daniel Jones and I founded the company we aspired to change not just engineering, but *all the things* that led to organisational dysfunction. During the last 4 years I've been exploring what that means. 
 
-EngineerBetter' amazing success in technology consulting work now has real gravity. The commercial momentum is based on certain types of conversations and customer relationships. Most relationships centre around the development of point solutions, to which EngineerBetter, as the consultants and experts, are rightly expected to have the *answers*. 
+EngineerBetter's amazing success in technology consulting work now has real gravity. The commercial momentum is based on certain types of conversations and customer relationships. Most relationships centre around the development of point solutions, to which EngineerBetter, as the consultants and experts, are rightly expected to have the *answers*. 
 
 I've discovered I'm most happy with our customers when I'm helping them unravel their deeper systemic challenges beyond the technology. This kind of work depends on a different flavour of business relationship and power dynamic with the client. It requires a coach-like approach, or what Ed Schein calls 'humble consulting'. In this context the client understands that *they have the answers* and, although they're seeking help to find them, they take ownership and responsibility for the change.
 

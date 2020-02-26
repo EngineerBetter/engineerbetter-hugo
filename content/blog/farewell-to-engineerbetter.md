@@ -1,6 +1,6 @@
 ---
 author: Dan Young
-date: "2020-02-25"
+date: "2020-02-26"
 heroImage: /img/blog/grow.jpg
 title: Saying farewell to EngineerBetter
 heading: Our

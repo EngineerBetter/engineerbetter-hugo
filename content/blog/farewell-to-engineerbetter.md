@@ -34,9 +34,9 @@ Whilst EngineerBetter has a preference for colocation in its DNA, we also had to
 
 Humans have had thousands of years of practice at in-person interaction but only 15 years learning about video and other remote working methods. Because of this I've found that physically *being there* is still a necessity to do the full range of work required to run EngineerBetter. We've always been a London-centric organisation, but my home is in Bristol, which has made travel a defining aspect of my life at work.
 
-Achieving the state of being physically present in order to do my role has always been a choice between either 5.30am starts with late returns or staying away from home. I always felt tension in my "inbetween" state and this tension increased over the last year. The arrival of my third child eight months ago year made it even harder to find the right balance in where I spend my time. 
+Achieving the state of being physically present in order to do my role has always been a choice between either 5.30am starts with late returns or staying away from home. I always felt tension in my "inbetween" state and this tension increased over the last year. The arrival of my third child eight months ago made it even harder to spend meaningful time in London. 
 
-Now feels like the right time to resolve the issue of geographic balance.
+Now feels like the right time to resolve this issue of geographic balance.
 
 **Time to wear a different hat**
 

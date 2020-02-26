@@ -30,7 +30,7 @@ There are a number of reasons why now is the right time for me to step back from
 
 **More time working locally**
 
-Whilst EngineerBetter has a preference for colocation in its DNA, we also had to develop good distributed working habits in order to work with international customers. Virtual meeting spaces create new possibilites but impose new constraints. There are many contexts, such pair programming, in which video can provide a straightforward substitute for co-location. In other contexts - such working in the space *between* groups of people, reflecting, exploring ideas or planning activities - much more work is needed to create a useful online experience. 
+Whilst EngineerBetter has a preference for colocation in its DNA, we also had to develop good distributed working habits in order to work with international customers. Virtual meeting spaces create new possibilites but impose new constraints. There are many contexts, such as pair programming, in which video can provide a straightforward substitute for co-location. In other contexts - such as working in the space *between* groups of people, reflecting, exploring ideas or planning activities - much more work is needed to create a useful online experience. 
 
 Humans have had thousands of years of practice at in-person interaction but only 15 years learning about video and other remote working methods. Because of this I've found that physically *being there* is still a necessity to do the full range of work required to run EngineerBetter. We've always been a London-centric organisation, but my home is in Bristol, which has made travel a defining aspect of my life at work.
 

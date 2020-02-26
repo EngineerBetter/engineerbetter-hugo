@@ -2,7 +2,7 @@
 author: Dan Young
 date: "2020-02-26"
 heroImage: /img/blog/grow.jpg
-title: Saying farewell to EngineerBetter
+title: Why I'm saying farewell to EngineerBetter
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

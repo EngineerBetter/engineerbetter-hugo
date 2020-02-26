@@ -44,7 +44,7 @@ When Daniel Jones and I founded the company we aspired to change not just engine
 
 EngineerBetter's amazing success in technology consulting work now has real gravity. The commercial momentum is based on certain types of conversations and customer relationships. Most relationships centre around the development of point solutions, to which EngineerBetter, as the consultants and experts, are rightly expected to have the *answers*. 
 
-I've discovered I'm most happy with our customers when I'm helping them unravel their deeper systemic challenges beyond the technology. This kind of work depends on a different flavour of business relationship and power dynamic with the client. It requires a coach-like approach, or what Ed Schein calls 'humble consulting'. In this context the client understands that *they have the answers* and, although they're seeking help to find them, they take ownership and responsibility for the change.
+I've discovered I'm most happy working with our customers when I'm helping them unravel their deeper systemic challenges beyond the technology. This kind of work depends on a different flavour of business relationship and power dynamic with the client. It requires a coach-like approach, or what Ed Schein calls 'humble consulting'. In this context the client understands that *they have the answers* and, although they're seeking help to find them, they take ownership and responsibility for the change.
 
 I’d like to do much more of this kind of work, creating space to build these new kinds of relationships in-person over weeks and months, closer to where I live, but also taking time to improve my skills and experience of doing this in virtual contexts.
 
@@ -52,11 +52,11 @@ I’d like to do much more of this kind of work, creating space to build these n
 
 I'm grateful for the all the experiences I've had at EngineerBetter and to everyone who's been part of my story.
 
-I'll be taking a lot of memories with me. I'll certainly treasure the hours I spent crying into my keyboard trying to make CSS work properly on our first website, wondering if we'd land a customer before my savings evaporated. I'll also remember the stories of the folks who's lives became better as a result of working with us, or using the things we built (like [Control Tower](https://github.com/EngineerBetter/control-tower)).
+I'll be taking a lot of memories with me. I'll certainly treasure the hours I spent crying into my keyboard trying to make CSS work properly on our first website, wondering if we'd land a customer before my savings evaporated. I'll also remember the stories of the folks whose lives became better as a result of working with us, or using the things we built (like [Control Tower](https://github.com/EngineerBetter/control-tower)).
 
-The EngineerBetter values have been important part of my experience. In pursuit of these values I've had to do difficult things like turn down work, or fire customers - or be fired *by* customers - but I've also found like-minded people with whom to grow the company and found joy working in the Cloud Foundry ecosystem, which is also one of the most inclusive tech communities around.
+The EngineerBetter values have been an important part of my experience. In pursuit of these values I've had to do difficult things like turn down work, or fire customers - or be fired *by* customers - but I've also found like-minded people with whom to grow the company and found joy working in the Cloud Foundry ecosystem, which is also one of the most inclusive tech communities around.
 
-It's been a genuine delight seeing people join EngineerBetter and then thrive in their careers; becoming better software engineers, leaders and speakers. I hope I've been a good steward in my role as "Continuous Enablement Officer" and left behind some useful contributions of my own. I hope the team will keep learning, growing, and improving the world around them.
+It's been a genuine delight seeing people join EngineerBetter and then thrive in their careers; becoming better software engineers, leaders and speakers. I hope I've been a good steward in my role as "Continuous Enablement Officer" and left behind some useful contributions of my own. I know the team will keep learning, growing, and improving the world around them.
 
 Daniel Jones will continue to lead EngineerBetter into 2020 and beyond. I'll continue to stay a close friend and partner and I'm looking forward to seeing the team be wildly successful in the future.
 

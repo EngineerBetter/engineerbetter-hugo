@@ -132,7 +132,7 @@ options ndots:5
 This looks fairly sensible - that `nameserver` directive is pointing to an IP on the services subnet. A cursory check with `kubectl` confirms that yes, 10.32.0.10 _is_ the Cluster IP of the CoreDNS service:
 
 ```terminal
-$ kubectl get pods,services -owide -n kube-system
+$ k get pods,services -owide -n kube-system
 NAME                           READY   STATUS    RESTARTS   AGE   IP            NODE
 pod/coredns-656bc64dd7-bpz87   1/1     Running   3          29d   10.200.2.32   worker-2
 pod/coredns-656bc64dd7-f4b8b   1/1     Running   4          29d   10.200.1.41   worker-1
@@ -189,12 +189,12 @@ With one issue resolved, let's revisit the other error messages we were getting.
 In the first case, we saw:
 
 ```terminal
-root@tmp2:/# nslookup nginx
+root@test:/# nslookup nginx
 Server:  10.32.0.10
 Address: 10.32.0.10#53
 
 Name: nginx.default.svc.cluster.local
-Address: 10.32.0.117
+Address: 10.32.0.23
 ;; reply from unexpected source: 10.200.2.32#53, expected 10.32.0.10#53
 ```
 
@@ -203,7 +203,13 @@ This showed that some requests worked, and others failed. Unless we were particu
 We decided to check what things were using the expected and unexpected IP addresses from the prior error message:
 
 ```terminal
-kubectl get pods, services -n kube-system -owide
+$ k get pods,services -owide -n kube-system
+NAME                           READY   STATUS    RESTARTS   AGE   IP            NODE
+pod/coredns-656bc64dd7-bpz87   1/1     Running   3          29d   10.200.2.32   worker-2
+pod/coredns-656bc64dd7-f4b8b   1/1     Running   4          29d   10.200.1.41   worker-1
+
+NAME               TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE   SELECTOR
+service/kube-dns   ClusterIP   10.32.0.10   <none>        53/UDP,53/TCP,9153/TCP   35d   k8s-app=kube-dns
 ```
 
 You can see from the above that our test was expecting to hear back from the CoreDNS service's Cluster IP, but was actually getting responses from a pod IP.
@@ -213,7 +219,20 @@ We ran the test a few more times and noticed that, when running tests from this 
 To prove that pod/worker locality was an issue, we stood up three pairs of pods - in each pair was one NGiNX pod, and one of our debug image. Each pair was then naively scheduled to a specific worker via `spec.nodeName`. We also created a Cluster IP service exposing each NGiNX pod.
 
 ```terminal
-!!! INSERT kubectl get pods, services -owide
+$ kubectl get pods,services -owide
+NAME                          READY   STATUS    RESTARTS   AGE     IP            NODE
+pod/nginx0-7b45774556-tqfnl   1/1     Running   0          2m16s   10.200.0.49   worker-0
+pod/nginx1-647f775685-2blwx   1/1     Running   0          2m11s   10.200.1.42   worker-1
+pod/nginx2-7dddf444fd-5lxmw   1/1     Running   0          2m8s    10.200.2.65   worker-2
+pod/tmp0                      1/1     Running   0          15s     10.200.0.50   worker-0
+pod/tmp1                      1/1     Running   0          13s     10.200.1.43   worker-1
+pod/tmp2                      1/1     Running   0          11s     10.200.2.63   worker-2
+
+NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE     SELECTOR
+service/kubernetes   ClusterIP   10.32.0.1     <none>        443/TCP        35d     <none>
+service/nginx0       NodePort    10.32.0.100   <none>        80:32100/TCP   2m16s   app=nginx0
+service/nginx1       NodePort    10.32.0.101   <none>        80:32101/TCP   2m11s   app=nginx1
+service/nginx2       NodePort    10.32.0.102   <none>        80:32102/TCP   2m8s    app=nginx2
 ```
 
 We decided to test further by making HTTP requests to:
@@ -227,32 +246,30 @@ Hitting the pod IP and cluster IP both succeeded when the target pod was on a di
 
 Hitting the pod IP succeeded when the target pod was on the same worker: again, we got the expected HTTP response.
 
-Hitting the cluster IP when the target pod was on the same worker _failed_: instead of a HTTP response, we got a timeout.
+Hitting the cluster IP when the target pod was on the same worker _failed_: instead of a HTTP response, **we got a timeout**.
 
 | Worker | Pod IP | Cluster IP |
 |---|:-:|:-:|
 | Different | 	&#x2714; | 	&#x2714; |
 | Same | 	&#x2714; | 	&#x2718; |
 
-The timeout thing is a bit odd. We'd hadn't configured a single `NetworkPolicy`, so there's no reason that we'd expect packets to be dropped. What exactly was going on?
+<br />
 
-DID WE NETCAT
-!!! test with netcat, telnet
-things are weird, time to break out tcpdump
+The timeout thing is a bit odd. We'd hadn't configured a single `NetworkPolicy`, so there's no reason that we'd expect packets to be dropped. `netcat` also reported timeouts. What exactly was going on?
 
 As with all good network debugging stories, we ended up resorting to running `tcpdump` on the affected worker. Here `-nn` prevents reverse-lookup of IP to hostname, `-i any` specifies that we want to examine all interfaces:
 
 ```terminal
-root@worker-0:~# tcpdump -i any -nn port 80
+root@worker-2:~# tcpdump -i any -nn port 80
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
-18:02:52.563172 IP 10.200.2.41.58096 > 10.32.0.117.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
-18:02:52.563172 IP 10.200.2.41.58096 > 10.32.0.117.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
-18:02:52.563237 IP 10.200.2.41.58096 > 10.200.2.51.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
-18:02:52.563240 IP 10.200.2.41.58096 > 10.200.2.51.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
-18:02:52.563257 IP 10.200.2.51.80 > 10.200.2.41.58096: Flags [S.], seq 1225769056, ack 2511416865, win 65160, options [mss 1460,sackOK,TS val 2003052615 ecr 2349838492,nop,wscale 7], length 0
-18:02:52.563260 IP 10.200.2.51.80 > 10.200.2.41.58096: Flags [S.], seq 1225769056, ack 2511416865, win 65160, options [mss 1460,sackOK,TS val 2003052615 ecr 2349838492,nop,wscale 7], length 0
-18:02:52.563269 IP 10.200.2.41.58096 > 10.200.2.51.80: Flags [R], seq 2511416865, win 0, length 0
+18:02:52.563172 IP 10.200.2.63.58096 > 10.32.0.102.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
+18:02:52.563172 IP 10.200.2.63.58096 > 10.32.0.102.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
+18:02:52.563237 IP 10.200.2.63.58096 > 10.200.2.65.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
+18:02:52.563240 IP 10.200.2.63.58096 > 10.200.2.65.80: Flags [S], seq 2511416864, win 64240, options [mss 1460,sackOK,TS val 2349838492 ecr 0,nop,wscale 7], length 0
+18:02:52.563257 IP 10.200.2.65.80 > 10.200.2.63.58096: Flags [S.], seq 1225769056, ack 2511416865, win 65160, options [mss 1460,sackOK,TS val 2003052615 ecr 2349838492,nop,wscale 7], length 0
+18:02:52.563260 IP 10.200.2.65.80 > 10.200.2.63.58096: Flags [S.], seq 1225769056, ack 2511416865, win 65160, options [mss 1460,sackOK,TS val 2003052615 ecr 2349838492,nop,wscale 7], length 0
+18:02:52.563269 IP 10.200.2.63.58096 > 10.200.2.65.80: Flags [R], seq 2511416865, win 0, length 0
 ```
 
 * In the first two lines we can see two identical entries, made in the same nanosecond, where a syn packet is sent from our debug pod's IP to the NGiNX service's Cluster IP. Why _two_?
@@ -268,13 +285,13 @@ We performed another `tcpdump`, this time with the `-e` flag that prints link-la
 root@worker-2:~# tcpdump -nn -e -i any port 80
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
-18:05:28.708256   P 9e:d4:7d:ec:b7:6d ethertype IPv4 (0x0800), length 76: 10.200.2.41.58488 > 10.32.0.117.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
-18:05:28.708256  In 9e:d4:7d:ec:b7:6d ethertype IPv4 (0x0800), length 76: 10.200.2.41.58488 > 10.32.0.117.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
-18:05:28.708319 Out 12:e9:35:7a:5b:02 ethertype IPv4 (0x0800), length 76: 10.200.2.41.58488 > 10.200.2.51.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
-18:05:28.708323 Out 12:e9:35:7a:5b:02 ethertype IPv4 (0x0800), length 76: 10.200.2.41.58488 > 10.200.2.51.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
-18:05:28.708343   P fa:ce:1c:2d:05:eb ethertype IPv4 (0x0800), length 76: 10.200.2.51.80 > 10.200.2.41.58488: Flags [S.], seq 3216518151, ack 2308927168, win 65160, options [mss 1460,sackOK,TS val 2003208761 ecr 2349994637,nop,wscale 7], length 0
-18:05:28.708345 Out fa:ce:1c:2d:05:eb ethertype IPv4 (0x0800), length 76: 10.200.2.51.80 > 10.200.2.41.58488: Flags [S.], seq 3216518151, ack 2308927168, win 65160, options [mss 1460,sackOK,TS val 2003208761 ecr 2349994637,nop,wscale 7], length 0
-18:05:28.708354   P 9e:d4:7d:ec:b7:6d ethertype IPv4 (0x0800), length 56: 10.200.2.41.58488 > 10.200.2.51.80: Flags [R], seq 2308927168, win 0, length 0
+18:05:28.708256   P 9e:d4:7d:ec:b7:6d ethertype IPv4 (0x0800), length 76: 10.200.2.63.58488 > 10.32.0.102.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
+18:05:28.708256  In 9e:d4:7d:ec:b7:6d ethertype IPv4 (0x0800), length 76: 10.200.2.63.58488 > 10.32.0.102.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
+18:05:28.708319 Out 12:e9:35:7a:5b:02 ethertype IPv4 (0x0800), length 76: 10.200.2.63.58488 > 10.200.2.65.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
+18:05:28.708323 Out 12:e9:35:7a:5b:02 ethertype IPv4 (0x0800), length 76: 10.200.2.63.58488 > 10.200.2.65.80: Flags [S], seq 2308927167, win 64240, options [mss 1460,sackOK,TS val 2349994637 ecr 0,nop,wscale 7], length 0
+18:05:28.708343   P fa:ce:1c:2d:05:eb ethertype IPv4 (0x0800), length 76: 10.200.2.65.80 > 10.200.2.63.58488: Flags [S.], seq 3216518151, ack 2308927168, win 65160, options [mss 1460,sackOK,TS val 2003208761 ecr 2349994637,nop,wscale 7], length 0
+18:05:28.708345 Out fa:ce:1c:2d:05:eb ethertype IPv4 (0x0800), length 76: 10.200.2.65.80 > 10.200.2.63.58488: Flags [S.], seq 3216518151, ack 2308927168, win 65160, options [mss 1460,sackOK,TS val 2003208761 ecr 2349994637,nop,wscale 7], length 0
+18:05:28.708354   P 9e:d4:7d:ec:b7:6d ethertype IPv4 (0x0800), length 56: 10.200.2.63.58488 > 10.200.2.65.80: Flags [R], seq 2308927168, win 0, length 0
 ```
 
 Now we've got MAC addresses logged, we need to find out which interfaces these MAC addresses belong to, using `ip a s`.
@@ -291,7 +308,7 @@ root@worker-2:~# ip a s
 
 Next, we need to find the MAC addresses of the interfaces in each pod. We can't currently see those in our session on the worker, as they're in separate network namespaces.
 
-We can get the same information from our interactive debug session:
+We used our interactive session to get the MAC address of the debug pod:
 
 ```terminal
 root@tmp2:/# ip a s
@@ -301,7 +318,9 @@ root@tmp2:/# ip a s
     inet 10.200.2.41/24 brd 10.200.2.255 scope global eth0
 ```
 
-The NGiNX image is pragmatically minimal, meaning that the `ip` command isn't available there. Thankfully we can use `nsenter` to run a command from out root worker session, and execute it in the context of another process' namespace. First we need to get the NGiNX PID, and then we can run a command in its network namespace:
+Next we needed to get the MAC address of the NGiNX pod that we were trying to hit.
+
+The NGiNX image is pragmatically minimal, meaning that the `ip` command isn't available there. Thankfully we can use `nsenter` to run a command from our root worker session, and execute it in the context of another process' namespace. First we need to get the NGiNX PID, and then we can run a command in its network namespace:
 
 ```terminal
 root@worker-2:~# ps aux | grep "[n]ginx: master"
@@ -331,18 +350,204 @@ listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
 
 We can see that:
 
-* the first packet is logged twice on the debug pod's interface. The `P` in the second column suggest that this is because the interface is in promiscuous mode, but it is not - that would only happen if we ran `tcpdump` with the `-i` flag giving a _specific_ interface, and we ran it look at all of them.
+* the first packet is logged twice on the debug pod's interface. The `P` in the second column suggest that this is because the interface is in promiscuous mode, but it is not - that would only happen if we ran `tcpdump` with the `-i` flag giving a _specific_ interface, and we ran it in a mode that looks at all of them.
 * the packet passed from the debug pod interface to the `cnio0` bridge interface, by which time its destination has been translated to the target Pod IP
 * the target pod's interface responds (again, double-logging because of alleged promiscuity) directly to the debug pod, without going via the bridge
 
 Cluster IPs aren't 'real', and instead they appear only in the `iptables` rules that `kube-proxy` configures on each worker.
 
-Service Cluster IPs are not real, and are handled by `iptables`
-Let's go and have a look there
-!!! iptables commands
+If we want to have any chance of understanding what's going on here, we're going to need to dig into `iptables`.
+
+### iptables
+
+`iptables` is an interface for `netfilter`, which does all sorts of clever packet-manipulation stuff in Linux. It's the mechanism via which Kubernetes creates Cluster IPs, and is also used by Envoy, and by Cloud Foundry's Diego in order to implement security groups.
+
+There are four types of table:
+
+1. filter
+1. nat
+1. mangle
+1. raw
+
+Using `iptables -L -t <table>`, we could see that there wasn't anything of interest in the `mangle` or `raw` tables. There's some Kubernetes-related stuff in the `filter` table, but we'll leave it out of this blog post as it's not relevant.
+
+_The default output format of `iptables` really sucks at lining up columns. You can pipe it into `columns -t` which makes things a bit better, but screws up the headings instead._
+
+```terminal
+root@worker-2:~# iptables -L
+
+Chain PREROUTING (policy ACCEPT)
+target         prot  opt  source    destination
+KUBE-SERVICES  all   --   anywhere  anywhere      /* kubernetes service portals */
+
+Chain INPUT (policy ACCEPT)
+target                        prot  opt  source  destination
+
+Chain OUTPUT (policy ACCEPT)
+target                        prot  opt  source    destination
+KUBE-SERVICES                 all   --   anywhere  anywhere     /* kubernetes service portals */
+
+Chain POSTROUTING (policy ACCEPT)
+target                        prot  opt  source       destination
+KUBE-POSTROUTING              all   --   anywhere     anywhere     /* kubernetes postrouting  rules */
+CNI-da656fe7e5c60b5739af5199  all   --   10.200.0.46  anywhere     /* name: "bridge" id: "ce3eff85633b118bc8f30c110e9f13bac556df11c6af5730198f149ad03d82bf" */
+CNI-e6f8915306a0d2afb9322e15  all   --   10.200.0.50  anywhere     /* name: "bridge" id: "96f6dad29592b1f29be6cb220e81375a480d6ca5a0e000d5d5abbb9f8a8eeffd" */
+CNI-a4fadfa1c00fc0d5a8c5612e  all   --   10.200.0.52  anywhere     /* name: "bridge" id: "5441e2c226a60f7fc101700f0d74a08545cb6dd0f98da19f1b6e211e06cee827" */
+
+Chain CNI-a4fadfa1c00fc0d5a8c5612e (1 references)
+target      prot  opt  source    destination
+ACCEPT      all   --   anywhere  10.200.0.0/24              /* name: "bridge" id: "5441e2c226a60f7fc101700f0d74a08545cb6dd0f98da19f1b6e211e06cee827" */
+MASQUERADE  all   --   anywhere  !base-address.mcast.net/4  /* name: "bridge" id: "5441e2c226a60f7fc101700f0d74a08545cb6dd0f98da19f1b6e211e06cee827" */
+
+Chain CNI-da656fe7e5c60b5739af5199 (1 references)
+target      prot  opt  source    destination
+ACCEPT      all   --   anywhere  10.200.0.0/24              /* name: "bridge" id: "ce3eff85633b118bc8f30c110e9f13bac556df11c6af5730198f149ad03d82bf" */
+MASQUERADE  all   --   anywhere  !base-address.mcast.net/4  /* name: "bridge" id: "ce3eff85633b118bc8f30c110e9f13bac556df11c6af5730198f149ad03d82bf" */
+
+Chain CNI-e6f8915306a0d2afb9322e15 (1 references)
+target      prot  opt  source    destination
+ACCEPT      all   --   anywhere  10.200.0.0/24              /* name: "bridge" id: "96f6dad29592b1f29be6cb220e81375a480d6ca5a0e000d5d5abbb9f8a8eeffd" */
+MASQUERADE  all   --   anywhere  !base-address.mcast.net/4  /* name: "bridge" id: "96f6dad29592b1f29be6cb220e81375a480d6ca5a0e000d5d5abbb9f8a8eeffd" */
+
+Chain KUBE-MARK-DROP (0 references)
+target  prot  opt  source    destination
+MARK    all   --   anywhere  anywhere     MARK or 0x8000
+
+Chain KUBE-MARK-MASQ (2 references)
+target  prot  opt  source    destination
+MARK    all   --   anywhere  anywhere     MARK or 0x4000
+
+Chain KUBE-NODEPORTS (1 references)
+target                        prot   opt      source    destination
+KUBE-MARK-MASQ                tcp    --       anywhere  anywhere     /* default/nginx1: */ tcp dpt:32101
+KUBE-SVC-253L2MOZ6TC5FE7P     tcp    --       anywhere  anywhere     /* default/nginx1: */ tcp dpt:32101
+KUBE-MARK-MASQ                tcp    --       anywhere  anywhere     /* default/nginx2: */ tcp dpt:32102
+KUBE-SVC-KN7BHMGRB3FSVEMI     tcp    --       anywhere  anywhere     /* default/nginx2: */ tcp dpt:32102
+KUBE-MARK-MASQ                tcp    --       anywhere  anywhere     /* default/nginx0: */ tcp dpt:32100
+KUBE-SVC-SJ5YE6C53UPXD73I     tcp    --       anywhere  anywhere     /* default/nginx0: */ tcp dpt:32100
+
+Chain KUBE-POSTROUTING (1 references)
+target      prot  opt  source    destination
+MASQUERADE  all   --   anywhere  anywhere     /* kubernetes service traffic requiring SNAT */ mark match 0x4000/0x4000
+
+Chain KUBE-SEP-3MQ7LGWSED2GAEFA (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.2.65                       anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.200.2.65:80
+
+Chain KUBE-SEP-4QSDQJ2XGBM3KIR7 (1 references)
+target          prot  opt  source       destination
+KUBE-MARK-MASQ  all   --   10.200.0.52  anywhere
+DNAT            tcp   --   anywhere     anywhere tcp to:10.200.0.52:80
+
+Chain KUBE-SEP-B5QGFRIIAVJ4SUMQ (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.2.55                       anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.200.2.55:9153
+
+Chain KUBE-SEP-BKTFYET4HE3YMOJJ (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.2.55                       anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.200.2.55:53
+
+Chain KUBE-SEP-DEVX3KFWHGGJW53M (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.1.41                       anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.200.1.41:53
+
+Chain KUBE-SEP-E6U6KEZPQBWVNUQ2 (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       controller-1.c.dj-kthw3.internal  anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.240.0.11:6443
+
+Chain KUBE-SEP-HFMBYHW5FO36NATD (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       controller-0.c.dj-kthw3.internal  anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.240.0.10:6443
+
+Chain KUBE-SEP-SF3HLF254VH2WA6T (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.1.41                       anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.200.1.41:9153
+
+Chain KUBE-SEP-WC3UHWDNRVUZOT3Q (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.1.45                       anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.200.1.45:80
+
+Chain KUBE-SEP-WRZKKJS6MWEUDTA4 (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       controller-2.c.dj-kthw3.internal  anywhere
+DNAT            tcp   --       anywhere                          anywhere tcp to:10.240.0.12:6443
+
+Chain KUBE-SEP-ZF5QQE2XUFG2ACNS (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.2.55                       anywhere
+DNAT            udp   --       anywhere                          anywhere udp to:10.200.2.55:53
+
+Chain KUBE-SEP-ZIO7FTENMB6T7XGS (1 references)
+target          prot  opt      source                            destination
+KUBE-MARK-MASQ  all   --       10.200.1.41                       anywhere
+DNAT            udp   --       anywhere                          anywhere udp to:10.200.1.41:53
+
+Chain KUBE-SERVICES (2 references)
+target                        prot  opt  source          destination
+KUBE-MARK-MASQ                tcp   --   !10.200.0.0/16  10.32.0.1    /* default/kubernetes:https cluster IP */ tcp   dpt:https
+KUBE-SVC-NPX46M4PTMTKRN6Y     tcp   --   anywhere        10.32.0.1    /* default/kubernetes:https cluster IP */ tcp   dpt:https
+KUBE-MARK-MASQ                tcp   --   !10.200.0.0/16  10.32.0.101  /* default/nginx1: cluster IP */ tcp   dpt:http
+KUBE-SVC-253L2MOZ6TC5FE7P     tcp   --   anywhere        10.32.0.101  /* default/nginx1: cluster IP */ tcp   dpt:http
+KUBE-MARK-MASQ                tcp   --   !10.200.0.0/16  10.32.0.102  /* default/nginx2: cluster IP */ tcp   dpt:http
+KUBE-SVC-KN7BHMGRB3FSVEMI     tcp   --   anywhere        10.32.0.102  /* default/nginx2: cluster IP */ tcp   dpt:http
+KUBE-MARK-MASQ                tcp   --   !10.200.0.0/16  10.32.0.100  /* default/nginx0: cluster IP */ tcp   dpt:http
+KUBE-SVC-SJ5YE6C53UPXD73I     tcp   --   anywhere        10.32.0.100  /* default/nginx0: cluster IP */ tcp   dpt:http
+KUBE-MARK-MASQ                udp   --   !10.200.0.0/16  10.32.0.10   /* kube-system/kube-dns:dns cluster IP */ udp   dpt:domain
+KUBE-SVC-TCOU7JCQXEZGVUNU     udp   --   anywhere        10.32.0.10   /* kube-system/kube-dns:dns cluster IP */ udp   dpt:domain
+KUBE-MARK-MASQ                tcp   --   !10.200.0.0/16  10.32.0.10   /* kube-system/kube-dns:dns-tcp cluster IP */ tcp   dpt:domain
+KUBE-SVC-ERIFXISQEP7F7OF4     tcp   --   anywhere        10.32.0.10   /* kube-system/kube-dns:dns-tcp cluster IP */ tcp   dpt:domain
+KUBE-MARK-MASQ                tcp   --   !10.200.0.0/16  10.32.0.10   /* kube-system/kube-dns:metrics cluster IP */ tcp   dpt:9153
+KUBE-SVC-JD5MR3NA4I4DYORP     tcp   --   anywhere        10.32.0.10   /* kube-system/kube-dns:metrics cluster IP */ tcp   dpt:9153
+KUBE-NODEPORTS                all   --   anywhere        anywhere     /* kubernetes service nodeports; NOTE: this must be the last rule in this chain */ ADDRTYPE match dst-type LOCAL
+
+Chain KUBE-SVC-253L2MOZ6TC5FE7P (2 references)
+target                        prot  opt      source    destination
+KUBE-SEP-WC3UHWDNRVUZOT3Q     all   --       anywhere  anywhere
+
+Chain KUBE-SVC-ERIFXISQEP7F7OF4 (1 references)
+target                        prot  opt      source    destination
+KUBE-SEP-DEVX3KFWHGGJW53M     all   --       anywhere  anywhere statistic mode random probability  0.50000000000
+KUBE-SEP-BKTFYET4HE3YMOJJ     all   --       anywhere  anywhere
+
+Chain KUBE-SVC-JD5MR3NA4I4DYORP (1 references)
+target                        prot  opt      source    destination
+KUBE-SEP-SF3HLF254VH2WA6T     all   --       anywhere  anywhere statistic mode random probability  0.50000000000
+KUBE-SEP-B5QGFRIIAVJ4SUMQ     all   --       anywhere  anywhere
+
+Chain KUBE-SVC-KN7BHMGRB3FSVEMI (2 references)
+target                        prot  opt      source    destination
+KUBE-SEP-3MQ7LGWSED2GAEFA     all   --       anywhere  anywhere
+
+Chain KUBE-SVC-NPX46M4PTMTKRN6Y (1 references)
+target                        prot  opt      source    destination
+KUBE-SEP-HFMBYHW5FO36NATD     all   --       anywhere  anywhere statistic mode random probability 0.33332999982
+KUBE-SEP-E6U6KEZPQBWVNUQ2     all   --       anywhere  anywhere statistic mode random probability 0.50000000000
+KUBE-SEP-WRZKKJS6MWEUDTA4     all   --       anywhere  anywhere
+
+Chain KUBE-SVC-SJ5YE6C53UPXD73I (2 references)
+target                        prot  opt      source    destination
+KUBE-SEP-4QSDQJ2XGBM3KIR7     all   --       anywhere  anywhere
+
+Chain KUBE-SVC-TCOU7JCQXEZGVUNU (1 references)
+target                        prot  opt  source    destination
+KUBE-SEP-ZIO7FTENMB6T7XGS     all   --   anywhere  anywhere     statistic mode random probability 0.50000000000
+KUBE-SEP-ZF5QQE2XUFG2ACNS     all   --   anywhere  anywhere
+```
+
+As you can see, there are a few that are clearly placed there by Kubernetes.
 
 Start Googling
 Find issue
+
+## modprobe br_netfilter
 
 Running `modprobe br_netfilter` alone wouldn't have been very satifying without understanding what it does. We found some [documentation that described its effects in more detail](http://ebtables.netfilter.org/documentation/bridge-nf.html), and decided to do some before/after observation:
 
@@ -366,8 +571,7 @@ There's no `bridge` subdirectory there, as expected.
 Next we ran `modprobe br_netfilter` and then checked to see what had been created:
 
 ```terminal
-root@worker-0:~# head /proc/sys/net/bridge/*
-==> /proc/sys/net/bridge/bridge-nf-call-arptables <==
+root@worker-0:~# head /proc/sys/net/bridge/* ==> /proc/sys/net/bridge/bridge-nf-call-arptables <==
 1
 
 ==> /proc/sys/net/bridge/bridge-nf-call-ip6tables <==
@@ -418,67 +622,3 @@ There are a few differences here:
 everything works, happy times
 
 link to networking post that explains all this
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Try curling NGiNX from inside a pod -> timeout and "could not resolve host"
-nslookup nginx -> reply from unexpected source
-Run test pod again
-This time it works
-nslookup google.com -> failure to resolve
-now we have two problems, and why is the first intermittent?
-
-## External resolution
-look at /etc/resolv.conf inside the container
-ndots - this is interesting, link to https://pracucci.com/kubernetes-dns-resolution-ndots-options-and-why-it-may-affect-application-performances.html
-
-look at CoreDNS config
-No external resolution
-
-Add forwarding rule, link to plugin
-Picked up after a few minutes
-`nslookup engineerbetter.com` - now it works
-Takeaways - KTHW config doesn't specify upstream DNS servers, CoreDNS reloads ConfigMaps

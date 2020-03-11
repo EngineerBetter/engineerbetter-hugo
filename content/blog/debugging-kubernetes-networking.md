@@ -10,7 +10,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 At EngineerBetter, we're going through the formality of ensuring that we've got the Certified Kubernetes Administrator qualification box ticked. Kelsey Hightower's [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) is a valuable guide to setting up a Kubes cluster 'by hand', and so I set about running through it.
 
-Despite spending my time primarily running the business, I figured I should ensure that I can 'walk the walk' too.
+At EngineerBetter, we're going through the formality of ensuring that we've got the Certified Kubernetes Administrator qualification box ticked. Kelsey Hightower's [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) is a valuable guide to setting up a Kubes cluster 'by hand', and so I set about running through it.
 
 All was going smoothly (well, after I realised that I'd screwed up the `kubeconfig` for `kube-proxy`, but that's another story). By the end of the walkthrough I had three controller VMs running the `api-server`, `etcd` and `scheduler`, and three workers running `kubelet` and `kube-proxy`. The guide invites you to deploy an NGiNX instance, and hook up a NodePort service to it.
 

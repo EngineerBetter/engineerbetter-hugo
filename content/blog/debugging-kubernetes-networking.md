@@ -539,7 +539,7 @@ It was time to start looking elsewhere for help.
 
 After a lot of searching we found a [GitHub issue](https://github.com/kubernetes/kubernetes/issues/21613) that described our issue exactly. The proposed solution there was to run `modprobe br_netfilter` on every machine running `kube-proxy`.
 
-## modprobe br_netfilter
+### Soltion 2 - modprobe br_netfilter
 
 Running `modprobe br_netfilter` alone wouldn't have been very satifying without understanding what it does. We found some [documentation that described its effects in more detail](http://ebtables.netfilter.org/documentation/bridge-nf.html). It enables `netfilter` to see traffic being routed via bridge interfaces.
 

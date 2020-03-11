@@ -376,6 +376,12 @@ We can see that:
 * the packet passed from the debug pod interface to the `cnio0` bridge interface, by which time its destination has been translated to the target Pod IP
 * the target pod's interface responds (again, double-logging because of alleged promiscuity) directly to the debug pod, without going via the bridge
 
+{{% boxout %}}
+Whilst writing up this blog post, we found [a Google article](https://kubernetes.io/blog/2019/03/29/kube-proxy-subtleties-debugging-an-intermittent-connection-reset/) that describes a similar issue. Whilst our issue has a different cause, the diagram from that article explains why we see a TCP reset packet being sent:
+
+<img src="https://d33wubrfki0l68.cloudfront.net/caeba7f9b1115eda6863972df691e68364256312/c41c0/images/blog/2019-03-26-kube-proxy-subtleties-debugging-an-intermittent-connection-resets/connection-reset-packet-flow.png" style="width:100%"/>
+{{% /boxout %}}
+
 Cluster IPs aren't 'real', and instead they appear only in the `iptables` rules that `kube-proxy` configures on each worker.
 
 If we want to have any chance of understanding what's going on here, we're going to need to dig into `iptables`.

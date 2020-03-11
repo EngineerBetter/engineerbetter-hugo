@@ -1,14 +1,19 @@
 ---
 author: Daniel Jones and Jonathan Matthews
 date: "2020-03-11"
-heroImage: /img/blog/iptables.jpg
+heroImage: /img/blog/down-the-rabbit-hole.jpg
 title:  Debugging Kubernetes Networking
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-At EngineerBetter, we're going through the formality of ensuring that we've got the Certified Kubernetes Administrator qualification box ticked. Kelsey Hightower's [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) is a valuable guide to setting up a Kubes cluster 'by hand', and so I set about running through it.
+<figure>
+    <figcaption style="font-size: 8pt">
+    Photo by <a href="https://www.flickr.com/photos/valkyrieh116/311526846">Valerie Hinojosa</a>
+    </figcaption>
+</figure>
+
 
 At EngineerBetter, we're going through the formality of ensuring that we've got the Certified Kubernetes Administrator qualification box ticked. Kelsey Hightower's [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) is a valuable guide to setting up a Kubes cluster 'by hand', and so I set about running through it.
 

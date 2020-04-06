@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones and Jonathan Matthews
-date: "2020-03-11"
+date: "2020-04-06"
 heroImage: /img/blog/down-the-rabbit-hole.jpg
 title:  Debugging Kubernetes Networking
 heading: Our
@@ -652,4 +652,4 @@ Comparing this back to the big `netfilter` diagram, it's clear there's something
 
 Like all great adventures, it was more about the journey than the destination. We got to exercise our network debugging skills, and learnt how `kube-proxy` _really_ works under the hood.
 
-We often encounter folks who ask if they should "do Kubernetes"; I sometimes wonder if they appreciate how many low-level steps there are that can go wrong.
+There's a lot going on, and I'd strongly recommend those without decent network debugging skills to opt for distributions of configuration and components that are known to work together.

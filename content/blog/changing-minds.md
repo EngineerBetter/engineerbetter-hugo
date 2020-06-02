@@ -11,7 +11,7 @@ draft: true
 
 Using the [model of mindset change documented](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) by Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner) can **increase the chance of successful cultural change** within individuals, teams and organisations. All too often leaders, technologists, consultants and agile coaches miss part of the wider picture. Using Gardner's model helps us identify blind spots so that we can address them.
 
-Cultural change is hard (thankfully - imagine the societal consequence if it was not). Even so, much cultural change in the workplace fails because the ,most sophisticated messaging is _"stop doing that and do this, because we tell you!"_
+Cultural change is hard (thankfully - imagine the societal consequence if it was not). Even so, much cultural change in the workplace fails because the, most sophisticated messaging is _"stop doing that and do this, because we tell you!"_
 
 By 'cultural change' I also mean organisational transformation, as the two are intrinsically linked. An organisation's culture informs its practices, and vice versa.
 

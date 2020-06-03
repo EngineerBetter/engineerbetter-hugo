@@ -9,7 +9,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 draft: true
 ---
 
-All too often organisational transformations fail because leaders, technologists, consultants and agile coaches miss consider only part of the culture-change landscape. By using Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner)'s [model of mindset change](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) can **increase the chance of successful cultural change** within individuals, teams and organisations. Whilst not a panacea or a 'how to' guide, knowing and using the model can help leaders effect long-lasting change.
+All too often organisational transformations fail because leaders, technologists, consultants and agile coaches miss consider only part of the culture-change landscape. By using Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner)'s [model of mindset change](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) one can **increase the chance of successful cultural change** within individuals, teams and organisations. Whilst not a panacea or a 'how to' guide, knowing and using the model can help leaders effect long-lasting change.
 
 Cultural change is hard (thankfully - imagine the societal consequence if it was not). Even so, much cultural change in the workplace fails because the, most sophisticated messaging is _"stop doing that and do this, because we tell you!"_
 

@@ -9,13 +9,13 @@ Description: Get the very latest updates about recent projects, team updates, th
 draft: true
 ---
 
-Using the [model of mindset change documented](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) by Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner) can **increase the chance of successful cultural change** within individuals, teams and organisations. All too often leaders, technologists, consultants and agile coaches miss part of the wider picture. Using Gardner's model helps us identify blind spots so that we can address them.
+All too often organisational transformations fail because leaders, technologists, consultants and agile coaches miss consider only part of the culture-change landscape. By using Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner)'s [model of mindset change](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) can **increase the chance of successful cultural change** within individuals, teams and organisations. Whilst not a panacea or a 'how to' guide, knowing and using the model can help leaders effect long-lasting change.
 
 Cultural change is hard (thankfully - imagine the societal consequence if it was not). Even so, much cultural change in the workplace fails because the, most sophisticated messaging is _"stop doing that and do this, because we tell you!"_
 
-By 'cultural change' I also mean organisational transformation, as the two are intrinsically linked. An organisation's culture informs its practices, and vice versa.
+Cultural change is an intrinsic part of organisational transformation. An organisation's culture informs its practices, and vice versa.
 
-When trying to help an business becomes a learning organisation that is continuously delivering, are you giving people the **skills** they need? Are you equipping them with **facts** and **mental models**? Are you backing these things up with **human stories**? Are you presenting the idea in many ways? Is the idea being communicated in a way that **emotionally resonates** with people? Are you addressing only individuals, or broadcasting information to groups too?
+When trying to help a business become a learning organisation that is continuously delivering, are you giving people the **skills** they need? Are you equipping them with **facts** and **mental models**? Are you backing these things up with **human stories**? Are you presenting the idea in many ways? Is the idea being communicated in a way that **emotionally resonates** with people? Are you addressing only individuals, or broadcasting information to groups too?
 
 All the above and more need considering. Viewed through this lens, it's unsurprising that most mindset change fails.
 

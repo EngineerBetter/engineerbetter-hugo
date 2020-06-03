@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones
-date: "2020-06-03"
+date: "2020-06-02"
 heroImage: /img/blog/tug-tanker.jpg
 title: Transforming Minds and Organisations
 heading: Our

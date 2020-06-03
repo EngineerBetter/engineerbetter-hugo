@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones
-date: "2020-06-29"
+date: "2020-06-03"
 heroImage: /img/blog/tug-tanker.jpg
 title: Changing Minds
 heading: Our

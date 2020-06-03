@@ -141,11 +141,11 @@ It's also worth mentioning the [phenomenon of reactance](https://en.wikipedia.or
 
 ## Applying the Model
 
-When Dan Young and I founded EngineerBetter, we lamented that other folks would shrug their shoulders and say things like _"It's a people problem! Culture change is hard!"_
+When EngineerBetter was founded, we lamented that other folks would shrug their shoulders and say things like _"It's a people problem! Culture change is hard!"_
 
-Both those statements are true. Which is why we do something about it, and approach the matter with well-considered tools and techniques.
+Both those statements are true. Which is why we at EngineerBetter do something about it, and approach the matter with well-considered tools and techniques.
 
-Shifting an organisation to cloud-native continuous deployment is not simply a matter of throwing Kubernetes at the problem. People need to change their minds about what needs to be done, and how to do it. They need to change their mind about what is possible. Most of all, they need to change their mind about what they are capable of. These changes combined are a non-trivial undertaking.
+**Transitioning an organisation to cloud-native continuous deployment is not simply a matter of throwing Kubernetes at the problem**. People need to change their minds about what needs to be done, and how to do it. They need to change their mind about what is possible. Most of all, they need to change their mind about what they are capable of. These changes combined are a non-trivial undertaking.
 
 ### Questions to Ask Yourself
 

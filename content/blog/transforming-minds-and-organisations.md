@@ -6,7 +6,6 @@ title: Transforming Minds and Organisations
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
-draft: true
 ---
 
 All too often organisational transformations fail because leaders, technologists, consultants and agile coaches consider only part of the culture-change landscape. By using Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner)'s [model of mindset change](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) we can **increase the chance of successful cultural change** within individuals, teams and organisations. Whilst not a panacea or a 'how to' guide, knowing and using the model can help leaders effect long-lasting change.

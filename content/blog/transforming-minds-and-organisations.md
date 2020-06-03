@@ -9,11 +9,11 @@ Description: Get the very latest updates about recent projects, team updates, th
 draft: true
 ---
 
-All too often organisational transformations fail because leaders, technologists, consultants and agile coaches miss consider only part of the culture-change landscape. By using Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner)'s [model of mindset change](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) one can **increase the chance of successful cultural change** within individuals, teams and organisations. Whilst not a panacea or a 'how to' guide, knowing and using the model can help leaders effect long-lasting change.
+All too often organisational transformations fail because leaders, technologists, consultants and agile coaches consider only part of the culture-change landscape. By using Harvard psychology professor [Howard Gardner](https://en.wikipedia.org/wiki/Howard_Gardner)'s [model of mindset change](https://www.amazon.co.uk/Changing-Minds-Science-Peoples-Leadership/dp/1422103293) we can **increase the chance of successful cultural change** within individuals, teams and organisations. Whilst not a panacea or a 'how to' guide, knowing and using the model can help leaders effect long-lasting change.
 
-Cultural change is hard (thankfully - imagine the societal consequence if it was not). Even so, much cultural change in the workplace fails because the, most sophisticated messaging is _"stop doing that and do this, because we tell you!"_
+Cultural change is hard (thankfully - imagine the societal consequence if it was not). Even so, much cultural change in the workplace fails because the, most sophisticated messaging is _"stop doing that and do this, because senior management has decided so."_
 
-Cultural change is an intrinsic part of organisational transformation. An organisation's culture informs its practices, and vice versa.
+Cultural change is an intrinsic part of organisational transformation. An organisation's culture informs its practices, and vice versa. People don't adopt new practices without adopting new beliefs.
 
 When trying to help a business become a learning organisation that is continuously delivering, are you giving people the **skills** they need? Are you equipping them with **facts** and **mental models**? Are you backing these things up with **human stories**? Are you presenting the idea in many ways? Is the idea being communicated in a way that **emotionally resonates** with people? Are you addressing only individuals, or broadcasting information to groups too?
 
@@ -21,10 +21,10 @@ All the above and more need considering. Viewed through this lens, it's unsurpri
 
 ## TL;DR
 
-Before going into the details of the model, I'll highlight the **key take-aways** for those of limited attention-span:
+Before going into the details of the model, I'll highlight the **key take-aways** for those short on time:
 
 * Ensure **ideas are represented in multiple ways**. The more ways you can present an idea and have it ring true, the less internal conflict the audience will have. There are suggestions of ways to achieve this at the end of the article.
-* Exploit **all the levers of change** in Gardner's model. Technologists have a tendency to rely purely on reason alone, which isn't enough given that rationality is small proportion of human experience.
+* Exploit **all the levers of change** in Gardner's model. Technologists have a tendency to rely purely on reason alone, which isn't enough given that rationality is a small proportion of human experience.
 * **Be conscious of which scale** you're working at and which tools you should be using. Ensure you're working at all required scales.
 
 ## Axes of the Model
@@ -58,7 +58,7 @@ Test-driven development is a concept. Continuous delivery is a concept. 'Cat' is
 
 ### Theories
 
-In this context, theories are **mental models of _"if this, then that."_** To use an example, that I absolutely _do not_ hold up as healthy, provided by a customer: _"if I commit to master, then I will be fired."_
+In this context, theories are **mental models of _"if this, then that."_** If TDD is a concept, than an accompanying theory might be: _"if I write tests before the implementation, I will be able to prove it works."_
 
 Interestingly this category includes the notion of counterfactuals, or the idea that human intelligence has sufficiently sophisticated models of the world that we can pose the question _"what if that_ didn't _happen"_, which is an area that artificial intelligence struggles with.
 
@@ -89,7 +89,7 @@ The arenas in which mindset change can take place largely speak for themselves:
 
 Different tools and techniques are needed to work at different scales. Persuading an individual is patently different to persuading a group of people - otherwise one-on-one chats and pre-meeting-meetings wouldn't be so prevalent!
 
-**At larger scales, art and technology can effect change** - think of influential musicians, artistic movements. In the realm of the IT organisation, **consider how Docker changed people's attitudes towards DevOps**.
+**At larger scales, art and technology can effect change** - think of influential musicians, or perhaps artistic movements. In the realm of the IT organisation, consider how **Docker changed people's attitudes towards DevOps**.
 
 **Simple stories work better than complex ones at large scales.** Consider the simplicity of the political messaging that appears to be winning popular votes around the world.
 
@@ -111,7 +111,7 @@ If the 'reason' factor represents a logical model, then the 'research' factor re
 
 Does this idea **emotionally resonate** with the target? Do they feel something in response to it?
 
-The importance of emotional resonance is often under-rated or ignored by technologists. By contrast the livelihoods of marketers and user experience designers depend very much on it. In the era of fake news, we're sadly all too familiar with the notion that information doesn't need to be true, it just needs to _feel_ true. The most sound logical argument is likely to effect change if an audience is emotionally disengaged from it.
+The importance of emotional resonance is often under-rated or ignored by technologists. By contrast the livelihoods of marketers and user experience designers depend very much on it. In the era of fake news, we're sadly all too familiar with the notion that information doesn't need to be true, it just needs to _feel_ true. The most sound logical argument is unlikely to effect change if an audience is emotionally disengaged from it.
 
 ### Representational Redescriptions
 
@@ -123,7 +123,7 @@ Suggestions for how to redescribe an idea feature at the end of this article.
 
 Will I **get more?** Will I **spend more?** Is there a reward to this new proposed idea? Am I going to earn more money? Will I get a promotion? Or, by contrast, is my pension at risk? How many resources do I need to expend to adopt this idea?
 
-This sort of extrinsic motivator can be enough to change the behaviour of some people for a time, but often results on cognitive dissonance. I'm sure we're all familiar with folks who are happy to do something they don't believe in, as long as it makes them money. These aren't really positions that are truly assimilated into the beliefs of the individual - they're excuses used to justify behaviour. This lever on its own is unlikely to effect genuine, long-standing mindset change.
+Extrinsic rewards (money, points) can be enough to change the behaviour of some people for a time, but often results in cognitive dissonance. I'm sure we're all familiar with folks who are happy to do something they don't believe in, as long as it makes them money. These aren't really positions that are truly assimilated into the beliefs of the individual - they're excuses used to justify behaviour. This lever on its own is unlikely to effect genuine, long-standing mindset change.
 
 Rewards don't need to be extrinsic. They could include helping one's peers, or knowing that a job has been well done.
 
@@ -159,9 +159,17 @@ Both those statements are true. Which is why we at EngineerBetter do something a
   * **What's in it for individuals?** What will they have to give up?
   * Are you taking away **people's freedom?**
 
+### Avoiding Reactance
+
 As we deliver apps, infrastructure and transformations, EngineerBetter teach people new practices and crucially show individuals new skills before their old ways of working are threatened.
 
-With our [immersive training courses, pair-programming delivery, and consultancy](/our-services/) we give people the confidence that they can do things the new way, _before_ suggesting that the old way should cease. We can relay stories and anecdotes from past experience. We can explain the theoretical models of how continuous delivery, eXtreme Programming and Lean work in unison. We can tell people what's happening in the real world, in other organisations.
+If you tell someone that their current practices have to stop _before_ equipping them for the brave new world, they're going to feel cornered. Their freedom and agency will be threatened. If you upskill and enable them in new ways of working _before_ deprecating their older habits, they'll already have a route forward - instead of feeling threatened, it'll simply be a matter of moving on.
+
+You'd like to see your new house and know where you're going before being evicted, right?
+
+### Holistic Approach
+
+With our [immersive training courses, pair-programming delivery, and consultancy](/our-services/) we give people the confidence that they can do things the new way, _before_ suggesting that the old way should cease. We know what good looks like, even though every organisation will take a different journey. We can relay stories and anecdotes from past experience. We can explain the theoretical models of how continuous delivery, eXtreme Programming and Lean work in unison. We can tell people what's happening in the real world, in other organisations.
 
 ### Gardner's Suggestions for Redescription
 

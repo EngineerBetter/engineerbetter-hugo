@@ -117,7 +117,7 @@ The report typically includes:
 
 It's important that we highlight key metrics that can be the 'guiding light' for improvements. That's because all the remedies should be run as experiments - measure this, try that, and if the numbers get better, stick with it.
 
-The remedies shouldn't all be tried, and certainly not all at once - hence why we make our suggestions as to what should be prioritised. Our goal is to empower the customer to make their own improvements. The chances are that the customer knows their own circumstances better than we do, and it's more important that improvements are made than our suggestions are followed.
+The remedies shouldn't _all_ be tried, and certainly not all at once - hence why we make our suggestions as to what should be prioritised. Our goal is to empower the customer to make their own improvements. The chances are that the customer knows their own circumstances better than we do, and it's more important that improvements are made than our suggestions are followed.
 
 For similar reasons we list many more remedies than we can help with. It would be dishonest and unethical to suggest only improvements that we can help with. We've never wanted to be a 'land and expand' consultancy and we hope that, by offering people a plethora of ways to help themselves that we don't financially benefit from, we can demonstrate our trustworthiness.
 

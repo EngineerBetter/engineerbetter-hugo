@@ -147,9 +147,9 @@ Other customers (who have, to use a British colloquialism _been in a bit pickle_
 
 Index Labs is the company behind [Football Index](https://www.footballindex.co.uk/), a revolutionary fintech company that allows its users to treat soccer players like financial instruments. The company has grand plans to be a disruptive force in finance, reaching demographics uninterested in finance and giving them the tools to improve their fortunes via subject matter they're familiar with.
 
-[Akash Gharu](https://www.linkedin.com/in/akash-gharu/) had recently joined Index Labs as CTO, and was pumped full of ambition (if you've spoken to him, you'll know he's a force of nature) to help take Index Labs to the next level. The company already had a successful product and well-functioning development organisation, and Akash invited EngineerBetter to help identify any blindspots or 'unknown unknown' improvements that could be made.
+[Akash Gharu](https://www.linkedin.com/in/akash-gharu/) had recently joined Index Labs as CTO, and was pumped full of ambition (if you've spoken to him, you'll know he's a force of nature) to help take Index Labs to the next level. He was absolutely determined that engineering culture was the top priority, as it is crucial to being able to hire the best talent. The company already had a successful product and well-functioning development organisation, and Akash invited EngineerBetter to help identify any blindspots or 'unknown unknown' improvements that could be made.
 
-We were invited to help take part in the first IndexLabs internal tech conference, which brought together their distributed team for meetings, talks, pizza and drinks. EngineerBetter chatted to engineers, testers, product people and more, delivered presentations and facilitated group discussions.
+We were asked to help take part in the first IndexLabs internal tech conference, which brought together their distributed team for meetings, talks, pizza and drinks. EngineerBetter chatted to engineers, testers, product people and more, delivered presentations and facilitated group discussions.
 
 Here's what Akash had to say:
 

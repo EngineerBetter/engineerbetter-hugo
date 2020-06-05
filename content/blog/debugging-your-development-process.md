@@ -75,6 +75,8 @@ There are three key benefits to this approach.
 
 **People start the improvement journey**. We invite folks to think of one small thing thatthey could do tomorrow, without anyone's permission, to make things better. No only does this start moving the needle, but the crowd-sourcing of ideas means that people are already drawing the same conclusions that are likely to appear in the report that EngineerBetter provide. Rather than some detached consultancy dropping a report that says the company should adopt the Spotify model, the people involved were part of the journey and know that they'll be part of the solution. They've had a glimpse of how things could be, and what the way forward is - so they feel less threatened when changes to the status quo are later suggested.
 
+This part of the process also involves sticky notes. Lots and _lots_ of sticky notes.
+
 ### Value Stream Mapping
 
 Either as part of the interviews or the group facilitation (sometimes both!) we build a value stream map. This details all the steps that an idea takes on the way from someone's head to production. Each transition is labelled with a probability distribution of how long it takes to get to the next stage. We also identify points where work can go backwards (eg. "QA rejects the release"), with a rough probability of how often this happens.

@@ -96,7 +96,12 @@ It's crucially important to investigate the value stream before coding starts. I
 
 Each box on the diagram represent either an undesired symptom (it takes too long to get changes into production), an intermediate cause (CI pipeline takes too long), and a small number of root causes (the organisation incentivises hero culture). The boxes are linked by arrows of causation - an arrow going from one box to another represents a cause (from) and effect (to).
 
-Sometimes the causal links form feedback loops. They might be tight in scope, such as _Code is hard to test_ and _Developers don't believe in TDD_. Other times these loops span the entire diagram, wherein they reveal the forces that keep the organisation in its current rut: _Throughput of the department is neither known nor visualised_ causing _Unbounded amounts of work enter the backlog_, which through a series of intermediate causes means that no-one has the time to visualise the throughput capabilities of the department.
+Sometimes the causal links form feedback loops. They might be tight in scope, such as _Code is hard to test_ and _Developers don't believe in TDD_. Other times these loops span the entire diagram, wherein they reveal the forces that keep the organisation in its current rut: _"Throughput of the department is neither known nor visualised"_ causing _"Unbounded amounts of work enter the backlog"_, which through a series of intermediate causes means that no-one has the time to visualise the throughput capabilities of the department.
+
+<figure>
+  <img src="/img/blog/anonymous-crts.jpg" class="fit image">
+  <figcaption>Two separate Current Reality Trees, with themes and feedback loops highlighted.</figcaption>
+</figure>
 
 It is of great importance that the CRT represents _a model_. This means that it is refutable - if we've made an incorrect assumption, then a part of the diagram can be changed, and folks can then see which other assumptions might be incorrect. Because it represents a model, our reasoning can be checked and verified. Whilst it's out of scope of this article, I'd love to investigate using [Judea Pearl's causal calculus](https://link.springer.com/chapter/10.1007/978-1-4612-2404-4_3) to present these models more formally.
 

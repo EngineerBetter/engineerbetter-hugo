@@ -69,13 +69,16 @@ The exercises are deliberately fun and high-energy - my experience as a martial 
 
 There are three key benefits to this approach.
 
-**Ideas come from the experts**. A bunch of consultants are _never_ going to understand an organisation as well as those living in it. Sure, we might have outside perspective, but there will inevitably things that only those working in an organisation can bring to the conversation.
+**Ideas come from the experts**. A bunch of external consultants are _never_ going to understand an organisation as well as those living in it. Sure, we might have outside perspective, but there will inevitably things that only those working in an organisation can bring to the conversation.
 
 **Empathy is built between individuals**. It's one thing to know that the people that submit service tickets aren't happy with your team, but it's something quite different to see the people behind the GitHub usernames on the pull requests that go unreviewed. Speaking face-to-face invokes pro-social instincts that cause criticisms to be more level and balanced, and feedback to be listened to with more understanding.
 
 **People start the improvement journey**. We invite folks to think of one small thing thatthey could do tomorrow, without anyone's permission, to make things better. No only does this start moving the needle, but the crowd-sourcing of ideas means that people are already drawing the same conclusions that are likely to appear in the report that EngineerBetter provide. Rather than some detached consultancy dropping a report that says the company should adopt the Spotify model, the people involved were part of the journey and know that they'll be part of the solution. They've had a glimpse of how things could be, and what the way forward is - so they feel less threatened when changes to the status quo are later suggested.
 
-This part of the process also involves sticky notes. Lots and _lots_ of sticky notes.
+<figure>
+  <img src="/img/blog/deejay-sticky-notes.png" class="fit image">
+  <figcaption>Group facilitation also involves sticky notes. Lots and <em>lots</em> of sticky notes.</figcaption>
+</figure>
 
 ### Value Stream Mapping
 
@@ -153,9 +156,14 @@ Index Labs is the company behind [Football Index](https://www.footballindex.co.u
 
 We were asked to help take part in the first IndexLabs internal tech conference, which brought together their distributed team for meetings, talks, pizza and drinks. EngineerBetter chatted to engineers, testers, product people and more, delivered presentations and facilitated group discussions.
 
+<figure>
+  <img src="/img/blog/deejay-akash.png" class="fit image">
+  <figcaption>Akash looking on as Deejay appears to speak with his eyes shut at Index Labs TechCon.</figcaption>
+</figure>
+
 Here's what Akash had to say:
 
-> We had an immediate meeting of minds with the EngineerBetter team, they recognised that we needed an elevation of process and culture rather than a transformational retrofit. All the important ingredients of an agile workplace were already in our wheelhouse, we just needed to breathe a fresh lease of life into them and inspire our engineering team to think and go forward with solid ideals. EngineerBetter took us on 2 days of high-energy team facilitation which laid a sound basis for our team members to debate and clarify their expectations of a high performing fintech. EngineerBetter also followed up with some well-articulated recommendations, many of which have become part-and-parcel of our ways of working. In terms of engineering culture and quality of output, we are firmly in a new stage of our growth. We remain partners with EngineerBetter as we continue to grow.
+> We had an immediate meeting of minds with the EngineerBetter team, they recognised that we needed an elevation of process and culture rather than a transformational retrofit. All the important ingredients of an agile workplace were already in our wheelhouse, we just needed to breathe a fresh lease of life into them and inspire our engineering team to think and go forward with solid ideals. <br /><br />EngineerBetter took us on 2 days of high-energy team facilitation which laid a sound basis for our team members to debate and clarify their expectations of a high performing fintech. EngineerBetter also followed up with some well-articulated recommendations, many of which have become part-and-parcel of our ways of working. In terms of engineering culture and quality of output, we are firmly in a new stage of our growth. We remain partners with EngineerBetter as we continue to grow.
 
 ### Case Study - R3
 

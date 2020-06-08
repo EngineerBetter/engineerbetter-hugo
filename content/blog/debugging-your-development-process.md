@@ -9,7 +9,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 draft: true
 ---
 
-By debugging your development process as well as your technology, you can deliver features into production more quickly, safely and often. By performance-tuning your organisation, you can be more productive without having to increase headcount. In this post we'll explain the **Development Reality Check service that EngineerBetter offers**, and how it can help you to achieve better outcomes.
+By debugging your development process as well as your technology, you can deliver features into production more quickly, safely and often. By performance-tuning your organisation, you can be more productive without having to increase headcount. In this post we'll explain how you can debug your development process by using (or copying!) the **Development Reality Check service that EngineerBetter offers**, and how it can help you to achieve better outcomes.
 
 Over the course of this post, we'll talk about some of the tools we use from [Liberating Structures](http://www.liberatingstructures.com/) and [Systems Thinking](https://en.wikipedia.org/wiki/Systems_theory), and give examples from customer case studies.
 
@@ -26,6 +26,11 @@ This process isn't a maturity model, or a bunch of tickboxes. With each and ever
 ## Steps in the Development Reality Check
 
 We'll briefly go over each of the common steps in the process, before talking about them in more detail.
+
+<figure>
+  <img src="/img/blog/reality-check-process.png" class="fit image">
+  <figcaption>Steps included in the Reality Check service, with follow-on improvements that customers can make with or without us.</figcaption>
+</figure>
 
 Customers invite us in to perform detailed fact-finding exercises, so that we can truly understand how development there works - not how it _should_ work, but how it _actually_ works. A key component of this is individual **interviews with staff**: engineers, testers, product managers, project managers, leaders, and anyone else we can get our hands on.
 
@@ -65,7 +70,12 @@ Typical comments from interviewees are something like "this is really cathartic,
 
 Group facilitation might take one of many forms, often one of the Liberating Structures such as 1-2-4-All. The intention is to get _everyone_ together, especially those from different teams who might not speak that often.
 
-The exercises are deliberately fun and high-energy - my experience as a martial arts instructor certainly helps with running around the room occasionally bellowing instructions! We invite everyone present to think and share ideas about what isn't right, and what _they_ could do in order to make things better.
+<figure>
+  <img src="/img/blog/deejay-sticky-notes.png" class="fit image">
+  <figcaption>Group facilitation also involves sticky notes. Lots and <em>lots</em> of sticky notes.</figcaption>
+</figure>
+
+The exercises are deliberately fun and high-energy - my experience as a martial arts instructor certainly helps with running around the room occasionally bellowing directions! We invite everyone present to think and share ideas about what isn't right, and what _they_ could do in order to make things better.
 
 There are three key benefits to this approach.
 
@@ -75,14 +85,14 @@ There are three key benefits to this approach.
 
 **People start the improvement journey**. We invite folks to think of one small thing thatthey could do tomorrow, without anyone's permission, to make things better. No only does this start moving the needle, but the crowd-sourcing of ideas means that people are already drawing the same conclusions that are likely to appear in the report that EngineerBetter provide. Rather than some detached consultancy dropping a report that says the company should adopt the Spotify model, the people involved were part of the journey and know that they'll be part of the solution. They've had a glimpse of how things could be, and what the way forward is - so they feel less threatened when changes to the status quo are later suggested.
 
-<figure>
-  <img src="/img/blog/deejay-sticky-notes.png" class="fit image">
-  <figcaption>Group facilitation also involves sticky notes. Lots and <em>lots</em> of sticky notes.</figcaption>
-</figure>
-
 ### Value Stream Mapping
 
-Either as part of the interviews or the group facilitation (sometimes both!) we build a value stream map. This details all the steps that an idea takes on the way from someone's head to production. Each transition is labelled with a probability distribution of how long it takes to get to the next stage. We also identify points where work can go backwards (eg. "QA rejects the release"), with a rough probability of how often this happens.
+Either as part of the interviews or the group facilitation (sometimes both!) we build a simple value stream map. This details all the steps that an idea takes on the way from someone's head to production. Estimated probability distributions are identified for how long work takes to be performed at each stage, as well as how long it takes for work to transition between phases. We also identify points where work can go backwards (eg. "QA rejects the release"), with a rough probability of how often this happens.
+
+<figure>
+  <img src="/img/blog/vsm-sketch.jpg" class="fit image">
+  <figcaption>Part of a value stream map, with failure rates, wait times and work times expressed probabilistically.</figcaption>
+</figure>
 
 The value stream map then gives an upper and lower bound for how long it takes to make changes, otherwise known as the **lead-time-to-production**. This is a key metric for agility in a competitive marketplace, and evermore importantly for developer morale. Increasingly we're seeing business struggle to retain the best engineers when they become frustrated and not seeing the fruits of their labour.
 
@@ -92,7 +102,7 @@ It's crucially important to investigate the value stream before coding starts. I
 
 ### Current Reality Tree
 
-[We've blogged about Current Reality Trees before](/blog/current-reality-trees-fog-of-war/). They're a crucial tool in understanding the complexity of the organisation and for explaining this in a way that is simply impossible in a linear written report. We use all the information that we've gathered so far to build the causal model that underpins the CRT.
+[We've blogged about Current Reality Trees before](/blog/current-reality-trees-fog-of-war/). They're a **crucial tool in understanding the complexity** of the organisation and for explaining this in a way that is simply impossible in a linear written report. We use all the information that we've gathered so far to build the causal model that underpins the CRT.
 
 Each box on the diagram represent either an undesired symptom (it takes too long to get changes into production), an intermediate cause (CI pipeline takes too long), and a small number of root causes (the organisation incentivises hero culture). The boxes are linked by arrows of causation - an arrow going from one box to another represents a cause (from) and effect (to).
 
@@ -105,7 +115,9 @@ Sometimes the causal links form feedback loops. They might be tight in scope, su
 
 It is of great importance that the CRT represents _a model_. This means that it is refutable - if we've made an incorrect assumption, then a part of the diagram can be changed, and folks can then see which other assumptions might be incorrect. Because it represents a model, our reasoning can be checked and verified. Whilst it's out of scope of this article, I'd love to investigate using [Judea Pearl's causal calculus](https://link.springer.com/chapter/10.1007/978-1-4612-2404-4_3) to present these models more formally.
 
-It tends to be the case that root causes (especially those that are part of a feedback loop) are daunting to change. Those near the top are often much simpler to address, often as quick fixes that will have immediate but limited impact. The CRT presents issues in full context, giving our customers the ability to decide how much change they're willing to sustain in order to fix an issue. EngineerBetter might recommend one thing, but perhaps the customer has political reasons we're not privy to for wanting to avoid certain changes.
+It tends to be the case that root causes (especially those that are part of a feedback loop) are daunting to change. Those near the top are often much simpler to address, often as quick fixes that will have immediate but limited impact.
+
+The CRT presents issues in full context, **giving our customers the ability to decide how much change they're willing to sustain** in order to fix an issue. EngineerBetter might recommend one thing, but perhaps the customer has political reasons we're not privy to for wanting to avoid certain changes.
 
 The CRT is visual and engaging. When we present our findings we often bring a CRT printed on A1 or A0 paper, stick it to a wall, and invite everyone to gather around.
 
@@ -113,31 +125,36 @@ The CRT is visual and engaging. When we present our findings we often bring a CR
 
 Whilst the causal model that underlies the CRT is the most important output of the process, the CRT benefits greatly from summarisation and narration in a traditional written report. Naturally this can be a bit tricky given the inter-related nature of the issues, but we give it a jolly good go!
 
+<figure>
+  <img src="/img/blog/report.jpg" class="fit image">
+  <figcaption>Yes, I really did take a photo of a report on my desk. People like pictures.</figcaption>
+</figure>
+
 The report typically includes:
 
-* An executive summary, because it wouldn't be a _business_ report without one, right?
-* Description of the methodology we used
-* A list of _all_ of the causes and effects in the model
-* Suggestions of key metrics to measure, track and improve upon
-* A list of all of the remedies for problems in the model, generated by us and including those suggested by staff in the group facilitation
-* EngineerBetter's recommendations for which remedies should be run as experiments
+* An **executive summary**, because it wouldn't be a _business_ report without one, right?
+* Description of the **methodology** we used
+* A list of _all_ of the **causes and effects** in the model
+* Suggestions of **key metrics** to measure, track and improve upon
+* A list of all of the *remedies* for problems in the model, generated by us and including those suggested by staff in the group facilitation.
+* EngineerBetter's **recommendations** for which remedies should be run as experiments
 * Ways that EngineerBetter can help
-* An appendix of pertinent anonymised quotes
+* An appendix of pertinent **anonymised quotes**
 * An appendix of anything that we think you should know, but we weren't asked for
 
 It's important that we highlight key metrics that can be the 'guiding light' for improvements. That's because all the remedies should be run as experiments - measure this, try that, and if the numbers get better, stick with it.
 
 The remedies shouldn't _all_ be tried, and certainly not all at once - hence why we make our suggestions as to what should be prioritised. Our goal is to empower the customer to make their own improvements. The chances are that the customer knows their own circumstances better than we do, and it's more important that improvements are made than our suggestions are followed.
 
-For similar reasons we list many more remedies than we can help with. It would be dishonest and unethical to suggest only improvements that we can help with. We've never wanted to be a 'land and expand' consultancy and we hope that, by offering people a plethora of ways to help themselves that we don't financially benefit from, we can demonstrate our trustworthiness.
+For similar reasons **we list many more remedies than we can help with**, and we'd expect to suggest at least 15 or so improvements if we'd spent a day or two researching the organisation, going up to tens-to-hundreds if the research phase was longer. It would be dishonest and unethical to suggest only improvements that we can help with. We've never wanted to be a 'land and expand' consultancy and we hope that, by offering people a plethora of ways to help themselves that we don't financially benefit from, we can demonstrate our trustworthiness.
 
-Finally, we have often included a section of things that we think the customer should know, that we haven't been asked to look at. Our job is to tell people what they need to know in order to be successful, and not to tell them what they want to hear, or to win a popularity contest. As CEO I would much rather lose business by telling people what I think will help them most than by biting my lip for fear of causing offence. Naturally, all feedback is offered with empathy and tact.
+We have often included a section of things that we think the customer should know but we haven't been asked to look at. Our job is to tell people what they need to know in order to be successful, and not to tell them what they want to hear or what will make them feel the best. As CEO I would much rather lose business by telling people what I think will help them most than by biting my lip for fear of causing offence. Naturally, all feedback is offered with empathy and tact.
 
 ### Presentation
 
-Some folks want to see the report first and meet after digesting it, but generally we find it works better to guide people through the findings in a presentation meeting. The subject matter is complicated, and CRTs are unfamiliar tools to most people.
+Some folks want to see the report first and meet after digesting it, but generally we find **it works better to guide people through the findings in a presentation** meeting. The subject matter is complicated, and CRTs are unfamiliar tools to most people.
 
-One of the more satisfying moment of my career has been presenting these findings to customers, only to see them reach the conclusions that we have made in a later part of the document that they haven't read yet. Seeing the lightbulb go on is immensely gratifying, as is seeing a room of people energised and re-enthused about their work lives.
+One of the more satisfying moments of my career has been presenting these findings to customers, only to see them reach the conclusions that we have made in a later part of the document that they haven't read yet. Seeing the metaphorical lightbulb go on is immensely gratifying, as is seeing a room of people energised and re-enthused about their work lives.
 
 ### Follow-on Work
 
@@ -145,17 +162,22 @@ As mentioned previously, there's plenty more to do than EngineerBetter can help 
 
 We invite folks to adopt the Current Reality Tree as a living document. Update it as things change. Solicit feedback from staff to see if it is accurate.
 
-We encourage folks to look at key metrics like lead-time-to-production and flow efficiency, and keep tracking them. Run experiments, and if the metrics improve, then keep going! Don't waste time on something that isn't really helping, no matter if we told you to do it, or if it's the latest development craze.
+We encourage folks to **look at key metrics** like **lead-time-to-production and flow efficiency**, and keep tracking them. **Run experiments**, and if the metrics improve, then keep going! Don't waste time on something that isn't really helping, no matter if we told you to do it, or if it's the latest development craze.
 
 ## Case Studies
 
 We've been very fortunate that some of our customers have been happy for us to share the ways that we've helped them. Our approach is a perfect reality check for technology leaders in new positions, either by way of promotion or changing companies. These folks don't have any significant underlying dysfunction, and instead just want and honest appraisal from an outside source.
 
-Other customers (who have, to use a British colloquialism _been in a bit pickle_) have quite understandably not been so keen on sharing their dirty laundry. Suffice to say that some of our more interesting work has been in organisations where things have not been great.
+Other customers (who have, to use a British colloquialism, _been in a bit pickle_) have quite understandably not been so keen on sharing their dirty laundry. Suffice to say that some of our more interesting work has been in organisations where things have not been great.
 
 ### Case Study - Index Labs
 
 Index Labs is the company behind [Football Index](https://www.footballindex.co.uk/), a revolutionary fintech company that allows its users to treat soccer players like financial instruments. The company has grand plans to be a disruptive force in finance, reaching demographics uninterested in finance and giving them the tools to improve their fortunes via subject matter they're familiar with.
+
+<figure>
+  <img src="/img/blog/akash-techcon.png" class="fit image">
+  <figcaption>Akash Gharu (in soft-focus!) at the start of Index Labs' first internal tech conference.</figcaption>
+</figure>
 
 [Akash Gharu](https://www.linkedin.com/in/akash-gharu/) had recently joined Index Labs as CTO, and was pumped full of ambition (if you've spoken to him, you'll know he's a force of nature) to help take Index Labs to the next level. He was absolutely determined that engineering culture was the top priority, as it is crucial to being able to hire the best talent. The company already had a successful product and well-functioning development organisation, and Akash invited EngineerBetter to help identify any blindspots or 'unknown unknown' improvements that could be made.
 
@@ -184,10 +206,10 @@ We're eternally grateful to Akash and Dave for sharing their positive experience
 
 EngineerBetter's Development Reality Check can help you if you want to:
 
-* understand the current state of your development practice
-* performance-tune the teams you already have, to increase productivity without increasing headcount
-* find out why development is getting slower when you keep adding more developers
-* become truly cloud native by deploying regularly into production with zero downtime
-* decrease time-to-production, become a learning organisation, and achieve better business outcomes
+* **understand** the current state of **your development practice**
+* performance-tune the teams you already have, to **increase productivity without increasing headcount**
+* find out **why development is getting slower** when you keep adding more developers
+* become **truly cloud native** by deploying regularly into production with zero downtime
+* **decrease time-to-production**, become a **learning organisation**, and achieve **better business outcomes**
 
 If you need help with the above then please [get in touch](mailto:contact@engineerbetter.com). EngineerBetter doesn't have sales people - just experienced experts willing to have a chat to see if we can assist you.

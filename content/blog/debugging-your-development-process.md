@@ -11,6 +11,14 @@ draft: true
 
 By debugging your development process as well as your technology, you can deliver features into production more quickly, safely and often. By performance-tuning your organisation, you can be more productive without having to increase headcount. In this post we'll explain how you can debug your development process by using (or copying!) the **Development Reality Check service that EngineerBetter offers**, and how it can help you to achieve better outcomes.
 
+EngineerBetter's Development Reality Check can help you if you want to:
+
+* **understand** the current state of **your development practice**
+* performance-tune your teams to **increase productivity without increasing headcount**
+* find out **why development is getting slower** when you keep adding more developers
+* become **truly cloud-native** by deploying regularly into production with zero downtime
+* achieve **better&nbsp;business&nbsp;outcomes**, **decrease&nbsp;time-to-production**, and become a **learning&nbsp;organisation**
+
 Over the course of this post, we'll talk about some of the tools we use from [Liberating Structures](http://www.liberatingstructures.com/) and [Systems Thinking](https://en.wikipedia.org/wiki/Systems_theory), and give examples from customer case studies.
 
 ## Who is this for?
@@ -213,12 +221,12 @@ Here's what Akash had to say:
 
 We're eternally grateful to Akash and Dave for sharing their positive experiences with EngineerBetter, and we look forward to continue to working with them and their teams.
 
-EngineerBetter's Development Reality Check can help you if you want to:
+To recap, EngineerBetter's Development Reality Check can help you if you want to:
 
 * **understand** the current state of **your development practice**
-* performance-tune the teams you already have, to **increase productivity without increasing headcount**
+* performance-tune your teams to **increase productivity without increasing headcount**
 * find out **why development is getting slower** when you keep adding more developers
-* become **truly cloud native** by deploying regularly into production with zero downtime
-* **decrease time-to-production**, become a **learning organisation**, and achieve **better business outcomes**
+* become **truly cloud-native** by deploying regularly into production with zero downtime
+* achieve **better&nbsp;business&nbsp;outcomes**, **decrease&nbsp;time-to-production**, and become a **learning&nbsp;organisation**
 
 If you need help with the above then please [get in touch](mailto:contact@engineerbetter.com). EngineerBetter doesn't have sales people - just experienced experts willing to have a chat to see if we can assist you.

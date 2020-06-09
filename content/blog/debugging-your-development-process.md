@@ -48,9 +48,9 @@ Inevitably folks need time to digest our findings, and to decide which of the me
 
 ### Interviews
 
-We arrange to meet folks face-to-face for chats that can vary between 30 minutes and a few hours. It's important to let folks know that we won't be passing on specific comments, and that everything said is done so in the spirit of trying to make the organisation better. People giving us their time and their honest thoughts need to know that they're in a safe space.
+We arrange to meet folks for **face-to-face chats** that can vary between **30 minutes and a few hours**. It's important to let folks know that we won't be passing on specific comments, and that everything said is done so in the spirit of trying to make the organisation better. People giving us their time and their honest thoughts need to know that they're in a safe space.
 
-These chats don't _have_ to be on-site. Whilst being in-person helps with non-verbal communication, video calls work nearly as well. We've had experience of this when working with international teams all contributing to the same codebase.
+These chats don't _have_ to be on-site. Whilst being in-person helps with non-verbal communication, **video calls work nearly as well**. We've had experience of this when working with international teams all contributing to the same codebase.
 
 Speaking to either like-minded groups or individuals seems to work best, as folks are then more candid with their feedback. That said, in sessions where there have been disagreements in the room we've seen viewpoints get exchanged for the first time, leading to increased levels of understanding.
 
@@ -62,9 +62,13 @@ Typical questions include:
 * What gets in the way of your team being successful?
 * If you had a magic wand, what one thing would you fix?
 
-Copious notes are taken - in the last two such engagements, I clearly remember exhausting a fresh ball-point pen!
+**Copious notes** are taken - in the last two such engagements, I clearly remember exhausting a fresh ball-point pen!
 
-Typical comments from interviewees are something like "this is really cathartic," "I feel so much better just having someone ask the questions and listen to my answers," and unsurprisingly "this is great - it's like organisational therapy! Can you come again next month?"
+Typical comments from interviewees include:
+
+* _"This is really cathartic"_
+* _"I feel so much better just having someone ask the questions and listen to my answers"_
+* ...and unsurprisingly _"This is great - it's like organisational therapy! Can you come again next month?"_
 
 ### Group Facilitation
 
@@ -166,9 +170,9 @@ We encourage folks to **look at key metrics** like **lead-time-to-production and
 
 ## Case Studies
 
-We've been very fortunate that some of our customers have been happy for us to share the ways that we've helped them. Our approach is a perfect reality check for technology leaders in new positions, either by way of promotion or changing companies. These folks don't have any significant underlying dysfunction, and instead just want and honest appraisal from an outside source.
+We've been very fortunate that some of our customers have been happy for us to share the ways that we've helped them. Our approach is a **perfect reality check for technology leaders in new positions**, either by way of promotion or changing companies. These folks don't have any significant underlying dysfunction, and instead just want and honest appraisal from an outside source.
 
-Other customers (who have, to use a British colloquialism, _been in a bit pickle_) have quite understandably not been so keen on sharing their dirty laundry. Suffice to say that some of our more interesting work has been in organisations where things have not been great.
+Other customers (who have, to use a British colloquialism, _been in a bit pickle_) have quite understandably not been so keen on sharing their dirty laundry. Suffice to say that some of **our more interesting work** has been in **organisations that are struggling** with productivity and morale.
 
 ### Case Study - Index Labs
 
@@ -195,6 +199,11 @@ Here's what Akash had to say:
 ### Case Study - R3
 
 [R3](https://www.r3.com/) are part of the [Corda Foundation](https://corda.network/), producing the Corda platform for blockchain apps that is in use in numerous financial enterprises. As such, they have some ferociously smart engineers working on very complex and novel problems.
+
+<figure>
+  <img src="/img/blog/r3-stock-photos.jpg" class="fit image">
+  <figcaption>Stock photos of the rather plush R3 offices that we had the pleasure of visiting.</figcaption>
+</figure>
 
 [Dave Hudson](https://www.linkedin.com/in/davejh/) had recently been appointed Chief Engineering Officer when EngineerBetter were initially asked by one of the R3 engineers for some help with [Concourse CI](https://concourse-ci.org/) (which is another speciality of ours). Whilst it became clear that Concourse wasn't causing an issue, R3 were about to expand their development efforts internationally and wanted to ensure that things would go as smoothly as possible, as Dave explains:
 

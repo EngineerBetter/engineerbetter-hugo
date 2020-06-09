@@ -230,3 +230,9 @@ To recap, EngineerBetter's Development Reality Check can help you if you want to
 * achieve **better&nbsp;business&nbsp;outcomes**, **decrease&nbsp;time-to-production**, and become a **learning&nbsp;organisation**
 
 If you need help with the above then please [get in touch](mailto:contact@engineerbetter.com). EngineerBetter doesn't have sales people - just experienced experts willing to have a chat to see if we can assist you.
+
+### Frustrated Engineer?
+
+If you're an engineer reading this and wishing that you worked for a forward-thinking company that is pro-actively to improve its processes and culture, then you could forward this article to your leadership. If they don't want to change, then you could always get in touch with either [Index Labs](https://news.footballindex.co.uk/careers/) or [R3](https://www.r3.com/careers/) - **they're both hiring**.
+
+Of course if you're interested in helping other organisations improve, then [EngineerBetter would like to hear from you](mailto:contact@engineerbetter.com)!

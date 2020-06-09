@@ -23,9 +23,9 @@ Over the course of this post, we'll talk about some of the tools we use from [Li
 
 ## Who is this for?
 
-EngineerBetter have worked with Developers, Development Managers, and CTOs to help software delivery in a number of ways. The service scales from helping individual teams over a few days, to helping continent-spanning departments over weeks and months.
+EngineerBetter have worked with Developers, Development Managers, and CTOs to help software delivery in a number of ways. The service scales from helping **individual teams** over a few days, to helping **continent-spanning departments** over weeks and months.
 
-We've helped global corporations address poor lead-time-to-production and low staff morale. We've also helped experienced tech leaders in new positions and new organisations by holding a mirror up to their departments, identifying the practices that they should double-down on whilst also pointing out previously unidentified improvements.
+We've helped **global corporations** address poor lead-time-to-production and low staff morale. We've also helped experienced **tech leaders in new positions** and new organisations by holding a mirror up to their departments, identifying the practices that they should double-down on whilst also pointing out previously unidentified improvements.
 
 ## What is it not?
 

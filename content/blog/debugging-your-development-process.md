@@ -1,12 +1,11 @@
 ---
 author: Daniel Jones
-date: "2020-06-30"
+date: "2020-06-09"
 heroImage: /img/blog/mirror.jpg
-title: Development Reality Check
+title: Debugging Your Development Process
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
-draft: true
 ---
 
 By debugging your development process as well as your technology, you can deliver features into production more quickly, safely and often. By performance-tuning your organisation, you can be more productive without having to increase headcount. In this post we'll explain how you can debug your development process by using (or copying!) the **Development Reality Check service that EngineerBetter offers**, and how it can help you to achieve better outcomes.

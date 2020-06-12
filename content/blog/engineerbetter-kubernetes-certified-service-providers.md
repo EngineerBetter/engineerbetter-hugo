@@ -6,7 +6,6 @@ title: EngineerBetter are Kubernetes Certified Service Providers
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
-draft: true
 ---
 
 I'm pleased to announce that EngineerBetter are now [members of the Cloud Native Computing Foundation](https://www.cncf.io/about/members/), and are [Kubernetes Certified Service Providers](https://kubernetes.io/partners/#kcsp). Combined with **our partnerships** with **[Google Cloud](https://cloud.withgoogle.com/partners?search=engineerbetter)**, **IBM**, (the company formerly known as) **Pivotal**, **SUSE** and **VMware**, this means we're in a great position to help organisations be productive on Kubernetes, regardless of where they choose to use it. The message is simple - **if you want to be more productive in the cloud, EngineerBetter can help**.

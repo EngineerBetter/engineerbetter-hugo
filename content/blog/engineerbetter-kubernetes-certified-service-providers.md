@@ -10,7 +10,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 I'm pleased to announce that EngineerBetter are now [members of the Cloud Native Computing Foundation](https://www.cncf.io/about/members/), and are [Kubernetes Certified Service Providers](https://kubernetes.io/partners/#kcsp). Combined with **our partnerships** with **[Google Cloud](https://cloud.withgoogle.com/partners?search=engineerbetter)**, **IBM**, (the company formerly known as) **Pivotal**, **SUSE** and **VMware**, this means we're in a great position to help organisations be productive on Kubernetes, regardless of where they choose to use it. The message is simple - **if you want to be more productive in the cloud, EngineerBetter can help**.
 
-## Productivity on Kubernetes
+## Improving Productivity on Kubernetes
 
 EngineerBetter is a consultancy about outcomes over technology. Whilst we've helped people with [technical implementations of Kubernetes](/blog/continuous-infrastructure-google-cloud/), and have long assisted folks with Cloud Foundry, our over-riding motivation is to [help organisations achieve better outcomes](/blog/debugging-your-development-process) and to become more productive - a topic [I've spoken at KubeCon](https://kccna18.sched.com/event/GrT5/continuous-delivery-on-platforms-is-better-for-your-brain-and-business-daniel-jones-engineerbetter-ltd) about.
 

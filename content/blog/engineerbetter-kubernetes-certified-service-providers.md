@@ -1,6 +1,6 @@
 ---
 author: Daniel Jones
-date: "2020-06-10"
+date: "2020-06-12"
 heroImage: /img/blog/eb-cncf-kcsp.png
 title: EngineerBetter are Kubernetes Certified Service Providers
 heading: Our

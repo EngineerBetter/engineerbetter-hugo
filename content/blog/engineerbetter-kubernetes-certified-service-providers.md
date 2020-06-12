@@ -30,7 +30,7 @@ We're excited to be able to help Kubernetes users and operators with:
 
 We look forward to helping Kubernetes users make sense of the bewildering array of components in front of them, and really move the needle on digital transformation.
 
-...and we haven't even talked about all the cool stuff we can do with [Concourse](https://concourse-ci.org/), [Control Tower](https://github.com/EngineerBetter/control-tower) and Kubernetes!
+...and we haven't even talked about all the cool stuff we can do with [Concourse](https://concourse-ci.org/) and [Control Tower](https://github.com/EngineerBetter/control-tower) on Kubernetes!
 
 ## Kubernetes and the Future of Cloud Foundry
 

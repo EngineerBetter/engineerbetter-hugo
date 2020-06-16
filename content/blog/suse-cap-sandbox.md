@@ -18,7 +18,7 @@ The SUSE CAP Sandbox is for any developer that wants to experiment, especially t
 
 <!-- You want to make some changes to your app, but you don't want to commit them to git just yet, you want to test in an environment without the 'it works on my machine' caveat, and you _really_ don't want to start building a k8s cluster to do all of that yourself. -->
 
-Let's say, for example, you're an engineer at a large bank. You have a great idea for a new app written in Python using Redis. However, these technologies aren’t approved or supported by the business, and the approval process itself is infamously lengthy and arduous. It could be weeks, even months before they're accepted, all the while your new idea is left on standby. If only you had somewhere you could knock up a quick demo to show your boss...
+Let's say, for example, you're an engineer at a large bank. You have a great idea for a new app written in Python using Redis. However, these technologies aren’t approved or supported by the business, and the approval process itself is infamously lengthy and arduous. It could be weeks, even months before they're accepted, all the while your new app idea is left on standby. If only you had somewhere you could knock up a quick demo to show your boss...
 
 **_Enter, SUSE CAP Development Sandbox._**
 
@@ -46,13 +46,20 @@ The Org quota allows up to 10 app deployments with a total requested RAM not exc
 
 ## What _don't_ you get?
 
-Lastly, it's worth mentioning the features of SUSE CAP that you won't have access to in the Sandbox, largely these are features that either can't be implemented on an Org by Org basis, or are not applicable with a small quota:
+Lastly, it's worth mentioning the features of SUSE CAP that you won't have access to in the Sandbox, largely these are features that either can't be implemented on an Org by Org basis, or are not feesibly applicable with a small quota:
 
 * Auto-Scaling
 * Custom Buildpacks
 * User and Team Management
-* Blue/Green Deployments
+* Blue/Green deployments
 
-As an individual developer wanting to build and test new things, you shouldn't miss any of those features too much. That said, if you have a specific request or use-case that you'd like to be supported, you're encouraged to reach out on the [SUSE Sandbox forum](https://forums.suse.com/categories/sandbox-help-feedback).
+### A quick word on blue/green deployments
+The docs state that blue/green deployments are not available in the Sandbox environment, I verified this by running a V3-push on my app instances (instances were stopped with downtime and then updated rather than executing a rolling update).
+
+You _can_ perform a blue/green deployment from the command line using this [cf-cli plugin](https://github.com/bluemixgaragelondon/cf-blue-green-deploy#bluegreen-deployer-plugin-for-cf), all this plugin does is automate the steps that you would perform if you were going to do a manual blue/green deployment: creating a new instance; mapping the existing route; and unmapping the route from the original instance.
+
+However, as mentioned in the previous section, the resources available in the Sandbox are limited, and considering the maximum number of routes and apps instances available, you'll find you quickly run into resourcing issues when performing blue/green updates on multiple apps.
+
+In any case, as an individual developer wanting to build and test new things, you shouldn't miss any of the un-enabled features too much. That said, if you have a specific request or use-case that you'd like to be supported, you're encouraged to reach out on the [SUSE Sandbox forum](https://forums.suse.com/categories/sandbox-help-feedback).
 
 _Sign up for the SUSE CAP Development Sandbox here https://www.explore.suse.dev/capsandbox/_

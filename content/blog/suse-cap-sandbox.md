@@ -22,10 +22,11 @@ Let's say, for example, you're an engineer at a large bank. You have a great ide
 
 **_Enter, SUSE CAP Development Sandbox._**
 
-It took 20 minutes for me to go from registering for a SUSE account to viewing my first `cf push`ed sample app in the Stratos UI. I'm not new to the `cf` CLI or any of the Cloud Foundry (CF) concepts touched on in the intro page of the docs, but even if you are, it takes a grand total of _two_ commands before you can start pushing apps to your environment.
+It took 20 minutes for me to go from registering for a SUSE account to viewing my first `cf push`ed sample app in the Stratos UI (see image below). I'm not new to the `cf` CLI or any of the Cloud Foundry (CF) concepts touched on in the intro page of the docs, but even if you are, it takes a grand total of _two_ commands before you can start pushing apps to your environment.
+
+![stratos-ui](/static/img/blog/stratos-ui.png)
 
 Broadly speaking the set up process is as follows:
-
 1. Register for an account with SUSE
 2. Use that account to register for the SUSE CAP Development Sandbox service
 3. Download the `cf` CLI with your chosen package installer

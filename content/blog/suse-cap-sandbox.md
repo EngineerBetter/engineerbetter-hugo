@@ -16,7 +16,9 @@ Over the past couple of days, I've been exploring the SUSE CAP Developer Sandbox
 
 The SUSE CAP Sandbox is for any developer that wants to experiment, especially those that find their velocity is hindered by the processes of an enterprise engineering environment.
 
-You want to make some changes to your app, but you don't want to commit them to git just yet, you want to test in an environment without the 'it works on my machine' caveat, and you _really_ don't want to start building a k8s cluster to do all of that yourself.
+<!-- You want to make some changes to your app, but you don't want to commit them to git just yet, you want to test in an environment without the 'it works on my machine' caveat, and you _really_ don't want to start building a k8s cluster to do all of that yourself. -->
+
+Let's say, for example, you're an engineer at a large bank. You have a great idea for a new app written in Python using Redis. However, these technologies aren’t approved or supported by the business, and the approval process itself is infamously lengthy and arduous. It could be weeks, even months before they're accepted, all the while your new idea is left on standby. If only you had somewhere you could knock up a quick demo to show your boss...
 
 **_Enter, SUSE CAP Development Sandbox._**
 
@@ -40,7 +42,7 @@ When you register for the SUSE CAP Sandbox, what you're really doing is requesti
 
 So, in this playground environment you're actually accessing a full SUSE CAP deployment (SUSE Cloud Foundry running on K8s with the Stratos UI), with some restrictions...
 
-The Org quota allows up to 10 app deployments with a total requested RAM not exceeding 2GB, and a maximum of 4 services (MariaDB, Postgres, Redis, and MongoDB are available).
+The Org quota allows up to 10 app deployments with a total requested RAM not exceeding 2GB, a maximum of 4 services (MariaDB, Postgres, Redis, and MongoDB are available), and a total of 9 routes.
 
 ## What _don't_ you get?
 

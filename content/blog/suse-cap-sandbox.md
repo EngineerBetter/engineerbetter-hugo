@@ -47,10 +47,10 @@ The Org quota allows up to 10 app deployments with a total requested RAM not exc
 
 Lastly, it's worth mentioning the features of SUSE CAP that you won't have access to in the Sandbox, largely these are features that either can't be implemented on an Org by Org basis, or are not feasibly applicable with a small quota:
 
-* Auto-Scaling
-* Custom Buildpacks
 * User and Team Management
 * Blue/Green deployments
+
+The docs also currently include Auto-Scaling and Custom Buildpacks in the list of unavailable features, I've omitted these from my list as I was able to successfully attach an autoscaling policy to my app and cf push with a custom buildpack.
 
 ### A quick word on blue/green deployments
 

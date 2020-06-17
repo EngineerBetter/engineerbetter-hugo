@@ -64,4 +64,4 @@ Lastly, it's worth mentioning the features of SUSE CAP that you won't have acces
 
 As an individual developer wanting to build and test new things, you shouldn't miss any of the restricted features too much. That said, if you have a specific request or use-case that you'd like to be supported, you're encouraged to reach out on the [SUSE Sandbox forum](https://forums.suse.com/categories/sandbox-help-feedback).
 
-You can **sign up** for the SUSE CAP Development Sandbox here: https://www.explore.suse.dev/capsandbox/_
+You can **sign up** for the SUSE CAP Development Sandbox here: https://www.explore.suse.dev/capsandbox/

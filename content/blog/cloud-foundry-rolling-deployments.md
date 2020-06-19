@@ -19,7 +19,7 @@ Over the last 18 months, the Cloud Controller (the brains of Cloud Foundry) has 
 There are now three approaches:
 
 * simple `cf push`
-* zero-downtime deployments
+* blue/green deployments
 * new rolling deployments
 
 ### Simple `cf push`
@@ -34,7 +34,7 @@ A simple `cf push` is shown at the top of the following graph, with a long perio
   <figcaption>Comparison of 2xx (pink) requests vs. 4xx (orange) requests during a normal push (top) and a rolling push (bottom)</figcaption>
 </figure>
 
-### Zero downtime deployments
+### Blue/green deployments
 Cloud Foundry has always offered the features for a zero-downtime deployment using a variant of the [blue-green deployment strategy](https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html). Blue-green deployments allow for zero downtime by creating an entirely new application for the new code each time (the `blue` deployment) before switching traffic over from the old application (the `green` deployment).
 
 Importantly this required _a new app_ in the database of Cloud Foundry - so a new and unrelated app, with a different ID. Cloud Foundry had no way of knowing that it was a newer version of the same codebase. Events and logs relating to the old version would use the old app ID, and when the old app was deleted (because the new version was live) these data would also be lost.

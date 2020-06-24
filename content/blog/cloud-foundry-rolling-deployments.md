@@ -1,16 +1,15 @@
 ---
 author:  Andy Paine
-date: "2020-06-22"
+date: "2020-06-24"
 heroImage: /img/blog/v3-deployments/rolling-waves.jpg
 title: Cloud Foundry Rolling Deployments
-draft: true
 
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Version 7 of Cloud Foundry's `cf` CLI is now generally available. This makes rolling deployments a first-class feature, and adds many more flexible workflows than the original `cf push` offered. These changes bring the Cloud Foundry user experience more in line with what users have come to expected from Kubernetes' Deployments. **Rolling deployments are now available** - so why should you switch?
+[Version 7 of Cloud Foundry's `cf` CLI is now generally available](https://www.cloudfoundry.org/blog/cloud-foundry-foundation-announces-availability-of-new-features-to-make-modern-application-development-even-simpler-for-developers/). This makes rolling deployments a first-class feature, and adds many more flexible workflows than the original `cf push` offered. These changes bring the Cloud Foundry user experience more in line with what users have come to expected from Kubernetes' Deployments. **Rolling deployments are now available** - so why should you switch?
 
 ## A History of `cf push`
 

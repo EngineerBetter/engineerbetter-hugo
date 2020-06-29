@@ -3,6 +3,7 @@ author:  Jessica Stenning
 date: "2020-06-29"
 heroImage:
 title: Deploying SUSE Containers as a Service Platform (CaasP) on AWS
+draft: true
 
 heading: Our
 headingBold: blog

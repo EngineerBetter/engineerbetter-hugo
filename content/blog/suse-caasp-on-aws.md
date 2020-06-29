@@ -10,7 +10,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-The SUSE Containers as a Service Platform (CaasP) deployment on AWS recently went into technological preview (as of [version 4.1.2](https://www.suse.com/releasenotes/x86_64/SUSE-CAASP/4/#_deployment_on_aws_as_technology_preview)). Here are my tips for a smooth AWS CaaSP deployment.
+The SUSE Containers as a Service Platform (CaasP) deployment on AWS recently went into technological preview (as of [version 4.1.2](https://www.suse.com/releasenotes/x86_64/SUSE-CAASP/4/#_deployment_on_aws_as_technology_preview)). I spent a few days going through the docs and deploying my own SUSE CaaSP cluster on AWS, here are my tips for a smooth deployment.
 
 ## What is SUSE CaaSP?
 First off, what is SUSE CaaSP? As SUSE put it 'SUSE CaaS Platform is an enterprise class container management solution that enables IT and DevOps professionals to more easily deploy, manage, and scale container-based applications and services'.

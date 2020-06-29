@@ -32,7 +32,7 @@ The process to deploy on AWS is documented, but as mentioned earlier it's curren
 Docs for deploying SUSE CaaSP 4.2 can be found [here](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#)
 
 ## 1. Register for a free trial of SUSE CaaSP
-This is easily done via the [SUSE Website](), once you've gone through the registration process you'll be given a trial Registration code - keep a note of this as you'll be using it at various stages of the deployment process. A trial of SUSE CaaSP lasts 2 months.
+This is easily done via the [SUSE Website](https://www.suse.com/products/caas-platform/trials/MkpwEt3Ub98~/?campaign_name=Eval:_CaaSP_4), once you've gone through the registration process you'll be given a trial Registration code - keep a note of this as you'll be using it at various stages of the deployment process. A trial of SUSE CaaSP lasts 2 months.
 
 ## 2. Deploy a 'Management' workstation
 Firstly you'll need an instance to bootstrap the entire deployment process. The initial deployment step for CaaSP on AWS utilises some SUSE-defined Terraform templates to spin up the infrastructure for your cluster. Before you can do that you'll need somewhere to run that Terraform _from_, and as the docs state it'll need to be running SUSE Linux Enterprise Server (SLES) 15 SP1 to install those packages.

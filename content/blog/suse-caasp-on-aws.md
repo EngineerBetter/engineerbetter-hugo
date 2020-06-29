@@ -15,9 +15,18 @@ The SUSE Containers as a Service Platform (CaasP) deployment on AWS recently wen
 ## What is SUSE CaaSP?
 First off, what is SUSE CaaSP? As SUSE put it 'SUSE CaaS Platform is an enterprise class container management solution that enables IT and DevOps professionals to more easily deploy, manage, and scale container-based applications and services'.
 
-It uses their Cloud Native Computing Foundation (CNCF) certified Kubernetes distribution; SUSE Linux Enterprise Server(SLES) 15 SP1 container OS; SUSE managed container image registry; Cilium for networking; Helm for package management; and custom tooling designed to simplify deployment, scaling, and maintenance of Kubernetes.
+It uses:
 
-Take a look at the reference architecture for CaaSP 4.2.X [here](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_scenarios.html#_default_deployment_scenario)
+* SUSE's Cloud Native Computing Foundation (CNCF) certified Kubernetes distribution;
+* SUSE Linux Enterprise Server(SLES) 15 SP1 container OS;
+* SUSE managed container image registry;
+* Cilium for networking;
+* Helm for package management;
+* custom tooling designed to simplify deployment, scaling, and maintenance of Kubernetes.
+
+Here's the [reference architecture](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_scenarios.html#_default_deployment_scenario) for CaaSP 4.2.X:
+
+<a href="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png"><img class="image fit" src="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png" /></a>
 
 ## Why would you want to use it?
 To put it plainly, you're an enterprise organisation that wants to utilise the benefits of Kubernetes (reduced infrastructure costs, faster application delivery cycle times, all-round improvements to productivity and so on), BUT you're an _enterprise_ so you need a solution that will get sign off from the security team - a fully supported solution based on a robust container OS helps ticks those boxes.

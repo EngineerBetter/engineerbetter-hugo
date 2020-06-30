@@ -1,9 +1,8 @@
 ---
 author:  Jessica Stenning
-date: "2020-06-29"
+date: "2020-06-30"
 heroImage: /img/blog/shipping-containers.jpg
 title: Deploying SUSE CaaS Platform on AWS
-draft: true
 
 heading: Our
 headingBold: blog

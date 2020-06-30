@@ -44,7 +44,7 @@ The process to deploy on AWS is documented, but as previously mentioned, it's cu
 ## 1. Register for a free trial of SUSE CaaS Platform
 This is easily done via the [SUSE Website](https://www.suse.com/products/caas-platform/trials/MkpwEt3Ub98~/?campaign_name=Eval:_CaaSP_4), once you've gone through the registration process you'll be given a trial registration code - keep a note of this as you'll be using it at various stages of the deployment process. A trial of SUSE CaaS Platform lasts 2 months.
 
-<img src="/img/blog/caasp-on-aws/caasp-trial-page.png" class="fit image" alt="SUSE CaaS Platform trial registration">
+<a href="/img/blog/caasp-on-aws/caasp-trial-page.png" target="_blank"><img src="/img/blog/caasp-on-aws/caasp-trial-page.png" class="fit image" alt="SUSE CaaS Platform trial registration" /></a>
 
 ## 2. Deploy a 'Management' workstation
 Firstly you'll need an instance to bootstrap the entire deployment process. The initial deployment step for CaaS Platform on AWS utilises some SUSE-defined Terraform templates to spin up the infrastructure for your cluster. Before you can do that you'll need somewhere to run that Terraform _from_, and as the docs state, you'll need to be running SUSE Linux Enterprise Server (SLES) 15 SP1 to install those packages.
@@ -69,7 +69,7 @@ When creating the SSH key on your Management instance in the [first step](https:
 Go through the [tool installation steps](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#_installation_tools) to get Terraform and `skuba` installed on the Management instance along with the necessary configuration files (you'll need your trial registration code to complete these steps).
 
 <figure>
-  <img src="/img/blog/caasp-on-aws/packages-install-management.gif" alt="A gif of a terminal showing SUSE CaaS Platform packages being installed on the Management instance" class="fit image">
+  <a href="/img/blog/caasp-on-aws/packages-install-management.gif" target="_blank"><img src="/img/blog/caasp-on-aws/packages-install-management.gif" alt="A gif of a terminal showing SUSE CaaS Platform packages being installed on the Management instance" class="fit image" /></a>
   <figcaption>SUSE CaaS Platform installation packages being installed on the Management Node</figcaption>
 </figure>
 
@@ -85,7 +85,7 @@ You might need to install vim to make filling this file out easier, if that's th
 sudo zypper in vim
 ```
 <figure>
-  <img src="/img/blog/caasp-on-aws/terraform-apply.gif" alt="A gif of a terminal showing terraform commands running on the Management instance" class="fit image">
+  <a href="/img/blog/caasp-on-aws/terraform-apply.gif" target="_blank"><img src="/img/blog/caasp-on-aws/terraform-apply.gif" alt="A gif of a terminal showing terraform commands running on the Management instance" class="fit image" /></a>
   <figcaption>Terraform being initialised and applied to create cluster infrastructure from the Management Node</figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ This means that your Master node will need to have ssh access to the nodes you i
 You'll need the `skuba` cli installed on the Master node to complete the bootstrap process.  Run the commands included in the ['Preparation'](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_install_skuba) section to set this up. Here the `<PRODUCT-KEY>` is your SUSE CaaS Platform registration code. You will need to run these commands with root priveleges.
 
 <figure>
-  <img src="/img/blog/caasp-on-aws/packages-install-on-master-node.gif" alt="A gif of a terminal showing skuba being installed on the master node" class="fit image">
+  <a href="/img/blog/caasp-on-aws/packages-install-on-master-node.gif" target="_blank"><img src="/img/blog/caasp-on-aws/packages-install-on-master-node.gif" alt="A gif of a terminal showing skuba being installed on the master node" class="fit image"></a>
   <figcaption>Installation of skuba on the Master Node</figcaption>
 </figure>
 
@@ -130,7 +130,7 @@ skuba node bootstrap --user ec2-user --sudo --target <NODE_IP/FQDN> <NODE_PRIVAT
 Once you've joined all of your Master and Worker nodes to the cluster you're done! You should be able to see a happy cluster with `skuba cluster status`, and install and interact with `kubectl` commands to start deploying pods your cluster!
 
 <figure>
-  <img src="/img/blog/caasp-on-aws/kubectl-install-node.gif" alt="A gif of a terminal showing kubectl install on the master node and pods across all namespaces" class="fit image">
+  <a href="/img/blog/caasp-on-aws/kubectl-install-node.gif" target="_blank"><img src="/img/blog/caasp-on-aws/kubectl-install-node.gif" alt="A gif of a terminal showing kubectl install on the master node and pods across all namespaces" class="fit image" />
   <figcaption>Installation of kubectl with zypper and listing Pods across all namespaces</figcaption>
 </figure>
 

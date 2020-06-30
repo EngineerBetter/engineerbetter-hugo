@@ -17,7 +17,7 @@ _This blog post makes reference to 'Master' nodes, this wording is used only for
 ## What is SUSE CaaS Platform?
 First off, what is SUSE CaaS Platform? As SUSE have put it 'SUSE CaaS Platform is an enterprise class container management solution that enables IT and DevOps professionals to more easily deploy, manage, and scale container-based applications and services'.
 
-Or if that's too much of a mouthful for you, think Kubernetes with bells and whistles.
+Or, if that's too much of a mouthful for you, think Kubernetes with bells and whistles on.
 
 It uses:
 
@@ -33,14 +33,14 @@ Here's the [reference architecture](https://documentation.suse.com/suse-caasp/4.
 <a href="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png"><img class="image fit" src="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png" /></a>
 
 ## Why would you want to use it?
-To put it plainly, you're an enterprise organisation that wants to utilise the benefits of Kubernetes (reduced infrastructure costs, faster application delivery cycle times, all-round improvements to productivity and so on), BUT you're an _enterprise_ so you need a solution that will get sign-off from the security team - a fully supported solution based on a robust container OS helps ticks those boxes.
+To put it plainly, you're an Enterprise organisation that wants to utilise the benefits of Kubernetes (reduced infrastructure costs, faster application delivery cycle times, all-round improvements to productivity and so on), BUT you're an _Enterprise_ so you need a solution that will get sign-off from the security team - a fully supported solution based on a robust container OS helps ticks those boxes.
 
-Additionally, because SUSE's certified distribution of upstream Kubernetes utilises only Kubernetes' features and APIs (no unnecessary additional layers or special APIs), there's no vendor lock-in. If you think one day you might want to move Kubernetes to another cloud provider, or utilise Kubernetes across multiple public and private clouds (or non-cloud resources), SUSE CaaS Platform provides out of the box portable solution.
+Additionally, because SUSE's certified distribution of upstream Kubernetes utilises only Kubernetes' features and APIs (no unnecessary additional layers or special APIs), there's no vendor lock-in. If you think one day you might want to move Kubernetes to another cloud provider, or utilise Kubernetes across multiple public and private clouds (or non-cloud resources), SUSE CaaS Platform provides an out of the box portable solution.
 
 ## I'm sold, how do I deploy it on AWS?
 _This blog post is based on the deployment of SUSE CaaS Platform on AWS, rather than any ongoing maintenance or administration_
 
-The process to deploy on AWS is documented, but as mentioned earlier, it's currently in tech preview, and there are a couple of caveats to getting it up and running quickly and successfully. The following steps have been written to be read _alongside_ [the official SUSE documentation](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#), not instead of.
+The process to deploy on AWS is documented, but as previously mentioned, it's currently in tech preview, and there are a couple of caveats to getting it up and running quickly and successfully. The following steps have been written to be read _alongside_ [the official SUSE documentation](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#), not instead of.
 
 ## 1. Register for a free trial of SUSE CaaS Platform
 This is easily done via the [SUSE Website](https://www.suse.com/products/caas-platform/trials/MkpwEt3Ub98~/?campaign_name=Eval:_CaaSP_4), once you've gone through the registration process you'll be given a trial registration code - keep a note of this as you'll be using it at various stages of the deployment process. A trial of SUSE CaaS Platform lasts 2 months.
@@ -48,7 +48,7 @@ This is easily done via the [SUSE Website](https://www.suse.com/products/caas-pl
 <img src="/img/blog/caasp-on-aws/caasp-trial-page.png" class="fit image" alt="SUSE CaaS Platform trial registration">
 
 ## 2. Deploy a 'Management' workstation
-Firstly you'll need an instance to bootstrap the entire deployment process. The initial deployment step for CaaS Platform on AWS utilises some SUSE-defined Terraform templates to spin up the infrastructure for your cluster. Before you can do that you'll need somewhere to run that Terraform _from_, and as the docs state it'll need to be running SUSE Linux Enterprise Server (SLES) 15 SP1 to install those packages.
+Firstly you'll need an instance to bootstrap the entire deployment process. The initial deployment step for CaaS Platform on AWS utilises some SUSE-defined Terraform templates to spin up the infrastructure for your cluster. Before you can do that you'll need somewhere to run that Terraform _from_, and as the docs state, you'll need to be running SUSE Linux Enterprise Server (SLES) 15 SP1 to install those packages.
 
 As someone with no experience deploying or operating SLES, it took me a little while to work out the best way to spin up one of these instances to act as my Management instance.
 
@@ -63,19 +63,18 @@ Instead, using my previous Virtualbox deployment, I identified the AMI used in t
 
 Again, this isn't documented as a supported method of implementation, but it was effective in my case.
 
-
 ## 3. Management SSH key
 When creating the SSH key on your Management instance in the [first step](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#ssh.configuration) of the deployment instructions, make sure to run `ssh-keygen -t rsa`, rather than copy pasting the `ssh-keygen -t ed25519` as suggested. You'll hit issues with AWS key incompatibiliy during the Terraform stages later on if you don't.
 
 ## 4. Install the installation tools
-Go through the [tool installation steps](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#_installation_tools) to get Terraform and Skuba installed on the Management instance along with the necessary configuration files (you'll need your trial Registration code to complete these steps).
+Go through the [tool installation steps](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#_installation_tools) to get Terraform and `skuba` installed on the Management instance along with the necessary configuration files (you'll need your trial registration code to complete these steps).
 
 <figure>
   <img src="/img/blog/caasp-on-aws/packages-install-management.gif" alt="A gif of a terminal showing SUSE CaaS Platform packages being installed on the Management instance" class="fit image">
   <figcaption>SUSE CaaS Platform installation packages being installed on the Management Node</figcaption>
 </figure>
 
-> Note: Skuba is the SUSE-built cli that wraps around `kubeadm` to simplify deployments and upgrades of kubadm-based clusters.
+> Note: `skuba` is the SUSE-built cli that wraps around `kubeadm` to simplify deployments and upgrades of kubadm-based clusters.
 
 Once you've completed these steps you can navigate to the [AWS specific deployment instructions](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#_deployment_on_amazon_web_services_aws)
 
@@ -96,8 +95,8 @@ Seeing as the Worker nodes aren't assigned a public IP, and the Management insta
 
 This means that your Master node will need to have ssh access to the nodes you intend to add to the cluster, it'll also need `skuba` installed to perform the bootstrapping.
 
-### 6.1 Install the `skuba` on the Master node
-You'll need the `skuba` cli installed on the Master to complete the bootstrap process.  Run the commands included in the ['Preparation'](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_install_skuba) section to set this up. Here '<PRODUCT-KEY>' means your SUSE CaaS Platform Registration code. You will need to run these commands with root priveleges.
+### 6.1 Install skuba on the Master node
+You'll need the `skuba` cli installed on the Master node to complete the bootstrap process.  Run the commands included in the ['Preparation'](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_install_skuba) section to set this up. Here the '<PRODUCT-KEY>' is your SUSE CaaS Platform registration code. You will need to run these commands with root priveleges.
 
 <figure>
   <img src="/img/blog/caasp-on-aws/packages-install-on-master-node.gif" alt="A gif of a terminal showing skuba being installed on the master node" class="fit image">
@@ -112,10 +111,10 @@ From the Management node run:
 ssh -A ec2-user@myip
 ```
 
-This will give you the ssh access to the other nodes in the cluster, which is required for bootstrapping the cluster with `skuba`.
+This will give you ssh access to the other nodes in the cluster, which is required for bootstrapping the cluster with `skuba`.
 
-## 7. Complete the cluster bootstrap with `skuba`
-Now it's just a case of [initialising your cluster](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_amazon_web_services_aws_cpi), you can get your Load Balancer IP/FQDN from the terraform outputs on the Management instance, or directly from the AWS console.
+## 7. Complete the cluster bootstrap with skuba
+Now it's just a case of [initialising your cluster](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_amazon_web_services_aws_cpi), you can get your Load Balancer IP/FQDN from the terraform output on your Management instance, or directly from the AWS console.
 
 Once your cluster's initialised you can [boostrap the nodes](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#cluster.bootstrap).
 
@@ -124,7 +123,7 @@ A couple of points to note:
 - When running `skuba` on AWS the user will be `ec2-user`, not `sles`.
 - When using the AWS cloud provider integration, the cloud provider has authority on node names and addresses, so you must boostrap and join nodes using their private dns.
 
-So, your skuba bootstrap command will look look like this:
+So, your first `skuba` bootstrap command will look look like this:
 ```
 skuba node bootstrap --user ec2-user --sudo --target <NODE_IP/FQDN> <NODE_PRIVATE_DNS>
 ```

@@ -1,7 +1,7 @@
 ---
 author:  Jessica Stenning
 date: "2020-06-17"
-heroImage: /img/blog/shipping-containers.jpg
+heroImage: /img/blog/toy-car-sandbox.jpg
 title: An Intro to the SUSE Cloud Application Platform Development Sandbox
 
 heading: Our

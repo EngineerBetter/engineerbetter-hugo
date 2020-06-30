@@ -97,7 +97,7 @@ Seeing as the Worker nodes aren't assigned a public IP, and the Management insta
 This means that your Master node will need to have ssh access to the nodes you intend to add to the cluster, it'll also need `skuba` installed to perform the bootstrapping.
 
 ### 6.1 Install the `skuba` on the Master node
-You'll need the `skuba` cli installed on the Master to complete the bootstrap process.  Run the commands included in the ['Preparation'](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_install_skuba) section to set this up. Here '<PRODUCT-KEY>' means your SUSE CaaSP Registration code. You will need to run these commands with root priveleges.
+You'll need the `skuba` cli installed on the Master to complete the bootstrap process.  Run the commands included in the ['Preparation'](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_install_skuba) section to set this up. Here '<PRODUCT-KEY>' means your SUSE CaaS Platform Registration code. You will need to run these commands with root priveleges.
 
 <figure>
   <img src="/img/blog/caasp-on-aws/packages-install-on-master-node.gif" alt="A gif of a terminal showing skuba being installed on the master node" class="fit image">

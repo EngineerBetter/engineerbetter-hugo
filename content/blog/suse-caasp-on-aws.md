@@ -12,7 +12,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 The SUSE Containers as a Service (CaaS) Platform deployment on AWS recently went into technological preview (as of [version 4.1.2](https://www.suse.com/releasenotes/x86_64/SUSE-CAASP/4/#_deployment_on_aws_as_technology_preview)). I spent a few days going through the docs and deploying my own SUSE CaaS Platform (v4.2.1) on AWS, and here are my tips for a smooth deployment.
 
-> This blog post makes reference to "Master" nodes. This terminology is used for consistency with the official documentation.
+> This blog post makes reference to "Master" nodes. This terminology is used only to maintain consistency with the official documentation.
 
 ## What is SUSE CaaS Platform?
 First off, what is SUSE CaaS Platform? As SUSE have put it: 'SUSE CaaS Platform is an enterprise class container management solution that enables IT and DevOps professionals to more easily deploy, manage, and scale container-based applications and services'.

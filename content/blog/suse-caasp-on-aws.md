@@ -12,10 +12,10 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 The SUSE Containers as a Service (CaaS) Platform deployment on AWS recently went into technological preview (as of [version 4.1.2](https://www.suse.com/releasenotes/x86_64/SUSE-CAASP/4/#_deployment_on_aws_as_technology_preview)). I spent a few days going through the docs and deploying my own SUSE CaaS Platform (v4.2.1) on AWS, and here are my tips for a smooth deployment.
 
-_This blog post makes reference to 'Master' nodes, this wording is used only for consistency with the official documentation_
+> This blog post makes reference to "Master" nodes. This terminology is used for consistency with the official documentation.
 
 ## What is SUSE CaaS Platform?
-First off, what is SUSE CaaS Platform? As SUSE have put it 'SUSE CaaS Platform is an enterprise class container management solution that enables IT and DevOps professionals to more easily deploy, manage, and scale container-based applications and services'.
+First off, what is SUSE CaaS Platform? As SUSE have put it: 'SUSE CaaS Platform is an enterprise class container management solution that enables IT and DevOps professionals to more easily deploy, manage, and scale container-based applications and services'.
 
 Or, if that's too much of a mouthful for you, think Kubernetes with bells and whistles on.
 
@@ -33,7 +33,7 @@ Here's the [reference architecture](https://documentation.suse.com/suse-caasp/4.
 <a href="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png"><img class="image fit" src="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png" /></a>
 
 ## Why would you want to use it?
-To put it plainly, you're an Enterprise organisation that wants to utilise the benefits of Kubernetes (reduced infrastructure costs, faster application delivery cycle times, all-round improvements to productivity and so on), BUT you're an _Enterprise_ so you need a solution that will get sign-off from the security team - a fully supported solution based on a robust container OS helps ticks those boxes.
+To put it plainly, you're an enterprise organisation that wants to utilise the benefits of Kubernetes (reduced infrastructure costs, faster application delivery cycle times, all-round improvements to productivity and so on), BUT you're an _enterprise_ so you need a solution that will get sign-off from the security team - a fully supported solution based on a robust container OS helps ticks those boxes.
 
 Additionally, because SUSE's certified distribution of upstream Kubernetes utilises only Kubernetes' features and APIs (no unnecessary additional layers or special APIs), there's no vendor lock-in. If you think one day you might want to move Kubernetes to another cloud provider, or utilise Kubernetes across multiple public and private clouds (or non-cloud resources), SUSE CaaS Platform provides an out of the box portable solution.
 
@@ -96,7 +96,7 @@ Seeing as the Worker nodes aren't assigned a public IP, and the Management insta
 This means that your Master node will need to have ssh access to the nodes you intend to add to the cluster, it'll also need `skuba` installed to perform the bootstrapping.
 
 ### 6.1 Install skuba on the Master node
-You'll need the `skuba` cli installed on the Master node to complete the bootstrap process.  Run the commands included in the ['Preparation'](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_install_skuba) section to set this up. Here the '<PRODUCT-KEY>' is your SUSE CaaS Platform registration code. You will need to run these commands with root priveleges.
+You'll need the `skuba` cli installed on the Master node to complete the bootstrap process.  Run the commands included in the ['Preparation'](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/bootstrap.html#_install_skuba) section to set this up. Here the `<PRODUCT-KEY>` is your SUSE CaaS Platform registration code. You will need to run these commands with root priveleges.
 
 <figure>
   <img src="/img/blog/caasp-on-aws/packages-install-on-master-node.gif" alt="A gif of a terminal showing skuba being installed on the master node" class="fit image">

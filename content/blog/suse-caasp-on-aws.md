@@ -28,7 +28,7 @@ It uses:
 * Helm for package management;
 * Custom tooling designed to simplify deployment, scaling, and maintenance of Kubernetes.
 
-Here's the [reference architecture](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_scenarios.html#_default_deployment_scenario) for CaaSP 4.2.X:
+Here's the [reference architecture](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_scenarios.html#_default_deployment_scenario) for CaaS Platform 4.2.X:
 
 <a href="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png"><img class="image fit" src="https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/images/caasp_cluster_components.png" /></a>
 
@@ -38,7 +38,7 @@ To put it plainly, you're an enterprise organisation that wants to utilise the b
 Additionally, because SUSE's certified distribution of upstream Kubernetes utilises only Kubernetes' features and APIs (no unnecessary additional layers or special APIs), there's no vendor lock-in. If you think one day you might want to move Kubernetes to another cloud provider, or utilise Kubernetes across multiple public and private clouds (or non-cloud resources), SUSE CaaS Platform provides out of the box portable solution.
 
 ## I'm sold, how do I deploy it on AWS?
-_This blog post is based on the deployment of SUSE CaaSP on AWS, rather than any ongoing maintenance or administration_
+_This blog post is based on the deployment of SUSE CaaS Platform on AWS, rather than any ongoing maintenance or administration_
 
 The process to deploy on AWS is documented, but as mentioned earlier, it's currently in tech preview, and there are a couple of caveats to getting it up and running quickly and successfully. The following steps have been written to be read _alongside_ [the official SUSE documentation](https://documentation.suse.com/suse-caasp/4.2/html/caasp-deployment/_deployment_instructions.html#), not instead of.
 
@@ -48,14 +48,14 @@ This is easily done via the [SUSE Website](https://www.suse.com/products/caas-pl
 <img src="/img/blog/caasp-on-aws/caasp-trial-page.png" class="fit image" alt="SUSE CaaS Platform trial registration">
 
 ## 2. Deploy a 'Management' workstation
-Firstly you'll need an instance to bootstrap the entire deployment process. The initial deployment step for CaaSP on AWS utilises some SUSE-defined Terraform templates to spin up the infrastructure for your cluster. Before you can do that you'll need somewhere to run that Terraform _from_, and as the docs state it'll need to be running SUSE Linux Enterprise Server (SLES) 15 SP1 to install those packages.
+Firstly you'll need an instance to bootstrap the entire deployment process. The initial deployment step for CaaS Platform on AWS utilises some SUSE-defined Terraform templates to spin up the infrastructure for your cluster. Before you can do that you'll need somewhere to run that Terraform _from_, and as the docs state it'll need to be running SUSE Linux Enterprise Server (SLES) 15 SP1 to install those packages.
 
 As someone with no experience deploying or operating SLES, it took me a little while to work out the best way to spin up one of these instances to act as my Management instance.
 
 When you register for your free trial of SUSE CaaS Platform you're given access to some downloadable material, some `iso` images for the SLES server with or without packages bundled in (visible in the screenshot above). I started out creating an instance from the SLES `iso` image on Virtualbox to get up and running quickly. While this _technically_ worked, it was a bit painful to get things done, and I wanted to look at automated deployments down the line so pivoted to using AWS instead.
 
 ### 2.1 AWS 'Management' workstation
-While AWS offers a standard SLES 15 SP1 in its marketplace, it is (currently) not possible to add the CaaSP repos to this instance. This took me a while to work out, and as far as I can see, isn't currently documented.
+While AWS offers a standard SLES 15 SP1 in its marketplace, it is (currently) not possible to add the CaaS Platform repos to this instance. This took me a while to work out, and as far as I can see, isn't currently documented.
 
 So, while the first paragraph of the deployment docs states that you need a workstation running SLES 15 SP1 or equivalent, the 'standard' AWS AMI is not sufficient.
 

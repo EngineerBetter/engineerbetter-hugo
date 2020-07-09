@@ -46,7 +46,9 @@ I'm kinda in agreement with him on the [OSBAPI](https://www.openservicebrokerapi
 
 These views miss something though - empathy for the typical enterprise developer.
 
-**`kubectl` should absolutely _not_ be the interface for app developers** to consume a platform. If you think developers should _have_ to wrestle with the tens of first-class concepts in the Kubernetes API, and worry about it's not-secure-by-default approach, you're deluded. Or have never worked in an enterprise. Which might make you less deluded... Whatever!
+**`kubectl` should absolutely _not_ be the interface for app developers** to consume a platform.
+
+Folks who think developers should _have_ to wrestle with the tens of first-class concepts in the Kubernetes API, and worry about it's not-secure-by-default approach, are deluding themselves as to the number of concerns app developers already have. Developers don't need more to worry about.
 
 An abstraction is needed. Ideally one that's self-service and exploratory. That same user experience doesn't need to persist all the way to production (I don't want _humans_ doing stuff in prod!), but it needs to exist somewhere.
 

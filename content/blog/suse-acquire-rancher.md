@@ -57,7 +57,7 @@ Cloud Foundry, if it hurries up and moves with the times, should be 'easy mode' 
 * Developers: don't want to faff about with `kubectl` to push code? Then ask your operators to install Cloud Foundry!
 * Operators: don't want app developers screwing up your carefully-configured cluster? Give them access to Cloud Foundry on a cluster instead of `kubectl`!
 
-What if KubeCF/CAP and Stratos end up being an optional feature when deploying a Kubernetes cluster with Rancher? It's an optional value-add for those situations where you don't want app developers getting down and dirty with `kubectl`.
+What if **KubeCF/CAP** and Stratos end up being an **optional feature** when deploying a **Kubernetes cluster with Rancher**? It's a value-add for those situations where you don't want app developers getting down and dirty with `kubectl`.
 
 ## An Opportunity Missed
 

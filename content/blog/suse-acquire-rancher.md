@@ -24,7 +24,9 @@ Through Rancher, they'll now have access to Taylor, who works for a microservice
 
 SUSE get a route into the young and hip market (to go with their [young and hip cloud CTO](https://www.linkedin.com/in/rssfed23/)), and the credentials of one of the most visible forces in the Kubernetes ecosystem. **Rancher get into the world of the enterprise**, with its long sales cycles, and risk-averse nature.
 
-## What it means for CaaSP
+## What it means for SUSE CaaSP
+
+SUSE already have a Kubernetes offering, called SUSE Containers-as-a-Service Platform. Or CaaSP, which is mercifully shorter.
 
 As my colleague [Jessica Stenning recently discovered, deploying CaaSP](/blog/suse-caasp-on-aws) isn't quite as straightforward as one might hope for. Presumably now this can be sun-setted in favour of Rancher's hugely popular solution.
 

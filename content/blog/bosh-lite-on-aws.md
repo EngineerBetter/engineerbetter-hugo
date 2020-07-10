@@ -54,7 +54,7 @@ In order to avoid overloading the Concourse workers we will need to deploy the d
 
 Most of the time bosh-lite directors are deployed locally onto virtualbox but it can also be deployed to a different IaaS by swapping out the `cpi.yml` opsfile from [bosh-deployment](https://github.com/cloudfoundry/bosh-deployment) when we deploy. Our client ran most of their development workloads on AWS so we opted for deploying our new director there.
 
-Something else to note is that there are broadly two ways to deploy things with BOSH: `deploy` and `create-env`. The former uses a director to deploy and manager the deployment while the latter creates a standalone deployment that is not managed by a director. BOSH directors are technically bosh deployments themselves but they are almost universally deployed using `create-env`.
+Something else to note is that there are broadly two ways to deploy things with BOSH: `deploy` and `create-env`. The former uses a director to deploy and manage the deployment while the latter creates a standalone deployment that is not managed by a director. BOSH directors are technically bosh deployments themselves but they are almost universally deployed using `create-env`.
 
 For our purpose a standalone director VM is unfavourable for two reasons. Firstly it is by definition not supervised by anything and thus won't be resurrected if it breaks. Secondly, `deploy` is easier to manage from a Concourse pipeline thanks in part to the [bosh deployment resource](https://github.com/cloudfoundry/bosh-deployment-resource).
 

@@ -18,7 +18,7 @@ As part of the TDD process we wanted to add some comprehensive system tests to o
 
 ### The First Attempt
 
-The first thing we tried was running our task in the [main-bosh-docker image](https://github.com/chuanran/bosh/tree/master/ci/docker/main-bosh-docker). This let us run the following commmand at the start of our system test to start a director:
+The first thing we tried was running our task in the [main-bosh-docker image](https://github.com/chuanran/bosh/tree/master/ci/docker/main-bosh-docker). This let us run the following command at the start of our system test to start a director:
 
 ```sh
 . start-bosh \

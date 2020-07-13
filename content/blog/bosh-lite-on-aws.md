@@ -83,15 +83,15 @@ In our case, we had to make some additional changes because our director wasn't 
   <figcaption>What is the plural of Bosh anyway?</figcaption>
 </figure>
 
-### Using the new director
+### Using the new Director
 
-Since the bosh-lite director has been deployed by Concourse, it is really easy to target it from a different pipeline on the same Concourse team as credhub variables will be available.
+Since the bosh-lite director has been deployed by Concourse, it is really easy to target it from a different pipeline on the same Concourse team as CredHub variables will be available.
 
 In order to communicate with the new director the following environment variables are needed:
 
 - `BOSH_ENVIRONMENT`: provided when deploying director
 - `BOSH_CLIENT`: admin
-- `BOSH_CLIENT_SECRET`: provided or generated when deploying director (as admin_password)
+- `BOSH_CLIENT_SECRET`: provided or generated when deploying director (as `admin_password`)
 - `BOSH_CA_CERT`: provided or generated when deploying director
 
 For `bosh ssh` to work you will also need the director's SSH key which is provided or generated at deployment time.

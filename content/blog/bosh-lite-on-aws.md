@@ -52,13 +52,13 @@ There had to be another way...
 
 In order to avoid overloading the Concourse workers we will need to deploy the director as a separate VM. We can use [bosh-lite](https://bosh.io/docs/bosh-lite/) to create a director which will deploy containers on itself rather than additional VMs. This works by using the [Warden CPI](https://github.com/cppforlife/bosh-warden-cpi-release).
 
-Most of the time bosh-lite directors are deployed locally onto virtualbox but it can also be deployed to a different IaaS by swapping out the `cpi.yml` opsfile from [bosh-deployment](https://github.com/cloudfoundry/bosh-deployment) when we deploy. Our client ran most of their development workloads on AWS so we opted for deploying our new director there.
+Most of the time bosh-lite directors are deployed locally onto Virtualbox but it can also be deployed to a different IaaS by swapping out the `cpi.yml` opsfile from [bosh-deployment](https://github.com/cloudfoundry/bosh-deployment) when we deploy. Our client ran most of their development workloads on AWS so we opted for deploying our new director there.
 
 Something else to note is that there are broadly two ways to deploy things with BOSH: `deploy` and `create-env`. The former uses a director to deploy and manage the deployment while the latter creates a standalone deployment that is not managed by a director. BOSH directors are technically bosh deployments themselves but they are almost universally deployed using `create-env`.
 
 For our purpose a standalone director VM is unfavourable for two reasons. Firstly it is by definition not supervised by anything and thus won't be resurrected if it breaks. Secondly, `deploy` is easier to manage from a Concourse pipeline thanks in part to the [bosh deployment resource](https://github.com/cloudfoundry/bosh-deployment-resource).
 
-While [it has been done before](https://starkandwayne.com/blog/resurrecting-bosh-with-binary-boshes/), deploying a director from another director is not a common occurrence. We couldn't find this process documented anywhere using modern bosh tooling. We realised that it would be really convenient if we could deploy a bosh-lite director using the same director than deployed the Concourse we were using for testing.
+While [it has been done before](https://starkandwayne.com/blog/resurrecting-bosh-with-binary-boshes/), deploying a director from another director is not a common occurrence. We couldn't find this process documented anywhere using modern BOSH tooling. We realised that it would be really convenient if we could deploy a bosh-lite director using the same director than deployed the Concourse we were using for testing.
 
 ### Any problem can be solved with enough ops files
 

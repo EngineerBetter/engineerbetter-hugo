@@ -8,7 +8,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-At EngineerBetter two things we love doing are writing tests and pipelining anything that moves. Recently when working with a client we found ourselves working on some custom BOSH releases. Naturally we started by creating a Concourse pipeline to create releases for us. I won't go through the steps of the pipeline here but we have [some](https://github.com/EngineerBetter/weavescope-boshrelease/blob/master/ci/pipeline.yml) [examples](https://github.com/EngineerBetter/prometheus-boshrelease/blob/master/ci/pipeline.yml) of other release pipelines on github.
+At EngineerBetter two things we love doing are writing tests and pipelining anything that moves. Recently when working with a client we found ourselves working on some custom BOSH releases. Naturally we started by creating a Concourse pipeline to create releases for us. I won't go through the steps of the pipeline here but we have [some](https://github.com/EngineerBetter/weavescope-boshrelease/blob/master/ci/pipeline.yml) [examples](https://github.com/EngineerBetter/prometheus-boshrelease/blob/master/ci/pipeline.yml) of other release pipelines on GitHub.
 
 As part of the TDD process we wanted to add some comprehensive system tests to our pipeline to help us resolve some issues that the client had been seeing with the release in the past. Unfortunately this meant we would need to deploy the release candidate of our release as well as some other releases to a real director every time we ran the test job. We wanted a 'clean' director for each test to reduce flakiness of our tests so this raised an interesting question:
 

@@ -1,6 +1,6 @@
 ---
 author: Colin Simmons
-date: "2020-07-10"
+date: "2020-07-13"
 heroImage: /img/blog/yaml-fortune.png
 title: "BOSH-ception: Deploying a BOSH-lite Director on AWS"
 heading: Our

@@ -2,7 +2,7 @@
 author: Colin Simmons
 date: "2020-07-10"
 heroImage: /img/blog/yaml-fortune.png
-title: BOSH-ception deploying a Bosh-lite director on AWS
+title: "BOSH-ception: Deploying a BOSH-lite Director on AWS"
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.

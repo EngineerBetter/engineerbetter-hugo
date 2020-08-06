@@ -1,4 +1,11 @@
 ---
+resource_types:
+- name: cf-cli
+  type: registry-image
+  source:
+    repository: nulldriver/cf-cli-resource
+    tag: 2.20.0
+
 resources:
 - name: eb-hugo
   type: git
@@ -24,24 +31,25 @@ resources:
     secret_access_key: ((concourse_ci_s3_secret_key))
 
 - name: cf-dev
-  type: cf
+  type: cf-cli
   source:
     <<: &cf-params
+      cf_cli_version: 7
       api: https://api.run.pivotal.io
       username: systems@engineerbetter.com
       password: ((systems_cf_password))
-      organization: engineerbetter
+      org: engineerbetter
       skip_cert_check: false
     space: development
 
 - name: cf-staging
-  type: cf
+  type: cf-cli
   source:
     <<: *cf-params
     space: staging
 
 - name: cf-prod
-  type: cf
+  type: cf-cli
   source:
     <<: *cf-params
     space: production
@@ -63,6 +71,8 @@ jobs:
         file: tarball/eb-hugo-built.tar.gz
     - put: cf-dev
       params:
+        command: push
+        strategy: rolling
         manifest: eb-hugo/ci/assets/hugo-manifest-dev.yml
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
@@ -84,6 +94,8 @@ jobs:
         file: tarball/eb-hugo-built.tar.gz
     - put: cf-staging
       params:
+        command: push
+        strategy: rolling
         manifest: eb-hugo/ci/assets/hugo-manifest-staging.yml
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
@@ -105,6 +117,8 @@ jobs:
       output: generated-site
   - put: cf-prod
     params:
+      command: push
+      strategy: rolling
       manifest: eb-hugo/ci/assets/hugo-manifest-prod.yml
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml

@@ -68,13 +68,13 @@ The customer, driver and route services can all be registered as [upstreams](htt
 
 Whilst this is a pretty neat trick, the real benefits of Consul come now that the applications are embedded into the service mesh. Consul can accept configuration to modify how the service mesh communicates, using the same infrastructure-as-code approach that Hashicorp offers with [Terraform](https://www.terraform.io/). These options include:
 
-#### Access control
+### Access control
 Consul has a concept called [intentions](https://www.consul.io/docs/connect/intentions) that can be used to block access between specific application instances. These can be quickly applied and removed without having to restart applications thanks to the Consul agents constantly checking whether requests are permitted.
 
-#### Layer 7 traffic management
+### Layer 7 traffic management
 Whether it is canary deployments or A/B testing, being able to fine tune how traffic is routed to applications is a handy tool to have. Consul has a number of layer 7 [traffic management](https://www.consul.io/docs/connect/l7-traffic-management) features that make new ways of deploying and running applications possible.
 
-#### Observability
+### Observability
 When using container-to-container networking, requests no longer pass through the gorouter meaning we lose all metrics derived from gorouter data. Consul proxies can be centrally configured to emit metrics in a number of different ways providing extremely fine grained data even for application-to-application communication.
 
 ## Conclusion

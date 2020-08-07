@@ -20,12 +20,32 @@ Through some clever usage of [container-to-container networking](https://docs.cl
 <p>There is a <a target="_blank" href="https://github.com/EngineerBetter/byo-service-mesh/tree/blog-post">Github repo</a> containing all the code required to get started.</p>
 </section>
 
+## Simple ingress-style routing
+Normally in Cloud Foundry, applications talk HTTP via the Gorouter which provides all the TLS and layer 7 routing goodness we've come to know and love.
+
+<figure>
+  <a href="/img/blog/byo-service-mesh/simple.svg" target="_blank"><img src="/img/blog/byo-service-mesh/simple.svg" alt="HTTP traffic between apps via GoRouter" /></a>
+  <figcaption>Traffic from one app to another via GoRouter</figcaption>
+</figure>
+
+For many years Cloud Foundry has also offered direct TCP routing too, so apps can use non-HTTP protocols, or handle their own TLS termination.
+
+One down side of very early versions of Cloud Foundry was that this approach made it difficult to make apps accessible only within the platform, and to avoid traffic 'going out and back in'.
+
+Thankfully several years ago container-to-container networking functionality was added to Cloud Foundry so that apps can communicate directly to each other using any protocol required.
+
+
 ## Container-to-container networking
 Consul requires a control plane made up of Consul agents running in "server" mode and, optionally, a UI. The **Consul control plane can be deployed as Cloud Foundry apps**, using the binary buildpack.
 
 It is recommended that you run a minimum of 3 instances for high availability which then communicate to form quorum and elect a leader. For this consensus algorithm to work, each instance needs to be able to **uniquely address other instances** and be allowed to communicate using **TCP and UDP**.
 
 We can do this in Cloud Foundry by using [internal routes](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#internal-routes) as well as [container-to-container networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html).
+
+<figure>
+  <a href="/img/blog/byo-service-mesh/c2c.svg" target="_blank"><img src="/img/blog/byo-service-mesh/c2c.svg" alt="Direct traffic between app instances" /></a>
+  <figcaption>C2C networking allows apps to communicate directly, and can prevent them from being publicly accessible</figcaption>
+</figure>
 
 ### Internal routes
 There is a special domain name in Cloud Foundry reserved for applications within the platform: `apps.internal`.
@@ -34,9 +54,7 @@ Applications can be mapped to a route such as `consul-server.apps.internal` whic
 
 Individual instances can also be queried by prepending the instance index before the domain, e.g. `1.consul-server.apps.internal`. This allows applications on the platform to **uniquely address other instances** which ticks our first box.
 
-### Container-to-container networking
-Normally in Cloud Foundry, applications talk HTTP via the Gorouter which provides all the TLS and layer 7 routing goodness we've come to know and love. However, applications running within the same platform can communicate across the platform networking using any protocol required.
-
+### Network policies
 Access between applications is denied by default but can be modified by [adding network policies](https://docs.cloudfoundry.org/devguide/deploy-apps/cf-networking.html#create-policies) to permit traffic on certain port ranges and protocols. By creating network policies between instances of the `consul-server` application, we can allow both **TCP and UDP** traffic for the relevant port ranges.
 
 ## Sidecars
@@ -50,6 +68,11 @@ Cloud Foundry has first class support for running these processes: [sidecars](ht
 > These sidecars could even be seamlessly included via a sidecar-buildpack
 
 By creating Consul services to represent each application, the sidecar proxies can be configured with all dependent services as upstreams. This allows an application to **access other applications as if they were local** with the proxy looking after service discovery as well as connecting to the upstream service over mutual TLS.
+
+<figure>
+  <a href="/img/blog/byo-service-mesh/mesh.svg" target="_blank"><img src="/img/blog/byo-service-mesh/mesh.svg" alt="Apps communicating via Consul service mesh" /></a>
+  <figcaption>Apps _think_ other services are local, but they're proxied by Envoy, which offers mutual TLS and better observability.</figcaption>
+</figure>
 
 ## Metadata
 Most objects in Cloud Foundry (e.g. apps, spaces, orgs) can have [metadata](https://docs.cloudfoundry.org/adminguide/metadata.html) associated with them. This combination of annotations and labels can be used for attaching useful information such as commit hashes or environment.

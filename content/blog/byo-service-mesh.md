@@ -21,7 +21,9 @@ Through some clever usage of [container-to-container networking](https://docs.cl
 </section>
 
 ## Container-to-container networking
-Consul requires a control plane made up of Consul agents running in "server" mode and, optionally, a UI. It is recommended that you run a minimum of 3 instances for high availability which then communicate to form quorum and elect a leader. For this consensus algorithm to work, each instance needs to be able to **uniquely address other instances** and be allowed to communicate using **TCP and UDP**.
+Consul requires a control plane made up of Consul agents running in "server" mode and, optionally, a UI. The **Consul control plane can be deployed as Cloud Foundry apps**, using the binary buildpack.
+
+It is recommended that you run a minimum of 3 instances for high availability which then communicate to form quorum and elect a leader. For this consensus algorithm to work, each instance needs to be able to **uniquely address other instances** and be allowed to communicate using **TCP and UDP**.
 
 We can do this in Cloud Foundry by using [internal routes](https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#internal-routes) as well as [container-to-container networking](https://docs.cloudfoundry.org/concepts/understand-cf-networking.html).
 

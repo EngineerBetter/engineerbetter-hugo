@@ -23,8 +23,8 @@ Through some clever usage of [container-to-container networking](https://docs.cl
 Normally in Cloud Foundry, applications talk HTTP via the Gorouter which provides all the TLS and layer 7 routing goodness we've come to know and love.
 
 <figure>
-  <a href="/img/blog/byo-service-mesh/simple.svg" target="_blank"><img src="/img/blog/byo-service-mesh/simple.svg" alt="HTTP traffic between apps via GoRouter" /></a>
-  <figcaption>Traffic from one app to another via GoRouter</figcaption>
+  <a href="/img/blog/byo-service-mesh/simple.svg" target="_blank"><img src="/img/blog/byo-service-mesh/simple.svg" alt="HTTP traffic between apps via Gorouter" /></a>
+  <figcaption>Traffic from one app to another via Gorouter</figcaption>
 </figure>
 
 For many years Cloud Foundry has also offered direct TCP routing too, so apps can use non-HTTP protocols, or handle their own TLS termination.
@@ -105,7 +105,7 @@ Consul has a concept called [intentions](https://www.consul.io/docs/connect/inte
 Whether it is canary deployments or A/B testing, being able to fine tune how traffic is routed to applications is a handy tool to have. Consul has a number of layer 7 [traffic management](https://www.consul.io/docs/connect/l7-traffic-management) features that make new ways of deploying and running applications possible.
 
 ### Observability
-When using container-to-container networking, requests no longer pass through the gorouter meaning we lose all metrics derived from gorouter data. Consul proxies can be centrally configured to emit metrics in a number of different ways providing extremely fine grained data even for application-to-application communication.
+When using container-to-container networking, requests no longer pass through the Gorouter meaning we lose all metrics derived from Gorouter data. Consul proxies can be centrally configured to emit metrics in a number of different ways providing extremely fine grained data even for application-to-application communication.
 
 ## Conclusion
 With Cloud Foundry providing an easy way to run applications with health monitoring, logging and rolling deployments out of the box, even complex deployments are quick to develop. There are still many interesting avenues to explore including security, automating metrics and configurable sidecar buildpacks to leverage other features of Cloud Foundry to make the process easier to set up and manage.

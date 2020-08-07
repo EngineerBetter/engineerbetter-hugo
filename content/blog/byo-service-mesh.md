@@ -33,6 +33,7 @@ Normally in Cloud Foundry, applications talk HTTP via the Gorouter which provide
 
 ## Sidecars
 Once the Consul control plane is up and running, you need some applications to register into a service mesh. This is done in Consul by running a couple of other processes on the application instance:
+
 - Consul agent - registers with control plane and provides configuration
 - Proxy - configured by Consul agent. Controls access, routes traffic and performs mTLS communication with rest of service mesh
 

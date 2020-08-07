@@ -31,8 +31,7 @@ For many years Cloud Foundry has also offered direct TCP routing too, so apps ca
 
 One down side of very early versions of Cloud Foundry was that this approach made it difficult to make apps accessible only within the platform, and to avoid traffic 'going out and back in'.
 
-Thankfully several years ago container-to-container networking functionality was added to Cloud Foundry so that apps can communicate directly to each other using any protocol required.
-
+Thankfully several years ago container-to-container networking functionality was added to Cloud Foundry so that apps can communicate directly to each other using any protocol required. However, as this method does not include the Gorouter, application developers need to implement their own logging and metrics for these internal requests.
 
 ## Container-to-container networking
 Consul requires a control plane made up of Consul agents running in "server" mode and, optionally, a UI. The **Consul control plane can be deployed as Cloud Foundry apps**, using the binary buildpack.

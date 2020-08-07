@@ -1,9 +1,8 @@
 ---
 author: Andy Paine
-date: "2020-08-10"
-heroImage: /img/blog/cf-and-consul.png
+date: "2020-08-07"
+heroImage: /img/blog/byo-service-mesh/cf-and-consul.svg
 title:  BYO Service Mesh to Cloud Foundry
-draft: true
 
 heading: Our
 headingBold: blog

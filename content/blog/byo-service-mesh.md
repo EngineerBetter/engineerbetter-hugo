@@ -85,4 +85,8 @@ Whether it is canary deployments or A/B testing, being able to fine tune how tra
 When using container-to-container networking, requests no longer pass through the gorouter meaning we lose all metrics derived from gorouter data. Consul proxies can be centrally configured to emit metrics in a number of different ways providing extremely fine grained data even for application-to-application communication.
 
 ## Conclusion
-Deploying a service mesh on top of any Cloud Foundry (this was all done on the public, multi-tenant Pivotal Web Services!) shows the power of some of the new features of Cloud Foundry and demonstrates how flexible a platform it is. There is a lot more to do before this is production ready including security, automated metrics and configurable buildpacks but hopefully this serves as some food for thought about what is possible on Cloud Foundry.
+With Cloud Foundry providing an easy way to run applications with health monitoring, logging and rolling deployments out of the box, even complex deployments are quick to develop. There are still many interesting avenues to explore including security, automating metrics and configurable sidecar buildpacks to leverage other features of Cloud Foundry to make the process easier to set up and manage.
+
+Together with all the Cloud Foundry features we know and love, these powerful new capabilities demonstrate just how flexible of a platform Cloud Foundry has become. Getting this project running took **less than two days of work** (and was all done on the public, multi-tenant Pivotal Web Services!) - **a testament to how easy deploying to Cloud Foundry can be** without significant platform customisation.
+
+> Running a **configurable, zero-trust service mesh on top of Cloud Foundry** without any "magic" or fuss - who would have thought?

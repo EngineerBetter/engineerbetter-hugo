@@ -10,7 +10,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Cloud Foundry has [toyed around](https://docs.cloudfoundry.org/adminguide/service-mesh.html) with the idea of providing service mesh capabilities to end users for a while. As CF transitions to a Kubernetes based runtime, it looks like operators will soon be able to bring the full power of Istio & friends to their developers. But what if **you aren't an operator** and you want all those features _today_?
+Cloud Foundry has [toyed around](https://docs.cloudfoundry.org/adminguide/service-mesh.html) with the idea of providing service mesh capabilities to end users for a while. As CF transitions to a Kubernetes-based runtime, it looks like operators will soon be able to bring the full power of Istio & friends to their developers. But what if **you aren't an operator** and you want all those features _today_?
 
 Enter [Hashicorp Consul](https://www.consul.io/). Consul offers service networking features such as health checking and service discovery whilst also bringing all the service mesh goodness of zero-trust networks, weighted traffic routing and circuit breaking. The best thing about it? **You can use these features on (almost) any Cloud Foundry deployment as an end-user**.
 

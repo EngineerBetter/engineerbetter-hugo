@@ -70,7 +70,7 @@ By creating Consul services to represent each application, the sidecar proxies c
 
 <figure>
   <a href="/img/blog/byo-service-mesh/mesh.svg" target="_blank"><img src="/img/blog/byo-service-mesh/mesh.svg" alt="Apps communicating via Consul service mesh" /></a>
-  <figcaption>Apps _think_ other services are local, but they're proxied by Envoy, which offers mutual TLS and better observability.</figcaption>
+  <figcaption>Apps <em>think</em> other services are local, but they're proxied by Envoy, which offers mutual TLS and better observability.</figcaption>
 </figure>
 
 ## Metadata

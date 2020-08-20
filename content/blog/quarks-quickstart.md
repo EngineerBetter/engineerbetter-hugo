@@ -2,7 +2,7 @@
 author: Jessica Stenning
 date: "2020-08-20"
 draft: true
-heroImage: tbc
+heroImage: /img/blog/quarks-quickstart/quarks-quickstart.png
 title: Quarks - a quickstart guide to deploying a BOSH release on K8s
 
 heading: Our

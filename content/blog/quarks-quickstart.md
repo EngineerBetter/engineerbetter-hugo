@@ -19,11 +19,11 @@ When we refer to Quarks we're largely referring to the deployment of the `cf-ope
 
 For more information on how Quarks utilises Kubernetes controllers to handle the complete workflow from a custom `boshdeployment` resource through to the translation and creation of Kubernetes native StatefulSets, Pods etc., it's worth taking a look at the [documentation]() - the controller diagrams are especially helpful.
 
-## Steps for deploying a BOSH release with Quarks
+## Steps for deploying a BOSH release with Quarks
 
 It's worth noting that Helm Charts aready exist for the deployment of some BOSH releases, e.g. [KubeCF]() and [Concourse CI](https://github.com/concourse/concourse-chart). If you're looking to deploy a BOSH release on Kubernetes, it's worth checking that there isn't already an upstream Helm Chart published for that release, as that will likely be more straightforward deployment process.
 
-1. Install the cf-operator in your cluster
+### 1. Install the `cf-operator` in your cluster
 This is fairly straight forward and can be completed with Helm. There are a few customisations that can be set by passing additional values to the install command, but broadly you'll want to make sure the namespace you place the cf-operator in is sensibly named and dedicated. The example below also sets the namespace that the cf-operator will 'watch' for the creation of custom resources.
 
 ```
@@ -36,9 +36,9 @@ helm install cf-operator quarks/cf-operator \
 
 For a full list of customisations that can be passed to the cf-operator installation take a look at the [Helm Chart](https://hub.helm.sh/charts/quarks/cf-operator).
 
-2. Getting your resources ready
+### 2. Getting your resources ready
 
-   1. Do you have a Docker Image?
+   #### 2.1 Do you have a Docker Image?
 
    The key question here is do you need to convert your you BOSH release into a Docker Image, or does this exist already? If the answer is 'yes, I have a Docker Image of my release', then you can go ahead and skip the rest of this section.
 
@@ -53,26 +53,26 @@ For a full list of customisations that can be passed to the cf-operator installa
 
    You can then tag and push this image to dockerhub or a private registry to be used in your deployment.
 
-   1. Deploying your release with the Quarks `cf-operator`
+   #### 2.2 Deploying your release with the Quarks `cf-operator`
    For these sections it's useful to have an example open for reference, this [redis deployment](https://github.com/cloudfoundry-community/redis-boshrelease/blob/master/quarks/deployment.yaml) from Dr Nic is a good example.
 
-   1. The BOSH Manifest
+   #### 1. The BOSH Manifest
    This will look similar to the BOSH Manifest you're used to, but in this case it's a [ConfigMap]() - a first class Kubernetes resource. Some translation does need to be done from an original BOSH deployment manifest, this is explained in detail in the [documentation](https://quarks.suse.dev/docs/core-tasks/from_bosh_to_kube/#example-deployment-manifest-conversion-details).
 
    **Note: Quarks requires that a BOSH release uses [BOSH Process Management (BPM)](https://bosh.io/docs/bpm/bpm/)**, without this your deployment fail. However, BPM _can_ be added via an ops-file at runtime, so doesn't need to be written into the release itself - more on Ops Files next.
 
-   1. Ops Files
+   #### 2.3 Ops Files
    Another BOSH native concept implemented as a ConfigMap. Ops files are utilised to overwrite, add, or remove aspects of the BOSH Manifest, allowing a single centralised Manifest to be customised for different environments and requirements.
 
    Ops Files are also a means to satisfy the Quarks BPM requirement without writing BPM into the release.
 
-   1. Services
+   #### 2.4 Services
    Services can be used to expose your deployment so that it can be accessed outside of the cluster, in these test instances the ClusterIP service has been used as the simplest way to expose the ___ deployment, but this could be substituted for other [implementations]().
 
-   1. The `boshdeployment` Resource
+   #### 2.5 The `boshdeployment` Resource
    This is the one that the cf-operator is looking for, and is the culmination of all of the above. This resource tells the cf-operator which ConfigMap to use for the BOSH Manifest, which Ops File ConfigMaps to include, any additional objects like Services need not be referenced here - they'll be created alongside.
 
-3. Pull the trigger
+### 3. Pull the trigger
 
 Once you've got all of your resources defined you can go ahead and `kubectl apply -f mydeployment.yml` to the namespace your `cf-operator` is watching.
 

@@ -209,4 +209,7 @@ Once you've got all of your resources defined in a yaml file you can go ahead an
 
 If you run a `watch kubectl get all -n mynamespace` you'll be able to see your resources coming up as they're created by the cf-operator, ending with your deployment running happily.
 
-< gif of deployment >
+<figure>
+  <a href="/img/blog/quarks-quickstart/Redis-GIF.gif" target="_blank"><img src="/img/blog/quarks-quickstart/Redis-GIF.gif" alt="A gif of a terminal showing Redis being deployed with Quarks" class="fit image" /></a>
+  <figcaption>Redis installation with Quarks `cf-operator`</figcaption>
+</figure>

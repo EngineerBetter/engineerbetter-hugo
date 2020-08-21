@@ -47,13 +47,32 @@ It's not documented on the Fissile github page, but rather than building Fissile
 ```
 s3://cf-opensusefs2/fissile/develop/
 ```
-As a binary, Fissile was originally designed for use with SCF, and as a result, a lot of its functionality isn't relevant for this use case. The only command that we need to run to create a Docker Image is the `build images` command. A fully constructed version of this command looks like this:
+As a binary, Fissile was originally designed for use with SCF, and as a result, a lot of its functionality isn't relevant for this use case. The only command that we need to run to create a Docker Image is the `build images` command. For this command, the stemcell we pass is the `splatform/fissile-stemcell-opensuse` Fissile stemcell. A fully constructed version of this command, using the Concourse BOSH release as an example, looks like this:
 
 ```
-fissile build release-images --stemcell="${STEMCELL_REPOSITORY}" --name="${RELEASE_NAME}" --version="${VERSION}" --sha1="${SHA1}" --url="${RELEASE_URL}"
+fissile build release-images --stemcell=splatform/fissile-stemcell-opensuse --name=concourse --version=6.4.1 --sha1=a8f4072712dd6eec11c1f081362535c34166671d --url=https://bosh.io/d/github.com/concourse/concourse-bosh-release?v=6.4.1
+```
+
+This command will result in a built image with a tag format as follows:
+
+```
+REPOSITORY                            TAG                                                         IMAGE ID            CREATED             SIZE
+concourse                             opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1   9924b423b7af        2 minutes ago       3.1GB
+```
+
+This tag consists of various elements separated by hyphens.
+```
+opensuse(stemcell OS)-42.3-51.g7fef1b7-30.95(stemcell version)-7.0.0_374.gb8e8e6af(Fissile version)-15.3.5(release version)
 ```
 
 You can then tag and push this image to dockerhub or a private registry to be used in your deployment.
+
+```
+docker tag concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1 engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1
+docker push engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1
+```
+
+If you're going to be building images with Fissile via CI, we have a [script](https://github.com/EngineerBetter/quarks-spike/blob/master/tasks/build-dockerhub.sh) for that.
 
 ### 3. Get your resources ready
 

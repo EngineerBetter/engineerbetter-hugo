@@ -30,7 +30,7 @@ In any instance, a good starting point is to ask yourself whether a Helm Chart a
 
 If an upstream Helm Chart doesn't exist, you'll need to install the `cf-operator`.
 
-* ### Installing `cf-operator`
+### 1.1 Installing `cf-operator`
 This is fairly straightforward and can be completed with Helm. There are a few customisations that can be set by passing additional values to the install command, but broadly you'll want to make sure the namespace you place the cf-operator in is sensibly named and dedicated. The example below also sets the namespace that the cf-operator will 'watch' for the creation of custom resources.
 
 ```

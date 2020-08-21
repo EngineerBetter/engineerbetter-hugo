@@ -2,7 +2,7 @@
 author: Jessica Stenning
 date: "2020-08-20"
 draft: true
-heroImage: /img/blog/quarks-quickstart/standard-model.png
+heroImage: /img/blog/quarks-quickstart/standard-model.jpg
 title: Quarks - a quickstart guide to deploying a BOSH releases on K8s
 
 heading: Our
@@ -57,24 +57,19 @@ As a binary, Fissile was originally designed for use with SCF and, as a result, 
 
 ```
 fissile build release-images --stemcell=splatform/fissile-stemcell-opensuse \
---name=concourse --version=6.4.1 \
---sha1=a8f4072712dd6eec11c1f081362535c34166671d \
---url=https://bosh.io/d/github.com/concourse/concourse-bosh-release?v=6.4.1
+  --name=concourse --version=6.4.1 \
+  --sha1=a8f4072712dd6eec11c1f081362535c34166671d \
+  --url=https://bosh.io/d/github.com/concourse/concourse-bosh-release?v=6.4.1
 ```
 When running this command, the stemcell we pass is the `splatform/fissile-stemcell-opensuse` Fissile stemcell. This will result in a built image with a tag format as follows:
 
-<img src="/img/blog/quarks-quickstart/fissile-built-image.png" class="fit image" alt="Fissile docker Image">
-
-The tag consists of various component elements separated by hyphens.
-```
-opensuse(stemcell OS)-42.3-51.g7fef1b7-30.95(stemcell version)-7.0.0_374.gb8e8e6af(Fissile version)-15.3.5(release version)
-```
+<img src="/img/blog/quarks-quickstart/fissile-tagging.png" class="fit image" alt="Fissile docker Image">
 
 The image can then be tagged and pushed to dockerhub or private registry to be referenced in your deployment.
 
 ```
 docker tag concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1 \
-engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1
+  engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1
 
 docker push engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1
 ```

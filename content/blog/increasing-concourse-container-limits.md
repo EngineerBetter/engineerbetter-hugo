@@ -1,6 +1,6 @@
 ---
 author: Andy Paine
-date: "2020-08-24"
+date: "2020-08-21"
 heroImage: /img/blog/container-limits/container-limits.jpg
 title:  Increasing Concourse worker container limits
 

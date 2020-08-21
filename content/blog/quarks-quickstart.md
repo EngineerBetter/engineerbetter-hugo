@@ -21,9 +21,16 @@ If you'd like to learn more about how Quarks controllers handle the complete wor
 
 ## Steps for deploying a BOSH release with Quarks
 
-It's worth noting that Helm Charts aready exist for the deployment of some BOSH releases, e.g. [KubeCF](https://github.com/cloudfoundry-incubator/kubecf/releases) and [Concourse CI](https://github.com/concourse/concourse-chart). If you're looking to deploy a BOSH release on Kubernetes, it's worth checking that there isn't already an upstream Helm Chart published for that release, as that will likely be a more straightforward deployment process.
+<img src="/img/blog/quarks-quickstart/quarks-flowchart.png" class="fit image" alt="Quarks deployment flowchart">
 
-### 1. Install the `cf-operator` in your cluster
+The flowchart above illustrates the steps needed to deploy a BOSH release with Quarks, dependent on your use case the sequence of those steps varies. The remainder of this post will take you through each of the possible streams, culminating in a successful `kubectl apply`.
+
+### 1. Is there a Helm Chart already?
+In any instance, a good starting point is to ask yourself whether a Helm Chart already exists for the BOSH release you want to deploy (as is the case for [KubeCF](https://github.com/cloudfoundry-incubator/kubecf/releases) and [Concourse CI](https://github.com/concourse/concourse-chart)). If an upstream Helm Chart _does_ exist, it's likely that will the more straightforward deployment process.
+
+If an upstream Helm Chart doesn't exist, you'll need to install the `cf-operator`.
+
+* ### Installing `cf-operator`
 This is fairly straightforward and can be completed with Helm. There are a few customisations that can be set by passing additional values to the install command, but broadly you'll want to make sure the namespace you place the cf-operator in is sensibly named and dedicated. The example below also sets the namespace that the cf-operator will 'watch' for the creation of custom resources.
 
 ```
@@ -37,10 +44,10 @@ helm install cf-operator quarks/cf-operator \
 For a full list of customisations that can be passed to the cf-operator installation take a look at the [Helm Chart](https://hub.helm.sh/charts/quarks/cf-operator).
 
 ### 2. Do you have a Docker Image?
-
 Do you need to convert your you BOSH release into a Docker Image, or does this exist already? If the answer is 'yes, I have a Docker Image of my release', then you can go ahead and skip the rest of this section.
 
-If you're still reading, then the first step is to convert your BOSH release to a Docker Image; Quarks recommends Fissile for this purpose.
+* ### Converting Releases to Docker Images with Fissile
+If you're still reading, the first step is to convert your BOSH release to a Docker Image; Quarks recommends Fissile for this purpose.
 
 <section class="boxout">
 <p>Currently there are no releases published on the Fissile Github page, and while this isn't documented, the latest Fissile builds can be retrieved from this S3 Bucket rather than building Fissile yourself: s3://cf-opensusefs2/fissile/develop/</p>
@@ -56,7 +63,7 @@ fissile build release-images --stemcell=splatform/fissile-stemcell-opensuse \
 ```
 When running this command, the stemcell we pass is the `splatform/fissile-stemcell-opensuse` Fissile stemcell. This will result in a built image with a tag format as follows:
 
-<img src="/img/blog/quarks-quickstart/fissile-built-image.png" class="fit image" alt="Stratos UI">
+<img src="/img/blog/quarks-quickstart/fissile-built-image.png" class="fit image" alt="Fissile docker Image">
 
 The tag consists of various component elements separated by hyphens.
 ```
@@ -72,11 +79,11 @@ engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4
 docker push engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1
 ```
 
-If you're going to be building images with Fissile via CI, we have a [reusable Concourse task and Bash script](https://github.com/EngineerBetter/quarks-spike/blob/master/tasks/build-dockerhub.sh) for that.
+If you're going to be building images with Fissile via CI, we have a [reusable Concourse task and Bash script](https://github.com/EngineerBetter/fissile-build-image) for that.
 
-### 3. Get your resources ready
+### 3. Create ConfigMaps
 
-### The BOSH Manifest
+### 3.1 The BOSH Manifest
 This will look similar to the BOSH deployment manifest you're used to, but in this case it's a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) - a first class Kubernetes resource. Some translation _is_ need to adapt a BOSH deployment manifest for use with Quarks, but this conversion it covered in detail in the Quarks [documentation](https://quarks.suse.dev/docs/core-tasks/from_bosh_to_kube/#example-deployment-manifest-conversion-details).
 
 For these sections it's useful to have an example open for reference, this [Redis deployment](https://github.com/cloudfoundry-community/redis-boshrelease/blob/master/quarks/deployment.yaml) from Dr Nic is a good example.
@@ -150,7 +157,7 @@ data:
 <p>Quarks requires that a BOSH release uses BOSH Process Management (BPM), without this your deployment will fail. However, BPM _can_ be added via an ops file at runtime, so doesn't need to be written into the release itself.</p>
 </section>
 
-### Ops Files
+### 3.2 Ops Files
 Another BOSH native concept implemented as a ConfigMap. Ops files are utilised to overwrite, add, or remove aspects of the BOSH manifest, allowing a single central manifest to be customised for different environments and requirements.
 
 Ops Files are also a means to satisfy the Quarks BPM requirement [without writing BPM into the release](https://github.com/cloudfoundry-incubator/kubecf/blob/8692ef5b7ed6f321e83860dc8ae9891544c11d05/deploy/helm/kubecf/assets/operations/instance_groups/app-autoscaler.yaml#L766-L771).
@@ -169,7 +176,7 @@ data:
       value: docker.io/cfcommunity
 ```
 
-### The `boshdeployment` Resource
+### 4. Create the `boshdeployment`
 This is the one that the cf-operator is looking for, and is the culmination of all of the above. This resource tells the cf-operator which ConfigMap to use for the BOSH manifest, which Ops File ConfigMaps to include, any additional objects like Services need not be referenced here - they'll be created alongside.
 ```
 ---
@@ -207,7 +214,7 @@ spec:
       targetPort: 6379
 ```
 
-### 4. Pull the trigger
+### 5. Pull the trigger
 
 Once you've got all of your resources defined in a yaml file you can go ahead and run `kubectl apply`, making sure that you target the namespace your `cf-operator` is watching.
 

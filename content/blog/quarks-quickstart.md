@@ -15,16 +15,16 @@ As the Cloud Foundry (CF) community moves towards the Kubernetes (K8s) era of do
 The end-to-end process however, can be a little tricky to navigate. This blog post fills in the gaps to provide a step-by-step guide for deploying a BOSH release on K8s with Quarks.
 
 ## What is Quarks?
-When we refer to Quarks we're largely referring to the deployment of `cf-operator` (soon to be renamed the `quarks-operator` to reflect it's broader functionality). The `cf-operator` brings with it custom resource definitions (CRDs) that extend the Kubernetes API. Once deployed, the `cf-operator` watches for the creation of the custom `boshdeployment` resource (more on this later), then works its magic to translate the sum into a desired manifest and ultimately a running BOSH deployment on K8s.
+When we refer to Quarks we're largely referring to the deployment of `cf-operator` (soon to be renamed the `quarks-operator` to reflect its broader functionality). The `cf-operator` brings with it custom resource definitions (CRDs) that extend the Kubernetes API. Once deployed, the `cf-operator` watches for the creation of the custom `boshdeployment` resource (more on this later), then works its magic to translate the sum into a desired manifest and ultimately a running BOSH deployment on K8s.
 
 If you'd like to learn more about how Quarks controllers handle the complete workflow from the custom `boshdeployment` resource, through to the translation and creation of Kubernetes native StatefulSets, Pods etc., I'd recommend taking a look at the [docs](https://quarks.suse.dev/docs/development/controllers/) - the controller diagrams are especially helpful.
 
 ## Steps for deploying a BOSH release with Quarks
 
-It's worth noting that Helm Charts aready exist for the deployment of some BOSH releases, e.g. [KubeCF](https://github.com/cloudfoundry-incubator/kubecf/releases) and [Concourse CI](https://github.com/concourse/concourse-chart). If you're looking to deploy a BOSH release on Kubernetes, it's worth checking that there isn't already an upstream Helm Chart published for that release, as that will likely be more straightforward deployment process.
+It's worth noting that Helm Charts aready exist for the deployment of some BOSH releases, e.g. [KubeCF](https://github.com/cloudfoundry-incubator/kubecf/releases) and [Concourse CI](https://github.com/concourse/concourse-chart). If you're looking to deploy a BOSH release on Kubernetes, it's worth checking that there isn't already an upstream Helm Chart published for that release, as that will likely be a more straightforward deployment process.
 
 ### 1. Install the `cf-operator` in your cluster
-This is fairly straight forward and can be completed with Helm. There are a few customisations that can be set by passing additional values to the install command, but broadly you'll want to make sure the namespace you place the cf-operator in is sensibly named and dedicated. The example below also sets the namespace that the cf-operator will 'watch' for the creation of custom resources.
+This is fairly straightforward and can be completed with Helm. There are a few customisations that can be set by passing additional values to the install command, but broadly you'll want to make sure the namespace you place the cf-operator in is sensibly named and dedicated. The example below also sets the namespace that the cf-operator will 'watch' for the creation of custom resources.
 
 ```
 helm repo add quarks https://cloudfoundry-incubator.github.io/quarks-helm/
@@ -43,11 +43,11 @@ Do you need to convert your you BOSH release into a Docker Image, or does this e
 If you're still reading, then the first step is to convert your BOSH release to a Docker Image; Quarks recommends Fissile for this purpose.
 
 **A quick word on Fissile:**
-Currently there are no releases published on the [Fissile Github page](), and while it isn't documented, the latest Fissile builds can be retrieved from this S3 Bucket rather than building Fissile yourself:
+Currently there are no releases published on the [Fissile Github page](https://github.com/cloudfoundry-incubator/fissile), and while it isn't documented, the latest Fissile builds can be retrieved from this S3 Bucket rather than building Fissile yourself:
 ```
 s3://cf-opensusefs2/fissile/develop/
 ```
-As a binary, Fissile was originally designed for use with SCF, as a result, a lot of its functionality isn't relevant for this use case. The only command that is needed to create a Docker Image is the `build images` command. A fully constructed version of this command, using the Concourse BOSH release as an example, looks like this:
+As a binary, Fissile was originally designed for use with SCF and, as a result, a lot of its functionality isn't relevant for this use case. The only command that is needed to create a Docker Image is the `build images` command. A fully constructed version of this command, using the Concourse BOSH release as an example, looks like this:
 
 ```
 fissile build release-images --stemcell=splatform/fissile-stemcell-opensuse --name=concourse --version=6.4.1 --sha1=a8f4072712dd6eec11c1f081362535c34166671d --url=https://bosh.io/d/github.com/concourse/concourse-bosh-release?v=6.4.1

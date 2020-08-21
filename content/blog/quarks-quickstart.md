@@ -2,8 +2,8 @@
 author: Jessica Stenning
 date: "2020-08-20"
 draft: true
-heroImage: /img/blog/quarks-quickstart/quarks-quickstart.png
-title: Quarks - a quickstart guide to deploying a BOSH release on K8s
+heroImage: /img/blog/quarks-quickstart/standard-model.png
+title: Quarks - a quickstart guide to deploying a BOSH releases on K8s
 
 heading: Our
 headingBold: blog
@@ -46,7 +46,7 @@ For a full list of customisations that can be passed to the cf-operator installa
 ### 2. Do you have a Docker Image?
 Do you need to convert your you BOSH release into a Docker Image, or does this exist already? If the answer is 'yes, I have a Docker Image of my release', then you can go ahead and skip the rest of this section.
 
-* ### Converting Releases to Docker Images with Fissile
+### 2.1 Converting Releases to Docker Images with Fissile
 If you're still reading, the first step is to convert your BOSH release to a Docker Image; Quarks recommends Fissile for this purpose.
 
 <section class="boxout">

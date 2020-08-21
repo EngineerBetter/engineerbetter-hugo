@@ -43,8 +43,7 @@ Do you need to convert your you BOSH release into a Docker Image, or does this e
 If you're still reading, then the first step is to convert your BOSH release to a Docker Image; Quarks recommends Fissile for this purpose.
 
 <section class="boxout">
-<p>**A quick word on Fissile:**
-Currently there are no releases published on the [Fissile Github page](https://github.com/cloudfoundry-incubator/fissile), and while it isn't documented, the latest Fissile builds can be retrieved from this S3 Bucket rather than building Fissile yourself: s3://cf-opensusefs2/fissile/develop/</p>
+<p>Currently there are no releases published on the Fissile Github page, and while this isn't documented, the latest Fissile builds can be retrieved from this S3 Bucket rather than building Fissile yourself: s3://cf-opensusefs2/fissile/develop/</p>
 </section>
 
 As a binary, Fissile was originally designed for use with SCF and, as a result, a lot of its functionality isn't relevant for this use case. The only command that is needed to create a Docker Image is the `build images` command. A fully constructed version of this command, using the Concourse BOSH release as an example, looks like this:
@@ -73,7 +72,7 @@ engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4
 docker push engineerbetter/concourse:opensuse-42.3-51.g7fef1b7-30.95-7.0.0_374.gb8e8e6af-6.4.1
 ```
 
-If you're going to be building images with Fissile via CI, we have a [script](https://github.com/EngineerBetter/quarks-spike/blob/master/tasks/build-dockerhub.sh) for that.
+If you're going to be building images with Fissile via CI, we have a [reusable Concourse task and Bash script](https://github.com/EngineerBetter/quarks-spike/blob/master/tasks/build-dockerhub.sh) for that.
 
 ### 3. Get your resources ready
 
@@ -148,13 +147,13 @@ data:
       version: 15.3.3
 ```
 <section class="boxout">
-<p>Quarks requires that a BOSH release uses [BOSH Process Management (BPM)](https://bosh.io/docs/bpm/bpm/), without this your deployment will fail. However, BPM _can_ be added via an [ops-file](https://github.com/cloudfoundry-incubator/kubecf/blob/8692ef5b7ed6f321e83860dc8ae9891544c11d05/deploy/helm/kubecf/assets/operations/instance_groups/app-autoscaler.yaml#L766-L771) at runtime, so doesn't need to be written into the release itself.</p>
+<p>Quarks requires that a BOSH release uses BOSH Process Management (BPM), without this your deployment will fail. However, BPM _can_ be added via an ops file at runtime, so doesn't need to be written into the release itself.</p>
 </section>
 
 ### Ops Files
 Another BOSH native concept implemented as a ConfigMap. Ops files are utilised to overwrite, add, or remove aspects of the BOSH manifest, allowing a single central manifest to be customised for different environments and requirements.
 
-Ops Files are also a means to satisfy the Quarks BPM requirement without writing BPM into the release.
+Ops Files are also a means to satisfy the Quarks BPM requirement [without writing BPM into the release](https://github.com/cloudfoundry-incubator/kubecf/blob/8692ef5b7ed6f321e83860dc8ae9891544c11d05/deploy/helm/kubecf/assets/operations/instance_groups/app-autoscaler.yaml#L766-L771).
 ```
 ---
 apiVersion: v1

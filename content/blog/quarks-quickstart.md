@@ -10,7 +10,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-As the Cloud Foundry (CF) community moves towards the Kubernetes (K8s) era of dominance, a few possible solutions for deploying CF on Kubernetes have surfaced, one such solution is the Quarks/KubeCF combination. KubeCF is a Cloud Foundry Application Runtime (CFAR) distribution for Kubernetes. It works with Quarks to deploy and manage cf-deployment releases, but beyond just CF, Quarks has introduced a broader method for deploying BOSH releases on K8s; BOSH releases are converted to Docker Images, and the BOSH deployment manifest is converted to a custom Kubernetes `boshdeployment` resource.
+As the Cloud Foundry (CF) community moves towards the Kubernetes (K8s) era of dominance, a few possible solutions for deploying CF on Kubernetes have surfaced; one such solution is the Quarks/KubeCF combination. KubeCF is a Cloud Foundry Application Runtime (CFAR) distribution for Kubernetes. It works with Quarks to deploy and manage cf-deployment releases, but beyond just CF, Quarks has introduced a broader method for deploying BOSH releases on K8s; BOSH releases are converted to Docker Images, and the BOSH deployment manifest is converted to a custom Kubernetes `boshdeployment` resource.
 
 The end-to-end process however, can be a little tricky to navigate. This blog post fills in the gaps to provide a step-by-step guide for deploying a BOSH release on K8s with Quarks.
 
@@ -147,7 +147,7 @@ data:
 **Note: Quarks requires that a BOSH release uses [BOSH Process Management (BPM)](https://bosh.io/docs/bpm/bpm/)**, without this your deployment will fail. However, BPM _can_ be added via an [ops-file](https://github.com/cloudfoundry-incubator/kubecf/blob/8692ef5b7ed6f321e83860dc8ae9891544c11d05/deploy/helm/kubecf/assets/operations/instance_groups/app-autoscaler.yaml#L766-L771) at runtime, so doesn't need to be written into the release itself - more on Ops Files next.
 
 #### Ops Files
-Another BOSH native concept implemented as a ConfigMap. Ops files are utilised to overwrite, add, or remove aspects of the BOSH Manifest, allowing a single central Manifest to be customised for different environments and requirements.
+Another BOSH native concept implemented as a ConfigMap. Ops files are utilised to overwrite, add, or remove aspects of the BOSH manifest, allowing a single central manifest to be customised for different environments and requirements.
 
 Ops Files are also a means to satisfy the Quarks BPM requirement without writing BPM into the release.
 ```
@@ -166,7 +166,7 @@ data:
 ```
 
 #### The `boshdeployment` Resource
-This is the one that the cf-operator is looking for, and is the culmination of all of the above. This resource tells the cf-operator which ConfigMap to use for the BOSH Manifest, which Ops File ConfigMaps to include, any additional objects like Services need not be referenced here - they'll be created alongside.
+This is the one that the cf-operator is looking for, and is the culmination of all of the above. This resource tells the cf-operator which ConfigMap to use for the BOSH manifest, which Ops File ConfigMaps to include, any additional objects like Services need not be referenced here - they'll be created alongside.
 ```
 ---
 apiVersion: quarks.cloudfoundry.org/v1alpha1
@@ -185,7 +185,7 @@ spec:
 ```
 
 #### Services
-While services aren't a requirement, they'll expose your deployment so that it can be accessed outside of the cluster, so often I define the service alongside the other Quarks objects. When testing deployments in the first instance it's often easiest to add a ClusterIP service, this can be substituted for other implementations later.
+While Services aren't a requirement, they'll expose your deployment so that it can be accessed outside of the cluster, so often I define the Service alongside the other Quarks objects. When testing deployments in the first instance it's often easiest to add a ClusterIP Service, this can be substituted for other implementations later.
 ```
 ---
 apiVersion: v1

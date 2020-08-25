@@ -9,7 +9,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Deploying BOSH releases to Kubernetes is entirely possible, but can be a little tricky to figure out from the documentation along. This blog post fills in the gaps to provide a **step-by-step guide for deploying a BOSH release on K8s with Quarks**, deploying Redis as an example.
+Deploying BOSH releases to Kubernetes is entirely possible, but can be a little tricky to figure out from the documentation alone. This blog post fills in the gaps to provide a **step-by-step guide for deploying a BOSH release on K8s with Quarks**, deploying Redis as an example.
 
 As the Cloud Foundry (CF) community moves towards the Kubernetes era of dominance, a few possible solutions for deploying CF on K8s have surfaced; one such solution is the Quarks/KubeCF combination. KubeCF is a Cloud Foundry Application Runtime (CFAR) distribution for Kubernetes. It is used with Quarks to deploy and manage cf-deployment releases, but beyond just CF, Quarks has introduced a broader method for deploying BOSH releases on K8s: BOSH releases are converted to Docker Images, and the BOSH deployment manifest is converted to a custom Kubernetes `boshdeployment` resource.
 

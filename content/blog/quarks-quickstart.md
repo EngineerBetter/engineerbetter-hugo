@@ -21,6 +21,16 @@ As the Cloud Foundry (CF) community moves towards the Kubernetes era of dominanc
 
 ## Steps for deploying a BOSH release with Quarks
 
+The steps we'll be exploring in more detail are:
+
+1. Check if Helm chart would be simpler
+1. Install `cf-operator` (first time only)
+1. Build Docker image using Fissile
+1. Create ConfigMap YAML containing manifest
+1. Add BPM ops file (if necessary)
+1. Create BOSHDeployment YAML
+1. `kubectl apply`
+
 <img src="/img/blog/quarks-quickstart/quarks-flowchart.png" class="fit image" alt="Quarks deployment flowchart">
 
 The flowchart above illustrates the steps needed to deploy a BOSH release with Quarks, dependent on your use case the sequence of those steps varies. The remainder of this post will take you through each of the possible streams, culminating in a successful `kubectl apply`.

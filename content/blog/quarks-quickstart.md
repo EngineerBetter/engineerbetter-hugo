@@ -14,10 +14,10 @@ Deploying BOSH releases to Kubernetes is entirely possible, but can be a little 
 
 As the Cloud Foundry (CF) community moves towards the Kubernetes era of dominance, a few possible solutions for deploying CF on K8s have surfaced; one such solution is the Quarks/KubeCF combination. KubeCF is a Cloud Foundry Application Runtime (CFAR) distribution for Kubernetes. It is used with Quarks to deploy and manage cf-deployment releases, but beyond just CF, Quarks has introduced a broader method for deploying BOSH releases on K8s: BOSH releases are converted to Docker Images, and the BOSH deployment manifest is converted to a custom Kubernetes `boshdeployment` resource.
 
-## What is Quarks?
-When we refer to Quarks we're largely referring to the deployment of the **`cf-operator`** (soon to be renamed the `quarks-operator` to reflect its broader functionality). The `cf-operator` brings with it custom resource definitions (CRDs) that extend the Kubernetes API. Once deployed, the `cf-operator` watches for the creation of the custom `boshdeployment` resource (more on this later), then works its magic to translate the sum into a desired manifest and ultimately a running BOSH deployment on K8s.
-
-If you'd like to learn more about how Quarks controllers handle the complete workflow from the custom `boshdeployment` resource, through to the translation and creation of Kubernetes native StatefulSets, Pods etc, I'd recommend taking a look at the [docs](https://quarks.suse.dev/docs/development/controllers/) - the controller diagrams are especially helpful.
+> ## What is Quarks?
+> When we refer to Quarks we're largely referring to the deployment of the **`cf-operator`** (soon to be renamed the `quarks-operator` to reflect its broader functionality). The `cf-operator` brings with it custom resource definitions (CRDs) that extend the Kubernetes API. Once deployed, the `cf-operator` watches for the creation of the custom `boshdeployment` resource (more on this later), then works its magic to translate the sum into a desired manifest and ultimately a running BOSH deployment on K8s.
+>
+> If you'd like to learn more about how Quarks controllers handle the complete workflow from the custom `boshdeployment` resource, through to the translation and creation of Kubernetes native StatefulSets, Pods etc, I'd recommend taking a look at the [docs](https://quarks.suse.dev/docs/development/controllers/) - the controller diagrams are especially helpful.
 
 ## Steps for deploying a BOSH release with Quarks
 

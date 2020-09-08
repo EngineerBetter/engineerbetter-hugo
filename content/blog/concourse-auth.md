@@ -1,6 +1,6 @@
 ---
 author: Colin Simmons
-date: "2020-09-07"
+date: "2020-09-08"
 heroImage: /img/blog/concourse-auth/airport-security.jpg
 title:  "Concourse Teams - Authentication and Automation"
 heading: Our

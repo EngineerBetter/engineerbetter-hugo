@@ -8,19 +8,31 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
+Configuring authentication providers in Concourse is often a source of confusion, with gotcha's that make it easy for newcomers to remove their colleagues' access. In this post I explain how Concourse auth can be configured, and why I made [concourse-mgmt](https://github.com/EngineerBetter/concourse-mgmt) to make the process more reliable.
+
 Ever since version 2.0 Concourse has supported dividing a single Concourse installation into one or more teams. These teams can be configured so that only certain individuals can access the pipelines within them. As of now there are multiple [supported auth providers](https://concourse-ci.org/auth.html) and [a variety of RBAC roles](https://concourse-ci.org/user-roles.html) that can be applied.
 
 I've helped many companies with Concourse over the past four years. A common point of confusion is around how Concourse authentication is configured and how it relates to teams.
 
-At a high level, the configuration of authentication in Concourse is split into two different steps: deployment and team configuration. A rule of thumb is that you tell Concourse _how_ it can authorise users when you deploy Concourse. This is when you configure one or more auth providers. Once an auth provider is configured you can use `fly set-team` to tell Concourse which users _within an auth provider_ can access a specific team.
+At a high level, the **configuration of authentication in Concourse is split into two different steps**: deployment and team configuration.
 
-I find the GitHub auth provider is a good example. At deployment you tell Concourse how to talk to GitHub and when you configure a team you tell Concourse which users can interact with that team based on the objects (organisations or teams) they are a part of in GitHub.
+A rule of thumb is that you tell Concourse _how_ it can authorise users when you deploy Concourse. This is when you configure one or more auth providers. Once an auth provider is configured you can use `fly set-team` to tell Concourse which users _within an auth provider_ can access a specific team.
 
-To understand it further lets walk though the addition of GitHub auth to a Concourse deployment and how to subsequently use it when creating a team.
+I find the GitHub auth provider is a good example. At deployment you tell Concourse how to talk to GitHub and when you configure a team you tell Concourse which users can interact with that team based on the entities (organisations or teams) they are a part of in GitHub.
+
+To understand it further, lets walk though the addition of GitHub auth to a Concourse deployment and how to subsequently use it when creating a team.
 
 ## Configuring the Provider
 
-Before configuring any teams using GitHub auth we need to configure the auth provider on the web instance of our Concourse. In essence this involves [creating a new OAuth application](https://github.com/settings/applications/new), setting the `CONCOURSE_GITHUB_CLIENT_ID` and `CONCOURSE_GITHUB_CLIENT_SECRET` environment variables, then redeploying the web instance. The specific mechanism for setting these variables depends on how you are deploying your Concourse (i.e. Helm, BOSH, Docker, etc).
+Before configuring any teams using GitHub auth we need to configure the auth provider on the web instance of our Concourse.
+
+This involves:
+
+* [creating a new OAuth application](https://github.com/settings/applications/new)
+* setting the `CONCOURSE_GITHUB_CLIENT_ID` and `CONCOURSE_GITHUB_CLIENT_SECRET` environment variables for the web executable
+* redeploying the web instance.
+
+The specific mechanism for setting these variables depends on how you are deploying your Concourse (i.e. Helm, BOSH, Docker, etc).
 
 Once the web instance is started with this new configuration you might think that you wouldn't be able to log into anything until a team has been created to use the GitHub auth provider. You would be wrong.
 
@@ -29,19 +41,20 @@ Once the web instance is started with this new configuration you might think tha
   <figcaption>Concourse UI when logging in with GitHub auth without access to a team</figcaption>
 </figure>
 
-As you can see I was able to log in but since I don't have access to any teams the Concourse appears to be empty.
+As you can see I was able to log in, but since I don't have access to any teams the Concourse appears to be empty.
 
 When you configure an auth provider you are effectively saying that any user within that provider can log into your Concourse and they _can_ be given access to a team.
 
-<section class="boxout">
-<p>It's worth noting that all basic auth user:password pairs also need to be defined at deploy time.</p>
-</section>
+
+> It's worth noting that **all basic auth user:password pairs need to be defined at deploy time**.
 
 ## Configuring the Team
 
 Now that we've told Concourse how to talk to GitHub we can create a team that utilises it.
 
-The only way to configure (non-main) teams is through the `fly set-team` command. The `main` team is a special case in that it can only be configured when deploying Concourse. Thankfully this command can take a YAML config file as an input which lets you keep team auth setup in source control. A good reference for the different keys for each auth type can be found in the `team_config_*` test fixtures [in the Concourse source code](https://github.com/concourse/concourse/blob/master/fly/integration/fixtures).
+The only way to configure (non-main) teams is through the `fly set-team` command. The `main` team is a special case in that it can only be configured when deploying Concourse.
+
+Thankfully the `set-team` command can take a YAML config file as an input which lets you keep team auth setup in source control. A good reference for the different keys for each auth type can be found in the `team_config_*` test fixtures [in the Concourse source code](https://github.com/concourse/concourse/blob/master/fly/integration/fixtures).
 
 For example this is the GitHub auth example from the test fixtures:
 
@@ -79,7 +92,7 @@ this will create a team called `github-team` with the following roles:
 
 ### Be careful with `fly set-team`
 
-It's quite easy to accidentally revoke your own access to a team when trying to give a new user access. I've seen this a lot and have done it myself a few times. `fly set-team` is not an additive command. Suppose you want to add my GitHub user 'crsimmons' as an owner of the `github-team` team created above.
+It's quite easy to accidentally revoke your own access to a team when trying to give a new user access. I've seen this a lot and have done it myself a few times. **`fly set-team` is not an additive command**. Suppose you want to add my GitHub user 'crsimmons' as an owner of the `github-team` team created above.
 
 If you assume that `fly set-team` is additive (as I initially did) you would do something like:
 

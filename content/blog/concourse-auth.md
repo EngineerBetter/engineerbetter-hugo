@@ -1,6 +1,6 @@
 ---
 author: Colin Simmons
-date: "2020-09-08"
+date: "2020-09-09"
 heroImage: /img/blog/concourse-auth/airport-security.jpg
 title:  "Concourse Teams - Authentication and Automation"
 heading: Our
@@ -121,9 +121,9 @@ From the perspective of automating team configuration it's quite convenient that
 
 Based on what I've seen at various companies, the main wants for team automation are:
 
-- having all team configuration stored in source control
-- limit the amount of time an errant `fly set-team` can break access to Concourse
-- make addition of new teams as easy as possible
+* having all team configuration stored in source control
+* limit the amount of time an errant `fly set-team` can break access to Concourse
+* make addition of new teams as easy as possible
 
 Automatic removal of old teams is something that I've proposed but it is usually seen as too dangerous for the first pass by customers.
 

@@ -10,7 +10,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 Ever since version 2.0 Concourse has supported dividing a single Concourse installation into one or more teams. These teams can be configured so that only certain individuals can access the pipelines within them. As of now there are multiple [supported auth providers](https://concourse-ci.org/auth.html) and [a variety of RBAC roles](https://concourse-ci.org/user-roles.html) that can be applied.
 
-I've helped many companies with Concourse over the past 4 years. A common point of confusion is around how Concourse authentication is configured and how it relates to teams.
+I've helped many companies with Concourse over the past four years. A common point of confusion is around how Concourse authentication is configured and how it relates to teams.
 
 At a high level, the configuration of authentication in Concourse is split into two different steps: deployment and team configuration. A rule of thumb is that you tell Concourse _how_ it can authorise users when you deploy Concourse. This is when you configure one or more auth providers. Once an auth provider is configured you can use `fly set-team` to tell Concourse which users _within an auth provider_ can access a specific team.
 

@@ -1,45 +1,52 @@
 ---
 author: Daniel Jones
-date: "2020-07-30"
-heroImage: /img/blog/smarsh-deployed.png
-title: Continuous Everything in a Regulated Bank
+date: "2020-09-23"
+heroImage: /img/blog/smarsh/smarsh-deployed.png
+title: "Engagement Deep-Dive: Continuous Everything in a Regulated Bank"
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 draft: true
 ---
 
-Over the last year EngineerBetter have been working with [Smarsh](https://www.smarsh.com/), introducing new ways of working that have enabled **continuous deployment** of **19 data services** and **20 apps** into a **regulated investment bank in 10 weeks** - and that was just the start!
+Over the last year EngineerBetter worked with [Smarsh](https://www.smarsh.com/), introducing new ways of working that enabled **continuous deployment** of **19 data services** and **20 apps** across **multiple vSphere environments** in a **regulated investment bank in 10 weeks** - and that was just the start!
 
-In this blog post we'll talk about the **methodology** we used, the technical implementation and challenges, and what we learned from the experience.
+In this blog post we'll talk about the **methodology** we used, the **technical implementation** and challenges, and what _we_ learned from the experience.
 
 ## Outcomes
 
 We achieved the following outcomes through considered use of approach and methodology:
 
-**A > 90% reduction in time-to-production**. Sadly accurate figures for deployment effort prior to our engagement weren't available, but we went from the effort of many teams over a period of weeks, to an automated pipeline that would run in around 4 hours. At the most absolutely conservative estimate this was a ~90% reduction in time-to-production, and and even greater reduction in human toil.
+**A > 90% reduction in time-to-production**. Smarsh went from the effort of many teams over a period of weeks, to an automated pipeline that would run in around 4 hours. At the most absolutely conservative estimate this was a ~90% reduction in time-to-production, and an even greater reduction in human toil.
 
 **Increased technical and methodological knowledge**. By pair-programming we were enable to upskill the customer's engineers _at the same time as_ delivering a system. Just as we learnt a lot on the engagement, Smarsh engineers got insight into Concourse, Cloud Foundry, BOSH, RSpec, and all sorts of other technologies. Even more importantly, by engaging using our methodology, we were able to educate folks in vital concepts such as TDD, lean decision-making, eXtreme Programming, YAGNI, package cohesion principles, continuous delivery, and more.
 
-**Making the implicit explicit**. Previously knowledge of the system had existed in a fragmented fashion, split between documentation and the human experience of various teams throughout the organisation. Instead, now we had one testable infrastructure-as-code pipeline that embodied all of that knowledge.
+**Self-sufficient teams**. After nine months, Smarsh were ready for us to downscale the assitance we gave them. After a year Smarsh's engineers are developing and oeprating the system without our help, so we are no longer needed - you could say "our job here is done".
 
 **One team that could deploy everything**. For the first time in the customer's history a single team owned the deployment process from beginning to end, reducing transaction costs, delays and communication overheads.
 
-**Tested, promoted products**. The entire suite of software and infrastructure was tested and then promoted using our Stopover approach to Concourse pipelines. We could be confident that changes would work before they reached higher environments.
+**Tested, promoted products**. The entire suite of software and infrastructure was tested and then promoted using our [Stopover approach to Concourse pipelines](https://www.engineerbetter.com/blog/pipeline-promotion/). We could be confident that changes would work before they reached higher environments.
 
 **Reproducible environments**. Because everything was automated there were no unique 'snowflake' environments, making them easier to reason about. We regularly repaved test environments to ensure this reproducibility.
 
 **Context-carrying between timezones**. Being located in Europe allowed EngineerBetter to be the conduit for context to pass from the India timezone to US timezones. Because we were a single team engaging in remote pair-programming, that context was transferred in a human-friendly manner, rather than passive-aggressive JIRA tickets.
 
+**Making the implicit explicit**. Previously knowledge of the system had existed in a fragmented fashion, split between documentation and the human experience of various teams throughout the organisation. Instead, now we had one testable infrastructure-as-code pipeline that embodied all of that knowledge.
+
 ## Smarsh
 
-Smarsh produce an enterprise communications archiving product called, err, _[Enterprise Archive](https://www.smarsh.com/products/connected-archive/enterprise-archive/)_. It is used by thousands of big-name customers to help them meet regulatory requirements by storing sensitive communications in a secure and searchable way. Whilst Smarsh might not be a household brand, many of their customers _are_.
+Smarsh produce an enterprise communications archiving product imaginatively named _[Enterprise Archive](https://www.smarsh.com/products/connected-archive/enterprise-archive/)_. It is used by thousands of big-name customers to help them meet regulatory requirements by storing sensitive communications in a secure and searchable way. Whilst Smarsh might not be a household brand, many of their customers _are_.
+
+<figure>
+  <img src="/img/blog/smarsh/enterprise-archive.png" class="fit image" alt="Enterprise Archive UI">
+  <figcaption>Smarsh's Enterprise Archive. It remains to be seen if this is where the Captain's logs are kept.</figcaption>
+</figure>
 
 Smarsh have presences in Bengaluru, India; London, England; and around the United States. Whilst the majority of app developers are based in India, the folks deploying and running things are dotted around the globe.
 
-Smarsh's Enterprise Archive product is available primarily as-a-Service, hosted by Smarsh. Given the nature of the product though, some regulated customers require it to be installed in their own datacentres and often in an airgapped environment - one where there is no communication possible to the outside Internet.
+Smarsh's Enterprise Archive product is available primarily as-a-Service, hosted by Smarsh. Given the nature of the product though, some regulated customers require it to be installed in their own datacentres and often in an airgapped environment - where there is no communication possible to the outside Internet.
 
-Smarsh's products deal with big data: messages are ingested at high rates, and stored in large volumes. There's a lot of processing and reporting that needs to be done, so it's not a surprise that there are wide variety of different technologies in use: Hazelcast, Storm, Kafka, MongoDB, Elasticsearch, and PostgreSQL, to name a few.
+Smarsh's products deal with big data: messages are ingested at high velocities, and stored in large volumes. There's a lot of processing and reporting that needs to be done, so it's not a surprise that there are wide variety of different technologies in use: Hazelcast, Storm, Kafka, MongoDB, Elasticsearch, and PostgreSQL, to name a few.
 
 Enterprise Archive is the implementation of regulatory requirements, meaning it's performance and uptime are _serious business_. If this stuff isn't bulletproof, then customers could end up getting fined.
 
@@ -49,15 +56,15 @@ Going back a long way, Smarsh's products were deployed manually by humans. Over 
 
 As the limits of tools like Puppet become clear, Smarsh adopted more modern cloud-native tools like Pivotal Cloud Foundry (now [VMware Tanzu Application Service](https://tanzu.vmware.com/application-service)) and [Concourse CI](https://concourse-ci.org/). These were used in different places for different purposes.
 
-When EngineerBetter first engaged with Smarsh there were different deployment technologies used for part of the deployment process, but not all of it. Deploying the product involved numerous teams, with lots of coordination between them.
+When EngineerBetter first engaged with Smarsh there were different deployment technologies used for part of the installation process, but not all of it. Deploying the product involved numerous teams, with lots of coordination between them.
 
 ## Building Trust
 
 EngineerBetter and Smarsh originally started working together to create Golang [Kubernetes operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) for the myriad data services that Smarsh need to run.
 
-The original need changed. In the process of evaluating the effort required to write custom operators (upstream open source versions either didn't exist or didn't have all the required features) the folks at Smarsh looked at BOSH for the first time. They recognised that BOSH's lifecycle management already provided some of the more complicated issues that an operator would need to address 'for free'.
+The original need changed. In the process of evaluating the effort required to write custom operators (upstream open source versions either didn't exist or didn't have all the required features) the folks at Smarsh looked at [BOSH](https://www.bosh.io/docs/) for the first time. They recognised that BOSH's lifecycle management already provided some of the more complicated issues that an operator would need to address 'for free'.
 
-Instead, EngineerBetter went on to assist more generally, and to deliver instructor-led training on Concourse, Cloud Foundry and BOSH, on-site in Bengaluru. On a personal note, we certainly relished the chance to visit India, loved the food, and brought back awesome gifts for our families.
+So instead of writing Kubernetes operators EngineerBetter went on to assist more generally, and to deliver instructor-led training on Concourse, Cloud Foundry and BOSH, on-site in Bengaluru. On a personal note, we certainly relished the chance to visit India, loved the food, and brought back awesome gifts for our families.
 
 ## Full Automation
 
@@ -65,18 +72,23 @@ Over the months that we worked together, Smarsh's ambitions for a fully-automate
 
 Our proposal was this:
 
-EngineerBetter would provide three engineers and a backlog manager to form a team joining Smarsh folks from a variety of disciplines. We would operate from a single, ordered backlog prioritised by the Backlog Manager. We would remote pair-program to deliver and upskill at the same time. We would operate as a lean, eXtreme Programming team, doing the most important thing in the simplest way.
+EngineerBetter would provide **three Engineers** and a **Backlog Manager** to form a team joining Smarsh folks from a variety of disciplines. We would operate from a **single, ordered backlog** of stories prioritised by the Backlog Manager. We would **remote pair-program** to **deliver and upskill** at the same time. We would operate as a **lean, eXtreme Programming** team, doing the most important thing in the simplest way.
 
-The team would integrate all the disparate components of the Smarsh product to be deployed via a single, monolithic Concourse pipeline dubbed the 'megapipeline'. This would invert Conway's law, provide a single-pane-of-glass view of deployments, and enable easier promotion of changes between environments. We would automate everything that was previously manual, find all the areas that needed changing in order to achieve this, and work around those whilst feeding back information to developers inside Smarsh.
+The team would integrate all the disparate components of the Smarsh product to be deployed via a single, monolithic Concourse pipeline dubbed the 'megapipeline'. This would **invert Conway's law**, provide a **single-pane-of-glass view** of deployments, and enable easier promotion of changes between environments. We would **automate everything** that was previously manual, find all the code and processes that needed changing in order to achieve this, and work around those whilst feeding back information to developers inside Smarsh.
 
 <figure>
-  <img src="/img/blog/smarsh-megapipeline.png" class="fit image" alt="Concourse UI showing a megapipeline">
+  <img src="/img/blog/smarsh/smarsh-megapipeline.png" class="fit image" alt="Concourse UI showing a megapipeline">
   <figcaption>A deliberately-obscured view of the deployment megapipeline</figcaption>
 </figure>
 
 ## How We Worked
 
-Our **cross-functional** team worked from a **single, ordered backlog** in [Pivotal Tracker](https://www.pivotaltracker.com). Stories in this backlog are created and prioritised by the **Backlog Manager**, who ensures that each has **clearly-defined acceptance criteria**. Work isn't considered complete until the Backlog Manager has run through manual acceptance steps, which ensure firstly that things really do work, and secondly that the intent of the story was correctly communicated in the first place.
+Our **cross-functional** team worked from a **single, ordered backlog** in [Pivotal Tracker](https://www.pivotaltracker.com). Stories in this backlog are created and prioritised by the **Backlog Manager**, who ensures that each has **clearly-defined acceptance criteria**. Work isn't considered complete until the Backlog Manager has run through manual acceptance steps, a process that ensures firstly that things really do work, and secondly that the intent of the story was correctly communicated in the first place.
+
+<figure>
+  <img src="/img/blog/smarsh/product-team.jpg" class="fit image" alt="A product team">
+  <figcaption>The Product/Backlog Manager writes stories that present user value, and engineers always take tasks from the top of the backlog.</figcaption>
+</figure>
 
 Each week the Backlog Manager would conduct a **pre-IPM** (more on IPMs later) wherein the technical lead (or 'anchor') on the team would give advice on whether the upcoming and unpointed stories in the backlog make sense to engineers, are in a logical order, and contain enough information to be estimated upon.
 
@@ -98,7 +110,12 @@ A standup consists of:
 
 **A standup does _not_ feature tales of woe**, becrying how awful yesterday was, or a blow-by-blow account of what the engineers did. We don't need this because we pair-program and rotate between pairs, and write status updates on stories at the end of the day.
 
-We made use of [Pair.ist](https://pair.ist/) in order to better visualise who is working together, and what the tracks of work are.
+We made use of [Pair.ist](https://pair.ist/) in order to better visualise who is working together, and what the tracks of work are. Pair.ist can also automatically recommend pairings, to ensure that folks rotate.
+
+<figure>
+  <img src="/img/blog/smarsh/pairist.png" class="fit image" alt="Example Pair.ist UI">
+  <figcaption>An example of Pair.ist in action, showing who is working on track of work, but not individual stories.</figcaption>
+</figure>
 
 As the Smarsh engineers we were pairing with in the morning were based in Bengaluru, we held all meetings using Zoom. In the morning we'd have a quick standup, and then after (our) lunchtime the Bengaluru folks would sign off, and we'd have another quick standup with the American Smarsh engineers.
 
@@ -106,15 +123,20 @@ When pairing, we'd use a combination of Zoom for screen-sharing and [Visual Code
 
 At the end of the week we'd hold an **agile retrospective**, again online using Zoom and [Postfacto](https://github.com/pivotal/postfacto). Retros are vital for allowing the team to self-tune and improve, and also for folks to air grievances, show appreciation, and build empathy and trust.
 
+<figure>
+  <img src="/img/blog/smarsh/postfacto.png" class="fit image" alt="Example Postfacto UI">
+  <figcaption>An example of a Postfacto retro board, in this instance that of the <a href="https://www.meetup.com/London-Continuous-Delivery/">London Continuous Delivery</a> meetup.</figcaption>
+</figure>
+
 ## Technology Challenges
 
 There were a number of technical challenges:
 
-1. We were deploying into an air-gapped, regulated environment
+1. Deploying into an air-gapped, regulated environment
 1. Bootstrapping the environment
 1. There was a huge amount of stuff to be deployed
 
-### The Airgap
+### Challenge 1 - The Airgap
 
 Systems inside the end-client's environment couldn't communicate with the outside Internet. Files could be transferred into the target environment via a SFTP syncing mechanism:
 
@@ -123,21 +145,19 @@ Systems inside the end-client's environment couldn't communicate with the outsid
 1. An internal system in the bank pulls files from the SFTP server
 1. Files are now available on the internal NFS server
 
-Of course being enterprise software there were more unexpected idiosyncrasies than this, but you get the idea. It gave us a basic mechanism by which to get files into the target environment, but it wasn't very continuous.
+Of course being enterprise software there were more unexpected idiosyncrasies than this, but hopefully you get the idea. It gave us a basic mechanism by which to get files into the target environment, but it wasn't very continuous.
 
 Enter Concourse, a continuous thing-doer that is often used for continuous integration and continuous deployment. We could use Concourse to pick up the new files on the NFS server inside the airgap, and do things with them.
 
-Much easier said than done, as we'll see!
-
-### Bootstrapping the Environment
+### Challenge 2 - Bootstrapping the Environment
 
 Our starting point with the target environment was a collection of ESXI hosts, connected to switches that embodied a predefined network topology. That, and a virtual Windows desktop.
 
 We would be using BOSH to deploy and manage virtual machines in the target environment, which has plugins that allow it to talk to VMware vSphere, but not to ESXI hosts directly. So that meant that we needed to install vSphere, but writing scripts to do this automatically from a Windows machine with no access to MinGW or Git Bash was going to be painful. So we needed to create ourselves a Linux jumpbox with a useful set of tools on it.
 
-> *Why not Kubernetes?*
+> ### Why not Kubernetes?
 >
-> It is of note that we were given hypervisors to work with. For all the hype around Kubernetes, there is still an enormous group of IT organisations who are not ready to jump on the bandwagon yet.
+> It is of note that we were given hypervisors to work with, and at the time vSphere did not offer its Tanzu Kubernetes integration. Introducing Kubernetes would have meant an additional layer of abstraction for little additional benefit.
 
 Once we had a useful Linux jumpbox, we authored scripts to run _on_ that jumpbox to deploy and configure VMware vSphere, giving us a usable IAAS. Further scripts then installed BOSH, Concourse, and Credhub using [Stark & Wayne's BUCC](https://github.com/starkandwayne/bucc) tool. But wait! We can't just install things, because we can't download them. So everything that we needed to run from the jumpbox needed to be baked into the VM image.
 
@@ -161,7 +181,7 @@ We created pipelines that, as far as possible, performed the exact same steps as
 
 This approach had the added advantage that we could automatically create and destroy test environments with relative ease.
 
-### The Stuff To Deploy
+### Challenge 3 - All The Stuff To Deploy
 
 Once the non-trivial problem of bootstrapping the IAAS with enough kit that we could run automation inside the target environment was done, there was still a huge amount of stuff that needed deploying:
 
@@ -210,7 +230,7 @@ Whilst this approach is unwieldy, it has a number of benefits that make it worth
 * **'Stop the line' forcing function**. As per continuous delivery, kanban and the Toyota Production System, having a single monolithic pipeline meant that we _had_ to deal with failures immediately, otherwise other pairs would become blocked. Having a single deployment pipeline enforced good discipline, and also made it very easy to know what needed doing - in the mornings, if any box on the pipeline is red, then it needs fixing before we do anything else.
 * **Simple promotion**. With one megapipeline it is clear when changes are safe to be promoted, and also allowed us to create a 'bill of materials' that showed _the exact version of everything_ that went into a working environment.
 
-Of course, there are downsides. The pipeline was massive, and browsers struggled to render it on slower machines. Some times changes were being made that only took effect at the end of the pipeline, and so sometimes there'd be a lot of waiting to do.
+Of course, there are downsides. The pipeline was massive, and browsers struggled to render it on slower machines. Sometimes changes were being made that only took effect at the end of the pipeline, and so sometimes there'd be a lot of waiting to do.
 
 ### IaaS-Paving Pipeline
 
@@ -238,15 +258,19 @@ Why not just get test pipelines to pull from the S3 bucket that the fetch pipeli
 
 ## Things We Learned
 
-Whilst we were briefed with upskilling the fine folks we worked with at Smarsh, we learned a whole heap of things too. The technical learnings are too numerous to mention (and some we'd rather forget, like how incredibly-not-cloud-native Townsend is), but here are some of the bigger lessons we learned:
+Whilst we were briefed with upskilling the fine folks we worked with at Smarsh, we learned a whole heap of things too. The technical learnings are too numerous to mention (and some we'd rather forget, like how incredibly-not-cloud-native [Townsend](https://www.townsendsecurity.com/products/centralized-encryption-key-management) is), but here are some of the bigger lessons we learned:
 
 * **Baby steps**. As outlined in [eXtreme Programming Explained](https://www.cs.odu.edu/~zeil/cs350/latest/Public/xprogram/index.html#principles) it's important to change one thing, test, and only then move on. On a couple of occasions we fell into the trap of thinking it'd be quicker to change many things at once, thinking the changes were simple and low-risk. Every time, it came back to bite us.
 * **Humility**. I for one am guilty of speaking too much, assuming I'm right (I rarely am) and steamrollering conversations. Working with someone else's hugely complex software stack is a great reminder that there are lots of things that you don't know, even if you're a subject matter expert in certain areas. Within a week, I'd placed sticky notes on my monitor reading "LISTEN MORE" and "I MIGHT BE WRONG".
-* **Backlog management is hard** for this sort of work. When you're working on a new product, it's easier to formulate a backlog that clearly expresses user value, as that value and be built and delivered in thin vertical slices - feature by feature. When working with an extant product with a huge amount of functionality, it's very hard to do this. Either the whole thing works, or it doesn't. So backlog management inevitably subverts the product management process, and it's easy to lose sight of the real end user. Additionally the activities that need to be performed are very fluid, based on technical surprises. We always expressed work in value statements so that it was clear _why_ we were doing things, but the backlog needed rejigging several times a week.
+* **Backlog management is hard** for this sort of work. When you're working on a new product, it's easier to formulate a backlog that clearly expresses user value, as that value can be built and delivered in thin vertical slices - feature by feature. When working with an extant product with a huge amount of functionality, it's very hard to do this. Either the whole thing works, or it doesn't. So backlog management inevitably subverts the product management process, and it's easy to lose sight of the real end user. Additionally the activities that need to be performed are very fluid, based on technical surprises. We always expressed work in value statements so that it was clear _why_ we were doing things, but the backlog needed rejigging several times a week.
 * **Remote pairing all day is hard**. A full eight-hour day of remote pairing is incredibly draining. High-quality headsets with noise-cancelling microphones (_not_ noise-cancelling for the listener!) for all participants are a necessity. When remote pairing breaks tend to be less organic, and so use of a [pomodoro timer](https://en.wikipedia.org/wiki/Pomodoro_Technique) really helps.
 
 ## How Can We Help You?
 
-Do you need to **improve your time-to-production**, increase quality, decrease time-to-recovery all whilst upskilling your staff? Do you have large, complicated infrastructure endeavours that you would benefit from treating as software projects?
+Do you need to **improve your time-to-production**, increase quality, decrease time-to-recovery all whilst upskilling your staff?
+
+Do you have large, complicated infrastructure endeavours that you would benefit from treating as software projects?
+
+Do you have capable staff who would benefit from an extra set of hands to enact a cloud transformation? Do you want to combine training and delivery?
 
 As shown above, EngineerBetter have experience in achieving great outcomes in highly-constrained and less-than-ideal circumstances. If you need similar outcomes, maybe [you should get in touch](mailto:contact@engineerbetter.com).

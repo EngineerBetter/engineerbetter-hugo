@@ -132,9 +132,9 @@ At the end of the week we'd hold an **agile retrospective**, again online using 
 
 There were a number of technical challenges:
 
-1. Deploying into an air-gapped, regulated environment
+1. Deploying into an air-gapped and regulated environment
 1. Bootstrapping the environment
-1. There was a huge amount of stuff to be deployed
+1. Automating the deployment of a huge number of systems
 
 ### Challenge 1 - The Airgap
 
@@ -147,43 +147,15 @@ Systems inside the end-client's environment couldn't communicate with the outsid
 
 Of course being enterprise software there were more unexpected idiosyncrasies than this, but hopefully you get the idea. It gave us a basic mechanism by which to get files into the target environment, but it wasn't very continuous.
 
-Enter Concourse, a continuous thing-doer that is often used for continuous integration and continuous deployment. We could use Concourse to pick up the new files on the NFS server inside the airgap, and do things with them.
-
 ### Challenge 2 - Bootstrapping the Environment
 
 Our starting point with the target environment was a collection of ESXI hosts, connected to switches that embodied a predefined network topology. That, and a virtual Windows desktop.
 
-We would be using BOSH to deploy and manage virtual machines in the target environment, which has plugins that allow it to talk to VMware vSphere, but not to ESXI hosts directly. So that meant that we needed to install vSphere, but writing scripts to do this automatically from a Windows machine with no access to MinGW or Git Bash was going to be painful. So we needed to create ourselves a Linux jumpbox with a useful set of tools on it.
-
-> ### Why not Kubernetes?
->
-> It is of note that we were given hypervisors to work with, and at the time vSphere did not offer its Tanzu Kubernetes integration. Introducing Kubernetes would have meant an additional layer of abstraction for little additional benefit.
-
-Once we had a useful Linux jumpbox, we authored scripts to run _on_ that jumpbox to deploy and configure VMware vSphere, giving us a usable IAAS. Further scripts then installed BOSH, Concourse, and Credhub using [Stark & Wayne's BUCC](https://github.com/starkandwayne/bucc) tool. But wait! We can't just install things, because we can't download them. So everything that we needed to run from the jumpbox needed to be baked into the VM image.
-
-### Concourse and Tarballs
-
-Concourse uses custom plugins called resources that represent versionable _things_ in the outside world, such as Git repos, Docker images and files in an S3 bucket. These plugins tend to assume that they can establish connections directly to things like GitHub, so that wouldn't work for us.
-
-Additionally, there was no 'NFS mount' resource for getting files from the sync location in the target environment. Hence, we'd need to think of an alternative approach.
-
-We used Concourse pipelines _outside_ of the airgap that pulled the latest versions of resources (ie the latest version of a Git repo) and wrapped them up as tarballs. I mentioned earlier that Concourse requires all things it gets from the outside world to be versioned for reproducability. This meant that we had to make use of the Concourse [semver resource](https://github.com/concourse/semver-resource) to maintain monotonically-increasing version numbers for everything we fetched, which could in turn be written into the names of the tarballs.
-
-Once our test pipelines had proven that everything worked (more on that later), they could upload the tarballs to the SFTP server.
-
-We then wrote a custom task in a Concourse pipeline that would run _inside_ the airgap to regularly trigger the sync process, and then copy all the tarballs up to a MinIO (S3-compatible) blob store that we'd deployed using BOSH. From here, our deployment pipelines that _actually deployed Enterprise Archive_ could discover new versions and trigger jobs accordingly.
-
-### Testing the Bootstrap
-
-So, we'd written all this horrifically complicated (but necessary) tooling to bootstrap the environment. Now we needed to test it!
-
-We created pipelines that, as far as possible, performed the exact same steps as humans would do when they got their hands on the customer environment for the first time. The pipeline automated the creation of the jumpbox OVA image, deployed it to ESXI, then `ssh`d into the jumpbox to run the setup scripts that we had in source control. Once the test environment was successfully bootstrapped, we knew that we could promote the tarballs containing the OVA and the scripts across the airgap via SFTP.
-
-This approach had the added advantage that we could automatically create and destroy test environments with relative ease.
+The Windows desktop had very few useful tools installed on it, and we didn't have administrator access.
 
 ### Challenge 3 - All The Stuff To Deploy
 
-Once the non-trivial problem of bootstrapping the IAAS with enough kit that we could run automation inside the target environment was done, there was still a huge amount of stuff that needed deploying:
+There was a huge amount of stuff that needed deploying:
 
 * Apache Storm
 * Zookeeper
@@ -206,22 +178,57 @@ Once the non-trivial problem of bootstrapping the IAAS with enough kit that we c
 
 All of these needed hooking together, and had historically been configured manually. This meant that there were lots of interdependencies to unpick before things could be fully automated.
 
-Whilst there weren't a lot of extant tests at our disposal, we were able to exploit some full-system end-to-end tests that we could run at the end of the pipeline to check that everything was working. They took about an hour to run and tested the whole system, so whilst they gave a great degree of confidence, they weren't exactly fast feedback.
-
-We used a combination of the pipeline itself and the end-to-end tests to iterate on decoupling some of the bi-directional dependencies, and automating previously-manual steps.
+Whilst there weren't a lot of extant tests at our disposal, there were some full-system end-to-end tests that we could run to check that the entire system was working. They would take about an hour to run and test user-facing functionality, so whilst they give a great degree of confidence, they wouldn't give fast feedback and were not granular enough to allow fast debugging.
 
 ## The Implementation
 
-The continuous deployment system was embodied by a series of Concourse pipelines, and their associated tasks.
+Given the number of constraints in the engagement, the solution was rather complex. I'll do my best to break it down into intelligible chunks.
 
-* Deployment 'megapipeline'
-* IaaS-paving pipeline
-* Fetch pipelines
-* Sync pipelines
+### Getting the First Files into the Airgap
 
-### Deployment Megapipeline
+First of all, we needed to be able to get files into the bank.
 
-As mentioned earlier, we created a 'megapipeline' that, given an IaaS, deployed _everything_. Absolutely every component that makes up Enterprise Archive was deployed by a Concourse pipeline some 7,000 lines long.
+Our Concourse pipelines (detailed later) would upload tested assets to SFTP. To initially move the files, we'd need a human to trigger the manual sync process.
+
+> <figure class="retain-aspect-ratio">
+  <iframe src="https://youtube.com/embed/hoIESDrRuIE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+
+> Whilst Concourse automates the uploading of tested assets to SFTP, initially a human must trigger the sync process inside the bank.
+
+### Bootstrapping an Automatable Environment
+
+Now we could get _some_ files into the bank in a manual way, we needed to create API-driven systems inside the bank that could be automated.
+
+We would be using BOSH to deploy and manage virtual machines in the target environment, which has plugins that allow it to talk to VMware vSphere, but not to ESXI hosts directly.
+
+> ### Why not Kubernetes?
+>
+> It is of note that we were given hypervisors to work with, and at the time vSphere did not offer its Tanzu Kubernetes integration. Introducing Kubernetes would have meant an additional layer of abstraction for little additional benefit.
+
+That meant that we needed to install vSphere, but writing scripts to do this automatically from a Windows machine with no access to MinGW or Git Bash was going to be painful. So we needed to create ourselves a Linux jumpbox with a useful set of tools on it.
+
+> <figure class="retain-aspect-ratio">
+  <iframe src="https://youtube.com/embed/FhV0oxy3b84" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+
+> We get a VM image into the bank manually, boot it, and then run a baked-in script to install vSphere, BOSH, Concourse and more. After this, a Concourse pipeline is set to automatically sync new files.
+
+Once we had a useful Linux jumpbox, we authored scripts to run _on_ that jumpbox to deploy and configure VMware vSphere, giving us a usable IAAS. Further scripts then installed BOSH, Concourse, and Credhub using [Stark & Wayne's BUCC](https://github.com/starkandwayne/bucc) tool. But wait! It wasn't that simple, because we can't download the things when we need them inside the bank.
+
+Everything that we needed to run from the jumpbox had to be baked into the VM image. As we continually found more things that needed adding to the jumpbox, we automated the creation of the VM image's `.ova` file in a Concourse pipeline running in Smarsh.
+
+### Getting Files into the Bank Automatically
+
+Once we had a Concourse running inside the bank, we could then use it to run automation to pull in new files and put them in a place that the main deployment pipeline would be able to more-easily consume them.
+
+The 'sync' pipeline would trigger the SFTP-to-NFS sync, find new files, and upload them into the internal environment's MinIO buckets.
+
+### Deploying Everything in a Megapipeline
+
+Everything up until this point has been bootstrapping. We now had an API-driven IAAS in the form of vSphere, BOSH as a means of declaratively deploying things on that infrastructure, and Concourse to perform the automation.
+
+We created a deployment 'megapipeline' that, given an IaaS, deployed _everything_. Absolutely every component that makes up Enterprise Archive was deployed by a Concourse pipeline some 7,000 lines long.
 
 Whilst this approach is unwieldy, it has a number of benefits that make it worthwhile:
 
@@ -232,29 +239,55 @@ Whilst this approach is unwieldy, it has a number of benefits that make it worth
 
 Of course, there are downsides. The pipeline was massive, and browsers struggled to render it on slower machines. Sometimes changes were being made that only took effect at the end of the pipeline, and so sometimes there'd be a lot of waiting to do.
 
-### IaaS-Paving Pipeline
+We used a combination of the pipeline itself and the end-to-end tests to iterate on decoupling some of the bi-directional dependencies, and automating previously-manual steps.
 
-The deployment pipeline deployed Enterprise Archive itself, but a preliminary step was required - we needed to have VMware vSphere installed, and to have the likes of Concourse, Credhub, BOSH, Docker Registry and MinIO installed.
+## Testing
+
+**Continuous deployment without testing is reckless**, and not acceptable in any context, let alone a regulated bank!
+
+Everything that we created needed to be tested _before_ being attempted in the bank. This meant that we needed **automation to test the automation**.
+
+### Testing the Bootstrap
+
+The deployment pipeline deployed Enterprise Archive itself, but the preliminary bootstrap step was required - we needed to have VMware vSphere installed, and to have the likes of Concourse, Credhub, BOSH, Docker Registry and MinIO installed.
 
 This was the job of the IaaS-paving pipeline, which also generated system-wide secrets, like TLS CA certificates.
 
+The IaaS-paving pipeline performed the exact same steps as humans would do when they _first_ got their hands on the customer environment. The pipeline automated the creation of the jumpbox OVA image, deployed it to ESXI, then `ssh`d into the jumpbox to run the setup scripts that we had in source control. Once the test environment was successfully bootstrapped, we knew that we could promote the tarballs containing the OVA and the scripts across the airgap via SFTP.
+
 An advantage of this approach is that the **IaaS-specific components can be swapped out**. Different IaaS-paving pipelines could be created for vSphere, AWS, Azure, Google Cloud, and if the interface was well-defined, the same deployment pipeline could be used 'on top'. In fact, later work we did with Smarsh worked on exactly this.
 
-### Fetch Pipelines
+This approach also had the added advantage that we could automatically create and destroy test environments with ease.
 
-We had to **get things from the outside world** and wrap them up as tarballs, so that the deployment pipeline inside the airgapped environment would be able to retrieve them. Here 'things' include Git repos, Docker images, BOSH releases, PivNet tiles, jars from Artifactory, and more.
+### Testing the Deployment Pipeline
+
+Once we had bootstrapped a test environment, it was straightforward to then run the deployment pipeline on the new test environment.
+
+In order for the tests to be meaningful we would have to subject our test environments to the same restrictions as inside the bank, and to emulate the airgap.
+
+> ### Concourse Resources
+>
+> Concourse uses custom plugins called resources that represent versionable _things_ in the outside world, such as Git repos, Docker images and files in an S3 bucket. These plugins tend to assume that they can establish connections directly to things like GitHub, which won't work inside an airgap.
+
+We created 'fetch' pipelines _outside_ of the airgap that pulled the latest versions of resources (ie Git repos, Docker images, BOSH releases, PivNet tiles, jars from Artifactory) and wrapped them up as tarballs.
+
+Concourse requires all things it gets from the outside world to be versioned for reproducibility. This meant that we had to make use of the Concourse [semver resource](https://github.com/concourse/semver-resource) to maintain monotonically-increasing version numbers for everything we fetched, which could in turn be written into the names of the tarballs.
+
+The tarballed resources are uploaded to each environment's MinIO blobstore by the 'sync' pipeline (see below).
 
 The fetch pipelines ran outside of a specific test environment, and their output (a bunch of versioned tarballs in an S3 bucket) could be shared by many environments.
 
+> <figure class="retain-aspect-ratio">
+  <iframe src="https://youtube.com/embed/-4MmX3hVztA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+
+> The 'fetch' pipeline tarballs assets that are needed, and puts them in an S3 bucket. 'Sync' pipelines in external non-airgapped environments copy files from S3 to the environment's MinIO, and 'sync' pipelines inside the airgap instead copy from NFS.
+
 ### Sync Pipelines
 
-As the deployment pipeline would run in an airgap and not be able to access the public Internet, we needed to run special file-syncing pipelines.
+Whilst test environments _outside_ the airgap _could_ have reached out directly to the original data sources, that would have meant that the deployment pipeline we were building and testing would behave different inside and outside of the airgap. That would invalidate our tests.
 
-_Inside_ the airgap these would trigger the SFTP-to-NFS sync, find new files, and upload them into the internal environment's MinIO buckets.
-
-Whilst test environments _outside_ the airgap _could_ have reached out directly to the original data sources, that would have meant that the deployment pipeline we were building and testing would behave different inside and outside of the airgap. That would invalidate our tests. So instead, we wrote variations of the sync pipelines that would fetch tarballs from S3, and then put them into a test environment's MinIO.
-
-Why not just get test pipelines to pull from the S3 bucket that the fetch pipelines put tarballs into? Because then we wouldn't be exercising the test environment's MinIO. We need to ensure that test environments are as similar to the real thing as possible.
+We wrote variations of the sync pipelines that, rather then syncing files from NFS, would pull from S3 the tarballs placed there by the 'fetch' pipeline, and then put them into a test environment's MinIO.
 
 ## Things We Learned
 
@@ -269,8 +302,8 @@ Whilst we were briefed with upskilling the fine folks we worked with at Smarsh, 
 
 Do you need to **improve your time-to-production**, increase quality, decrease time-to-recovery all whilst upskilling your staff?
 
-Do you have large, complicated infrastructure endeavours that you would benefit from treating as software projects?
+Do you have **large, complicated infrastructure** endeavours that you would benefit from **treating as software** projects?
 
-Do you have capable staff who would benefit from an extra set of hands to enact a cloud transformation? Do you want to combine training and delivery?
+Do you have capable staff who would benefit from an **extra set of hands** to enact a **cloud transformation**? Do you want to **combine training and delivery**?
 
 As shown above, EngineerBetter have experience in achieving great outcomes in highly-constrained and less-than-ideal circumstances. If you need similar outcomes, maybe [you should get in touch](mailto:contact@engineerbetter.com).

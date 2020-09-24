@@ -21,7 +21,7 @@ We achieved the following outcomes through considered use of approach and method
 
 **Increased technical and methodological knowledge**. By pair-programming we were enable to upskill the customer's engineers _at the same time as_ delivering a system. Just as we learnt a lot on the engagement, Smarsh engineers got insight into Concourse, Cloud Foundry, BOSH, RSpec, and all sorts of other technologies. Even more importantly, by engaging using our methodology, we were able to educate folks in vital concepts such as TDD, lean decision-making, eXtreme Programming, YAGNI, package cohesion principles, continuous delivery, and more.
 
-**Self-sufficient teams**. After nine months, Smarsh were ready for us to downscale the assitance we gave them. After a year Smarsh's engineers are developing and oeprating the system without our help, so we are no longer needed - you could say "our job here is done".
+**Self-sufficient teams**. After nine months, Smarsh were ready for us to downscale the assistance we gave them. After a year Smarsh's engineers are developing and operating the system without our help, so we are no longer needed - you could say "our job here is done".
 
 **One team that could deploy everything**. For the first time in the customer's history a single team owned the deployment process from beginning to end, reducing transaction costs, delays and communication overheads.
 

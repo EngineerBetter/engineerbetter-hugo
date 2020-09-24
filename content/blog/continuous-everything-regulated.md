@@ -9,33 +9,33 @@ Description: Get the very latest updates about recent projects, team updates, th
 draft: true
 ---
 
-Over the last year EngineerBetter worked with [Smarsh](https://www.smarsh.com/), introducing new ways of working that enabled **continuous deployment** of **19 data services** and **20 apps** across **multiple vSphere environments** in a **regulated investment bank in 10 weeks** - and that was just the start!
+Since 2019, EngineerBetter has been working with [Smarsh](https://www.smarsh.com/), helping the company introduce new ways of working that enabled **continuous deployment** of **19 data services** and **20 apps** across **multiple vSphere environments** in a **regulated investment bank** in just **10 weeks** - and that was just the first few months!
 
-In this blog post we'll talk about the **methodology** we used, the **technical implementation** and challenges, and what _we_ learned from the experience.
+In this blog post we'll talk about the **method** we used, the **technical implementation**, the challenges, and what _we_ learned from the experience.
 
 ## Outcomes
 
-We achieved the following outcomes through considered use of approach and methodology:
+We helped Smarsh achieve the following outcomes through carefully considered use of appropriate approaches and methods:
 
-**A > 90% reduction in time-to-production**. Smarsh went from the effort of many teams over a period of weeks, to an automated pipeline that would run in around 4 hours. At the most absolutely conservative estimate this was a ~90% reduction in time-to-production, and an even greater reduction in human toil.
+**An over-90% reduction in time-to-production**. Smarsh transitioned from a release process that involved significant effort across many teams over a period of weeks to an automated pipeline that runs in around 4 hours. Our most conservative estimates show that this represents an over-90% reduction in time-to-production, with an even greater decrease in human toil and the emergent opportunity cost wins.
 
-**Increased technical and methodological knowledge**. By pair-programming we were enable to upskill the customer's engineers _at the same time as_ delivering a system. Just as we learnt a lot on the engagement, Smarsh engineers got insight into Concourse, Cloud Foundry, BOSH, RSpec, and all sorts of other technologies. Even more importantly, by engaging using our methodology, we were able to educate folks in vital concepts such as TDD, lean decision-making, eXtreme Programming, YAGNI, package cohesion principles, continuous delivery, and more.
+**Increased technical and best-practice knowledge**. EngineerBetter is committed to pair-programming, and this enabled us to upskill the customer's engineers _at the same time as_ delivering a system. Just as we learnt a lot on the engagement, Smarsh engineers gained insight into Concourse, Cloud Foundry, BOSH, RSpec, and a wide variety of other relevant technologies. More importantly, by engaging using our method, we were able to deliver significant educational value around vital concepts such as TDD, lean decision-making, eXtreme Programming, YAGNI, package cohesion principles, and continuous delivery.
 
-**Self-sufficient teams**. After nine months, Smarsh were ready for us to downscale the assitance we gave them. After a year Smarsh's engineers are developing and oeprating the system without our help, so we are no longer needed - you could say "our job here is done".
+**Self-sufficient teams**. After nine months of engaging at full capacity, Smarsh were becoming more and more confident in their ability to work independantly. EngineerBetter chooses to disengage wherever it makes sense for the customer for us to do so, so we reduced the assistance we gave Smarsh on a day-to-day basis. Now, after a year, we're proud to have helped Smarsh's engineers reach a point where they're developing, operating and improving their system without our involvement - you could say "our job here is done"!
 
-**One team that could deploy everything**. For the first time in the customer's history a single team owned the deployment process from beginning to end, reducing transaction costs, delays and communication overheads.
+**One team can deploy everything**. For the first time in the customer's history, a single team owns the deployment process from beginning to end. This reduces their transaction costs, their delays, and their communication overheads.
 
-**Tested, promoted products**. The entire suite of software and infrastructure was tested and then promoted using our [Stopover approach to Concourse pipelines](https://www.engineerbetter.com/blog/pipeline-promotion/). We could be confident that changes would work before they reached higher environments.
+**Tested, promoted products**. The entire suite of software and infrastructure is tested and then promoted using our [Stopover approach to Concourse pipelines](https://www.engineerbetter.com/blog/pipeline-promotion/). Smarsh is confident that changes and releases work before they reach higher environments.
 
-**Reproducible environments**. Because everything was automated there were no unique 'snowflake' environments, making them easier to reason about. We regularly repaved test environments to ensure this reproducibility.
+**Reproducible environments**. Because everything is automated, there are no unique 'snowflake' environments, which makes them easier to reason about. The team regularly repaves test environments to ensure this reproducibility doesn't regress.
 
-**Context-carrying between timezones**. Being located in Europe allowed EngineerBetter to be the conduit for context to pass from the India timezone to US timezones. Because we were a single team engaging in remote pair-programming, that context was transferred in a human-friendly manner, rather than passive-aggressive JIRA tickets.
+**Context-carrying between timezones**. Being located in Europe allowed EngineerBetter to be the conduit for context to pass between Smarsh teams in the India timezone to the US. Working as a single team engaging in remote pair-programming, that context was transferred in a friendly, human-faced manner, rather than passive-aggressive JIRA tickets.
 
-**Making the implicit explicit**. Previously knowledge of the system had existed in a fragmented fashion, split between documentation and the human experience of various teams throughout the organisation. Instead, now we had one testable infrastructure-as-code pipeline that embodied all of that knowledge.
+**Making the implicit, explicit**. Previously knowledge of the system had existed in a fragmented fashion, split between documentation and the tribal knowledge of various teams spread throughout the organisation. Now, Smarsh has one testable infrastructure-as-code pipeline that explicitly describes all of that knowledge.
 
 ## Smarsh
 
-Smarsh produce an enterprise communications archiving product imaginatively named _[Enterprise Archive](https://www.smarsh.com/products/connected-archive/enterprise-archive/)_. It is used by thousands of big-name customers to help them meet regulatory requirements by storing sensitive communications in a secure and searchable way. Whilst Smarsh might not be a household brand, many of their customers _are_.
+Smarsh produce an enterprise communications archival product [imaginatively](https://wiki.c2.com/?DoesWhatItSaysOnTheTin) named _[Enterprise Archive](https://www.smarsh.com/products/connected-archive/enterprise-archive/)_. It is used by thousands of well-known customers to help them meet regulatory requirements by storing sensitive communications in a secure and searchable way. Whilst Smarsh itself might not be a household name, they are a vital part of many of their customers who _are_.
 
 <figure>
   <img src="/img/blog/smarsh/enterprise-archive.png" class="fit image" alt="Enterprise Archive UI">
@@ -44,11 +44,11 @@ Smarsh produce an enterprise communications archiving product imaginatively name
 
 Smarsh have presences in Bengaluru, India; London, England; and around the United States. Whilst the majority of app developers are based in India, the folks deploying and running things are dotted around the globe.
 
-Smarsh's Enterprise Archive product is available primarily as-a-Service, hosted by Smarsh. Given the nature of the product though, some regulated customers require it to be installed in their own datacentres and often in an airgapped environment - where there is no communication possible to the outside Internet.
+Smarsh's Enterprise Archive product is available primarily as-a-Service, hosted by Smarsh. Understandably, however, given the nature of the product, some regulated customers require it to be installed in their own datacentres. This is often in airgapped environments, where no communication to the public Internet is allowed.
 
-Smarsh's products deal with big data: messages are ingested at high velocities, and stored in large volumes. There's a lot of processing and reporting that needs to be done, so it's not a surprise that there are wide variety of different technologies in use: Hazelcast, Storm, Kafka, MongoDB, Elasticsearch, and PostgreSQL, to name a few.
+Smarsh's products deal with big data: messages are ingested at high velocities, and stored in large volumes. A large amount of processing and reporting needs to be performed, so it's unsurprising that there's a wide range of different technologies being: Hazelcast, Storm, Kafka, MongoDB, Elasticsearch, and PostgreSQL, to name a few.
 
-Enterprise Archive is the implementation of regulatory requirements, meaning it's performance and uptime are _serious business_. If this stuff isn't bulletproof, then customers could end up getting fined.
+Enterprise Archive is a solid and battle-tested implementation, driven by regulatory requirements - meaning its performance and uptime are _serious business_. If this stuff isn't bulletproof then customers could end up getting fined, which might well ultimately cost Smarsh money.
 
 ### Legacy Installations
 

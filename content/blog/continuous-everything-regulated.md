@@ -1,12 +1,11 @@
 ---
 author: Daniel Jones
-date: "2020-09-23"
+date: "2020-10-01"
 heroImage: /img/blog/smarsh/smarsh-deployed.png
 title: "Engagement Deep-Dive: Continuous Everything in a Regulated Bank"
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
-draft: true
 ---
 
 Over the last year EngineerBetter worked with [Smarsh](https://www.smarsh.com/), introducing new ways of working that enabled **continuous deployment** of **19 data services** and **20 apps** across **multiple vSphere environments** in a **regulated investment bank in 10 weeks** - and that was just the start!

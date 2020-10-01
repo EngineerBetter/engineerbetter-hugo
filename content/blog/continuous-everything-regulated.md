@@ -11,6 +11,9 @@ draft: true
 
 Over the last year EngineerBetter worked with [Smarsh](https://www.smarsh.com/), introducing new ways of working that enabled **continuous deployment** of **19 data services** and **20 apps** across **multiple vSphere environments** in a **regulated investment bank in 10 weeks** - and that was just the start!
 
+> "We needed people to not just speak about the 'right' thing or merely do it for others, we needed a team to partner with our engineers, model and teach the 'right' thing so that it became pervasive organizationally. EngineerBetter does just that and with an empathetic approach that had my teams eager to work with them more often."
+> ### Kyle Campos - EVP Technology, Smarsh
+
 In this blog post we'll talk about the **methodology** we used, the **technical implementation** and challenges, and what _we_ learned from the experience.
 
 ## Outcomes
@@ -32,6 +35,9 @@ We achieved the following outcomes through considered use of approach and method
 **Context-carrying between timezones**. Being located in Europe allowed EngineerBetter to be the conduit for context to pass from the India timezone to US timezones. Because we were a single team engaging in remote pair-programming, that context was transferred in a human-friendly manner, rather than passive-aggressive JIRA tickets.
 
 **Making the implicit explicit**. Previously knowledge of the system had existed in a fragmented fashion, split between documentation and the human experience of various teams throughout the organisation. Instead, now we had one testable infrastructure-as-code pipeline that embodied all of that knowledge.
+
+> "EngineerBetter certainly bring a high level of technical competency as their name would suggest, but where they help most is actually their ability to listen, adapt and accelerate cultural transformation."
+> ### Kyle Campos - EVP Technology, Smarsh
 
 ## Smarsh
 

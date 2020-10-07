@@ -292,7 +292,7 @@ The fetch pipelines ran outside of a specific test environment, and their output
 
 Whilst test environments _outside_ the airgap _could_ have reached out directly to the original data sources, that would have meant that the deployment pipeline we were building and testing would behave different inside and outside of the airgap. That would invalidate our tests.
 
-We wrote variations of the sync pipelines that, rather then syncing files from NFS, would pull from S3 the tarballs placed there by the 'fetch' pipeline, and then put them into a test environment's MinIO.
+We wrote variations of the sync pipelines that, rather than syncing files from NFS, would pull from S3 the tarballs placed there by the 'fetch' pipeline, and then put them into a test environment's MinIO.
 
 ## Things We Learned
 

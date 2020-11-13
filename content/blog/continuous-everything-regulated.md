@@ -2,13 +2,13 @@
 author: Daniel Jones
 date: "2020-10-01"
 heroImage: /img/blog/smarsh/smarsh-deployed.png
-title: "Engagement Deep-Dive: Continuous Everything in a Regulated Bank"
+title: "Engagement Deep-Dive: Continuous Everything in a Regulated Enterprise"
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Over the last year EngineerBetter worked with [Smarsh](https://www.smarsh.com/), introducing new ways of working that enabled **continuous deployment** of **19 data services** and **20 apps** across **multiple vSphere environments** in a **regulated investment bank in 10 weeks** - and that was just the start!
+Over the last year EngineerBetter worked with [Smarsh](https://www.smarsh.com/), introducing new ways of working that enabled **continuous deployment** of **19 data services** and **20 apps** across **multiple vSphere environments** in a **regulated financial enterprise in 10 weeks** - and that was just the start!
 
 > "We needed people to not just speak about the 'right' thing or merely do it for others, we needed a team to partner with our engineers, model and teach the 'right' thing so that it became pervasive organizationally. EngineerBetter does just that and with an empathetic approach that had my teams eager to work with them more often."
 > ### Kyle Campos - EVP Technology, Smarsh
@@ -146,8 +146,8 @@ There were a number of technical challenges:
 Systems inside the end-client's environment couldn't communicate with the outside Internet. Files could be transferred into the target environment via a SFTP syncing mechanism:
 
 1. We upload files to Smarsh's SFTP server
-1. Someone or something inside the bank writes a file to a special NFS mount
-1. An internal system in the bank pulls files from the SFTP server
+1. Someone or something inside the enterprise writes a file to a special NFS mount
+1. An internal system in the enterprise pulls files from the SFTP server
 1. Files are now available on the internal NFS server
 
 Of course being enterprise software there were more unexpected idiosyncrasies than this, but hopefully you get the idea. It gave us a basic mechanism by which to get files into the target environment, but it wasn't very continuous.
@@ -191,7 +191,7 @@ Given the number of constraints in the engagement, the solution was rather compl
 
 ### Getting the First Files into the Airgap
 
-First of all, we needed to be able to get files into the bank.
+First of all, we needed to be able to get files into the enterprise.
 
 Our Concourse pipelines (detailed later) would upload tested assets to SFTP. To initially move the files, we'd need a human to trigger the manual sync process.
 
@@ -199,11 +199,11 @@ Our Concourse pipelines (detailed later) would upload tested assets to SFTP. To 
   <iframe src="https://youtube.com/embed/hoIESDrRuIE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </figure>
 
-> Whilst Concourse automates the uploading of tested assets to SFTP, initially a human must trigger the sync process inside the bank.
+> Whilst Concourse automates the uploading of tested assets to SFTP, initially a human must trigger the sync process inside the enterprise.
 
 ### Bootstrapping an Automatable Environment
 
-Now we could get _some_ files into the bank in a manual way, we needed to create API-driven systems inside the bank that could be automated.
+Now we could get _some_ files into the enterprise in a manual way, we needed to create API-driven systems inside the enterprise that could be automated.
 
 We would be using BOSH to deploy and manage virtual machines in the target environment, which has plugins that allow it to talk to VMware vSphere, but not to ESXI hosts directly.
 
@@ -217,15 +217,15 @@ That meant that we needed to install vSphere, but writing scripts to do this aut
   <iframe src="https://youtube.com/embed/FhV0oxy3b84" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </figure>
 
-> We get a VM image into the bank manually, boot it, and then run a baked-in script to install vSphere, BOSH, Concourse and more. After this, a Concourse pipeline is set to automatically sync new files.
+> We get a VM image into the enterprise manually, boot it, and then run a baked-in script to install vSphere, BOSH, Concourse and more. After this, a Concourse pipeline is set to automatically sync new files.
 
-Once we had a useful Linux jumpbox, we authored scripts to run _on_ that jumpbox to deploy and configure VMware vSphere, giving us a usable IAAS. Further scripts then installed BOSH, Concourse, and Credhub using [Stark & Wayne's BUCC](https://github.com/starkandwayne/bucc) tool. But wait! It wasn't that simple, because we can't download the things when we need them inside the bank.
+Once we had a useful Linux jumpbox, we authored scripts to run _on_ that jumpbox to deploy and configure VMware vSphere, giving us a usable IAAS. Further scripts then installed BOSH, Concourse, and Credhub using [Stark & Wayne's BUCC](https://github.com/starkandwayne/bucc) tool. But wait! It wasn't that simple, because we can't download the things when we need them inside the enterprise.
 
 Everything that we needed to run from the jumpbox had to be baked into the VM image. As we continually found more things that needed adding to the jumpbox, we automated the creation of the VM image's `.ova` file in a Concourse pipeline running in Smarsh.
 
-### Getting Files into the Bank Automatically
+### Getting Files into the Enterprise Automatically
 
-Once we had a Concourse running inside the bank, we could then use it to run automation to pull in new files and put them in a place that the main deployment pipeline would be able to more-easily consume them.
+Once we had a Concourse running inside the enterprise, we could then use it to run automation to pull in new files and put them in a place that the main deployment pipeline would be able to more-easily consume them.
 
 The 'sync' pipeline would trigger the SFTP-to-NFS sync, find new files, and upload them into the internal environment's MinIO buckets.
 
@@ -248,9 +248,9 @@ We used a combination of the pipeline itself and the end-to-end tests to iterate
 
 ## Testing
 
-**Continuous deployment without testing is reckless**, and not acceptable in any context, let alone a regulated bank!
+**Continuous deployment without testing is reckless**, and not acceptable in any context, let alone a regulated enterprise!
 
-Everything that we created needed to be tested _before_ being attempted in the bank. This meant that we needed **automation to test the automation**.
+Everything that we created needed to be tested _before_ being attempted in the enterprise. This meant that we needed **automation to test the automation**.
 
 ### Testing the Bootstrap
 
@@ -268,7 +268,7 @@ This approach also had the added advantage that we could automatically create an
 
 Once we had bootstrapped a test environment, it was straightforward to then run the deployment pipeline on the new test environment.
 
-In order for the tests to be meaningful we would have to subject our test environments to the same restrictions as inside the bank, and to emulate the airgap.
+In order for the tests to be meaningful we would have to subject our test environments to the same restrictions as inside the enterprise, and to emulate the airgap.
 
 > ### Concourse Resources
 >

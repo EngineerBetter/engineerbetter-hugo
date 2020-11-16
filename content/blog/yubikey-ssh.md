@@ -104,6 +104,12 @@ The default `pinentry-curses` CLI tool always uses the `tty` it was started in, 
 
 To install a PIN entry GUI on **macOS**, run `brew install pinentry-mac`. On Linux you might want to install `pinentry-gui`.
 
+`pinentry-mac` **may have additional installation steps**, so you should pay attention to the `brew install` output. At the time of writing, you are asked to configure `gpg-agent` to use `pinentry-mac` by default:
+
+```sh
+echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+```
+
 <img src="/img/blog/pinentry-mac.png" class="image fit">
 
 ## Generate an RSA key on your Yubikey

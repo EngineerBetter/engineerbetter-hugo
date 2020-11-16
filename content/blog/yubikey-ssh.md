@@ -43,6 +43,8 @@ You can even PIN protect the key, which means that if somebody physically steals
 
 Install `gpg` using your operating system's package manager so that you can interact with your Yubikey.
 
+> `gpg 2.2.23` has a bug that prevents on-card key generation. Despite what's written in the bug report, we've had success with version `2.2.22`, though.
+
 Plug in your Yubikey, and run `gpg --change-pin` to change the PIN from the default of `123456`. This is the PIN you'll be asked to enter whenever you need to access the private key, for example when doing `git push`.
 
 ```

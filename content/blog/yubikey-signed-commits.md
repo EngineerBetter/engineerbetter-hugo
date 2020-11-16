@@ -11,14 +11,19 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 By signing our Git commits, we can allow folks to verify that they were really written by the author tagged on the commit. If you've got a [Yubikey set up as per our other blog posts](/blog/yubikey-all-the-things/), it's a doddle to configure.
 
-## Setup
+## Ensure Public Key is on Keychain
 
-With your Yubikey inserted and unlocked, **find the ID of your GPG key**:
+Your public key needs to be on your GPG installation's keychain.
+
+First, see if it already on your chain (using your own address!):
 
 ```terminal
-$ gpg --list-secret-keys --keyid-format LONG
-/Users/deejay/.gnupg/pubring.gpg
---------------------------------
+$ gpg --list-secret daniel.jones@engineerbetter.com
+```
+
+If you see something like this, then you already have your public key available and can proceed to [Share With GitHub](#share-with-github):
+
+```terminal
 sec>  rsa2048/ADD0D0CAFEDECADE 2017-11-22 [SC] [expires: 2021-04-29]
       FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
       Card serial no. = 0006 06917459
@@ -27,14 +32,40 @@ ssb>  rsa2048/AF5A4B5AA8A8C5BF 2017-11-22 [A] [expires: 2021-04-29]
 ssb>  rsa2048/BA53B2D6734C8A8E 2017-11-22 [E] [expires: 2021-04-29]
 ```
 
-Then, **get your public key** so that you can tell GitHub about it. The argument here is the long ID from the above command:
+If you don't see the above, we'll need to get hold of it.
+
+Recent versions of the prior blog post suggested uploading your public key to a keyserver. You can find out if your key is on a given server with:
+
+```terminal
+$ gpg --keyserver keys.gnupg.net --search daniel.jones@engineerbetter.com
+```
+
+Results (if any) are numbered, and simply selecting the right number from the list will import your key.
+
+If you didn't upload your public key to any keyservers but still have access to the machine upon which you generated the key (or any other where it is in the keychain) then you can export it, ready for import:
+```terminal
+$ gpg --armor --export daniel.jones@engineerbetter.com > public.asc
+```
+
+Copy the file to the other machine, and then import it:
+
+```
+$ gpg --import /path/to/public.asc
+```
+
+Obviously this is a fragile solution, so [uploading it to a keyserver](/blog/yubikey-ssh#sharing-your-public-key) once you're done is a good idea.
+
+
+## Share With GitHub
+
+You need to tell GitHub about your public key. The argument here is the long ID from above (`gpg --list-secret <email-address>`):
 
 ```terminal
 $ gpg --armor --export FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQENBFoVTx8BCAD29H458Y3YwqGoG1HDEDiiAGaZoMONCh0Ql27CI7eSxhB08lI2
-[SNIP!]
+[...SNIP!]
 DVeNShSNf4K9uOS62gEQROZQClA/
 =xOmv
 -----END PGP PUBLIC KEY BLOCK-----

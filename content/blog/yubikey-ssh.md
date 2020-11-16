@@ -216,6 +216,36 @@ gpg/card> quit
 
 Your RSA key is now generated, and the public key is stored on your GPG keychain.
 
+## Sharing your public key
+
+The public key that you generated is stored in your local keychain (eg `~/.gnupg/pubring.kbx`). However, we need to share it with the world for two reasons:
+
+1. In order to [be able to sign commits](/blog/yubikey-signed-commits) on other machines, those machines will need a copy of your public key.
+1. The fact that your public key is, well, _public_, makes it easier to trust - the longer something has been in the public domain and relied upon, the less likely it is to be forged or inauthentic.
+
+You should upload your public key to one or more popular keyservers:
+
+```
+$ gpg --list-secret paddy.steed@engineerbetter.com
+sec>  rsa2048 2017-11-22 [SC] [expires: 2021-04-29]
+      FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
+      Card serial no. = 0006 06917459
+uid           [ unknown] Paddy Steed <paddy.steed@engineerbetter.com>
+ssb>  rsa2048 2017-11-22 [A] [expires: 2021-04-29]
+ssb>  rsa2048 2017-11-22 [E] [expires: 2021-04-29]
+```
+
+**Copy the long ID** from the output above, and then upload it to one or more servers:
+
+```
+$ gpg --keyserver keys.openpgp.org     --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
+$ gpg --keyserver keys.gnupg.net       --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
+$ gpg --keyserver pgp.mit.edu          --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
+$ gpg --keyserver keyserver.ubuntu.com --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
+```
+
+Now the public key is safely stored elsewhere, you can get back to configuring SSH.
+
 ## Viewing the public key
 
 Assuming you have configured `gpg-agent` correctly. `ssh-add -L` will display the public key in SSH format (you may need to open a new shell session if your ssh-agent already has a key loaded).

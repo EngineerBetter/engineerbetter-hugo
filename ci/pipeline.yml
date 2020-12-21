@@ -96,14 +96,11 @@ jobs:
   serial: true
   plan:
   - get: eb-hugo
-  - get: site-tarball
+  - get: generated-site
+    resource: site-tarball
     passed: [staging]
-  - task: untar
-    file: eb-hugo/ci/tasks/untar.yml
-    input_mapping:
-      input: site-tarball
-    output_mapping:
-      output: generated-site
+    params:
+      unpack: true
   - put: cf
     params:
       command: push

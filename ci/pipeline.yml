@@ -35,7 +35,7 @@ resources:
   type: cf-cli
   source:
     cf_cli_version: 7
-    api: https://api.run.pivotal.io
+    api: https://api.system.ebcf.engineerbetter.com
     username: systems@engineerbetter.com
     password: ((systems_cf_password))
     org: engineerbetter

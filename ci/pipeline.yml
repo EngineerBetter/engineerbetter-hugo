@@ -43,10 +43,19 @@ resources:
     space: development
 
 jobs:
+- name: set-pipeline
+  serial: true
+  plan:
+  - get: eb-hugo
+    trigger: true
+  - set_pipeline: self
+    file: eb-hugo/ci/pipeline.yml
+
 - name: dev
   serial: true
   plan:
   - get: eb-hugo
+    passed: [set-pipeline]
     trigger: true
   - task: hugo
     file: eb-hugo/ci/tasks/hugo-build.yml

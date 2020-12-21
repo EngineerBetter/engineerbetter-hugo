@@ -7,7 +7,7 @@ assert_non_error_response() {
 }
 
 assert_non_error_response_and_contains() {
-  if curl --silent --fail -v "${HOST}${1}" --stderr - | grep -q "${2}"; then
+  if curl --silent --fail -vL "${HOST}${1}" --stderr - | grep -q "${2}"; then
     true
   else
     echo "${HOST}${1}" did not contain \""${2}"\"

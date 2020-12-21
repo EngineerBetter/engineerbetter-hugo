@@ -74,7 +74,7 @@ jobs:
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
-      HOST: http://eb-hugo-dev.engineerbetter.com
+      HOST: https://eb-hugo-dev.engineerbetter.com
 
 - name: staging
   public: false
@@ -98,7 +98,7 @@ jobs:
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
-      HOST: http://eb-hugo-staging.engineerbetter.com
+      HOST: https://eb-hugo-staging.engineerbetter.com
 
 - name: prod
   public: false

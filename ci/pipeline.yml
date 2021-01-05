@@ -37,6 +37,13 @@ resources:
     repository: gcr.io/kf-releases/kf-release-deployer
     tag: v2.1.0
 
+- name: concourse-tasks
+  type: git
+  icon: github
+  source:
+    uri: git@github.com:EngineerBetter/concourse-tasks.git
+    private_key: ((git_private_key))
+
 jobs:
 - name: set-pipeline
   serial: true
@@ -53,12 +60,21 @@ jobs:
     - get: eb-hugo
       passed: [set-pipeline]
       trigger: true
+    - get: concourse-tasks
     - get: kf-release-deployer-image
-  - task: hugo
-    file: eb-hugo/ci/tasks/hugo-build.yml
-    params:
-      HUGO_BUILDDRAFTS: true
-      HUGO_BUILDFUTURE: true
+  - in_parallel:
+    - task: hugo
+      file: eb-hugo/ci/tasks/hugo-build.yml
+      params:
+        HUGO_BUILDDRAFTS: true
+        HUGO_BUILDFUTURE: true
+    - task: write-kubeconfig
+      file: concourse-tasks/echo-to-file/task.yml
+      output_mapping:
+        output: kubeconfig
+      params:
+        FILENAME: kubeconfig.yaml
+        MESSAGE: ((kubeconfig-ebkf-staging))
   - in_parallel:
     - put: drafts-site-tarball
       params:
@@ -69,7 +85,7 @@ jobs:
       params:
         SPACE: development
         MANIFEST: ci/assets/hugo-manifest-dev.yml
-        KUBECONFIG: ((kubeconfig-ebkf-staging))
+        KUBECONFIG: kubeconfig/kubeconfig.yaml
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -83,9 +99,18 @@ jobs:
     - get: eb-hugo
       passed: [dev]
       trigger: true
+    - get: concourse-tasks
     - get: kf-release-deployer-image
-  - task: hugo
-    file: eb-hugo/ci/tasks/hugo-build.yml
+  - in_parallel:
+    - task: hugo
+      file: eb-hugo/ci/tasks/hugo-build.yml
+    - task: write-kubeconfig
+      file: concourse-tasks/echo-to-file/task.yml
+      output_mapping:
+        output: kubeconfig
+      params:
+        FILENAME: kubeconfig.yaml
+        MESSAGE: ((kubeconfig-ebkf-staging))
   - in_parallel:
     - put: site-tarball
       params:
@@ -96,7 +121,7 @@ jobs:
       params:
         SPACE: staging
         MANIFEST: ci/assets/hugo-manifest-staging.yml
-        KUBECONFIG: ((kubeconfig-ebkf-staging))
+        KUBECONFIG: kubeconfig/kubeconfig.yaml
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -115,14 +140,22 @@ jobs:
     - get: eb-hugo
       passed: [dev]
       trigger: true
+    - get: concourse-tasks
     - get: kf-release-deployer-image
+  - task: write-kubeconfig
+    file: concourse-tasks/echo-to-file/task.yml
+    output_mapping:
+      output: kubeconfig
+    params:
+      FILENAME: kubeconfig.yaml
+      MESSAGE: ((kubeconfig-ebkf-staging))
   - task: kf-push
     file: eb-hugo/ci/tasks/kf-push.yml
     image: kf-release-deployer-image
     params:
       SPACE: production
       MANIFEST: ci/assets/hugo-manifest-prod.yml
-      KUBECONFIG: ((kubeconfig-ebkf-staging))
+      KUBECONFIG: kubeconfig/kubeconfig.yaml
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:

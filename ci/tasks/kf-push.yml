@@ -2,6 +2,7 @@ platform: linux
 
 inputs:
 - name: eb-hugo
+- name: kubeconfig
 
 run:
   path: eb-hugo/ci/tasks/kf-push.sh

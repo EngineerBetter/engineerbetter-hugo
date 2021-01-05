@@ -31,16 +31,11 @@ resources:
     access_key_id: ((concourse_ci_s3_access_key))
     secret_access_key: ((concourse_ci_s3_secret_key))
 
-- name: cf
-  type: cf-cli
+- name: kf-release-deployer-image
+  type: registry-image
   source:
-    cf_cli_version: 7
-    api: https://api.run.pivotal.io
-    username: systems@engineerbetter.com
-    password: ((systems_cf_password))
-    org: engineerbetter
-    skip_cert_check: false
-    space: development
+    repository: gcr.io/kf-releases/kf-release-deployer
+    tag: v2.1.0
 
 jobs:
 - name: set-pipeline
@@ -54,9 +49,11 @@ jobs:
 - name: dev
   serial: true
   plan:
-  - get: eb-hugo
-    passed: [set-pipeline]
-    trigger: true
+  - in_parallel:
+    - get: eb-hugo
+      passed: [set-pipeline]
+      trigger: true
+    - get: kf-release-deployer-image
   - task: hugo
     file: eb-hugo/ci/tasks/hugo-build.yml
     params:
@@ -66,11 +63,13 @@ jobs:
     - put: drafts-site-tarball
       params:
         file: tarball/eb-hugo-built.tar.gz
-    - put: cf
+    - task: kf-push
+      file: eb-hugo/ci/tasks/kf-push.yml
+      image: kf-release-deployer-image
       params:
-        command: push
-        strategy: rolling
-        manifest: eb-hugo/ci/assets/hugo-manifest-dev.yml
+        SPACE: development
+        MANIFEST: ci/assets/hugo-manifest-dev.yml
+        KUBECONFIG: ((kubeconfig-ebkf-staging))
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -80,21 +79,24 @@ jobs:
   public: false
   serial: true
   plan:
-  - get: eb-hugo
-    passed: [dev]
-    trigger: true
+  - in_parallel:
+    - get: eb-hugo
+      passed: [dev]
+      trigger: true
+    - get: kf-release-deployer-image
   - task: hugo
     file: eb-hugo/ci/tasks/hugo-build.yml
   - in_parallel:
     - put: site-tarball
       params:
         file: tarball/eb-hugo-built.tar.gz
-    - put: cf
+    - task: kf-push
+      file: eb-hugo/ci/tasks/kf-push.yml
+      image: kf-release-deployer-image
       params:
-        command: push
-        strategy: rolling
-        space: staging
-        manifest: eb-hugo/ci/assets/hugo-manifest-staging.yml
+        SPACE: staging
+        MANIFEST: ci/assets/hugo-manifest-staging.yml
+        KUBECONFIG: ((kubeconfig-ebkf-staging))
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -104,18 +106,23 @@ jobs:
   public: false
   serial: true
   plan:
-  - get: eb-hugo
-  - get: generated-site
-    resource: site-tarball
-    passed: [staging]
+  - in_parallel:
+    - get: generated-site
+      resource: site-tarball
+      passed: [staging]
+      params:
+        unpack: true
+    - get: eb-hugo
+      passed: [dev]
+      trigger: true
+    - get: kf-release-deployer-image
+  - task: kf-push
+    file: eb-hugo/ci/tasks/kf-push.yml
+    image: kf-release-deployer-image
     params:
-      unpack: true
-  - put: cf
-    params:
-      command: push
-      strategy: rolling
-      space: production
-      manifest: eb-hugo/ci/assets/hugo-manifest-prod.yml
+      SPACE: production
+      MANIFEST: ci/assets/hugo-manifest-prod.yml
+      KUBECONFIG: ((kubeconfig-ebkf-staging))
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:

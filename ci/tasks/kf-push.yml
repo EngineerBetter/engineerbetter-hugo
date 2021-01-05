@@ -1,0 +1,12 @@
+platform: linux
+
+inputs:
+- name: eb-hugo
+
+run:
+  path: eb-hugo/ci/tasks/kf-push.sh
+
+params:
+  MANIFEST:
+  KUBECONFIG:
+  SPACE:

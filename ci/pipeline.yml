@@ -77,7 +77,7 @@ jobs:
       params:
         SPACE: development
         MANIFEST: ci/assets/hugo-manifest-dev.yml
-        GOOGLE_CREDENTIALS: ((gcp-credentials-ebkf-staging-app-developer))
+        GOOGLE_CREDENTIALS: ((gcp-credentials-ebkf-prod-app-developer))
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:

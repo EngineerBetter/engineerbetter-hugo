@@ -10,5 +10,5 @@ run:
 
 params:
   MANIFEST:
-  KUBECONFIG:
+  GOOGLE_CREDENTIALS:
   SPACE:

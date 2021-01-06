@@ -1,9 +1,9 @@
 ---
 applications:
-- name: eb-hugo
-  memory: 64MB
-  path: ../../../generated-site/
-  routes:
-  - route: www.engineerbetter.com
-  env:
-    FORCE_HTTPS: true
+  - name: eb-hugo
+    memory: 64MB
+    path: generated-site
+    routes:
+      - route: www.engineerbetter.com
+    env:
+      FORCE_HTTPS: true

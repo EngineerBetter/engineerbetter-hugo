@@ -1,7 +1,7 @@
 ---
 applications:
-- name: eb-hugo
-  memory: 64MB
-  path: ../../../generated-site/
-  routes:
-  - route: eb-hugo-staging.engineerbetter.com
+  - name: eb-hugo
+    memory: 64MB
+    path: generated-site
+    routes:
+      - route: eb-hugo-staging.engineerbetter.com

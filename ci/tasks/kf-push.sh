@@ -3,7 +3,7 @@
 set -eu
 
 echo "${GOOGLE_CREDENTIALS}" >creds.json
-export GOOGLE_APPLICATION_CREDENTIALS=creds.json
+gcloud auth activate-service-account --key-file=creds.json
 
 gcloud container clusters get-credentials ebkf --zone europe-west2-b
 

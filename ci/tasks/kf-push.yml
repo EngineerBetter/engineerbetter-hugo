@@ -2,7 +2,6 @@ platform: linux
 
 inputs:
 - name: eb-hugo
-- name: kubeconfig
 - name: generated-site
 
 run:

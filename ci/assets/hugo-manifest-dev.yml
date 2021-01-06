@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: eb-hugo
+  - name: engineerbetter-dot-com
     memory: 64MB
     path: generated-site
     routes:

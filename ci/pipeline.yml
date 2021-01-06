@@ -123,7 +123,7 @@ jobs:
       params:
         unpack: true
     - get: eb-hugo
-      passed: [dev]
+      passed: [staging]
       trigger: true
     - get: concourse-tasks
     - get: kf-release-deployer-image

@@ -12,7 +12,6 @@ resources:
   webhook_token: ((webhook_token))
   source:
     uri: https://github.com/engineerbetter/engineerbetter-hugo.git
-
 - name: drafts-site-tarball
   type: s3
   source:

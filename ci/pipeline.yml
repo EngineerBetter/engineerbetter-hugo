@@ -66,6 +66,17 @@ jobs:
     params:
       HUGO_BUILDDRAFTS: true
       HUGO_BUILDFUTURE: true
+  - task: setup-routes
+    file: kf-pipelines/ci/tasks/kubectl-with-gcp/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      input: eb-hugo
+    params:
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      ARGS: apply -f virtual-service-dev.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
     vars:
@@ -99,6 +110,17 @@ jobs:
     - get: kf-pipelines
   - task: hugo
     file: eb-hugo/ci/tasks/hugo-build.yml
+  - task: setup-routes
+    file: kf-pipelines/ci/tasks/kubectl-with-gcp/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      input: eb-hugo
+    params:
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      ARGS: apply -f virtual-service-staging.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
     vars:
@@ -135,6 +157,17 @@ jobs:
       trigger: true
     - get: kf-release-deployer-image
     - get: kf-pipelines
+  - task: setup-routes
+    file: kf-pipelines/ci/tasks/kubectl-with-gcp/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      input: eb-hugo
+    params:
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      ARGS: apply -f virtual-service-prod.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
     vars:

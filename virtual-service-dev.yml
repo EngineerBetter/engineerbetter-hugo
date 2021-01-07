@@ -1,0 +1,144 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    kf.dev/domain: engineerbetter.com
+  labels:
+    app.kubernetes.io/component: virtualservice
+    app.kubernetes.io/managed-by: kf
+  name: brain-aligned-delivery
+  namespace: development
+spec:
+  gateways:
+    - kf/external-gateway
+  hosts:
+    - "*.engineerbetter.com"
+  http:
+    # BRAIN ALIGNED DELIVERY
+    - match:
+        - authority:
+            exact: brain-aligned-delivery-dev.engineerbetter.com
+          headers:
+            x-kf-app:
+              exact: brain-aligned-delivery
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: brain-aligned-delivery
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: brain-aligned-delivery-dev.engineerbetter.com
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: brain-aligned-delivery
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: eb-hugo-dev.engineerbetter.com
+          headers:
+            x-kf-app:
+              exact: brain-aligned-delivery
+          uri:
+            regex: ^/brain-aligned-delivery(/.*)?
+      route:
+        - destination:
+            host: brain-aligned-delivery
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: eb-hugo-dev.engineerbetter.com
+          uri:
+            regex: ^/brain-aligned-delivery(/.*)?
+      route:
+        - destination:
+            host: brain-aligned-delivery
+            port:
+              number: 80
+          weight: 100
+    # SEVEN STAGES OF BOSH
+    - match:
+        - authority:
+            exact: 7-stages-of-bosh-dev.engineerbetter.com
+          headers:
+            x-kf-app:
+              exact: 7-stages-of-bosh
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: 7-stages-of-bosh
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: 7-stages-of-bosh-dev.engineerbetter.com
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: 7-stages-of-bosh
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: eb-hugo-dev.engineerbetter.com
+          headers:
+            x-kf-app:
+              exact: 7-stages-of-bosh
+          uri:
+            regex: ^/7-stages-of-bosh(/.*)?
+      route:
+        - destination:
+            host: 7-stages-of-bosh
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: eb-hugo-dev.engineerbetter.com
+          uri:
+            regex: ^/7-stages-of-bosh(/.*)?
+      route:
+        - destination:
+            host: 7-stages-of-bosh
+            port:
+              number: 80
+          weight: 100
+    # COMPANY WEBSITE
+    - match:
+        - authority:
+            exact: eb-hugo-dev.engineerbetter.com
+          headers:
+            x-kf-app:
+              exact: eb-hugo
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: eb-hugo
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: eb-hugo-dev.engineerbetter.com
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: eb-hugo
+            port:
+              number: 80
+          weight: 100

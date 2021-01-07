@@ -79,13 +79,13 @@ jobs:
         REGION: ((ebkf-prod-app-developer-creds.region))
         CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
         SPACE: development
-    - task: smoke-tests
-      file: eb-hugo/ci/tasks/smoke-tests.yml
-      params:
-        HOST: https://eb-hugo-dev.engineerbetter.com
-    - put: drafts-site-tarball
-      params:
-        file: tarball/eb-hugo-built.tar.gz
+  - task: smoke-tests
+    file: eb-hugo/ci/tasks/smoke-tests.yml
+    params:
+      HOST: https://eb-hugo-dev.engineerbetter.com
+  - put: drafts-site-tarball
+    params:
+      file: tarball/eb-hugo-built.tar.gz
 
 - name: staging
   public: false
@@ -112,13 +112,13 @@ jobs:
         REGION: ((ebkf-prod-app-developer-creds.region))
         CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
         SPACE: staging
-    - task: smoke-tests
-      file: eb-hugo/ci/tasks/smoke-tests.yml
-      params:
-        HOST: https://eb-hugo-staging.engineerbetter.com
-    - put: site-tarball
-      params:
-        file: tarball/eb-hugo-built.tar.gz
+  - task: smoke-tests
+    file: eb-hugo/ci/tasks/smoke-tests.yml
+    params:
+      HOST: https://eb-hugo-staging.engineerbetter.com
+  - put: site-tarball
+    params:
+      file: tarball/eb-hugo-built.tar.gz
 
 - name: prod
   public: false
@@ -148,7 +148,7 @@ jobs:
         REGION: ((ebkf-prod-app-developer-creds.region))
         CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
         SPACE: production
-    - task: smoke-tests
-      file: eb-hugo/ci/tasks/smoke-tests.yml
-      params:
-        HOST: https://www.engineerbetter.com
+  - task: smoke-tests
+    file: eb-hugo/ci/tasks/smoke-tests.yml
+    params:
+      HOST: https://www.engineerbetter.com

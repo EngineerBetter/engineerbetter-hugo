@@ -2,7 +2,6 @@
 applications:
   - name: engineerbetter-dot-com
     memory: 64MB
-    path: source
     routes:
       - route: www.engineerbetter.com
     env:

@@ -2,6 +2,5 @@
 applications:
   - name: engineerbetter-dot-com
     memory: 64MB
-    path: source
     routes:
       - route: eb-hugo-dev.engineerbetter.com

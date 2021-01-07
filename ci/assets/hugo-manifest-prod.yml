@@ -6,5 +6,3 @@ applications:
     # routes:
     #   - route: www.engineerbetter.com
     no-route: true
-    env:
-      FORCE_HTTPS: true

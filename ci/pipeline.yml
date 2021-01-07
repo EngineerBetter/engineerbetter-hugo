@@ -72,7 +72,7 @@ jobs:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       manifest: eb-hugo
-      source: eb-hugo
+      source: generated-site
     params:
       MANIFEST: ci/assets/hugo-manifest-dev.yml
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
@@ -105,7 +105,7 @@ jobs:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       manifest: eb-hugo
-      source: eb-hugo
+      source: generated-site
     params:
       MANIFEST: ci/assets/hugo-manifest-staging.yml
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
@@ -141,7 +141,7 @@ jobs:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       manifest: eb-hugo
-      source: eb-hugo
+      source: generated-site
     params:
       MANIFEST: ci/assets/hugo-manifest-prod.yml
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))

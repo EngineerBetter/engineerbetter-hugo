@@ -2,7 +2,9 @@
 applications:
   - name: engineerbetter-dot-com
     memory: 64MB
-    routes:
-      - route: www.engineerbetter.com
+    # Routing done by Istio VS
+    # routes:
+    #   - route: www.engineerbetter.com
+    no-route: true
     env:
       FORCE_HTTPS: true

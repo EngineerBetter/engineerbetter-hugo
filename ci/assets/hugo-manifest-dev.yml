@@ -2,5 +2,7 @@
 applications:
   - name: engineerbetter-dot-com
     memory: 64MB
-    routes:
-      - route: eb-hugo-dev.engineerbetter.com
+    # Routing done by Istio VS
+    # routes:
+    #   - route: eb-hugo-dev.engineerbetter.com
+    no-route: true

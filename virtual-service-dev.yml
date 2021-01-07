@@ -76,7 +76,7 @@ spec:
             regex: ^(/.*)?
       route:
         - destination:
-            host: 7-stages-of-bosh
+            host: seven-stages-of-bosh
             port:
               number: 80
           weight: 100
@@ -87,7 +87,7 @@ spec:
             regex: ^(/.*)?
       route:
         - destination:
-            host: 7-stages-of-bosh
+            host: seven-stages-of-bosh
             port:
               number: 80
           weight: 100
@@ -101,7 +101,7 @@ spec:
             regex: ^/7-stages-of-bosh(/.*)?
       route:
         - destination:
-            host: 7-stages-of-bosh
+            host: seven-stages-of-bosh
             port:
               number: 80
           weight: 100
@@ -112,7 +112,7 @@ spec:
             regex: ^/7-stages-of-bosh(/.*)?
       route:
         - destination:
-            host: 7-stages-of-bosh
+            host: seven-stages-of-bosh
             port:
               number: 80
           weight: 100

@@ -142,3 +142,28 @@ spec:
             port:
               number: 80
           weight: 100
+    - match:
+        - authority:
+            exact: engineerbetter.com
+          headers:
+            x-kf-app:
+              exact: engineerbetter-dot-com
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: engineerbetter-dot-com
+            port:
+              number: 80
+          weight: 100
+    - match:
+        - authority:
+            exact: engineerbetter.com
+          uri:
+            regex: ^(/.*)?
+      route:
+        - destination:
+            host: engineerbetter-dot-com
+            port:
+              number: 80
+          weight: 100

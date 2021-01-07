@@ -36,12 +36,12 @@ resources:
     repository: gcr.io/kf-releases/kf-release-deployer
     tag: v2.1.0
 
-- name: concourse-tasks
+- name: kf-pipelines
   type: git
-  icon: github
   source:
-    uri: git@github.com:EngineerBetter/concourse-tasks.git
+    uri: git@github.com:EngineerBetter/kf-pipelines.git
     private_key: ((git_private_key))
+    branch: prod
 
 jobs:
 - name: set-pipeline
@@ -59,29 +59,33 @@ jobs:
     - get: eb-hugo
       passed: [set-pipeline]
       trigger: true
-    - get: concourse-tasks
     - get: kf-release-deployer-image
-  - in_parallel:
-    - task: hugo
-      file: eb-hugo/ci/tasks/hugo-build.yml
+    - get: kf-pipelines
+  - task: hugo
+    file: eb-hugo/ci/tasks/hugo-build.yml
+    params:
+      HUGO_BUILDDRAFTS: true
+      HUGO_BUILDFUTURE: true
+  - task: kf-push
+    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      manifest: eb-hugo
+      source: eb-hugo
       params:
-        HUGO_BUILDDRAFTS: true
-        HUGO_BUILDFUTURE: true
-  - in_parallel:
+        MANIFEST: ci/assets/hugo-manifest-dev.yml
+        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+        REGION: ((ebkf-prod-app-developer-creds.region))
+        CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+        SPACE: development
+    - task: smoke-tests
+      file: eb-hugo/ci/tasks/smoke-tests.yml
+      params:
+        HOST: https://eb-hugo-dev.engineerbetter.com
     - put: drafts-site-tarball
       params:
         file: tarball/eb-hugo-built.tar.gz
-    - task: kf-push
-      file: eb-hugo/ci/tasks/kf-push.yml
-      image: kf-release-deployer-image
-      params:
-        SPACE: development
-        MANIFEST: ci/assets/hugo-manifest-dev.yml
-        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-  - task: smoke-tests
-    file: eb-hugo/ci/tasks/smoke-tests.yml
-    params:
-      HOST: https://eb-hugo-dev.engineerbetter.com
 
 - name: staging
   public: false
@@ -91,26 +95,30 @@ jobs:
     - get: eb-hugo
       passed: [dev]
       trigger: true
-    - get: concourse-tasks
     - get: kf-release-deployer-image
-  - in_parallel:
-    - task: hugo
-      file: eb-hugo/ci/tasks/hugo-build.yml
-  - in_parallel:
+    - get: kf-pipelines
+  - task: hugo
+    file: eb-hugo/ci/tasks/hugo-build.yml
+  - task: kf-push
+    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      manifest: eb-hugo
+      source: eb-hugo
+      params:
+        MANIFEST: ci/assets/hugo-manifest-staging.yml
+        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+        REGION: ((ebkf-prod-app-developer-creds.region))
+        CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+        SPACE: staging
+    - task: smoke-tests
+      file: eb-hugo/ci/tasks/smoke-tests.yml
+      params:
+        HOST: https://eb-hugo-staging.engineerbetter.com
     - put: site-tarball
       params:
         file: tarball/eb-hugo-built.tar.gz
-    - task: kf-push
-      file: eb-hugo/ci/tasks/kf-push.yml
-      image: kf-release-deployer-image
-      params:
-        SPACE: staging
-        MANIFEST: ci/assets/hugo-manifest-staging.yml
-        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-  - task: smoke-tests
-    file: eb-hugo/ci/tasks/smoke-tests.yml
-    params:
-      HOST: https://eb-hugo-staging.engineerbetter.com
 
 - name: prod
   public: false
@@ -125,16 +133,22 @@ jobs:
     - get: eb-hugo
       passed: [staging]
       trigger: true
-    - get: concourse-tasks
     - get: kf-release-deployer-image
+    - get: kf-pipelines
   - task: kf-push
-    file: eb-hugo/ci/tasks/kf-push.yml
-    image: kf-release-deployer-image
-    params:
-      SPACE: production
-      MANIFEST: ci/assets/hugo-manifest-prod.yml
-      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-  - task: smoke-tests
-    file: eb-hugo/ci/tasks/smoke-tests.yml
-    params:
-      HOST: https://www.engineerbetter.com
+    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    vars:
+      kf_version: ((ebkf-prod-version))
+    input_mapping:
+      manifest: eb-hugo
+      source: eb-hugo
+      params:
+        MANIFEST: ci/assets/hugo-manifest-prod.yml
+        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+        REGION: ((ebkf-prod-app-developer-creds.region))
+        CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+        SPACE: production
+    - task: smoke-tests
+      file: eb-hugo/ci/tasks/smoke-tests.yml
+      params:
+        HOST: https://www.engineerbetter.com

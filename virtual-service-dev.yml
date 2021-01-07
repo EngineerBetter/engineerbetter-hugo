@@ -122,12 +122,12 @@ spec:
             exact: eb-hugo-dev.engineerbetter.com
           headers:
             x-kf-app:
-              exact: eb-hugo
+              exact: engineerbetter-dot-com
           uri:
             regex: ^(/.*)?
       route:
         - destination:
-            host: eb-hugo
+            host: engineerbetter-dot-com
             port:
               number: 80
           weight: 100
@@ -138,7 +138,7 @@ spec:
             regex: ^(/.*)?
       route:
         - destination:
-            host: eb-hugo
+            host: engineerbetter-dot-com
             port:
               number: 80
           weight: 100

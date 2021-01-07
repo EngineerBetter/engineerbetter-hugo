@@ -3,10 +3,13 @@
 set -eu
 
 assert_non_error_response() {
+  echo "Checking non-error response for ${HOST}${1}"
   curl --silent --fail -v --output /dev/null "${HOST}${1}"
 }
 
 assert_non_error_response_and_contains() {
+  echo "Checking non-error response for ${HOST}${1} and response contains ${2}"
+
   if curl --silent --fail -vL "${HOST}${1}" --stderr - | grep -q "${2}"; then
     true
   else

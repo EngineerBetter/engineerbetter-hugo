@@ -73,12 +73,12 @@ jobs:
     input_mapping:
       manifest: eb-hugo
       source: eb-hugo
-      params:
-        MANIFEST: ci/assets/hugo-manifest-dev.yml
-        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-        REGION: ((ebkf-prod-app-developer-creds.region))
-        CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-        SPACE: development
+    params:
+      MANIFEST: ci/assets/hugo-manifest-dev.yml
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      SPACE: development
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -106,12 +106,12 @@ jobs:
     input_mapping:
       manifest: eb-hugo
       source: eb-hugo
-      params:
-        MANIFEST: ci/assets/hugo-manifest-staging.yml
-        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-        REGION: ((ebkf-prod-app-developer-creds.region))
-        CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-        SPACE: staging
+    params:
+      MANIFEST: ci/assets/hugo-manifest-staging.yml
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      SPACE: staging
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -142,12 +142,12 @@ jobs:
     input_mapping:
       manifest: eb-hugo
       source: eb-hugo
-      params:
-        MANIFEST: ci/assets/hugo-manifest-prod.yml
-        GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-        REGION: ((ebkf-prod-app-developer-creds.region))
-        CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-        SPACE: production
+    params:
+      MANIFEST: ci/assets/hugo-manifest-prod.yml
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
+      SPACE: production
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:

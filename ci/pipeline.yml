@@ -66,16 +66,20 @@ jobs:
     params:
       HUGO_BUILDDRAFTS: true
       HUGO_BUILDFUTURE: true
+  - &generate-kubeconfig
+    task: generate-kubeconfig
+    file: kf-pipelines/ci/tasks/generate-kubeconfig/task.yml
+    params:
+      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
+      REGION: ((ebkf-prod-app-developer-creds.region))
+      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
   - task: setup-routes
-    file: kf-pipelines/ci/tasks/kubectl-with-gcp/task.yml
+    file: kf-pipelines/ci/tasks/kubectl/task.yml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       input: eb-hugo
     params:
-      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-      REGION: ((ebkf-prod-app-developer-creds.region))
-      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
       ARGS: apply -f virtual-service-dev.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
@@ -83,13 +87,9 @@ jobs:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       manifest: eb-hugo
-      source: generated-site
+      input: generated-site
     params:
-      MANIFEST: ci/assets/hugo-manifest-dev.yml
-      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-      REGION: ((ebkf-prod-app-developer-creds.region))
-      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-      SPACE: development
+      ARGS: push --space development --manifest eb-hugo/ci/assets/hugo-manifest-dev.yml --path input
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -110,16 +110,14 @@ jobs:
     - get: kf-pipelines
   - task: hugo
     file: eb-hugo/ci/tasks/hugo-build.yml
+  - *generate-kubeconfig
   - task: setup-routes
-    file: kf-pipelines/ci/tasks/kubectl-with-gcp/task.yml
+    file: kf-pipelines/ci/tasks/kubectl/task.yml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       input: eb-hugo
     params:
-      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-      REGION: ((ebkf-prod-app-developer-creds.region))
-      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
       ARGS: apply -f virtual-service-staging.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
@@ -127,13 +125,9 @@ jobs:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       manifest: eb-hugo
-      source: generated-site
+      input: generated-site
     params:
-      MANIFEST: ci/assets/hugo-manifest-staging.yml
-      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-      REGION: ((ebkf-prod-app-developer-creds.region))
-      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-      SPACE: staging
+      ARGS: push --space staging --manifest eb-hugo/ci/assets/hugo-manifest-staging.yml --path input
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -157,16 +151,14 @@ jobs:
       trigger: true
     - get: kf-release-deployer-image
     - get: kf-pipelines
+  - *generate-kubeconfig
   - task: setup-routes
-    file: kf-pipelines/ci/tasks/kubectl-with-gcp/task.yml
+    file: kf-pipelines/ci/tasks/kubectl/task.yml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       input: eb-hugo
     params:
-      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-      REGION: ((ebkf-prod-app-developer-creds.region))
-      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
       ARGS: apply -f virtual-service-prod.yml -f virtual-service-redirect-www.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
@@ -174,13 +166,9 @@ jobs:
       kf_version: ((ebkf-prod-version))
     input_mapping:
       manifest: eb-hugo
-      source: generated-site
+      input: generated-site
     params:
-      MANIFEST: ci/assets/hugo-manifest-prod.yml
-      GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
-      REGION: ((ebkf-prod-app-developer-creds.region))
-      CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-      SPACE: production
+      ARGS: push --space production --manifest eb-hugo/ci/assets/hugo-manifest-prod.yml --path input
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:

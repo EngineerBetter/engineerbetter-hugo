@@ -89,7 +89,7 @@ jobs:
       manifest: eb-hugo
       input: generated-site
     params:
-      ARGS: push --space development --manifest eb-hugo/ci/assets/hugo-manifest-dev.yml --path input
+      ARGS: push --space development --manifest manifest/ci/assets/hugo-manifest-dev.yml --path input
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -127,7 +127,7 @@ jobs:
       manifest: eb-hugo
       input: generated-site
     params:
-      ARGS: push --space staging --manifest eb-hugo/ci/assets/hugo-manifest-staging.yml --path input
+      ARGS: push --space staging --manifest manifest/ci/assets/hugo-manifest-staging.yml --path input
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:
@@ -168,7 +168,7 @@ jobs:
       manifest: eb-hugo
       input: generated-site
     params:
-      ARGS: push --space production --manifest eb-hugo/ci/assets/hugo-manifest-prod.yml --path input
+      ARGS: push --space production --manifest manifest/ci/assets/hugo-manifest-prod.yml --path input
   - task: smoke-tests
     file: eb-hugo/ci/tasks/smoke-tests.yml
     params:

@@ -167,7 +167,7 @@ jobs:
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
       REGION: ((ebkf-prod-app-developer-creds.region))
       CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
-      ARGS: apply -f virtual-service-prod.yml
+      ARGS: apply -f virtual-service-prod.yml -f virtual-service-redirect-www.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
     vars:

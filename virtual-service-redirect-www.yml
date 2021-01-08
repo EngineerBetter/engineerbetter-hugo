@@ -1,0 +1,29 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    kf.dev/domain: engineerbetter.com
+  labels:
+    app.kubernetes.io/component: virtualservice
+    app.kubernetes.io/managed-by: kf
+  name: engineerbetter-com
+  namespace: production
+spec:
+  gateways:
+    - kf/external-gateway
+  hosts:
+    - "engineerbetter.com"
+  http:
+    - match:
+        - authority:
+            exact: engineerbetter.com
+          headers:
+            x-kf-app:
+              exact: engineerbetter-dot-com
+      redirect:
+        authority: www.engineerbetter.com
+    - match:
+        - authority:
+            exact: engineerbetter.com
+      redirect:
+        authority: www.engineerbetter.com

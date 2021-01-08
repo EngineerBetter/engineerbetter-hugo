@@ -80,7 +80,7 @@ jobs:
     input_mapping:
       input: eb-hugo
     params:
-      ARGS: apply -f virtual-service-dev.yml
+      ARGS: apply -f input/virtual-service-dev.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
     vars:
@@ -118,7 +118,7 @@ jobs:
     input_mapping:
       input: eb-hugo
     params:
-      ARGS: apply -f virtual-service-staging.yml
+      ARGS: apply -f input/virtual-service-staging.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
     vars:
@@ -159,7 +159,7 @@ jobs:
     input_mapping:
       input: eb-hugo
     params:
-      ARGS: apply -f virtual-service-prod.yml -f virtual-service-redirect-www.yml
+      ARGS: apply -f input/virtual-service-prod.yml -f input/virtual-service-redirect-www.yml
   - task: kf-push
     file: kf-pipelines/ci/tasks/kf-cli/task.yml
     vars:

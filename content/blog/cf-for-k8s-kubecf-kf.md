@@ -145,7 +145,7 @@ Given some of the scaling limitations of Kubernetes itself, operators should exp
 
 ### Can I buy it?
 
-Yes - I'm sure Google Cloud will be very happy to have your custom, and [EngineerBetter as Google Cloud partners](https://cloud.withgoogle.com/partners/detail/?id=engineerbetter&hl=en-GB) can also help you with that.
+Yes, and Kf is offered [at no additional cost beyond Anthos Service Mesh and GKE](https://cloud.google.com/migrate/kf/docs/resources/pricing). [EngineerBetter as Google Cloud partners](https://cloud.withgoogle.com/partners/detail/?id=engineerbetter&hl=en-GB) can also help you with Kf adoption.
 
 ### What about the future?
 
@@ -173,16 +173,21 @@ As one of our engineers commented: "Kf is how I wish cf-for-k8s had been impleme
 
 If you're an existing BOSH-deployed Cloud Foundry operator who does not have a pressing need to make changes, **I strongly suggest that you continue using BOSH and cf-deployment**.
 
-If you're using BOSH-deployed Cloud Foundry and are concerned about the dwindling pool of BOSH talent to operate your environment, then you have two sensible options:
+If you're using BOSH-deployed Cloud Foundry and are concerned about the dwindling pool of BOSH talent to operate your environment, then you have three options:
 
-* use `kf` on any Anthos-connected cluster
+* use `kf` on any Anthos-connected cluster, and slowly migrate to a Kubernetes-native workflow
 * use KubeCF and hope that the project will be maintained
+* wait and hope that a truly Kubernetes-native evolution of Cloud Foundry becomes available and is production-ready
 
 I don't see any use cases for which cf-for-k8s is the ideal solution. This is unfortunate, as I already know a bunch of operators who have spent time evaluating it and drawn the same conclusion - it's not ready yet.
 
 ## Wait, BOSH?
 
 Wasn't 2021 supposed to be the year of Cloud Foundry's second wind? Bringing the CF experience to the masses of Kubernetes operators who found building their own platform too costly? It seems like, via a self-fulfilling prophecy of strategic decisions, the future of Cloud Foundry is BOSH.
+
+I think we were all hoping for open source users to be able to ride in the coat-tails of a fully-committed commercial distribution built on top of Kubernetes. The current state of Cloud Foundry is a reminder that open source software comes with risks and responsibilities. If you want stability and assurances, then best speak to a vendor.
+
+For now, open source users are advised to wait until the dust settles. Like most things in 2020, the volatility seems to be going on longer than anyone expected.
 
 ## Isn't there anything else?
 

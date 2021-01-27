@@ -37,7 +37,7 @@ We'll get back to the narrative of our own experiences at the end of the post, a
 
 [cf-for-k8s](https://github.com/cloudfoundry/cf-for-k8s) drops many features, whilst taking the approach of "maintain CLI/API compatibility and replace the internals with cloud-native equivalents." For example the Cloud Controller stays, routing is implemented with [Istio](https://github.com/istio/istio), logging with [Fluentd](https://www.fluentd.org/), and staging with VMware's [kpack](https://github.com/pivotal/kpack).
 
-cf-for-k8s is spearheaded by VMware. Whereas KubeCF had to be an incubation project, cf-for-k8s was immediately a top-level project in the Cloud Foundry Foundation.
+cf-for-k8s is spearheaded by VMware. Despite appearing in the main Cloud Foundry GitHub org, cf-for-k8s is in fact an incubation project.
 
 ### How is it implemented?
 

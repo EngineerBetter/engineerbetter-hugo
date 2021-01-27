@@ -10,15 +10,24 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
+<figure>
+  <figcaption><em><a href="https://www.flickr.com/photos/28293006@N05/8144747570">Original image source</a>, before my terrible modifications</em></figcaption>
+</figure>
+
 There is no single obvious choice for those evaluating Kubernetes-based Cloud Foundry distributions and alternatives. Find out why **EngineerBetter chose Google's Kf** for our estate, and why our advice to existing Cloud Foundry users is "**stay on BOSH**."
 
-In January VMware shut down their public Cloud Foundry (Pivotal Web Services). All of EngineerBetter's apps ran on PWS and so we needed to migrate off of the platform and find something equally cheap and simple.
+In January VMware shut down their public Cloud Foundry (Pivotal Web Services). All of EngineerBetter's apps ran on PWS and so we needed to migrate away from the platform and find something equally cheap and simple.
 
 Our choices were:
 
 * cf-for-k8s
 * KubeCF
-* Google's `kf`
+* Google's Kf
+
+<figure>
+  <img src="/img/blog/cf-comparison-table.png" class="fit image">
+  <figcaption>The selection of features supported by cf-for-k8s and Kf are surprising.</figcaption>
+</figure>
 
 We'll get back to the narrative of our own experiences at the end of the post, and instead focus on a comparison of the tools.
 
@@ -48,6 +57,8 @@ cf-for-k8s would **fail [Cloud Foundry Provider Certification](https://www.cloud
   * App instance routing
   * `cf ssh`
   * Developer-specified buildpacks (ie via `cf push -b`)
+
+My personal take is that the project would be more appropriately-named "_something-that-is-a-lot-like-cf-for-k8s_."
 
 ### Is it ready yet?
 
@@ -107,7 +118,7 @@ Again, look at the [activity on the GitHub repos](https://github.com/cloudfoundr
   <figcaption>Kf conceptual architecture, <a href="https://github.com/google/kf">from the Kf repo</a></figcaption>
 </figure>
 
-[Kf](https://cloud.google.com/migrate/kf/docs) is a set of components made by Google Cloud and offered as part of their Anthos suite. It offers a developer experience that is similar (but not identical) to using the CF CLI with a completely new and Kubernetes-native backend.
+[Kf](https://cloud.google.com/migrate/kf/docs) is a set of components made by Google Cloud and offered as part of their Anthos suite. It offers a core developer experience that is similar to using the CF CLI with a completely new and Kubernetes-native backend. Kf does not intend to implement all the features of Cloud Foundry, rather the core app-pushing experience.
 
 Kf [started life as an open source project](https://web.archive.org/web/20200503213544/github.com/google/kf) before [being made closed source](https://web.archive.org/web/20200905050558/github.com/google/kf), presumably for the sake of competitive advantage or due to lack of engagement from other Cloud Foundry Foundation members.
 
@@ -120,6 +131,7 @@ Kf [started life as an open source project](https://web.archive.org/web/20200503
 ### How compatible is it?
 
 * The `kf` CLI is not a like-for-like match for the `cf` CLI
+* Many previous features are not implemented, but core app-pushing is
 * There is no Cloud Controller, so other non-CLI interactions will not work (eg Stratos)
 * There are some restrictions on app and domain names (eg app names cannot start with a numeral, no `www.` as a host)
 * Google are working on a migration tool
@@ -132,15 +144,17 @@ Given some of the scaling limitations of Kubernetes itself, operators should exp
 
 ### Can I buy it?
 
-Yes - I'm sure Google Cloud will be very happy to have your custom, and [as Google Cloud partners EngineerBetter](https://cloud.withgoogle.com/partners/detail/?id=engineerbetter&hl=en-GB) can help you with that.
+Yes - I'm sure Google Cloud will be very happy to have your custom, and [EngineerBetter as Google Cloud partners](https://cloud.withgoogle.com/partners/detail/?id=engineerbetter&hl=en-GB) can also help you with that.
 
 ### What about the future?
 
 Google continue to invest in `kf` and Product Manager Micah Baker has publicly mentioned a feature roadmap stretching out at least a year.
 
-## Our experiences
+## Our experience
 
-When migrating off of PWS, we initially tried cf-for-k8s.
+We needed to migrate away from PWS before 15th January 2021. Our estate comprised around 15 static web applications, and a few Ruby apps. Some of these needed Redis and Postgres data services.
+
+The team enthusiastically started off using cf-for-k8s. After more than a week of effort, we concluded that it was not ready for real-world use.
 
 Whilst cf-for-k8s makes starting a development environment trivial, it does not offer the feature toggles required for a production deployment. A lot of the conveniences in cf-deployment's ops files are missing.
 
@@ -188,3 +202,5 @@ Five years ago I made an invitation to deliver technology in a way that most res
 * Which path ahead saves your organisation the most toil and expense?
 * At what point do antiquated internals present a bigger risk than the cost of homebrewing a platform?
 * How much more important are business outcomes than using the coolest new tech?
+
+I look forward to continuing my involvement in the [CNCF Business Value Subcommittee](https://lists.cncf.io/g/cncf-business-value), to ensure the passion and learnings of the Cloud Foundry community continue to have a broad and meaningful impact.

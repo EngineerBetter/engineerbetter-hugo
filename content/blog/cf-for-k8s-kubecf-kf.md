@@ -1,7 +1,7 @@
 ---
 author: Daniel Jones
 date: "2021-01-29"
-heroImage: /img/blog/droplets.jpg
+heroImage: /img/blog/cf-standoff.jpg
 title: cf-for-k8s, KubeCF, Kf
 draft: true
 

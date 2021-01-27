@@ -131,7 +131,7 @@ Kf [started life as an open source project](https://web.archive.org/web/20200503
 ### How compatible is it?
 
 * The `kf` CLI is not a like-for-like match for the `cf` CLI
-* Currently a log of features are not implemented, but core app-pushing is
+* Currently a lot of features are not implemented, but core app-pushing is
 * Old-school buildpacks are supported
 * There is no Cloud Controller, so other non-CLI interactions will not work (eg Stratos)
 * There are some restrictions on app and domain names (eg app names cannot start with a numeral, no `www.` as a host)

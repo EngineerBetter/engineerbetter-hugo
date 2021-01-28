@@ -14,7 +14,7 @@ Description: Get the very latest updates about recent projects, team updates, th
   <figcaption><em><a href="https://www.flickr.com/photos/28293006@N05/8144747570">Original image source</a>, before my terrible modifications</em></figcaption>
 </figure>
 
-There is no single obvious choice for those evaluating Kubernetes-based Cloud Foundry distributions and alternatives. Find out why **EngineerBetter chose Google's Kf** for our estate, and why our advice to existing Cloud Foundry users is "**stay on BOSH**."
+There is no single obvious choice for those evaluating Kubernetes-based Cloud Foundry distributions and alternatives. Find out why **EngineerBetter chose Google's Kf** for our estate, and why our **advice to existing Cloud Foundry users is "stay on BOSH**."
 
 In January VMware shut down their public Cloud Foundry (Pivotal Web Services). All of EngineerBetter's apps ran on PWS and so we needed to migrate away from the platform and find something equally cheap and simple.
 

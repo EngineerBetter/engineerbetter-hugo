@@ -48,7 +48,13 @@ We _have_ to accelerate that change. The **untold waste of legacy practices is u
 
 It is not okay for those of us who know the 'secret sauce' to sit on our knowledge. It is precisely _because_ it is hard to convince people to change that we must not 'take our ball and go home' - **we must do more than hoard our knowledge**, out-compete the incumbents and wait for natural selection to take its course.
 
-**Society deserves better**. The individuals who hate their jobs comprising obsolete manual processes. The worker whose savings are invested in bloated, inefficient enterprises. The users of services that haven't considered their needs. The taxpayer whose money goes to paying expensive IT contractors to manually shuffle `.csv` files around government. Those for whom a career in IT seems unthinkable, not realising that it is one of the greatest tools of social mobility available to us.
+**Society deserves better**:
+
+* the individuals who hate their jobs comprising of obsolete manual processes;
+* the worker whose savings are invested in bloated, inefficient enterprises;
+* the users of services that haven't considered their needs;
+* the taxpayer whose money goes to paying expensive IT contractors to manually shuffle `.csv` files around government;
+* those for whom a career in IT seems unthinkable, despite it being one of the greatest tools of social mobility available to us.
 
 ## Thanks
 

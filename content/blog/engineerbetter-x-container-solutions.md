@@ -1,7 +1,6 @@
 ---
 author: Daniel Jones
 date: "2021-02-15"
-draft: true
 heroImage: /img/blog/big_fish_eat_little_fish_by_fizzyjinks.jpg
 title: EngineerBetter x Container Solutions
 

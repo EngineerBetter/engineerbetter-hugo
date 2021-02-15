@@ -16,11 +16,11 @@ EngineerBetter is now owned by [Container Solutions](https://www.container-solut
 
 ## What's staying the same?
 
-Much to the lament of my long-suffering team, I (Daniel Jones) will still be in charge of EngineerBetter, which will continue to operate as its own independent entity. We'll keep doing all the work we've become known for, with the same values and approach.
+Much to the lament of my long-suffering team, I (Daniel Jones) will still be in charge of EngineerBetter, which will continue to **operate as its own independent entity**. We'll keep doing all the work we've become known for, with **the same values** and approach.
 
 ## What's changing?
 
-Plugged into a bigger organisation, EngineerBetter can be significantly more ambitious and daring. [We've already started hiring](https://www.linkedin.com/in/cagiti/), and we're looking forward to _significantly_ enlarging the team.
+Plugged into a bigger organisation, **EngineerBetter will be significantly more ambitious** and daring. [We've already started hiring](https://www.linkedin.com/in/cagiti/), and we're looking forward to _significantly_ enlarging the team.
 
 We'll be teaming up with Container Solutions to co-deliver engagements, and learn from each other about how to impact customers' business outcomes most successfully. EngineerBetter now has an older sibling to draw skills from, and Container Solutions has both a foothold in the UK and access to our five years of experience in digital transformation and platform-as-a-product.
 
@@ -28,7 +28,7 @@ We'll be teaming up with Container Solutions to co-deliver engagements, and lear
 
 We can both achieve so much more together.
 
-The folks at Container Solutions share our values. It's astounding that we didn't run into each other sooner, given that we do and believe such similar things.
+The folks at **Container Solutions share our values**. It's astounding that we didn't run into each other sooner, given that we do and believe such similar things.
 
 EngineerBetter was always a very personal endeavour. I was fortunate to meet and start the company with Dan Young (who has since gone on to found [Needs Workshop](https://needsworkshop.com/)). Together we self-funded the business and we succeeded in being profitable every year. With young families we had a responsibility to make sure that our efforts did not all come to naught.
 
@@ -36,7 +36,7 @@ That conservative approach served us well, but also held the company back. We mi
 
 By comparison Container Solutions' approach of swinging for the fences has resulted in a business that is significantly larger, despite being a mere year older.
 
-**Becoming part of Container Solutions allows EngineerBetter to be more bold, and amplify everything it does.**
+Becoming part of **Container Solutions allows EngineerBetter amplify everything it does.**
 
 ## On my soapbox
 
@@ -46,7 +46,7 @@ In one hundred years, successful companies of the day won't look like the majori
 
 We _have_ to accelerate that change. The **untold waste of legacy practices is unethical**. The misery created by [iron triangle management](https://www.engineerbetter.com/blog/escaping-iron-triangle/), silos, and organisational empire-building is unconscionable. There are better ways of building software. Most importantly, these translate into **better ways of building businesses**.
 
-It is not okay for those of us who know the 'secret sauce' to sit on our knowledge. It is precisely _because_ it is hard to convince people to change that we must not 'take our ball and go home' - we must do more than hoard our knowledge, out-compete the incumbents and wait for natural selection to take its course.
+It is not okay for those of us who know the 'secret sauce' to sit on our knowledge. It is precisely _because_ it is hard to convince people to change that we must not 'take our ball and go home' - **we must do more than hoard our knowledge**, out-compete the incumbents and wait for natural selection to take its course.
 
 **Society deserves better**. The individuals who hate their jobs comprising obsolete manual processes. The worker whose savings are invested in bloated, inefficient enterprises. The users of services that haven't considered their needs. The taxpayer whose money goes to paying expensive IT contractors to manually shuffle `.csv` files around government. Those for whom a career in IT seems unthinkable, not realising that it is one of the greatest tools of social mobility available to us.
 

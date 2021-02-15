@@ -9,7 +9,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-_Image via [FizzyJinks](https://www.deviantart.com/fizzyjinks/art/Big-fish-eat-Little-Fish-178970237)_
+_(Image via [FizzyJinks](https://www.deviantart.com/fizzyjinks/art/Big-fish-eat-Little-Fish-178970237). None of the fish in this story are as angry as the ones in that picture.)_
 
 EngineerBetter is now owned by [Container Solutions](https://www.container-solutions.com). It won't just be 'business as usual', it'll be a case of 'business even better'.
 

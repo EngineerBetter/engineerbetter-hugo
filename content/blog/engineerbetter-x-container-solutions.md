@@ -35,7 +35,7 @@ That conservative approach served us well, but also held the company back. We mi
 
 By comparison Container Solutions' approach of swinging for the fences has resulted in a business that is significantly larger, despite being a mere year older.
 
-Becoming part of **Container Solutions allows EngineerBetter amplify everything it does.**
+Becoming part of **Container Solutions allows EngineerBetter to amplify everything it does.**
 
 ## On my soapbox
 

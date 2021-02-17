@@ -39,6 +39,19 @@ Recent versions of the prior blog post suggested uploading your public key to a 
 ```terminal
 $ gpg --keyserver keys.gnupg.net --search daniel.jones@engineerbetter.com
 ```
+**If** you experience the following...
+
+```terminal
+$ gpg --keyserver keys.gnupg.net --search daniel.jones@engineerbetter.com
+$ gpg: error searching keyserver: Server indicated a failure
+$ gpg: keyserver search failed: Server indicated a failure
+```
+
+Try adding the `hkp` protocol along with a port override:
+
+```terminal
+$ gpg --keyserver hkp://keys.gnupg.net:80 --search daniel.jones@engineerbetter.com
+```
 
 Results (if any) are numbered, and simply selecting the right number from the list will import your key.
 
@@ -73,7 +86,9 @@ DVeNShSNf4K9uOS62gEQROZQClA/
 
 Copy the above public key, including the begin and end blocks, and then [**add it as a new key on GitHub**](https://github.com/settings/gpg/new).
 
-We then need to **tell Git to use GPG to sign commits**, and specifically this key. Use the _short_ ID from the output of the `--list-secret-keys` command we ran earlier. In my example, it follows after `rsa2048`:
+We then need to **tell Git to use GPG to sign commits**, and specifically this key. Use the _short_ ID from the output of the `--list-secret` command we ran earlier. In my example, it follows after `rsa2048`:
+
+If the _short_ ID is not present in the output, try running the command with `--keyid-format LONG`.
 
 ```terminal
 git config --global commit.gpgsign true

@@ -244,6 +244,12 @@ $ gpg --keyserver pgp.mit.edu          --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0
 $ gpg --keyserver keyserver.ubuntu.com --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
 ```
 
+**If** you experience the following error `gpg: keyserver send failed: Server indicated a failure`,  try adding the `hkp` protocol along with a port override:
+
+```terminal
+$ gpg --keyserver hkp://keys.gnupg.net:80 --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
+```
+
 Now the public key is safely stored elsewhere, you can get back to configuring SSH.
 
 ## Viewing the public key

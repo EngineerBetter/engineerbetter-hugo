@@ -15,17 +15,39 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 Concourse is great for integrating lots of things, checking that they work together, and then progressing to something else like a release or promotion job. It has great fan-out, fan-in semantics.
 
-Many folks have created 'CI-as-a-Service' solutions at their organisations, building pipelined solutions so that app teams don't need to worry about writing their own. We even worked with one customer who offered 'CI-as-a-Service' to their platform - external collaborators didn't ship plugins, they provided Git repos and the platform ingested third-party code via Concourse pipelines.
+Many folks have created Concourse-based 'CI-as-a-Service' solutions at their organisations, building pipelined solutions so that app teams don't need to worry about writing their own. This pattern is particularly popular at regulated enterprises, who need to ensure that the path to production is secure.
 
-So, what are the headline features that make Concourse so lovely?
+We even worked with one customer who offered 'CI-as-a-Service' to their platform - external collaborators didn't ship plugins, they provided Git repos and the platform ingested third-party code via Concourse pipelines.
+
+Concourse is great for big, complex, important things. Y'know, like the massive Kubernetes platforms and microservice architectures that everyone's building these days.
+
+The following **_enormous_** pipeline is that of RabbitMQ. It's so big that I need to tell you that the post continues after it. It's kinda like the opening scene of Star Wars.
+
+<a href="https://ci.rabbitmq.com/teams/main/pipelines/server-release:v3.8.x?group=re%3Afinal&group=re%3Arc&group=re%3Abeta&group=re%3Aalpha&group=(qa%3Aclients)&group=qa%3Aupgrades&group=qa%3Apkg&group=qa%3Aplugins&group=qa%3Abroker" target="_blank">
+  <figure>
+    <img class="fit image" src="/img/blog/concourse-rabbit.png" alt="Screenshot of a RabbitMQ Concourse pipeline" />
+    <figcaption>This _enormous_ pipeline belongs to the RabbitMQ team</figcaption>
+  </figure>
+</a>
+
+So, why do people choose Concourse for big, important projects?
 
 ### Pipelines
 
 The primary unit of Concourse is the pipeline. It was built around pipelines from the very beginning, and so doesn't have 'tacked on' pipeline support like some legacy CI/CD servers (I'm looking at you, Jenkins).
 
+<a href="https://ci.engineerbetter.com/teams/main/pipelines/concourse-tasks" target="_blank">
+  <figure>
+    <img class="fit image" src="/img/blog/concourse-tasks-pipeline.png" alt="Screenshot of a Concourse pipeline" />
+    <figcaption>Whenever a Git repo changes, this pipeline sets itself with the latest config, tests the code, bumps a semver, and then makes GitHub release. Any failures trigger Slack notifications.</figcaption>
+  </figure>
+</a>
+
+As we'll see below, Concourse has an internal event-driven model. Pipelines make sense of the ordering of events and the dependencies between them, creating a human-intelligible view of what's _actually_ going to happen. There are enough constraints in the event-driven model to avoid emergent behaviour.
+
 ### Resources: Event-driven
 
-Concourse models the world in pipelines and resources.
+Concourse models the world in [resources](https://concourse-ci.org/resources.html).
 
 Resources represent things in the outside world that can change. Those changes must have a way of uniquely identifying themselves, so that Concourse can tell if a version is new. Pipeline authors will likely configure that any new versions should trigger a set of jobs, like testing and deployment.
 
@@ -47,13 +69,15 @@ Want to run the system tests for your local changes, without pulling down a bazi
 
 ### Easy Access to Failed Tasks
 
-Concourse offers the `fly intercept` command to get you a terminal session directly into the container for a failed build, so you can debug it easily. No faffing about with `kubectl` here.
+Concourse offers the `fly intercept` command to get you a terminal session directly into the container for a failed build, so you can debug it easily. You can even copy and paste the URL from the web UI into the terminal, so you don't need to type out build numbers.
+
+No faffing about with `kubectl` here.
 
 ### Declarative Config, All The Time
 
-Concourse pipelines are defined in code, meaning that, unless you're deranged, all changes will be version-controlled.
+Concourse pipelines are defined in code, meaning that, unless you're a deranged loon, all changes will be version-controlled.
 
-Concourse simply doesn't allow you to make behavioural changes through the UI (with the exception of triggers/pausing things, and pinning old versions of resources). You don't need to worry about colleagues re-configuring jobs without an audit trail in some UI.
+Concourse simply doesn't allow you to make behavioural changes through the UI (with the exception of triggers/pausing things, and pinning old versions of resources). You don't need to worry about colleagues re-configuring jobs in some UI without an audit trail.
 
 ### Images, Not Plugins
 
@@ -67,15 +91,15 @@ Your pipelines are utterly portable - as long as those images are publicly avail
 
 Yep, Concourse is backed by a relational database. That means that it can hold thousands if not millions of build histories without falling over. The data layer of Concourse will scale better than solutions relying on etcd for persistence, such as Argo.
 
-### Not Just For Hipsters
+### Not Just For Kubernetes
 
-Concourse runs anywhere. It is shipped as simple cross-platform binaries (including Windows!), as well as container images. There's an official Helm chart for Kubernauts, but Concourse doesn't _force_ you to use Kubernetes.
+Concourse runs anywhere. It is shipped as simple cross-platform binaries (including Windows!), as well as container images. There's an official Helm chart for Kubernauts, but Concourse doesn't force you to use Kubernetes, nor does it assume that everything you want to do is in Kubernetes.
 
-There are plenty of good reasons to run CI/CD outside of Kubernetes. For instance, how do you pipeline the provisioning of your Kubernetes clusters in the first place? What if you're in an enterprise without access to a Kubernetes cluster?
+There are plenty of good reasons to run CI/CD outside of Kubernetes. For instance, how do you pipeline the provisioning of your Kubernetes clusters in the first place? What if you're in an enterprise without access to a Kubernetes cluster? What if your pipeline is responsible for bootstrapping entire environments?
 
 ### Bring Your Own Worker
 
-Concourse workers are the machines that perform the, err, workloads. They register with the central scheduler, not the other way 'round.
+Concourse workers are the machines that perform the, err, workloads. They register with the central scheduler, not the other way 'round, and communicate securely via SSH tunnels.
 
 Because workers add themselves to a cluster, this makes them easy to horizontally autoscale.
 
@@ -89,13 +113,25 @@ By testing, integrating and deploying many things in a single pipeline, we can d
 
 EngineerBetter have worked with customers to form cross-functional teams, owning deployment of complex SaaS products end-to-end. For one customer in particular, this was the first time the entire value stream of the product had been codified. For the very first time there was an unambiguous, executable, reproducible path to production that was under version control.
 
-## Who Shouldn't Use Concourse?
+## Background Images
 
-Concourse is not going to be the simplest solution for building a single app. You're much better off with something like CircleCI or Travis for that.
+How could you not love this happy Beluga?
+
+<figure>
+  <a href="/img/blog/concourse-pipeline-bg.png" target="_blank"><img class="fit image" src="/img/blog/concourse-pipeline-bg.png" alt="Concourse pipeline with a background image" /></a>
+  <figcaption>Images can be animated too, for extra memetasticness</figcaption>
+</figure>
+
+### Who Shouldn't Use Concourse?
+
+You shouldn't use Concourse if you:
+
+* are doing things in isolation (like a single app), that aren't really pipelines
+* prefer GUIs to CI-as-code
+* want to execute unreproducible builds (I'm looking at you again Jenkins, and the [Build Parameters plugin](https://plugins.jenkins.io/build-with-parameters/))
+* aren't able to create or use container images
 
 If you use PR-based workflows, Concourse can handle that, and [there are future improvements to the UX](https://github.com/concourse/concourse#the-road-to-concourse-v10) to make it easier.
-
-If you like manually changing things through a UI, you shouldn't use Concourse.
 
 ## How Can I Find Out More?
 

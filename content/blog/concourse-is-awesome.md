@@ -34,7 +34,7 @@ So, why do people choose Concourse for big, important projects?
 
 ### Pipelines
 
-The primary unit of Concourse is the pipeline. It was built around pipelines from the very beginning, and so doesn't have 'tacked on' pipeline support like some legacy CI/CD servers (I'm looking at you, Jenkins).
+The primary unit of Concourse is the [pipeline](https://concourse-ci.org/pipelines.html). It was built around pipelines from the very beginning, and so doesn't have 'tacked on' pipeline support like some legacy CI/CD servers (I'm looking at you, Jenkins).
 
 <a href="https://ci.engineerbetter.com/teams/main/pipelines/concourse-tasks" target="_blank">
   <figure>
@@ -57,9 +57,9 @@ Resources mean that as an engineer, I don't have to write my own code to work ou
 
 Because resources encapsulate interactions with outside world, it becomes much easier to write functional (in the mathematical sense) pipelines - provide the same inputs, get the same outputs, with no side-effects.
 
-Providing you don't purposefully add side-effects into your jobs, you can re-run the same job multiple times with complete confidence.
+Providing you don't purposefully add side-effects into your [jobs](https://concourse-ci.org/jobs.html), you can re-run the same job multiple times with complete confidence.
 
-You can also execute tasks (steps within a job) in isolation, knowing that you won't break anything. Which brings us on to...
+You can also execute [tasks (steps within a job)](https://concourse-ci.org/tasks.html) in isolation, knowing that you won't break anything. Which brings us on to...
 
 ### Executing Tasks using Local Inputs
 

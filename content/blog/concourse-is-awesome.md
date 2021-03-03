@@ -102,6 +102,12 @@ No asking the CI admin to install a plugin for you. No waking up to find that Je
 
 Your pipelines are utterly portable - as long as those images are publicly available, your pipeline can run anywhere.
 
+### No Lock-in
+
+The only part of your CI/CD process that is tied to Concourse is the pipeline. There are no proprietary plugins or bits of behaviour that lock you in.
+
+Resources are three executables in a container image, and the executables for custom tasks either come from your own code (eg scripts in a Got repo) or are in the container images you specify. If you want to take these buildings blocks to another system, there's nothing stopping you.
+
 ### Postgres
 
 Yep, Concourse is backed by a relational database. That means that it can hold thousands if not millions of build histories without falling over. The data layer of Concourse will scale better than solutions relying on etcd for persistence, such as Argo.

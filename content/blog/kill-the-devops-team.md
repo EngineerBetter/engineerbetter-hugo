@@ -76,7 +76,7 @@ As alluded to earlier, folks that _are_ actually developing the applications **s
 
 If they do have to ask for these things, then guess what? **NotDevOps!**
 
-If you're practising NotDevOps, your employer doesn't get the benefits that they think they are. You're lying to the C-suite who _think_ you're doing this cool thing they've heard about, when actually it's the same playbook with differently-named teams.
+If you're practising NotDevOps, your employer isn't getting the benefits that they think they are. You're lying to the C-suite who _think_ you're doing this cool thing they've heard about, when actually it's the same playbook with differently-named teams.
 
 This is worse than just _not_ doing DevOps - you're creating a blind spot for the people that pay for your expertise, and ruining the reputation of those who _are_ doing the right thing by abusing the terminology.
 

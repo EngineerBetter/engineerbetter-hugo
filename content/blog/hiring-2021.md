@@ -31,6 +31,15 @@ We can make software development go as fast as possible, and this exposes other 
 
 **We need people that understand both the status quo and customer-driven, lean, decision-making**. In order to get lean into the heart of the enterprise, we have to help folks on the journey to being more responsive.
 
+## Areas we'll be working in
+
+There are two things at the core of all of this:
+
+* the ability to make software development orders of magnitude faster
+* the philosophy of customer focus, fast feedback, continuous learning, and building the right thing
+
+These can be applied anywhere that software implements a business. We're going to continue applying this in the **platform** space, expand into **app modernisation**, and the development of **greenfield apps** that are **lighthouses for wider digital transformation**.
+
 ## EngineerBetter
 
 There are lots of things that we could write about EngineerBetter - how we've grown by 50% in recent months, how we're looking at international expansion, and how we're combining remote work with an office designed for pair-programming via telepresence. That would make for a very long blog post, and right now we want to focus on people who are excited by the work we'll be doing, and we can discuss the how we'll be doing it later.

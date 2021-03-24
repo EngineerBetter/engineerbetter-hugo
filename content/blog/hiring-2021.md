@@ -42,8 +42,8 @@ These can be applied anywhere that software implements a business. We're going t
 
 ## EngineerBetter
 
-There are lots of things that we could write about EngineerBetter - how we've grown by 50% in recent months, how we're looking at international expansion, and how we're combining remote work with an office designed for pair-programming via telepresence. That would make for a very long blog post, and right now we want to focus on people who are excited by the work we'll be doing, and we can discuss the how we'll be doing it later.
+There are lots of things that we could write about EngineerBetter - how we're [part of the Container Solutions family](/blog/engineerbetter-x-container-solutions), how we've grown by 50% in recent months, how we're looking at international expansion, and how we're combining remote work with an office designed for pair-programming via telepresence. That would make for a very long blog post, and right now we want to focus on people who are excited by the work we'll be doing, and we can discuss the how we'll be doing it later.
 
 ## Get in touch
 
-We'd love to speak to anyone for whom the above resonates. If you're excited by the above, get in touch via [contact@engineerbetter.com](contact@engineerbetter.com) and we can have a chat about how we can work together.
+We'd love to speak to anyone for whom the above, and [our values](/about-us), resonate. If you're excited by the above, get in touch via [contact@engineerbetter.com](contact@engineerbetter.com) and we can have a chat about how we can work together.

@@ -90,11 +90,11 @@ The exercises are deliberately fun and high-energy - my experience as a martial 
 
 There are three key benefits to this approach.
 
-**Ideas come from the experts**. A bunch of external consultants are _never_ going to understand an organisation as well as those living in it. Sure, we might have outside perspective, but there will inevitably things that only those working in an organisation can bring to the conversation.
+**Ideas come from the experts**. A bunch of external consultants are _never_ going to understand an organisation as well as those living in it. Sure, we might have outside perspective, but there will inevitably be things that only those working in an organisation can bring to the conversation.
 
 **Empathy is built between individuals**. It's one thing to know that the people that submit service tickets aren't happy with your team, but it's something quite different to see the people behind the GitHub usernames on the pull requests that go unreviewed. Speaking face-to-face invokes pro-social instincts that cause criticisms to be more level and balanced, and feedback to be listened to with more understanding.
 
-**People start the improvement journey**. We invite folks to think of one small thing thatthey could do tomorrow, without anyone's permission, to make things better. No only does this start moving the needle, but the crowd-sourcing of ideas means that people are already drawing the same conclusions that are likely to appear in the report that EngineerBetter provide. Rather than some detached consultancy dropping a report that says the company should adopt the Spotify model, the people involved were part of the journey and know that they'll be part of the solution. They've had a glimpse of how things could be, and what the way forward is - so they feel less threatened when changes to the status quo are later suggested.
+**People start the improvement journey**. We invite folks to think of one small thing that they could do tomorrow, without anyone's permission, to make things better. Not only does this start moving the needle, but the crowd-sourcing of ideas means that people are already drawing the same conclusions that are likely to appear in the report that EngineerBetter provide. Rather than some detached consultancy dropping a report that says the company should adopt the Spotify model, the people involved were part of the journey and know that they'll be part of the solution. They've had a glimpse of how things could be, and what the way forward is - so they feel less threatened when changes to the status quo are later suggested.
 
 ### Value Stream Mapping
 
@@ -105,7 +105,7 @@ Either as part of the interviews or the group facilitation (sometimes both!) we 
   <figcaption>Part of a value stream map, with failure rates, wait times and work times expressed probabilistically.</figcaption>
 </figure>
 
-The value stream map then gives an upper and lower bound for how long it takes to make changes, otherwise known as the **lead-time-to-production**. This is a key metric for agility in a competitive marketplace, and evermore importantly for developer morale. Increasingly we're seeing business struggle to retain the best engineers when they become frustrated and not seeing the fruits of their labour.
+The value stream map then gives an upper and lower bound for how long it takes to make changes, otherwise known as the **lead-time-to-production**. This is a key metric for agility in a competitive marketplace, and evermore importantly for developer morale. Increasingly we're seeing businesses struggle to retain the best engineers when they become frustrated and not seeing the fruits of their labour.
 
 The value stream map can also help us to calculate **flow efficiency**, or the ratio between time spent working versus waiting. Low flow efficiency is indicative of a wasteful development process that spends cash ensuring everyone on the boat is busy paddling, without checking that they're all paddling in the same direction.
 
@@ -117,7 +117,7 @@ It's crucially important to investigate the value stream before coding starts. I
 
 Each box on the diagram represent either an undesired symptom (it takes too long to get changes into production), an intermediate cause (CI pipeline takes too long), and a small number of root causes (the organisation incentivises hero culture). The boxes are linked by arrows of causation - an arrow going from one box to another represents a cause (from) and effect (to).
 
-Sometimes the causal links form feedback loops. They might be tight in scope, such as _Code is hard to test_ and _Developers don't believe in TDD_. Other times these loops span the entire diagram, wherein they reveal the forces that keep the organisation in its current rut: _"Throughput of the department is neither known nor visualised"_ causing _"Unbounded amounts of work enter the backlog"_, which through a series of intermediate causes means that no-one has the time to visualise the throughput capabilities of the department.
+Sometimes the causal links form feedback loops. They might be tight in scope, such as _Code is hard to test_ and _Developers don't believe in TDD_. Other times these loops span the entire diagram, wherein they reveal the forces that keep the organisation in its current rut: _"Throughput of the department is neither known nor visualised"_ causing _"Unbounded amounts of work to enter the backlog"_, which through a series of intermediate causes means that no-one has the time to visualise the throughput capabilities of the department.
 
 <figure>
   <img src="/img/blog/anonymous-crts.jpg" class="fit image">
@@ -177,7 +177,7 @@ We encourage folks to **look at key metrics** like **lead-time-to-production and
 
 ## Case Studies
 
-We've been very fortunate that some of our customers have been happy for us to share the ways that we've helped them. Our approach is a **perfect reality check for technology leaders in new positions**, either by way of promotion or changing companies. These folks don't have any significant underlying dysfunction, and instead just want and honest appraisal from an outside source.
+We've been very fortunate that some of our customers have been happy for us to share the ways that we've helped them. Our approach is a **perfect reality check for technology leaders in new positions**, either by way of promotion or changing companies. These folks don't have any significant underlying dysfunction, and instead just want an honest appraisal from an outside source.
 
 Other customers (who have, to use a British colloquialism, _been in a bit pickle_) have quite understandably not been so keen on sharing their dirty laundry. Suffice to say that some of **our more interesting work** has been in **organisations that are struggling** with productivity and morale.
 
@@ -190,7 +190,7 @@ Index Labs is the company behind [Football Index](https://www.footballindex.co.u
   <figcaption>Akash Gharu (in soft-focus!) at the start of Index Labs' first internal tech conference.</figcaption>
 </figure>
 
-[Akash Gharu](https://www.linkedin.com/in/akash-gharu/) had recently joined Index Labs as CTO, and was pumped full of ambition (if you've spoken to him, you'll know he's a force of nature) to help take Index Labs to the next level. He was absolutely determined that engineering culture was the top priority, as it is crucial to being able to hire the best talent. The company already had a successful product and well-functioning development organisation, and Akash invited EngineerBetter to help identify any blindspots or 'unknown unknown' improvements that could be made.
+[Akash Gharu](https://www.linkedin.com/in/akash-gharu/) had recently joined Index Labs as CTO, and was pumped full of ambition (if you've spoken to him, you'll know he's a force of nature) to help take Index Labs to the next level. He was absolutely determined that engineering culture was the top priority, as it is crucial to being able to hire the best talent. The company already had a successful product and well-functioning development organisation, and Akash invited EngineerBetter to help identify any blindspots or 'unknown unknowns' improvements that could be made.
 
 We were asked to help take part in the first IndexLabs internal tech conference, which brought together their distributed team for meetings, talks, pizza and drinks. EngineerBetter chatted to engineers, testers, product people and more, delivered presentations and facilitated group discussions.
 
@@ -232,6 +232,6 @@ If you need help with the above then please [get in touch](mailto:contact@engine
 
 ### Frustrated Engineer?
 
-If you're an engineer reading this and wishing that you worked for a forward-thinking company that is pro-actively to improve its processes and culture, then you could forward this article to your leadership. If they don't want to change, then you could always get in touch with either [Index Labs](https://news.footballindex.co.uk/careers/) or [R3](https://www.r3.com/careers/) - **they're both hiring**.
+If you're an engineer reading this and wishing that you worked for a forward-thinking company that is pro-actively trying to improve its processes and culture, then you could forward this article to your leadership. If they don't want to change, then you could always get in touch with either [Index Labs](https://news.footballindex.co.uk/careers/) or [R3](https://www.r3.com/careers/) - **they're both hiring**.
 
 Of course if you're interested in helping other organisations improve, then [EngineerBetter would like to hear from you](mailto:contact@engineerbetter.com)!

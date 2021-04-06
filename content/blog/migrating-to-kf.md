@@ -120,23 +120,28 @@ The tool **pushes apps exactly as a human would** using the `kf` CLI before chec
 By migrating brokered services as user-provided services with custom bindings, the migration tool lets Kf use **existing data services without doing an upfront data migration**. As long as there is network connectivity and hostnames can be resolved, migrated Kf apps will continue to use the **exact same binding credentials** as their Cloud Foundry counterparts.
 
 ## Use cases
-### Early migration planning
+### Planning and prioritising a migration
 During early planning steps of a migration, the `plan` command can be targeted at different areas to highlight where and what `issues` will be faced during the migration. By classifying the issues by both number and impact, individual parts of the migration can be effectively **estimated and prioritised**.
 
-### Platform team
+### Operator-owned migrations
 A platform team can use the `plan` command to see which platform features may be incompatible and what issues are most common across various foundations. Using this information, the team can understand **how much support other teams will need** whilst migrating and write up docs and guidance for solving the most frequent `issues`. Additionally the `apply` command can be used to do the hard work of **building the org and space structure to match existing foundations**.
 
-### Application team
+### Developer-owned migrations
 By using scoped plans, individual teams can take ownership of the migration of an app or space themselves. By running `plan` and `apply` as issues are fixed, a team can **understand when an app is ready to be fully migrated** and when apps are ready for their CI pipelines to push to the new Kf cluster.
 
-### Legacy app support
+### Migrating orphaned apps
 By pulling the application source code package directly from Cloud Foundry and builds it in the same way, the migration tool allows for even **orphaned applications to be migrated to a new runtime** even without extensive knowledge of the application or a dedicated CI pipeline.
 
-## Next steps
-After running `plan` and `apply`, you'll be left in a state of running applications in both Cloud Foundry and in Kf. The next steps will involve working out how to start retiring your Cloud Foundry estate such as:
-* How to shift traffic from Cloud Foundry to Kf? Should it be a simple switchover or do you need a weighted transition? This may involve DNS, custom Cloud Foundry routing rules or even forming a service mesh between the two platforms.
-* How to migrate data services to cloud native offerings
-* Migrating applications to user Cloud Native Buildpacks for improved build times and local development
-* Modernising applications that proved difficult during the migration
+## What else is left to do?
+After running `plan` and `apply`, you'll be left in a state of running applications in both Cloud Foundry and in Kf.
+
+The next steps will involve working out how to start retiring your Cloud Foundry estate such as:
+
+* How should you shift traffic from Cloud Foundry to Kf? Should it be a simple switchover or do you need a weighted transition? This may involve DNS, custom Cloud Foundry routing rules or even forming a service mesh between the two platforms.
+* How should you migrate data services to cloud native offerings?
+* Should you adopt Cloud Native Buildpacks for improved build times and local development?
+* Should you modernise applications that proved difficult during the migration?
+
+These are the questions where the answer will vary between users, so it can help to have partners on-hand to assist with the migration.
 
 > If you are thinking of migrating from Cloud Foundry to Kf, EngineerBetter can help you plan and execute through the entire lifecycle of a migration. As Cloud Foundry experts, Google Cloud partners and Kubernetes Certified Service providers we have the experience to ensure your migration has best possible outcomes.

@@ -19,6 +19,16 @@ These tools **do the heavy lifting for you**, allowing you to focus on the parts
 
 
 ## Using the tool
+
+### TL;DR
+
+1. `kf plan > my-cf.yml`
+1. Make any changes in the plan, removing any issues you wish to ignore
+1. `kf apply my-cf.yml`
+1. Watch as orgs, spaces, routes, services and apps migrate to Kf
+
+### Overview
+
 Terraform users will find the `plan` and `apply` commands familiar. The `plan` command outputs a YAML plan detailing both the resources the tool would migrate as well as recording any potential incompatibilities between Cloud Foundry and Kf.
 
 The YAML plan is then passed to the `apply` command which migrates the specified resources from the source Cloud Foundry across to the target Kf cluster.

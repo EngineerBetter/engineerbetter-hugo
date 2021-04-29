@@ -124,7 +124,7 @@ Date:   Tue Apr 30 11:50:07 2019 +0100
 If when you made the commit you were greeted with the error `git error: gpg failed to sign the data`, there could be a number of causes:
 
 * Git is configured to use the [wrong `gpg` executable](https://stackoverflow.com/a/40066889/774395)
-* Your [GPG key is expired and needs extending](https://superuser.com/questions/813421/can-you-extend-the-expiration-date-of-an-already-expired-gpg-key/1141251#1141251)
+* Your [GPG key is expired and needs extending](/blog/yubikey-ssh/#extending-the-life-of-the-key)
 
 ## Push
 

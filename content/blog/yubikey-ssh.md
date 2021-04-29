@@ -277,6 +277,92 @@ You can put this in `~/.authorized_keys` for any machine you want to be able to 
 1. Observe the GUI disappear, and the `git pull` complete successfully.
 1. Remove your Yubikey when you're done working on that machine.
 
+## Extending the life of the key
+
+Earlier in this post it was recommended that your GPG key was given an expiry date. What happens when it expires?
+
+If your GPG key has expired, assuming that [you've configured Git to use it for commit signing](/blog/yubikey-signed-commits), you'll see this when trying to commit:
+
+```terminal
+error: gpg failed to sign the data
+fatal: failed to write commit object
+```
+
+You can extend the life of your key simply.
+
+Ensure that your Yubikey is inserted, and run `gpg --list-secret <your-email-address>`. This will show the key and subkeys:
+
+```terminal
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: next trustdb check due at 2023-04-29
+sec>  rsa2048 2017-11-22 [SC] [expires: 2023-04-29]
+      FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
+      Card serial no. = 0006 06917459
+uid           [ultimate] Daniel Jones <daniel.jones@engineerbetter.com>
+ssb>  rsa2048 2017-11-22 [E] [expires: 2023-04-29]
+ssb>  rsa2048 2017-11-22 [A] [expires: 2023-04-29]
+```
+
+Enter the interactive GPG key-editing prompt with `gpg --edit-key <long-id-from-above>`, and you'll see something like this:
+
+```terminal
+sec  rsa2048/ADD0D0CAFEDECADE
+     created: 2017-11-22  expires: 2023-04-29  usage: SC
+     card-no: 0006 06917459
+     trust: ultimate      validity: ultimate
+ssb  rsa2048/BA53B2D6734C8A8E
+     created: 2017-11-22  expires: 2023-04-29  usage: E
+     card-no: 0006 06917459
+ssb  rsa2048/AF5A4B5AA8A8C5BF
+     created: 2017-11-22  expires: 2023-04-29  usage: A
+     card-no: 0006 06917459
+[ultimate] (1). Daniel Jones <daniel.jones@engineerbetter.com>
+```
+
+By default there is no subkey selected, so we'll be operating on the main key. Use the `expire` command, and you'll be prompted to enter a number followed by a unit, such as `2y` for two years. Upon pressing `return`, you'll be prompted to verify the expiration date, which you should confirm.
+
+```terminal
+gpg> expire
+Are you sure you want to change the expiration time for multiple subkeys? (y/N) y
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 2y
+Key expires at Sat 29 Apr 12:17:52 2023 BST
+Is this correct? (y/N) y
+```
+
+You'll then get this hint:
+
+```terminal
+gpg: WARNING: Your encryption subkey expires soon.
+gpg: You may want to change its expiration date too.
+```
+
+We now need to select the subkeys for editing too. They are 1-indexed, and are selected with the `key N` command. Each selected key will have an asterisk next to it. `key 0` will deselect subkeys.
+
+```terminal
+gpg> key 1
+
+sec  rsa2048/ADD0D0CAFEDECADE
+     created: 2017-11-22  expires: 2023-04-29  usage: SC
+     card-no: 0006 06917459
+     trust: ultimate      validity: ultimate
+ssb* rsa2048/BA53B2D6734C8A8E
+     created: 2017-11-22  expired: 2021-04-29  usage: E
+     card-no: 0006 06917459
+ssb  rsa2048/AF5A4B5AA8A8C5BF
+     created: 2017-11-22  expired: 2021-04-29  usage: A
+     card-no: 0006 06917459
+[ultimate] (1). Daniel Jones <daniel.jones@engineerbetter.com>
+```
+
+Select all subkeys, and then run the `expire` command exactly as you did for the main key. Your keys are now extended, and you may now commit as normal.
 
 [cvpwn]: https://thejh.net/misc/website-terminal-copy-paste
 [githubkeys]: https://github.com/settings/keys

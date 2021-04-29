@@ -277,7 +277,7 @@ You can put this in `~/.authorized_keys` for any machine you want to be able to 
 1. Observe the GUI disappear, and the `git pull` complete successfully.
 1. Remove your Yubikey when you're done working on that machine.
 
-## Extending the life of the key
+## Extending an expired GPG key
 
 Earlier in this post it was recommended that your GPG key was given an expiry date. What happens when it expires?
 

@@ -49,7 +49,7 @@ Plug in your Yubikey, and run `gpg --change-pin` to change the PIN from the defa
 
 Despite the term PIN, it can be **up to 8 alphanumeric characters**.
 
-```
+```terminal
 $ gpg --change-pin
 1 - change PIN
 2 - unblock PIN
@@ -67,7 +67,7 @@ If you enter your newly-set PIN incorrectly three times then the Yubikey will be
 
 You should change the admin PIN too, by running the same command again, this time selecting option 3:
 
-```
+```terminal
 $ gpg --change-pin
 1 - change PIN
 2 - unblock PIN
@@ -90,7 +90,7 @@ Firstly, you need to configure `ssh` on the machines you'll be working on to use
 
 The below snippet appends the appropriate config to your `.bashrc` (if you use zsh you will need to append these lines to `~/.zshrc` instead).
 
-```
+```terminal
 $ cat <<EOF >> ~/.bashrc
 export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye
@@ -110,7 +110,7 @@ To install a PIN entry GUI on **macOS**, run `brew install pinentry-mac`. On Lin
 
 `pinentry-mac` **may have additional installation steps**, so you should pay attention to the `brew install` output. At the time of writing, you are asked to configure `gpg-agent` to use `pinentry-mac` by default:
 
-```sh
+```terminal
 echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
 ```
 
@@ -120,7 +120,7 @@ echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
 
 I recommend [generating your RSA key on the Yubikey itself](#roca), rather than generating the key on your computer and then copying it to the Yubikey. This way you know that it has never been on the filesystem, where it could be snooped upon.
 
-```
+```terminal
 $ gpg --card-edit
 gpg: detected reader `Yubico Yubikey 4 OTP+U2F+CCID 00 00'
 Application ID ...: D2760001240102010006069174660000
@@ -152,7 +152,7 @@ You will be asked if you want to backup the encryption key.
 If you are only using this key for SSH authentication I would recommend you do not do this.
 It is fairly easy to go though this process again if you lose your Yubikey, and it means your key will never leave your Yubikey.
 
-```
+```terminal
 Make off-card backup of encryption key? (Y/n) n
 Please note that the factory settings of the PINs are
    PIN = `123456'     Admin PIN = `12345678'
@@ -172,7 +172,7 @@ Please specify how long the key should be valid.
 
 By default, your key will not expire. I would recommend setting an expiry date.
 
-```
+```terminal
 Key is valid for? (0) 1y
 Key expires at Wed 14 Nov 2018 14:18:02 GMT
 Is this correct? (y/N) y
@@ -227,7 +227,7 @@ The public key that you generated is stored in your local keychain (eg `~/.gnupg
 
 You should upload your public key to one or more popular keyservers:
 
-```
+```terminal
 $ gpg --list-secret paddy.steed@engineerbetter.com
 sec>  rsa2048 2017-11-22 [SC] [expires: 2021-04-29]
       FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
@@ -239,7 +239,7 @@ ssb>  rsa2048 2017-11-22 [E] [expires: 2021-04-29]
 
 **Copy the long ID** from the output above, and then upload it to one or more servers:
 
-```
+```terminal
 $ gpg --keyserver keys.openpgp.org     --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
 $ gpg --keyserver keys.gnupg.net       --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
 $ gpg --keyserver pgp.mit.edu          --send-key FEEDBEEFC0C0A7D867D34ADEADD0D0CAFEDECADE
@@ -258,7 +258,7 @@ Now the public key is safely stored elsewhere, you can get back to configuring S
 
 Assuming you have configured `gpg-agent` correctly. `ssh-add -L` will display the public key in SSH format (you may need to open a new shell session if your ssh-agent already has a key loaded).
 
-```
+```terminal
 $ ssh-add -L
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCy7PhCvbb+R0UIsQdBvIpWQNSBOZkfV+7E0d55Gxzppt9tvQHbWJwzi/… cardno:000606917466
 ```

@@ -66,8 +66,7 @@ The latest versions of Chrome, Opera and Firefox support [U2F]. However, in Fire
 - `security.webauth.u2f`
 - `security.webauth.webauthn`
 
-[GitHub][githubU2F], [Gitlab][gitlabU2F], and [Google Cloud Platform][GCPU2F] all support [U2F] as a 2FA option.
-[Amazon Web Services][AWS] does not yet, but you can still use your Yubikey as your 2FA device.
+[GitHub][githubU2F], [Gitlab][gitlabU2F], [Google Cloud Platform][GCPU2F] and [Amazon Web Services][AWS] all support [U2F] as a 2FA option.
 
 ## Configuring GitHub for U2F
 
@@ -79,12 +78,14 @@ Setting up GitHub to recognise your Yubikey is really simple:
 1. When prompted, press the button on your Yubikey
 1. You're done!
 
-## Falling back to Time-based OTP
+## Configuring AWS for U2F
 
-[AWS] supports the [TOTP] standard.
-It is not possible for a smart card with no battery to implement TOTP by itself, as this requires a realtime clock.
-
-Thankfully, you can use the [Yubico Authenticator][yubico_authenticator] app to generate TOTP tokens from the secrets on your Yubikey. You can store up to 32 different TOTP accounts on your Yubikey. Nothing is stored on the computer you use. You can insert your Yubikey into any machine with the [Yubico Authenticator][yubico_authenticator] installed, and all your TOTP tokens will be available.
+1. Go to [AWS' My Security Credentials settings](https://console.aws.amazon.com/iam/home#/security_credentials)
+1. Scroll to _Multi-factor authentication (MFA)_
+1. Click _Assign MFA device_
+1. Select _U2F security key_ and click _Continue_
+1. When prompted, press the button on your Yubikey
+1. You're done!
 
 ## Why U2F?
 

@@ -45,6 +45,8 @@ Install `gpg` using your operating system's package manager so that you can inte
 
 > `gpg 2.2.23` has a bug that prevents on-card key generation. Despite what's written in the bug report, we've had success with version `2.2.22`.
 
+> `gpg 2.3` and above enables `CCID` (Chip Card Interface Device) by default.  You may want to disable this to make it compatible with older YubiKeys.  To do this, you'll need to edit `~/.gnupg/scdaemon.conf` (it may need creating) and add the line `disable-ccid`.
+
 Plug in your Yubikey, and run `gpg --change-pin` to change the PIN from the default of `123456`. This is the PIN you'll be asked to enter whenever you need to access the private key, for example when doing `git push`.
 
 Despite the term PIN, it can be **up to 8 alphanumeric characters**.

@@ -148,7 +148,6 @@ jobs:
         unpack: true
     - get: eb-hugo
       passed: [staging]
-      trigger: true
     - get: kf-release-deployer-image
     - get: kf-pipelines
   - *generate-kubeconfig

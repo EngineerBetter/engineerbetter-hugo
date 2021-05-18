@@ -2,6 +2,8 @@
 
 The EngineerBetter website.
 
+CI: https://ci.engineerbetter.com/teams/main/pipelines/engineerbetter-hugo
+
 ## CSS
 
 We don't generate CSS as part of the Hugo build process, as it needs to be done _prior_ to this when running the site locally for development.

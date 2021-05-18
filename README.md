@@ -1,8 +1,16 @@
 # engineerbetter-hugo
 
-The EngineerBetter website.
+The EngineerBetter website, which is built for the [Hugo static site generator](https://gohugo.io/).
 
 CI: https://ci.engineerbetter.com/teams/main/pipelines/engineerbetter-hugo
+
+## Running locally
+
+```terminal
+hugo serve -FD
+```
+
+Where `-F` builds and serves stuff built in the future, and `-D` builds and serves posts marked as drafts.
 
 ## CSS
 

@@ -109,12 +109,12 @@ spaces:
 ```
 
 Notable parts of the plan YAML include:
-* Resources are **grouped by Kf `Space`** - an object that merges the Cloud Foundry concepts of organizations and spaces together and becomes a `Namespace` in Kubernetes
-* All resources (such as the `customers.my-enterprise.com` route) are included, even if they are not currently bound to any applications
-* Resource **names are transformed** for compatibility with Kf in the `new_name` fields which can be edited to tweak preferred naming
+* Resources **grouped by Kf `Space`** - an object that merges the Cloud Foundry concepts of organizations and spaces together and becomes a `Namespace` in Kubernetes
+* All resources (such as the `customers.my-enterprise.com` route), even if they are not currently bound to any applications
+* **Transformed resource names** for compatibility with Kf in the `new_name` fields which can be edited to tweak preferred naming
 * Annotated **`issues` on resources** such as the `apps.internal` domain indicate where features may not be fully compatible between Cloud Foundry and Kf
 * **Sensitive fields do not contain literal values**, for example binding `credentials` and application source code (`package`). Instead the plan contains links to Cloud Foundry API resources, which will be looked up at `apply` time.
-* Applications contain information such as `current_start_command` and `detected_buildpack_language` for later validating the success of the app migration
+* Information for applications such as `current_start_command` and `detected_buildpack_language` for later validating the success of the app migration
 * Kf compatible application manifests based on Cloud Foundry app details for comparing against or replacing existing app manifests
 
 As the plans are **sorted in a predictable way** and **do not contain any secrets** they are safe and easy to compare when committed to source control providing an **ideal point of collaboration**.

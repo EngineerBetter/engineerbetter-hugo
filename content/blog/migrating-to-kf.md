@@ -123,7 +123,7 @@ As the plans are **sorted in a predictable way** and **do not contain any secret
 
 After the plan has been analysed and adjusted as necessary, it can be passed to the `apply` command to create all the resources in the Kf cluster.
 
-After checking the references in the plan have not changed since it was created, secrets and application bits are pulled from Cloud Foundry and the migrations is applied.
+After checking the references in the plan have not changed since it was created, secrets and application bits are pulled from Cloud Foundry and the migration is applied.
 
 The tool **pushes apps exactly as a human would** using the `kf` CLI before checking that they are healthy and are running with the correct buildpack and command.
 
@@ -140,7 +140,7 @@ A platform team can use the `plan` command to see which platform features may be
 By using scoped plans, individual teams can take ownership of the migration of an app or space themselves. By running `plan` and `apply` as issues are fixed, a team can **understand when an app is ready to be fully migrated** and when apps are ready for their CI pipelines to push to the new Kf cluster.
 
 ### Migrating orphaned apps
-By pulling the application source code package directly from Cloud Foundry and builds it in the same way, the migration tool allows for even **orphaned applications to be migrated to a new runtime** even without extensive knowledge of the application or a dedicated CI pipeline.
+By pulling the application source code package directly from Cloud Foundry and building it in the same way, the migration tool allows for even **orphaned applications to be migrated to a new runtime** even without extensive knowledge of the application or a dedicated CI pipeline.
 
 ## What else is left to do?
 After running `plan` and `apply`, you'll be left in a state of running applications in both Cloud Foundry and in Kf.
@@ -154,4 +154,4 @@ The next steps will involve working out how to start retiring your Cloud Foundry
 
 These are the questions where the answer will vary between users, so it can help to have partners on-hand to assist with the migration.
 
-> If you are thinking of migrating from Cloud Foundry to Kf, EngineerBetter can help you plan and execute through the entire lifecycle of a migration. As Cloud Foundry experts, Google Cloud partners and Kubernetes Certified Service providers we have the experience to ensure your migration has best possible outcomes.
+> If you are thinking of migrating from Cloud Foundry to Kf, EngineerBetter can help you plan and execute through the entire lifecycle of a migration. As Cloud Foundry experts, Google Cloud partners and Kubernetes Certified Service providers we have the experience to ensure your migration has the best possible outcomes.

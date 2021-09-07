@@ -109,6 +109,7 @@ spaces:
 ```
 
 Notable parts of the plan YAML include:
+
 * Resources **grouped by Kf `Space`** - an object that merges the Cloud Foundry concepts of organizations and spaces together and becomes a `Namespace` in Kubernetes
 * All resources (such as the `customers.my-enterprise.com` route), even if they are not currently bound to any applications
 * **Transformed resource names** for compatibility with Kf in the `new_name` fields which can be edited to tweak preferred naming

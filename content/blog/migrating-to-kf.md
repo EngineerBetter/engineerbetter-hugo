@@ -1,9 +1,8 @@
 ---
 author: Andy Paine
-date: "2021-06-30"
+date: "2021-09-07"
 heroImage: /img/blog/moving-containers.jpg
 title: Migrating from Cloud Foundry to Kf
-draft: true
 
 heading: Our
 headingBold: blog

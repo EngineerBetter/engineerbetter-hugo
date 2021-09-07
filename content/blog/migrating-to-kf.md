@@ -15,7 +15,7 @@ To make it easier to move from Cloud Foundry to Kf, Google have added some featu
 
 These tools **do the heavy lifting for you**, allowing you to focus on the parts of the migration that **have the highest business impact**.
 
-> These tools expect a Kf cluster to have already been built and configured. For our environments, we have used our [continuous infrastructure](https://www.engineerbetter.com/blog/continuous-infrastructure-google-cloud/) methodology to reliably pave all the GKE and Kf components required.
+> These tools expect a Kf cluster to have already been built and configured. For our environments, we have used our [continuous infrastructure](https://www.engineerbetter.com/blog/continuous-infrastructure-google-cloud/) approach to reliably pave all the GKE and Kf components required.
 
 
 ## Using the tool

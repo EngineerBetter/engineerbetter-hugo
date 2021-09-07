@@ -126,7 +126,7 @@ After the plan has been analysed and adjusted as necessary, it can be passed to 
 
 After checking the references in the plan have not changed since it was created, secrets and application bits are pulled from Cloud Foundry and the migration is applied.
 
-The tool **pushes apps exactly as a human would** using the `kf` CLI before checking that they are healthy and are running with the correct buildpack and command.
+The tool **pushes apps exactly as a human would**, using the `kf` CLI before checking that the apps are healthy and are running with the correct buildpack and command.
 
 By migrating brokered services as user-provided services with custom bindings, the migration tool lets Kf use **existing data services without doing an upfront data migration**. As long as there is network connectivity and hostnames can be resolved, migrated Kf apps will continue to use the **exact same binding credentials** as their Cloud Foundry counterparts.
 

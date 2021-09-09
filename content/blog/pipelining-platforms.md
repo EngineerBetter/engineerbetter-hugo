@@ -29,6 +29,6 @@ Imagine being able to create any number of identical development pipelines & pla
 
 Imagine continuous testing of your DR plan, where an entire instance of your platform is deployed, backed up, destroyed and recreated in a different part of the world, as often as you want.
 
-EngineerBetter has recently been working with our partners to help deliver these kinds of revolutionary benefits in a global bank, using Cloud Foundry, BOSH and Concourse CI. You watch [a talk giving more detail](/2017/01/05/high-performance-ops.html) about our experience or read about the [technology and engineering](/2016/12/14/continuously-deploying-pivotal-cloudfoundry.html) that makes it possible.
+EngineerBetter has recently been working with our partners to help deliver these kinds of revolutionary benefits in a global bank, using Cloud Foundry, BOSH and Concourse CI. You can watch [a talk giving more detail](/2017/01/05/high-performance-ops.html) about our experience or read about the [technology and engineering](/2016/12/14/continuously-deploying-pivotal-cloudfoundry.html) that makes it possible.
 
 If you’re interested in finding out more, please get in touch. We’d be happy to answer questions and share what we’ve learnt.

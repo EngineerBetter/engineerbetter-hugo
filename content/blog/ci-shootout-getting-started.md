@@ -20,8 +20,8 @@ At EngineerBetter we've evaluated four self-hosted CI systems in order to compar
 
 In order to achieve this, we used and are going to be evaluating each of the following use cases for these four CI systems:
 
-1. ***[Install and configure the CI system](https://www.notion.so/Draft-Blog-Getting-Started-with-four-self-hosted-CI-systems-1bf1015df5a04f1d8402537752b8c0a7)***
-2. ***[Run a "Hello, World" task](https://www.notion.so/Draft-Blog-Getting-Started-with-four-self-hosted-CI-systems-1bf1015df5a04f1d8402537752b8c0a7)***
+1. ***[Install and configure the CI system](#1-install-and-configure-the-ci-system)***
+2. ***[Run a "Hello, World" task](#2-run-a-hello-world-task)***
 3. *Trigger pipeline runs when external resources (such as git commits or uploads to a S3 bucket) change*
 4. *Use inputs and outputs to tasks*
 5. *Write outputs externally (like making a git commit or pushing a file to S3)*

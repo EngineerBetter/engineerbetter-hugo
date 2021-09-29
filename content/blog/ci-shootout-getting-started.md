@@ -38,10 +38,6 @@ Just how difficult is it to get from not having a CI system to having one? Here 
 
 We used [helm to install Jenkins in a single command](https://github.com/EngineerBetter/iac-example/tree/main/helmfile.d); installation itself was seamless and trivial. Configuration of Jenkins was less trivial and we found ourselves wanting to [customise Jenkins default configuration](https://github.com/EngineerBetter/iac-example/blob/main/config/default/jenkins.yaml). Jenkins [configuration ships with mostly good defaults](https://github.com/jenkins-infra/charts/blob/master/config/default/jenkins-infra.yaml) (if you know where to find them) but you'll almost always want to change something and staring at ~600 lines of configuration yaml is a pretty daunting task if you're meeting Jenkins configuration for the first time. For example, we wanted to be explicit about which plugins we required (via Infrastructure as Code) such as Blue Ocean (a prettier pipeline UI), so we specified that in the configuration file.
 
-<details>
-
-<summary><em>Installation</em></summary>
-
 ```bash
 # Create a helmfile.d directory with the below helmfile config
 # Custom Jenkins configuration is linked in the above paragraph
@@ -72,56 +68,39 @@ repositories:
 - name: jenkins
   url: https://charts.jenkins.io
 ```
-</details> 
 
 ### Concourse (*Great*)
 
 We followed [Concourse's own guide to installing Concourse via a helm chart](https://github.com/concourse/concourse-chart). Installation was seamless and it worked without issue.
 
-<details>
-
-<summary><em>Installation</em></summary>
-    
 ```bash
 helm repo add concourse https://concourse-charts.storage.googleapis.com/
 helm install concourse concourse/concourse
 ```
-</details>
-    
 
 ### Tekton (*Good*)
 
 We followed [Tekton's Getting Started guide](https://tekton.dev/docs/getting-started/) to install Tekton via four kubectl commands that reference publicly available Kubernetes yaml files. It worked for us out of the box without tweaking anything and was ready within a minute or two.
 
 Unlike Argo Workflows, Tekton required installation of four separate components for our use case: [pipelines](https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml), [dashboard](https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml), [triggers](https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml) and [interceptors](https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml). I'd guess that it'd be the exception to only want to install a subset of these four and perhaps the Getting Started experience could be improved by providing a single Kubernetes yaml containing all four.
-
-<details>
-
-<summary><em>Installation</em></summary>
     
 ```bash
-kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
-kubectl apply --filename https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml
-kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml
-kubectl apply --filename https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml
+export tekton_releases="https://storage.googleapis.com/tekton-releases"
+kubectl apply --filename "${tekton_releases}/pipeline/latest/release.yaml"
+kubectl apply --filename "${tekton_releases}/dashboard/latest/tekton-dashboard-release.yaml"
+kubectl apply --filename "${tekton_releases}/triggers/latest/release.yaml"
+kubectl apply --filename "${tekton_releases}/triggers/latest/interceptors.yaml"
 ```
-
-</details>
 
 ### Argo Workflows (*Great*)
 
 We followed [Argo Workflows' own Quick Start instructions](https://argoproj.github.io/argo-workflows/quick-start/) to install Argo Workflows via a few kubectl commands that referenced [publicly available Kubernetes yaml files](https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml). It worked for us out of the box without tweaking anything and was ready within a minute or two.
 
-<details>
-
-<summary><em>Installation</em></summary>
-    
 ```bash
+export manifests="https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests"
 kubectl create namespace argo
-kubectl apply --namespace argo --filename https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml
+kubectl apply --namespace argo --filename "${manifests}/quick-start-postgres.yaml
 ```
-
-</details>    
 
 ### Summary
 
@@ -145,64 +124,54 @@ Although we could achieve source controlled pipeline configuration, there were t
 
 Defining the "Hello World" pipeline using the Declarative Pipeline syntax was trivial and easy to read and executing the task is trivial via the Jenkins UI.
 
-<details>
-
-<summary><em>Pipeline configuration</em></summary>
-
 ```bash
 # First deploy
 java \
-    -jar "$JENKINS_CLI_JAR" \
-        -s "$JENKINS_URL" \
-        -auth "${JENKINS_USERNAME}:${JENKINS_PASSWORD}" \
-        create-job 'Hello World' \
-    < pipeline.xml
+  -jar "$JENKINS_CLI_JAR" \
+    -s "$JENKINS_URL" \
+    -auth "${JENKINS_USERNAME}:${JENKINS_PASSWORD}" \
+    create-job 'Hello World' \
+  < pipeline.xml
 
 # Subsequent deploys
 java \
-    -jar "$JENKINS_CLI_JAR" \
-        -s "$JENKINS_URL" \
-        -auth "${JENKINS_USERNAME}:${JENKINS_PASSWORD}" \
-        update-job 'Hello World' \
-    < pipeline.xml
+  -jar "$JENKINS_CLI_JAR" \
+    -s "$JENKINS_URL" \
+    -auth "${JENKINS_USERNAME}:${JENKINS_PASSWORD}" \
+    update-job 'Hello World' \
+  < pipeline.xml
 ```
-
-</details>
-    
-<details>
-
-<summary><em>Pipeline definition</em></summary>
 
 *pipeline.Jenkinsfile*
 
 ```groovy
-def ciImage = 'engineerbetter/iac-example-ci@sha256:0bb2dd8e86b418cd96a3371887bf8d7aa929ef4c58616c98a425ff22bddc0257'
+def ciImage = 'engineerbetter/iac-example-ci:15-promote'
 
 pipeline {
-    agent {
+  agent {
     kubernetes {
-        yaml """
-        apiVersion: v1
-        kind: Pod
-        spec:
-            containers:
-            - name: iac
-            image: ${ciImage}
-            command:
-            - cat
-            tty: true
-        """.stripIndent()
-        defaultContainer 'iac'
+      yaml """
+      apiVersion: v1
+      kind: Pod
+      spec:
+        containers:
+        - name: iac
+        image: ${ciImage}
+        command:
+        - cat
+        tty: true
+      """.stripIndent()
+      defaultContainer 'iac'
     }
-    }
+  }
 
-    stages {
+  stages {
     stage('Hello, World!') {
-        steps {
+      steps {
         sh 'echo "Hello, World!"'
-        }
+      }
     }
-    }
+  }
 }
 ```
 
@@ -211,55 +180,56 @@ pipeline {
 ```xml
 <?xml version='1.1' encoding='UTF-8'?>
 <flow-definition plugin="workflow-job@2.40">
-    <actions>
-    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.8.4"/>
-    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@1.8.4">
-        <jobProperties/>
-        <triggers/>
-        <parameters/>
-        <options/>
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction
+    plugin="pipeline-model-definition@1.8.4"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction
+    plugin="pipeline-model-definition@1.8.4">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
     </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
-    </actions>
-    <description></description>
-    <keepDependencies>false</keepDependencies>
-    <properties>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
     <jenkins.model.BuildDiscarderProperty>
-        <strategy class="hudson.tasks.LogRotator">
+      <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>-1</daysToKeep>
         <numToKeep>200</numToKeep>
         <artifactDaysToKeep>-1</artifactDaysToKeep>
         <artifactNumToKeep>-1</artifactNumToKeep>
-        </strategy>
+      </strategy>
     </jenkins.model.BuildDiscarderProperty>
     <org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty/>      
-    </properties>
-    <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@2.90">
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition"
+  plugin="workflow-cps@2.90">
     <scm class="hudson.plugins.git.GitSCM" plugin="git@4.7.1">
-        <configVersion>2</configVersion>
-        <userRemoteConfigs>
+      <configVersion>2</configVersion>
+      <userRemoteConfigs>
         <hudson.plugins.git.UserRemoteConfig>
-            <url>my_repo_url</url>
-            <credentialsId>git</credentialsId>
+          <url>my_repo_url</url>
+          <credentialsId>git</credentialsId>
         </hudson.plugins.git.UserRemoteConfig>
-        </userRemoteConfigs>
-        <branches>
+      </userRemoteConfigs>
+      <branches>
         <hudson.plugins.git.BranchSpec>
-            <name>main</name>
+          <name>main</name>
         </hudson.plugins.git.BranchSpec>
-        </branches>
-        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
-        <submoduleCfg class="empty-list"/>
-        <extensions/>
+      </branches>
+      <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+      <submoduleCfg class="empty-list"/>
+      <extensions/>
     </scm>
-    <scriptPath>pipeline.Jenkinsfile/scriptPath>
+    <scriptPath>pipeline.Jenkinsfile</scriptPath>
     <lightweight>true</lightweight>
-    </definition>
-    <triggers/>
-    <disabled>false</disabled>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
 </flow-definition>
 ```
-
-</details>
     
 
 ### Concourse (*Great*)
@@ -270,32 +240,20 @@ Task definitions are not "applied" to Concourse, instead Concourse pipelines wil
 
 Since Concourse is not Kubernetes native, there's a step required in order to authenticate with Concourse the first time you interact with it (you can authenticate using your GitHub account amongst other options).
 
-<details>
-
-<summary><em>Task execution</em></summary>
-    
 ```bash
 fly --target ci login --concourse-url "$CONCOURSE_URL"
 fly --target ci execute --config hello.yaml
 ```
-
-</details>
-    
-<details>
-
-<summary><em>Task definition</em></summary>
     
 ```yaml
 platform: linux
 image_resource:
-    type: registry-image
-    source: {repository: busybox}
+  type: registry-image
+  source: {repository: busybox}
 run:
-    path: echo
-    args: ["Hello, World!"]
+  path: echo
+  args: ["Hello, World!"]
 ```
-
-</details>
 
 ### Tekton (*Great*)
 
@@ -305,35 +263,22 @@ Likewise, Tekton Pipelines are a Kubernetes resource that represents a sequence 
 
 Tasks and Pipelines may also be executed by the Tekton CLI (which proxies authentication via the active kubeconfig) rather than defining and applying a TaskRun or PipelineRun.
 
-<details>
-
-<summary><em>Task execution</em></summary>
-    
 ```bash
 kubectl apply --filename hello-task.yaml
 tkn task start hello-world-task
 tkn taskrun logs --last --follow
 ```
 
-</details>
-
-<details>
-
-<summary><em>Task definition</em></summary>
-    
 ```yaml
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata: {name: hello-world-task}
 spec:
-    steps:
-    - name: hello-world
-    image: docker/whalesay
+  steps:
+  - name: hello-world
+  image: docker/whalesay
 command: [echo, "Hello, World!"]
 ```
-
-</details>
-    
 
 ### Argo Workflows (*Great*)
 
@@ -341,35 +286,23 @@ As with Tekton, resources in Argo Workflows are simply shallow abstractions over
 
 Unlike with Tekton, WorkflowTemplates cannot be executed outside the context of a Workflow, but the amount of configuration required to execute the Hello World template is still trivial.
 
-<details>
-
-<summary><em>Workflow execution</em></summary>
-    
 ```bash
 argo --namespace argo submit hello-workflow.yaml --watch
 argo --namespace argo logs @latest
 ```
 
-</details>
-
-<details>
-
-<summary><em>Workflow definition</em></summary>
-    
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata: {generateName: hello-workflow-}
 spec:
-    entryPoint: hello
-    templates:
-    - name: hello
-    container:
-        image: busybox
-        command: [echo, hello]
+  entryPoint: hello
+  templates:
+  - name: hello
+  container:
+    image: busybox
+    command: [echo, hello]
 ```
-
-</details>
 
 ### Summary
 

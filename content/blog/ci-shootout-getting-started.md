@@ -83,7 +83,7 @@ helm install concourse concourse/concourse
 We followed [Tekton's Getting Started guide](https://tekton.dev/docs/getting-started/) to install Tekton via four kubectl commands that reference publicly available Kubernetes yaml files. It worked for us out of the box without tweaking anything and was ready within a minute or two.
 
 Unlike Argo Workflows, Tekton required installation of four separate components for our use case: [pipelines](https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml), [dashboard](https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml), [triggers](https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml) and [interceptors](https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml). I'd guess that it'd be the exception to only want to install a subset of these four and perhaps the Getting Started experience could be improved by providing a single Kubernetes yaml containing all four.
-    
+
 ```bash
 export tekton_releases="https://storage.googleapis.com/tekton-releases"
 kubectl apply --filename "${tekton_releases}/pipeline/latest/release.yaml"
@@ -202,7 +202,7 @@ pipeline {
         <artifactNumToKeep>-1</artifactNumToKeep>
       </strategy>
     </jenkins.model.BuildDiscarderProperty>
-    <org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty/>      
+    <org.jenkinsci.plugins.workflow.job.properties.DisableConcurrentBuildsJobProperty/>
   </properties>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition"
   plugin="workflow-cps@2.90">
@@ -230,7 +230,7 @@ pipeline {
   <disabled>false</disabled>
 </flow-definition>
 ```
-    
+
 
 ### Concourse (*Great*)
 
@@ -244,7 +244,7 @@ Since Concourse is not Kubernetes native, there's a step required in order to au
 fly --target ci login --concourse-url "$CONCOURSE_URL"
 fly --target ci execute --config hello.yaml
 ```
-    
+
 ```yaml
 platform: linux
 image_resource:

@@ -18,17 +18,17 @@ At EngineerBetter we've evaluated four self-hosted CI systems in order to compar
 * Run an acceptance test on the deployed application
 * Promote the deployment by triggering an identical production pipeline
 
-We evaluated each of the following use cases for these four CI systems:
+Across a series of blog posts, we'll be evaluating how each CI system supports the following use cases:
 
-1. ***[Install and configure the CI system](#1-install-and-configure-the-ci-system)***
-2. ***[Run a "Hello, World" task](#2-run-a-hello-world-task)***
-3. *Trigger pipeline runs when external resources (such as Git commits or uploads to a S3 bucket) change*
-4. *Use inputs and outputs to tasks*
-5. *Write outputs externally (like making a Git commit or pushing a file to S3)*
-6. *Re-use pipeline configuration*
-7. *Use the CI system as a build monitor*
+1. [**Install** and configure the CI system](#1-install-and-configure-the-ci-system)
+2. [**Run** a "Hello, World" task](#2-run-a-hello-world-task)
+3. **Trigger** pipeline runs when external resources (such as Git commits or uploads to a S3 bucket) change
+1. Use **inputs and outputs to tasks**
+1. Write **outputs externally** (like making a Git commit or pushing a file to S3)
+1. **Re-use** pipeline configuration
+1. Use the CI system as a **build monitor**
 
-In this first blog post of the series we'll explore the first two of the use cases listed above. In each section we'll give each CI system a rating of either *Poor*, *Mediocre*, *Good* or *Great*. Without further ado, let's dive in to our first use case.
+In this post we'll explore the first two of the use cases listed above. In each section we'll give each CI system a rating of either *Poor*, *Mediocre*, *Good* or *Great*.
 
 ## 1. Install and Configure the CI system
 

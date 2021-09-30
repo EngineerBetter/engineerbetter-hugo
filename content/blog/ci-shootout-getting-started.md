@@ -22,9 +22,9 @@ In order to achieve this, we used and are going to be evaluating each of the fol
 
 1. ***[Install and configure the CI system](#1-install-and-configure-the-ci-system)***
 2. ***[Run a "Hello, World" task](#2-run-a-hello-world-task)***
-3. *Trigger pipeline runs when external resources (such as git commits or uploads to a S3 bucket) change*
+3. *Trigger pipeline runs when external resources (such as Git commits or uploads to a S3 bucket) change*
 4. *Use inputs and outputs to tasks*
-5. *Write outputs externally (like making a git commit or pushing a file to S3)*
+5. *Write outputs externally (like making a Git commit or pushing a file to S3)*
 6. *Re-use pipeline configuration*
 7. *Use the CI system as a build monitor*
 
@@ -36,7 +36,7 @@ Just how difficult is it to get from not having a CI system to having one? Here 
 
 ### Jenkins (***Mediocre***)
 
-We used [helm to install Jenkins in a single command](https://github.com/EngineerBetter/iac-example/tree/main/helmfile.d); installation itself was seamless and trivial. Configuration of Jenkins was less trivial and we found ourselves wanting to [customise Jenkins default configuration](https://github.com/EngineerBetter/iac-example/blob/main/config/default/jenkins.yaml). Jenkins [configuration ships with mostly good defaults](https://github.com/jenkins-infra/charts/blob/master/config/default/jenkins-infra.yaml) (if you know where to find them) but you'll almost always want to change something and staring at ~600 lines of configuration yaml is a pretty daunting task if you're meeting Jenkins configuration for the first time. For example, we wanted to be explicit about which plugins we required (via Infrastructure as Code) such as Blue Ocean (a prettier pipeline UI), so we specified that in the configuration file.
+We used [Helm to install Jenkins in a single command](https://github.com/EngineerBetter/iac-example/tree/main/helmfile.d); installation itself was seamless and trivial. Configuration of Jenkins was less trivial and we found ourselves wanting to [customise Jenkins default configuration](https://github.com/EngineerBetter/iac-example/blob/main/config/default/jenkins.yaml). Jenkins [configuration ships with mostly good defaults](https://github.com/jenkins-infra/charts/blob/master/config/default/jenkins-infra.yaml) (if you know where to find them) but you'll almost always want to change something and staring at ~600 lines of configuration YAML is a pretty daunting task if you're meeting Jenkins configuration for the first time. For example, we wanted to be explicit about which plugins we required (via Infrastructure as Code) such as Blue Ocean (a prettier pipeline UI), so we specified that in the configuration file.
 
 ```bash
 # Create a helmfile.d directory with the below helmfile config
@@ -71,7 +71,7 @@ repositories:
 
 ### Concourse (*Great*)
 
-We followed [Concourse's own guide to installing Concourse via a helm chart](https://github.com/concourse/concourse-chart). Installation was seamless and it worked without issue.
+We followed [Concourse's own guide to installing Concourse via a Helm chart](https://github.com/concourse/concourse-chart). Installation was seamless and it worked without issue.
 
 ```bash
 helm repo add concourse https://concourse-charts.storage.googleapis.com/
@@ -80,9 +80,9 @@ helm install concourse concourse/concourse
 
 ### Tekton (*Good*)
 
-We followed [Tekton's Getting Started guide](https://tekton.dev/docs/getting-started/) to install Tekton via four kubectl commands that reference publicly available Kubernetes yaml files. It worked for us out of the box without tweaking anything and was ready within a minute or two.
+We followed [Tekton's Getting Started guide](https://tekton.dev/docs/getting-started/) to install Tekton via four kubectl commands that reference publicly available Kubernetes YAML files. It worked for us out of the box without tweaking anything and was ready within a minute or two.
 
-Unlike Argo Workflows, Tekton required installation of four separate components for our use case: [pipelines](https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml), [dashboard](https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml), [triggers](https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml) and [interceptors](https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml). I'd guess that it'd be the exception to only want to install a subset of these four and perhaps the Getting Started experience could be improved by providing a single Kubernetes yaml containing all four.
+Unlike Argo Workflows, Tekton required installation of four separate components for our use case: [pipelines](https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml), [dashboard](https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml), [triggers](https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml) and [interceptors](https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml). I'd guess that it'd be the exception to only want to install a subset of these four and perhaps the Getting Started experience could be improved by providing a single Kubernetes YAML containing all four.
 
 ```bash
 export tekton_releases="https://storage.googleapis.com/tekton-releases"
@@ -94,7 +94,7 @@ kubectl apply --filename "${tekton_releases}/triggers/latest/interceptors.yaml"
 
 ### Argo Workflows (*Great*)
 
-We followed [Argo Workflows' own Quick Start instructions](https://argoproj.github.io/argo-workflows/quick-start/) to install Argo Workflows via a few kubectl commands that referenced [publicly available Kubernetes yaml files](https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml). It worked for us out of the box without tweaking anything and was ready within a minute or two.
+We followed [Argo Workflows' own Quick Start instructions](https://argoproj.github.io/argo-workflows/quick-start/) to install Argo Workflows via a few kubectl commands that referenced [publicly available Kubernetes YAML files](https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml). It worked for us out of the box without tweaking anything and was ready within a minute or two.
 
 ```bash
 export manifests="https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests"
@@ -234,7 +234,7 @@ pipeline {
 
 ### Concourse (*Great*)
 
-Concourse has the best problem domain abstraction of the four systems under evaluation. [Pipelines](https://concourse-ci.org/pipelines.html) and [Tasks](https://concourse-ci.org/tasks.html) are configured by yaml, but unlike Tekton and Argo Workflows the yaml configuration is specifically for Tasks and Pipelines and is not tied to the platform it happens to be deployed to - which makes sense since Concourse existed before Kubernetes was popular.
+Concourse has the best problem domain abstraction of the four systems under evaluation. [Pipelines](https://concourse-ci.org/pipelines.html) and [Tasks](https://concourse-ci.org/tasks.html) are configured by YAML, but unlike Tekton and Argo Workflows the YAML configuration is specifically for Tasks and Pipelines and is not tied to the platform it happens to be deployed to - which makes sense since Concourse existed before Kubernetes was popular.
 
 Task definitions are not "applied" to Concourse, instead Concourse pipelines will look for them at runtime based on the pipeline configuration. That being said, Tasks can be executed directly from Concourse's CLI, "[fly](https://concourse-ci.org/fly.html)" (which can be downloaded from the UI of your Concourse).
 
@@ -257,7 +257,7 @@ run:
 
 ### Tekton (*Great*)
 
-Everything about Tekton is Kubernetes native, so it follows that defining a [Tekton Task](https://tekton.dev/docs/pipelines/) is as simple as creating an appropriate Kubernetes yaml file and applying it. Tekton's abstraction is to store defined Tasks as Kubernetes resources and execute them by applying another resource known as a TaskRun. Since it's all Kubernetes native source controlling these tasks is easily achievable but it also means there's a bit of boilerplate since the abstraction over Kubernetes is pretty shallow (deliberately so).
+Everything about Tekton is Kubernetes native, so it follows that defining a [Tekton Task](https://tekton.dev/docs/pipelines/) is as simple as creating an appropriate Kubernetes YAML file and applying it. Tekton's abstraction is to store defined Tasks as Kubernetes resources and execute them by applying another resource known as a TaskRun. Since it's all Kubernetes native source controlling these tasks is easily achievable but it also means there's a bit of boilerplate since the abstraction over Kubernetes is pretty shallow (deliberately so).
 
 Likewise, Tekton Pipelines are a Kubernetes resource that represents a sequence of Tasks to be executed. PipelineRuns are the resources that execute Pipelines.
 
@@ -282,7 +282,7 @@ command: [echo, "Hello, World!"]
 
 ### Argo Workflows (*Great*)
 
-As with Tekton, resources in Argo Workflows are simply shallow abstractions over Kubernetes resources. Kubernetes yaml is used to define [Argo Workflows' Templates](https://argoproj.github.io/argo-workflows/workflow-templates/). Templates are then composed into Workflows using another Kind of Kubernetes resource containing a Directed Acrylic Graph (DAG) syntax when there's more than one template. The Workflows are then executed using the Argo Workflows CLI.
+As with Tekton, resources in Argo Workflows are simply shallow abstractions over Kubernetes resources. Kubernetes YAML is used to define [Argo Workflows' Templates](https://argoproj.github.io/argo-workflows/workflow-templates/). Templates are then composed into Workflows using another Kind of Kubernetes resource containing a Directed Acrylic Graph (DAG) syntax when there's more than one template. The Workflows are then executed using the Argo Workflows CLI.
 
 Unlike with Tekton, WorkflowTemplates cannot be executed outside the context of a Workflow, but the amount of configuration required to execute the Hello World template is still trivial.
 
@@ -306,7 +306,7 @@ spec:
 
 ### Summary
 
-Getting started with Concourse, Tekton and Argo required very little effort; each required at most 10 lines of yaml and a few commands to execute. Looking at the output of each was similarly trivial.
+Getting started with Concourse, Tekton and Argo required very little effort; each required at most 10 lines of YAML and a few commands to execute. Looking at the output of each was similarly trivial.
 
 Both Jenkins and Argo Workflows required the execution of a pipeline (or Workflow) in order to execute a single task. This didn't add to the complexity in the case of Argo Workflows, however executing Hello World on Jenkins required orders of magnitude more configuration than the other options and contained a gotcha.
 
@@ -316,6 +316,6 @@ Jenkins again fell far behind the competition in this use case with the differen
 
 In the next blog in this series we'll explore the following three use cases described above:
 
-- *Trigger pipeline runs when external resources (such as git commits or uploads to a S3 bucket) change*
+- *Trigger pipeline runs when external resources (such as Git commits or uploads to a S3 bucket) change*
 - *Use inputs and outputs to tasks*
-- *Write outputs externally (like making a git commit or pushing a file to S3)*
+- *Write outputs externally (like making a Git commit or pushing a file to S3)*

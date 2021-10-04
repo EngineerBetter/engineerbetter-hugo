@@ -12,7 +12,7 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 At EngineerBetter we've evaluated four self-hosted CI systems in order to compare them against each other: [Jenkins](https://www.jenkins.io/), [Concourse](https://concourse-ci.org/), [Tekton](https://tekton.dev/) and [Argo Workflows](https://argoproj.github.io/workflows/). For each CI system we've created some pipelines that:
 
-* Run pre-deployment static analysis over various forms of Infrastructure as Code configuration
+* Run pre-deployment static analysis over various forms of Infrastructure as Code
 * Deploy a [Kubernetes](https://kubernetes.io/) cluster to a staging environment
 * Deploy the [Sock Shop](https://github.com/microservices-demo/microservices-demo) application to the cluster
 * Run an acceptance test on the deployed application
@@ -36,7 +36,7 @@ Just how difficult is it to get from not having a CI system to having one? Here 
 
 ### Jenkins - *Mediocre*
 
-We used [Helm to install Jenkins in a single command](https://github.com/EngineerBetter/iac-example/tree/main/helmfile.d); installation itself was seamless and trivial. Configuration of Jenkins was less trivial and we found ourselves wanting to [customise Jenkins default configuration](https://github.com/EngineerBetter/iac-example/blob/main/config/default/jenkins.yaml). Jenkins [configuration ships with mostly good defaults](https://github.com/jenkins-infra/charts/blob/master/config/default/jenkins-infra.yaml) (if you know where to find them) but you'll almost always want to change something and staring at ~600 lines of configuration YAML is a pretty daunting task if you're meeting Jenkins configuration for the first time. For example, we wanted to be explicit about which plugins we required (via Infrastructure as Code) such as Blue Ocean (a prettier pipeline UI), so we specified that in [our configuration file](https://github.com/EngineerBetter/iac-example/blob/8032c1a299e4d691b72831c46a272ec5550d9f8a/config/default/jenkins.yaml).
+We used [Helm to install Jenkins in a single command](https://github.com/EngineerBetter/iac-example/tree/main/helmfile.d); installation itself was seamless and trivial. Configuration of Jenkins was less trivial and we found ourselves wanting to [customise Jenkins' default configuration](https://github.com/EngineerBetter/iac-example/blob/main/config/default/jenkins.yaml). Jenkins [configuration ships with mostly good defaults](https://github.com/jenkins-infra/charts/blob/master/config/default/jenkins-infra.yaml), but at ~600 lines of YAML that default configuration can be daunting when you inevitably need to change something. For example, we wanted to be explicit about which plugins we required (via Infrastructure as Code) such as Blue Ocean (a prettier pipeline UI), so we specified that in [our configuration file](https://github.com/EngineerBetter/iac-example/blob/8032c1a299e4d691b72831c46a272ec5550d9f8a/config/default/jenkins.yaml).
 
 ```bash
 # Create a helmfile.d directory with the below helmfile config
@@ -71,7 +71,7 @@ repositories:
 
 ### Concourse - *Great*
 
-We followed [Concourse's own guide to installing Concourse via a Helm chart](https://github.com/concourse/concourse-chart). Installation was seamless and it worked without issue.
+We followed [Concourse's own guide to installing Concourse via a Helm chart](https://github.com/concourse/concourse-chart). Installation was simple and it worked without issue.
 
 ```bash
 helm repo add concourse https://concourse-charts.storage.googleapis.com/
@@ -82,7 +82,7 @@ helm install concourse concourse/concourse
 
 We followed [Tekton's Getting Started guide](https://tekton.dev/docs/getting-started/) to install Tekton via four kubectl commands that reference publicly available Kubernetes YAML files. It worked for us out of the box without tweaking anything and was ready within a minute or two.
 
-Unlike Argo Workflows, Tekton required installation of four separate components for our use case: [pipelines](https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml), [dashboard](https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml), [triggers](https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml) and [interceptors](https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml). I'd guess that it'd be the exception to only want to install a subset of these four and perhaps the Getting Started experience could be improved by providing a single Kubernetes YAML containing all four.
+Unlike Argo Workflows, Tekton required installation of four separate components for our use case: [pipelines](https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml), [dashboard](https://storage.googleapis.com/tekton-releases/dashboard/latest/tekton-dashboard-release.yaml), [triggers](https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml) and [interceptors](https://storage.googleapis.com/tekton-releases/triggers/latest/interceptors.yaml). I'd guess that it'd be the exception to only want to install a subset of these four so perhaps the Getting Started experience could be improved by providing a single Kubernetes YAML containing all four.
 
 ```bash
 export tekton_releases="https://storage.googleapis.com/tekton-releases"
@@ -106,12 +106,12 @@ kubectl apply --namespace argo --filename "${manifests}/quick-start-postgres.yam
 
 The **easiest installation experience was with Concourse and Argo Workflows**, Tekton came in at a close second due to the additional context requirements of needing to install several components.
 
-**Jenkins falls far behind** the other options here due to the fact that we wanted to keep configuration of the CI system entirely in code so we could version control it and modifying the configuration to install Jenkins plugins took us a while to get our heads around.
+**Jenkins falls far behind** the other options here due to the difficulty we had in understanding how to define everything about the installation (ie including plugins) in code.
 
 
 ## 2. Run a "Hello, World" task
 
-Now that we have a CI system, how difficult is it to run your first task? Here we'll demonstrate how difficult to was to write the task definition and then configure it in the CI system.
+Now that we have a CI system, how difficult is it to run our first task? Here we'll demonstrate how hard it was to write the task definition and then configure it in the CI system.
 
 ### Jenkins - *Poor*
 
@@ -119,11 +119,15 @@ Being the oldest of the CI systems under evaluation, it's not surprising that th
 
 Jenkins pipelines are configured in two ways: manually through the UI or by submitting declarative XML using the Jenkins CLI. We chose to use the latter so that we can source control our pipeline definitions.
 
-The configuration references another file containing the bulk of the pipeline definition (often called a Jenkinsfile) which is written using the Declarative Pipelines DSL. There is a level of redundancy between these two files. It's also possible to change the configuration of the pipeline within the Jenkinsfile that would result in the XML stored in source control differing from the one actually configured on Jenkins after a pipeline run.
+The configuration references _another_ file containing the bulk of the pipeline definition (often called a Jenkinsfile) which is written using the Declarative Pipelines DSL. There is a level of redundancy between these two files. It's also possible to change the configuration of the pipeline within the Jenkinsfile that would result in the XML stored in source control differing from the one actually configured on Jenkins after a pipeline run.
 
-Although we could achieve source controlled pipeline configuration, there were two 'flies in the ointment'. Firstly, the XML file was extremely difficult to reason about and we found it easier to configure our pipeline via Jenkins' UI and then use the CLI's "get-job" subcommand to then store the generated configuration in source control. Secondly, the Jenkins CLI has separate "create-job" and "update-job" subcommands, which means any automation that sets pipelines has to figure out if it's already set to know which command to use.
+Although we could achieve source controlled pipeline configuration, there were two 'flies in the ointment'.
 
-Defining the "Hello World" pipeline using the Declarative Pipeline syntax was trivial, and it is also easy to read.Executing the task is trivial via the Jenkins UI.
+Firstly, the XML file was extremely difficult understand and author, and so we found it easier to configure our pipeline via Jenkins' UI and then use the CLI's "get-job" subcommand to then store the generated configuration in source control.
+
+Secondly, the Jenkins CLI has separate "create-job" and "update-job" subcommands, which means any automation that sets pipelines has to figure out if it's already set to know which command to use.
+
+Defining the "Hello World" pipeline using the Declarative Pipeline syntax was trivial, and it is also easy to read. Executing the task is trivial via the Jenkins UI.
 
 ```bash
 # First deploy
@@ -235,9 +239,9 @@ pipeline {
 
 ### Concourse - *Great*
 
-Concourse has the best problem domain abstraction of the four systems under evaluation. [Pipelines](https://concourse-ci.org/pipelines.html) and [Tasks](https://concourse-ci.org/tasks.html) are configured by YAML, but unlike Tekton and Argo Workflows the YAML configuration is specifically for Tasks and Pipelines and is not tied to the platform it happens to be deployed to - which makes sense since Concourse existed before Kubernetes was popular.
+Concourse has the best problem domain abstraction of the four systems under evaluation. [Pipelines](https://concourse-ci.org/pipelines.html) and [Tasks](https://concourse-ci.org/tasks.html) are configured by YAML, but unlike Tekton and Argo Workflows the YAML configuration bespoke to Concourse and not made of Kubernetes resources - which makes sense since Concourse existed before Kubernetes was popular.
 
-Task definitions are not 'applied' to Concourse, instead Concourse pipelines will look for them at runtime based on the pipeline configuration. That being said, Tasks can be executed directly from Concourse's CLI, "[fly](https://concourse-ci.org/fly.html)" (which can be downloaded from the UI of your Concourse).
+Generally speaking task definitions are not 'applied' to Concourse, instead Concourse pipelines will look for them at runtime based on the pipeline configuration. Tasks can also be executed directly from Concourse's CLI, "[fly](https://concourse-ci.org/fly.html)" (which can be downloaded from the UI of your Concourse).
 
 Since Concourse is not Kubernetes native, there's a step required in order to authenticate with Concourse the first time you interact with it. You can authenticate using your GitHub account, amongst other options.
 
@@ -283,7 +287,7 @@ command: [echo, "Hello, World!"]
 
 ### Argo Workflows - *Great*
 
-As with Tekton, resources in Argo Workflows are simply shallow abstractions over Kubernetes resources. Kubernetes YAML is used to define [Argo Workflows' Templates](https://argoproj.github.io/argo-workflows/workflow-templates/). Templates are then composed into Workflows using another Kind of Kubernetes resource containing a Directed Acrylic Graph (DAG) syntax when there's more than one template. The Workflows are then executed using the Argo Workflows CLI.
+As with Tekton, resources in Argo Workflows are simply shallow abstractions over Kubernetes resources. Kubernetes YAML is used to define [Argo Workflows' Templates](https://argoproj.github.io/argo-workflows/workflow-templates/). Templates are then composed into Workflows using another `Kind` of Kubernetes resource containing a directed acyclic graph (DAG) syntax when there's more than one template. The Workflows are then executed using the Argo Workflows CLI.
 
 Unlike Tekton Tasks and Pipelines, WorkflowTemplates cannot be executed outside the context of a Workflow; the amount of configuration required to execute the Hello World template is still trivial.
 
@@ -307,9 +311,64 @@ spec:
 
 ### Summary
 
+<table class="comparison">
+  <tr>
+    <td>
+    </td>
+    <th>
+      Jenkins
+    </th>
+    <th>
+      Concourse
+    </th>
+    <th>
+      Tekton
+    </th>
+    <th>
+      Argo Workflows
+    </th>
+  </tr>
+  <tr>
+    <td>
+      Installation
+    </td>
+    <td>
+      Mediocre
+    </td>
+    <td>
+      Great
+    </td>
+    <td>
+      Good
+    </td>
+    <td>
+      Great
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Running a task
+    </td>
+    <td>
+      Poor
+    </td>
+    <td>
+      Great
+    </td>
+    <td>
+      Great
+    </td>
+    <td>
+      Great
+    </td>
+  </tr>
+</table>
+
+
+
 Getting started with Concourse, Tekton and Argo required very little effort; each required at most 10 lines of YAML and a few commands to execute. Looking at the output of each was similarly trivial.
 
-Both Jenkins and Argo Workflows required the execution of a pipeline (or Workflow) in order to execute a single task. This didn't add to the complexity in the case of Argo Workflows, however executing Hello World on Jenkins required orders of magnitude more configuration than the other options and contained a gotcha.
+Both Jenkins and Argo Workflows required the execution of a pipeline (or Workflow) in order to execute a single task. This didn't add to the complexity in the case of Argo Workflows, however executing Hello World on Jenkins required orders of magnitude more configuration than the other options and contained a gotcha in the form of the non-idempotent commands.
 
 Jenkins again fell far behind the competition in this use case with the differences between the Concourse, Tekton and Argo Workflows being negligible.
 

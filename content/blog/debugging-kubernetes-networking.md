@@ -265,16 +265,24 @@ Hitting the pod IP succeeded when the target pod was on the same worker: again, 
 
 Hitting the cluster IP when the target pod was on the same worker _failed_: instead of a HTTP response, **we got a timeout**.
 
-Because I hate CSS and web front-end development so much, here are the results in an ASCII table:
 
-```terminal
-+---------------------------------+
-| Worker    | Pod IP | Cluster IP |
-|-----------|--------|------------|
-| Different | Worked | 	Worked    |
-| Same      | Worked | 	Failed    |
-+---------------------------------+
-```
+<table class="comparison">
+  <tr>
+    <th>Worker</th>
+    <th>Pod IP</th>
+    <th>Cluster IP</th>
+  </tr>
+  <tr>
+    <td>Different</td>
+    <td>Success</td>
+    <td>Success</td>
+  </tr>
+  <tr>
+    <td>Same</td>
+    <td>Success</td>
+    <td>Failure</td>
+  </tr>
+</table>
 
 <br />
 

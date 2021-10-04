@@ -1,7 +1,6 @@
 ---
 author: Tom Godkin
-date: "2021-09-30"
-draft: true
+date: "2021-10-04"
 heroImage: /img/blog/gunfight.jpg
 title: "CI Shootout: Getting started with Jenkins, Concourse, Tekton and Argo Workflows"
 

@@ -257,7 +257,7 @@ We decided to test further by making HTTP requests to:
 * Pod IP on a different worker
 * Cluster IP that is backed by a pod on a different worker
 * Pod IP on the same worker
-* Cluster IP that is backed by a pod on a different worker
+* Cluster IP that is backed by a pod on the same worker
 
 Hitting the pod IP and cluster IP both succeeded when the target pod was on a different worker: we got the NGiNX default index page as expected.
 

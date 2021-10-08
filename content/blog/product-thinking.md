@@ -66,7 +66,7 @@ Some examples in practice include:
 
 ### Ruthless prioritisation
 
-_Address the riskiest problems first_
+_Address the riskiest assumptions first_
 
 Following the same example, a patient may go see a doctor with several issues. The doctor will assess the patient and then do their best to determine which single issue is posing the greatest risk to their patient's welfare. This will most likely be the first concern that they will focus on and address.
 
@@ -97,12 +97,20 @@ Some examples in practice include:
 
 ### Customer empathy
 
+_Shared ownership means increased accountability and lighter individual loads._
+
 Product thinking aids in creating empathy for users and an emphasis is placed on the importance of delivering value that is owned and understood by the entire team. This provides a sense of purpose and also an insight for the team into how their efforts directly impact the things they are producing, making for more commercially intelligent teams. Empowering teams to have the courage to ask why they're building and invest and take ownership in outcomes as opposed to outputs.
+
+Increased empathy in teams can also work to increase the ability to show vulnerability earlier and more often. This means teams are able to ask the questions necessary to produce solid solutions. They can call out shortcomings so they can be addressed. Teams with emotionally robust environments are truly able to fail faster and do so without fear of blame or punishment. 
+
+The most important thing is solving customer problems together and effectively adjusting their shared process as opposed to using hero moves that can lead to weak spots in how they deliver value. 
+
 
 Some examples in practice include:
 
 * Identifying and recording customer personas
 * Cross-discipline pairing, early and often, to ensure that customer needs are visible to practitioners
+* Increased feedback loops that run but horizontally and vertically within an organisations
 
 ## Why is product thinking important?
 

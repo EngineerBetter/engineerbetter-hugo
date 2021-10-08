@@ -96,8 +96,8 @@ Examples include:
 Product thinking aids in creating empathy for users and an emphasis is placed on the importance of delivering value that is owned and understood by the entire team. This provides a sense of purpose and also an insight for the team into how their efforts directly impact the things they are producing, making for more commercially intelligent teams. Empowering teams to have the courage to ask why they're building and invest and take ownership in outcomes as opposed to outputs.
 
 Examples include:
-
-*
+* Identifying and recording customer personas
+* Cross-discipline pairing, early and often, to ensure that customer needs are visible to practitioners
 
 ## Why is product thinking important?
 

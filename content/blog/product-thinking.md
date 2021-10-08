@@ -109,8 +109,10 @@ Some examples in practice include:
 Product thinking is important as the **next frontier in building useful software**, and in creating resilient organisations.
 
 > Agile can help you go as fast as you like, but if you're building the wrong thing, you're screwed anyway - no one will use what you build and the chances are that a great deal of waste will be created in the process.
->
-> If Agile is the vehicle you are travelling in, then product thinking is the GPS navigation ensuring that you're tracking in the right  direction on your journey. Product thinking captures, and holds teams accountable to justifying, the intent of their actions. In a space where work is justified and actions are intentional, less waste will occur.
+> 
+> **If Agile is the vehicle you are travelling in, then product thinking is the navigation ensuring that you're tracking in the right  direction on your journey.** 
+>  
+> Product thinking captures, and holds teams accountable to justifying, the intent of their actions. In a space where work is justified and actions are intentional, less waste will occur.
  
 Agile software delivery is a largely stagnant field - for years at EngineerBetter we've been helping people delivery software more quickly. Cloud native practices allow us to create resilient and highly-available systems on global scales. Both are generally well-understood even if adoption is poor and lip-service is prevalent.
 

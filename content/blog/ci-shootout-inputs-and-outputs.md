@@ -10,25 +10,33 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-In [the previous blog](/blog/ci-shootout-getting-started/) we looked at getting started with four self-hosted CI systems: Jenkins, Concourse, Tekton & Argo workflows and today we continue by looking at each of the following for those CI systems:
+In [the previous blog](/blog/ci-shootout-getting-started/) we looked at getting started with four self-hosted CI systems: Jenkins, Concourse, Tekton & Argo Workflows. In this post we continue by looking at the following use cases for those CI systems:
 
-3. [**Trigger** pipeline runs when external resources (such as Git commits or uploads to a S3 bucket) change](#3-trigger-pipeline-runs)
+3. [**Trigger** pipeline runs when external resources (eg Git repos, S3 buckets) change](#3-trigger-pipeline-runs)
 4. [Use **inputs and outputs to tasks**](#4-use-inputs-and-outputs-to-tasks)
 5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
 
 ## 3. Trigger pipeline runs
 
-Running tasks in CI manually is all well and good, but for CI to be useful, it'll need some amount of automation. Here we'll evaluate different mechanisms that can be used for triggering pipelines. In particular we'll look at triggering on: commits to a git repository, new files in an S3 bucket and triggering on a schedule.
+Running tasks in CI manually is all well and good, but for CI to be useful, it'll need some amount of automation. Here we'll evaluate different mechanisms that can be used for triggering pipelines. In particular we'll look at triggering on:
 
-We'll also examine whether each of these systems supports a "push" or "pull" model when it comes to external triggers.
+* new commits to a git repository
+* new files in an S3 bucket
+* a schedule.
+
+We'll also examine whether each of these systems supports a 'push' or 'pull' model when it comes to external triggers.
 
 ### Jenkins - *Good*
 
-Jenkins does not have a formal definition of resources, but does support two of the use cases we're interested in out of the box (to an extent). Jenkins' declarative pipelines can be configured with a cron schedule for triggering and each Jenkins pipeline can also be configured with a VCS URL which supports either push based triggering via hooks or polling the repository itself. There's even a Jenkins plugin that'll let you upload files to S3 but that same plugin can't trigger pipelines when the contents of the bucket change.
+Jenkins does not have a formal definition of resources, but does support two of the use cases we're interested in out of the box (to an extent).
+
+Jenkins' declarative pipelines can be configured with a cron schedule for triggering and each Jenkins pipeline can also be configured with a VCS URL which supports either push-based triggering via hooks, or polling the repository itself.
+
+There's even a Jenkins plugin that'll let you upload files to S3, but unfortunately that same plugin can't trigger pipelines when the contents of the bucket change.
 
 Each Jenkins declarative pipeline only supports referencing a single VCS repository, so it isn't possible to trigger on changes to multiple repositories except via configuring hooks in your VCS provider.
 
-Hooks are a popular way to trigger CI systems in this cloud native world we find ourselves in but that does put those who don't wish to expose their build systems to the outside world in an awkward position.
+Webhooks are a popular way to trigger CI systems in the cloud native world, but that does put those who don't wish to expose their build systems to the outside world in an awkward position. For example, it might be tricky to convince a bank to open their CI system, which deploys to production, to the public internet so that it can receive webhooks.
 
 In a later blog post we'll encounter frustration with the lack of triggering on S3 (without hooks) when we discuss promotion of change via a bill of materials.
 
@@ -67,11 +75,18 @@ In a later blog post we'll encounter frustration with the lack of triggering on 
 
 ### Concourse - *Great*
 
-[Resources](https://concourse-ci.org/resources.html) in Concourse are implemented based around a strict binary API; each resource can **get** a version of that resource type, **put** a new version or **check** for new versions. By default, Concourse will check for new versions of each resource every two minutes and jobs that use those resources can be configured to trigger when a new version is found. For example, suppose your pipeline was processing a CSV file that was to be found in a S3 bucket, by modelling that file as a resource your Concourse will check the bucket every two minutes and will trigger any configured jobs automatically with the amount of configuration required to set this up being trivial.
+[Resources](https://concourse-ci.org/resources.html) in Concourse are implemented based around a strict binary API; each resource can:
+*  **get** a version of that resource type
+* **put** a new version, or
+* **check** for new versions.
 
-Concourse supports a vast array of resource types, with many being provided by Concourse by default. Here are some examples of those that are supported: [Git repositories](https://github.com/concourse/git-resource), [S3 buckets](https://github.com/concourse/s3-resource), [timers](https://github.com/concourse/time-resource), and [registry images](https://github.com/concourse/registry-image-resource). On the rare occasion that the resource type you want to use isn't built in to Concourse, it's probably already been build by the community such as [terraform backends](https://github.com/ljfranklin/terraform-resource) or [semaphores](https://github.com/concourse/pool-resource).
+By default, Concourse will check for new versions of each resource every two minutes and jobs that use those resources can be configured to trigger when a new version is found.
 
-Since Concourse follows a "pull" model for resources, it is ideally suited for environments that do not have egress enabled.
+For example, suppose your pipeline was processing a CSV file that was to be found in a S3 bucket. By modelling that file as a resource your Concourse will check the bucket every two minutes and will trigger any configured jobs automatically. The amount of configuration required to set this up being trivial.
+
+Concourse supports a vast array of resource types, with many being provided by Concourse by default. Here are some examples of those that are supported: [Git repositories](https://github.com/concourse/git-resource), [S3 buckets](https://github.com/concourse/s3-resource), [timers](https://github.com/concourse/time-resource), and [registry images](https://github.com/concourse/registry-image-resource). On the rare occasion that the resource type you want to use isn't built in to Concourse, it's probably already been built by the community such as [Terraform backends](https://github.com/ljfranklin/terraform-resource) or [semaphores](https://github.com/concourse/pool-resource).
+
+Since Concourse follows a 'pull' model for resources, it is ideally suited for environments that do not have egress enabled.
 
 ```yaml
 resources:
@@ -97,17 +112,19 @@ jobs:
 
 ### Tekton - *Poor*
 
-As mentioned earlier, Tekton may be optionally deployed with a few other components to allow Events to trigger either a TaskRun or a PipelineRun. The sequence of events is:
+As covered in the first post, Tekton may be optionally deployed with a few other components to allow Events to trigger either a TaskRun or a PipelineRun. The sequence of events is:
 
-1. A hook configured in VCS visits the URL of a Tekton EventListener
+1. A hook configured in VCS hits the URL of a Tekton EventListener
 2. The EventListener uses a TriggerBinding to create a TaskRun or PipelineRun
 3. The pipeline is executed
 
-All of this is exposed to the pipeline author and this is the method used for any programmatic triggering of Tekton pipelines. As an example, in configuring our Tekton pipeline to trigger hourly, we had to configure three separate Kubernetes resources using about 60 lines of yaml (for reference, configuring an hourly run of concourse involved deploying nothing and 4 lines of yaml).
+All of this is exposed to the pipeline author and this is the method used for any programmatic triggering of Tekton pipelines.
 
-Several things raised eyebrows whilst configuring triggers for our Tekton pipeline. First of all we'll revisit an issue identified with triggering in Jenkins - this won't work for environments that have ingress disabled unless there's some more network configuration involved.
+In configuring our Tekton pipeline to trigger hourly, we had to configure three separate Kubernetes resources using about 60 lines of YAML (for reference, configuring an hourly run of concourse involved deploying nothing and 4 lines of YAML).
 
-Secondly, the number of moving parts involved to configure something as simple as an hourly run of our pipeline seemed excessively complicated, probably due to the fact that Tekton is Kubernetes native and there's no getting around implementing it this way without introducing layers of abstraction over Tekton.
+Several things raised our eyebrows whilst configuring triggers for our Tekton pipeline. First of all we'll revisit an issue identified with triggering in Jenkins - this won't work for environments that have ingress disabled, unless there's some more network configuration performed.
+
+Secondly, the number of moving parts involved to configure something as simple as an hourly run of our pipeline seemed excessively complicated, probably due to the fact that Tekton is Kubernetes-native and there's no getting around implementing it this way without introducing layers of abstraction over Tekton.
 
 It seems as though Tekton is designed for higher layers of abstraction to be built over the top of it. For example it wouldn't be *too* difficult to introduce a polling adapter Cron job that interfaces with Concourse's resource binary interface to check for new version of resources.
 
@@ -186,7 +203,7 @@ metadata:
 
 Argo Workflows' triggering mechanisms are realised by using another tool from the Argo toolkit: [Argo Events](https://argoproj.github.io/argo-events/). Events are installed onto a Kubernetes cluster by applying configuration available via the [Argo Events installation docs](https://argoproj.github.io/argo-events/installation/).
 
-The architecture of Argo Events contains one or more Event Sources that configure their target resource (such as a GitHub repository or Amazon SNS) to make the Event Source aware of changes in their state (such as a git push or a pull request). The Event Source will then write an Event to the EventBus. Separately, Argo Sensors are configured on the cluster that will respond to particular Events. One such Sensor is able to trigger creation of Argo Workflow resources (such as triggering a Workflow).
+The architecture of Argo Events contains one or more Event Sources that configure their target resource (such as a GitHub repository or Amazon SNS) to make the Event Source aware of changes in their state (such as a `git push` or a pull request). The Event Source will then write an Event to the EventBus. Separately, Argo Sensors are configured on the cluster that will respond to particular Events. One such Sensor is able to trigger creation of Argo Workflow resources (such as triggering a Workflow).
 
 The model is remarkably similar to Tekton and uses a push rather than a pull model. It is slightly easier to configure than Tekton since the Event Source does the work of configuring the external resource on your behalf (such as configuring a GitHub webhook). Again as with Tekton the amount of configuration required to run a Workflow hourly is an order of magnitude more than Concourse requires.
 
@@ -225,7 +242,7 @@ spec:
           resource:
             apiVersion: argoproj.io/v1alpha1
             kind: Workflow
-            metadata: 
+            metadata:
               namespace: argo
               generateName: hello-
             spec:
@@ -235,17 +252,17 @@ spec:
 
 ### Summary
 
-Both Tekton and Argo Workflows require installation of additional components (such as a cron job or a sensor) in order to do trigger builds based on external changes such as timers. Approaching these two system from nothing required an amount of reading and tinkering with YAML that seems juxtapositioned against the desire "run this once an hour".
+Both Tekton and Argo Workflows require installation of additional components (such as a cron job or a sensor) in order to do trigger builds based on external changes such as timers. Approaching these two systems from nothing required an amount of reading and tinkering with YAML that seems defies the simplicity of 'run this once an hour'.
 
-Jenkins and Concourse pipelines were trivial to trigger programmatically by comparison, with Jenkins falling shy of a "Great" rating due to the pipeline being so coupled to a single repository.
+Jenkins and Concourse pipelines were trivial to trigger programmatically by comparison, with Jenkins falling shy of a "Great" rating due to the pipeline being coupled to a single repository.
 
 ## 4. Use **inputs and outputs to tasks**
 
-Now that pipelines are triggered by external resources, we'll look at how to use those resources in our tasks. Specifically we'll look at using code in a git repository to run tests rather than a static "Hello World" task.
+Now that pipelines are triggered by external resources, we'll look at how to use those resources in our tasks. Specifically we'll look at using code in a Git repository to run tests, rather than a static "Hello World" task from the previous post.
 
 ### Jenkins - *Good*
 
-Since we'd already defined a Git repository in the previous section in order to trigger the pipeline, the Git repository was always made available by Jenkins and indeed the current working directory of any pipeline stages we defined was within the root directory of the repository. This tight coupling with a VCS served us well for this use case, but we can't help but wonder how much extra effort it would involve to use another repository in addition to one that triggers the pipeline.
+Since we'd already defined a Git repository in the previous section in order to trigger the pipeline, the Git repository was always made available by Jenkins and indeed the current working directory of any pipeline stages we defined was the root directory of the repository. This tight coupling with a VCS served us well for this use case, but we can't help but wonder how much extra effort it would involve to use another repository in addition to one that triggers the pipeline.
 
 One quirk of Jenkins was that we had to specify that we want the workspace cleaned between runs. It'd be easy to forget this and pollute your tests with state from a previous run - having workspaces cleaned up by default seems like the kind of thing you'd want (almost) all of the time.
 
@@ -291,9 +308,11 @@ spec:
 
 ### Argo Workflows - *Good*
 
-As with Tekton, Argo Workflows moves state between tasks by mounting VolumeClaims to each container. By declaring an input artifact of type "git", a git repository is cloned into the a directory inside the container.
+As with Tekton, Argo Workflows moves state between tasks by mounting VolumeClaims to each container. By declaring an input artifact of type "git", a Git repository is cloned into the a directory inside the container.
 
-Argo Workflows makes a number of different artifact types available, including [git repositories, S3](https://argoproj.github.io/argo-workflows/fields/#artifact) and integration with [Artifactory](https://jfrog.com/artifactory/). With artifacts modelled as an input to a particular task, it was a little awkward to use when we changed the order of our templates as we had to move the input definition to an earlier template. It'd probably be easier to work with had we defined a "no op" template with our inputs included as the first template in the DAG.
+Argo Workflows makes a number of different artifact types available, including [Git repositories, S3](https://argoproj.github.io/argo-workflows/fields/#artifact) and integration with [Artifactory](https://jfrog.com/artifactory/).
+
+With artifacts modelled as an input to a particular task, it was a little awkward to use when we changed the order of our templates as we had to move the input definition to an earlier template. It'd probably be easier to work with had we defined a "no op" template with our inputs included as the first template in the DAG.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -328,15 +347,21 @@ spec:
 
 All four CI systems made using a Git repository trivial. Argo Workflows had a quirk in that "artifact" inputs are attached to a template (task), which means changing the order of tasks added an amount of toil.
 
-## 5. Writing output to external resources (e.g. a Git repository)
+## 5. Writing output to external resources
 
-A pipeline is of limited use unless it can change the state of something. In this section we'll evaluate the difficulty involved in committing to a git repository.
+A pipeline is of limited use unless it can change the state of something else in the world. In this section we'll evaluate the difficulty involved in committing to a Git repository.
 
 ### Jenkins - *Poor*
 
-Pushing a change to remote in a Git repository in Jenkins was a *journey*. Jenkins has a plugin that can be installed to provide helpers within your declarative pipeline definition that would have made it trivial to change remote but there was one catch - due to a long standing bug it did not work within declarative pipelines. Our other option was to directly invoke git within a stage in the pipeline, which also didn't work because of issues with the UID alias within the container image (that we did manage to resolve by building a registry image within Jenkins but the solution added so much complexity that we abandoned it). Eventually we created a separate pipeline using an older syntax that was compatible with the Git plugin, and we had our main pipeline trigger this pipeline when it needed to make a commit.
+Pushing a change to remote in a Git repository in Jenkins was a *journey*.
 
-As for publishing to S3, there is a [Jenkins S3 publisher plugin](https://github.com/jenkinsci/pipeline-aws-plugin) that may be configured to publish artifacts to S3. In both instances the plugins could be configured via IaC by modifying our earlier Jenkins deployment configuration referenced by the helmfile (redeploying the CI system in order to allow a pipeline to push a file to S3 felt heavy handed).
+Jenkins has a plugin that can be installed to provide helpers within your declarative pipeline definition that would have made it trivial to change the configured remote Git server, but there was one catch. Due to a long-standing bug it did not work within declarative pipelines.
+
+Our other option was to directly invoke Git within a stage in the pipeline, which also didn't work because of issues with the UID alias within the Jenkins container image (that we did manage to resolve by building a registry image within Jenkins, but the solution added so much complexity that we abandoned it).
+
+Eventually we created a separate pipeline using an older syntax that was compatible with the Git plugin, and we had our main pipeline trigger this pipeline when it needed to make a commit.
+
+As for publishing to S3, there is a [Jenkins S3 publisher plugin](https://github.com/jenkinsci/pipeline-aws-plugin) that may be configured to publish artifacts to S3. In both instances the plugins could be configured via IaC by modifying our earlier Jenkins deployment configuration referenced by the helmfile. Redeploying the CI system in order to allow a pipeline to push a file to S3 felt heavy-handed.
 
 *pipeline.yaml*
 
@@ -438,7 +463,7 @@ git push origin &quot;$( git rev-parse &quot;$GIT_REVISION&quot; ):refs/heads/${
 
 ### Concourse - *Great*
 
-The previously visited concourse resources each define a "get" and a "put" step. This means that we can use the [Git resource](https://github.com/concourse/git-resource) already defined in order to push a commit / branch / tag to that repository. This was ridiculously trivial.
+The previously visited Concourse resources each define a 'get' and a 'put' step. This means that we can use the [Git resource](https://github.com/concourse/git-resource) that was already defined in order to push a commit, branch or tag to that repository. This was ridiculously trivial.
 
 ```yaml
 jobs:
@@ -450,11 +475,11 @@ jobs:
 
 ### Tekton - *Mediocre*
 
-Pushing to a Git repository using Tekton involved invoking the Git CLI directly. Browsing Tekton Hub, we found that the published Git Tasks were very operation specific - such as a task for performing a "git clone".
+Pushing to a Git repository using Tekton involved invoking the Git CLI in a shell script. Browsing Tekton Hub, we found that the published Git tasks were very operation specific - such as a task for performing a `git clone`.
 
-Using a Kubernetes secret containing the deploy key for our repository, we mounted the deploy key within our Task and at runtime added it to the keychain and git pushed. Tekton or its ecosystem did not provide tooling to make this any easier.
+Using a Kubernetes secret which contained the deploy key for our repository, we mounted the deploy key within our Task, at runtime added it to the keychain, and `git push`ed. Tekton and its ecosystem did not provide tooling to make this any easier.
 
-There's probably some value in publishing a git push task to Tekton hub.
+There's probably some value in publishing a `git push` task to Tekton Hub.
 
 ```bash
 tkn hub install git-clone
@@ -542,7 +567,7 @@ spec:
 
 ### Argo Workflows - *Mediocre*
 
-Just as with Tekton, pushing to a Git repository in Argo Workflows involved using the Git CLI directly. In the case of Argo Workflows we had to disable StrictHostKeyChecking explicitly via an environmental variable.
+Just as with Tekton, pushing to a Git repository in Argo Workflows involved using the Git CLI directly in a script. In the case of Argo Workflows we had to disable StrictHostKeyChecking explicitly via an environment variable.
 
 Once again the deploy key we needed was applied as a Kubernetes secret.
 
@@ -617,9 +642,17 @@ spec:
 
 ### Summary
 
-Both Tekton and Argo Workflows offered no abstractions over performing a Git push. Due to an issue in Jenkins regarding the Git plugin for Declarative Pipelines we had to actively fight Jenkins and perform a workaround to achieve a Git push. Concourse's resource abstraction meant Git push was 2 lines of YAML.
+Both Tekton and Argo Workflows offered no abstractions over performing a Git push.
 
-It's interesting to compare the amount of time it took us to produce the above Git Push examples (starting from not knowing anything about each system): Jenkins took about 4 hours since we had to wade through bug reports and broken example code, Argo Workflows and Tekton both took about 2 hours to read through docs related to inputs / outputs and produce a working snippet. Producing the concourse snippet and seeing it work took about 10 minutes.
+Due to an issue in Jenkins that prevented the Git plugin working with Declarative Pipelines, we had to actively fight Jenkins and perform a workaround to achieve a Git push.
+
+Concourse's resource abstraction meant Git push was 2 lines of YAML.
+
+It's interesting to compare the amount of time it took us to produce the above Git Push examples (starting from not knowing anything about each system):
+
+* Jenkins took about 4 hours since we had to wade through bug reports and broken example code
+* Argo Workflows and Tekton both took about 2 hours to read through docs related to inputs/outputs and produce a working snippet
+* Producing the Concourse snippet and seeing it work took about 10 minutes
 
 <table class="comparison">
   <tr>

@@ -340,7 +340,7 @@ As for publishing to S3, there is a [Jenkins S3 publisher plugin](https://github
 
 *pipeline.yaml*
 
-```yaml
+```groovy
 pipeline {
   stages {
     ...

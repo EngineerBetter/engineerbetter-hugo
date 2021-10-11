@@ -23,7 +23,7 @@ We'll use the term _product thinking_ here to reflect that there are design and 
 
 Product thinking is a set of processes used to **identify, understand and prioritise problems** faced by a known set of **customers**, and then systematically **build and validate solutions** that are expected to have an **ongoing lifespan**.
 
-**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desired and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced. It is a waste and pointlessto invest your resources building the wrong things on time.
+**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desired and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced. It is a waste and pointless to invest your resources building the wrong things on time.
 
 > ### A real conversation with banking IT executives
 > Deejay: How do you know when a project has been successful?

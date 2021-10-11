@@ -23,7 +23,7 @@ We'll use the term _product thinking_ here to reflect that there are design and 
 
 Product thinking is a set of processes used to **identify, understand and prioritise problems** faced by a known set of **customers**, and then systematically **build and validate solutions** that are expected to have an **ongoing lifespan**.
 
-**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desried and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced.
+**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desired and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced.
 
 > ### A real conversation with banking IT executives
 > Deejay: How do you know when a project has been successful?
@@ -77,16 +77,16 @@ One should make the biggest pains clear and prioritise what will be the most val
 Some examples in practice include:
 
 * Prioritisation of programmes at the strategic level
-* An understanding of a given solution's [cost of delay](https://en.wikipedia.org/wiki/Cost_of_delay(confectionery))
+* An understanding of a given solution's [cost of delay](https://en.wikipedia.org/wiki/Cost_of_delay)
 * Ordered backlogs as opposed to jumbled messes where everything is top priority
 
 ### Well-defined & measurable success
 
 _When you know what success looks like, you know when you're done and what to do next_
 
-Product thinking provides a way to test and measure outcomes to ensure you return **significant results, regardless of whether they are positive or negative**. 
+Product thinking provides a way to test and measure outcomes to ensure you return **significant results, regardless of whether they are positive or negative**.
 
-Significance is the ultimate goal of a test. The worst situation that a doctor can be in is one where they run a test and the results are inconclusive. If the conditions of the test are not clear, variances have not been accounted for before starting, or the doctor is not sure what they are even testing for, any results that are returned are fairly useless to their ability to diagnose and treat their patient. 
+Significance is the ultimate goal of a test. The worst situation that a doctor can be in is one where they run a test and the results are inconclusive. If the conditions of the test are not clear, variances have not been accounted for before starting, or the doctor is not sure what they are even testing for, any results that are returned are fairly useless to their ability to diagnose and treat their patient.
 
 Additionally, it's important to reiterate that the success of the test is determined by ensuring that regardless of the result, there is enough information to make informed decisions about what to do next.
 
@@ -101,27 +101,27 @@ _Shared ownership means increased accountability and lighter individual loads._
 
 Product thinking aids in creating empathy for users and an emphasis is placed on the importance of delivering value that is owned and understood by the entire team. This provides a sense of purpose and also an insight for the team into how their efforts directly impact the things they are producing, making for more commercially intelligent teams. Empowering teams to have the courage to ask why they're building and invest and take ownership in outcomes as opposed to outputs.
 
-Increased empathy in teams can also work to increase the ability to show vulnerability earlier and more often. This means teams are able to ask the questions necessary to produce solid solutions. They can call out shortcomings so they can be addressed. Teams with emotionally robust environments are truly able to fail faster and do so without fear of blame or punishment. 
+Increased empathy in teams can also work to increase the ability to show vulnerability earlier and more often. This means teams are able to ask the questions necessary to produce solid solutions. They can call out shortcomings so they can be addressed. Teams with emotionally robust environments are truly able to fail faster and do so without fear of blame or punishment.
 
-The most important thing is solving customer problems together and effectively adjusting their shared process as opposed to using hero moves that can lead to weak spots in how they deliver value. 
+The most important thing is solving customer problems together and effectively adjusting their shared process as opposed to using hero moves that can lead to weak spots in how they deliver value.
 
 
 Some examples in practice include:
 
 * Identifying and recording customer personas
 * Cross-discipline pairing, early and often, to ensure that customer needs are visible to practitioners
-* Increased feedback loops that run but horizontally and vertically within an organisations
+* Increased feedback loops that run both horizontally and vertically within an organisation
 
 ## Why is product thinking important?
 
 Product thinking is important as the **next frontier in building useful software**, and in creating resilient organisations.
 
 > Agile can help you go as fast as you like, but if you're building the wrong thing, you're screwed anyway - no one will use what you build and the chances are that a great deal of waste will be created in the process.
-> 
-> **If Agile is the vehicle you are travelling in, then product thinking is the navigation ensuring that you're tracking in the right  direction on your journey.** 
->  
+>
+> **If Agile is the vehicle you are travelling in, then product thinking is the navigation ensuring that you're tracking in the right  direction on your journey.**
+>
 > Product thinking captures, and holds teams accountable to justifying, the intent of their actions. In a space where work is justified and actions are intentional, less waste will occur.
- 
+
 Agile software delivery is a largely stagnant field - for years at EngineerBetter we've been helping people delivery software more quickly. Cloud native practices allow us to create resilient and highly-available systems on global scales. Both are generally well-understood even if adoption is poor and lip-service is prevalent.
 
 We've observed that many in our industry spend so much time focusing on the tech and the solution, that they haven't done enough to determine if the solution solves the problem for their users in the first place.

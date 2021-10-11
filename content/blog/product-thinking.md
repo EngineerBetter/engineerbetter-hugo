@@ -68,7 +68,7 @@ Some examples in practice include:
 
 _Address the riskiest assumptions first_
 
-Following the same example, a patient may go see a doctor with several issues. The doctor will assess the patient and then do their best to determine which single issue is posing the greatest risk to their patient's welfare. This will most likely be the first concern that they will focus on and address.
+Continuing the same metaphor, a patient may go see a doctor with several issues. The doctor will assess the patient and then do their best to determine which single issue is posing the greatest risk to their patient's welfare. This will most likely be the first concern that they will focus on and address.
 
 Fixing the most important thing first means the doctor still has a patient to continue working with - there's little point addressing someone's asthma if they're bleeding to death.
 

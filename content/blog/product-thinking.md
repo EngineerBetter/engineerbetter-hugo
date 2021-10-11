@@ -150,4 +150,12 @@ Anyone that is building a product or offers a service can benefit from product t
 Product thinking applies to anything that offers self-service with an ongoing lifespan. Digital experiences, apps, platforms, as well as abstract systems such as communication loops, services and information flows could all leverage these techniques.
 
 
-It is only by explicitly identifying those suffering a problem, understanding that issue, hypothesising what might help, building that proposed solution, and then checking that it had the intended effect that we deliver useful software.
+It is only by:
+
+* explicitly identifying those suffering a problem
+* understanding that issue
+* hypothesising what might help
+* building that proposed solution
+* checking the solution had the intended effect
+
+...that we deliver useful software.

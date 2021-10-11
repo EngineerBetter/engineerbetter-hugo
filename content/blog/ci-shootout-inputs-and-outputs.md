@@ -342,10 +342,10 @@ As for publishing to S3, there is a [Jenkins S3 publisher plugin](https://github
 
 ```yaml
 pipeline {
-	stages {
-		...
+  stages {
+    ...
 
-		stage('Promote') {
+    stage('Promote') {
       steps {
         script {
           GIT_REVISION = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
@@ -362,7 +362,7 @@ pipeline {
         )
       }
     }
-	}
+  }
 }
 ```
 

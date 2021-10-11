@@ -19,13 +19,13 @@ At EngineerBetter we've evaluated four self-hosted CI systems in order to compar
 
 Across a series of blog posts, we'll be evaluating how each CI system supports the following use cases:
 
-1. [**Install** and configure the CI system](#1-install-and-configure-the-ci-system)
-2. [**Run** a "Hello, World" task](#2-run-a-hello-world-task)
-3. **Trigger** pipeline runs when external resources (such as Git commits or uploads to a S3 bucket) change
-1. Use **inputs and outputs to tasks**
-1. Write **outputs externally** (like making a Git commit or pushing a file to S3)
-1. **Re-use** pipeline configuration
-1. Use the CI system as a **build monitor**
+* _First post_ - [1. **Install** and configure the CI system](#1-install-and-configure-the-ci-system)
+* _First post_ - [2. **Run** a "Hello, World" task](#2-run-a-hello-world-task)
+* [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 3. **Trigger** when external resources (eg Git repos, S3 buckets) change
+* [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 4. Use **inputs and outputs to tasks**
+* [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
+* _Third post_ - 6. **Re-use** pipeline configuration
+* _Third post_ - 7. Use the CI system as a **build monitor**
 
 In this post we'll explore the first two of the use cases listed above. In each section we'll give each CI system a rating of either *Poor*, *Mediocre*, *Good* or *Great*.
 
@@ -68,6 +68,8 @@ repositories:
   url: https://charts.jenkins.io
 ```
 
+&nbsp;
+
 ### Concourse - *Great*
 
 We followed [Concourse's own guide to installing Concourse via a Helm chart](https://github.com/concourse/concourse-chart). Installation was simple and it worked without issue.
@@ -76,6 +78,8 @@ We followed [Concourse's own guide to installing Concourse via a Helm chart](htt
 helm repo add concourse https://concourse-charts.storage.googleapis.com/
 helm install concourse concourse/concourse
 ```
+
+&nbsp;
 
 ### Tekton - *Good*
 
@@ -91,6 +95,8 @@ kubectl apply --filename "${tekton_releases}/triggers/latest/release.yaml"
 kubectl apply --filename "${tekton_releases}/triggers/latest/interceptors.yaml"
 ```
 
+&nbsp;
+
 ### Argo Workflows - *Great*
 
 We followed [Argo Workflows' own Quick Start instructions](https://argoproj.github.io/argo-workflows/quick-start/) to install Argo Workflows via a few kubectl commands that referenced [publicly available Kubernetes YAML files](https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml). Unlike Tekton, there is only a singly YAML manifest to apply. It worked for us out of the box without tweaking anything and was ready within a minute or two.
@@ -100,6 +106,8 @@ export manifests="https://raw.githubusercontent.com/argoproj/argo-workflows/stab
 kubectl create namespace argo
 kubectl apply --namespace argo --filename "${manifests}/quick-start-postgres.yaml
 ```
+
+&nbsp;
 
 ### Summary
 
@@ -235,6 +243,7 @@ pipeline {
 </flow-definition>
 ```
 
+&nbsp;
 
 ### Concourse - *Great*
 
@@ -258,6 +267,8 @@ run:
   path: echo
   args: ["Hello, World!"]
 ```
+
+&nbsp;
 
 ### Tekton - *Great*
 
@@ -284,6 +295,8 @@ spec:
 command: [echo, "Hello, World!"]
 ```
 
+&nbsp;
+
 ### Argo Workflows - *Great*
 
 As with Tekton, resources in Argo Workflows are simply shallow abstractions over Kubernetes resources. Kubernetes YAML is used to define [Argo Workflows' Templates](https://argoproj.github.io/argo-workflows/workflow-templates/). Templates are then composed into Workflows using another `Kind` of Kubernetes resource containing a directed acyclic graph (DAG) syntax when there's more than one template. The Workflows are then executed using the Argo Workflows CLI.
@@ -308,7 +321,17 @@ spec:
     command: [echo, hello]
 ```
 
+&nbsp;
+
 ### Summary
+
+Getting started with Concourse, Tekton and Argo required very little effort; each required at most 10 lines of YAML and a few commands to execute. Looking at the output of each was similarly trivial.
+
+Both Jenkins and Argo Workflows required the execution of a pipeline (or Workflow) in order to execute a single task. This didn't add to the complexity in the case of Argo Workflows, however executing Hello World on Jenkins required orders of magnitude more configuration than the other options and contained a gotcha in the form of the non-idempotent commands.
+
+Jenkins again fell far behind the competition in this use case with the differences between the Concourse, Tekton and Argo Workflows being negligible.
+
+## Scorecard
 
 <table class="comparison">
   <tr>
@@ -363,18 +386,12 @@ spec:
   </tr>
 </table>
 
-
-
-Getting started with Concourse, Tekton and Argo required very little effort; each required at most 10 lines of YAML and a few commands to execute. Looking at the output of each was similarly trivial.
-
-Both Jenkins and Argo Workflows required the execution of a pipeline (or Workflow) in order to execute a single task. This didn't add to the complexity in the case of Argo Workflows, however executing Hello World on Jenkins required orders of magnitude more configuration than the other options and contained a gotcha in the form of the non-idempotent commands.
-
-Jenkins again fell far behind the competition in this use case with the differences between the Concourse, Tekton and Argo Workflows being negligible.
+&nbsp;
 
 ## Next time
 
-In the next blog in this series we'll explore the following three use cases described above:
+In [the next blog in this series](/blog/ci-shootout-inputs-and-outputs) we explore the following three use cases that we first described in the intro:
 
-- *Trigger pipeline runs when external resources (such as Git commits or uploads to a S3 bucket) change*
+- *Trigger pipeline runs when external resources (eg Git repos, S3 buckets) change*
 - *Use inputs and outputs to tasks*
 - *Write outputs externally (like making a Git commit or pushing a file to S3)*

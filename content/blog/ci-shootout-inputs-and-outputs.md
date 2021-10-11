@@ -1,8 +1,8 @@
 ---
 author: Tom Godkin
-date: "2021-10-04"
-heroImage: /img/blog/gunfight.jpg
-title: "CI Shootout: Triggering runs and using inputs & outputs with Jenkins, Concourse, Tekton and Argo Workflows"
+date: "2021-10-12"
+heroImage: /img/blog/gunfight-enchanted-springs.jpg
+title: "CI Shootout: Triggering, Inputs, and Outputs"
 draft: true
 
 heading: Our
@@ -12,9 +12,13 @@ Description: Get the very latest updates about recent projects, team updates, th
 
 In [the previous blog](/blog/ci-shootout-getting-started/) we looked at getting started with four self-hosted CI systems: Jenkins, Concourse, Tekton & Argo Workflows. In this post we continue by looking at the following use cases for those CI systems:
 
-3. [**Trigger** pipeline runs when external resources (eg Git repos, S3 buckets) change](#3-trigger-pipeline-runs)
-4. [Use **inputs and outputs to tasks**](#4-use-inputs-and-outputs-to-tasks)
-5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
+* [_First post_](/blog/ci-shootout-getting-started) - 1. **Install** and configure the CI system
+* [_First post_](/blog/ci-shootout-getting-started) - 2. **Run** a "Hello, World" task
+* _This post_ - [3. **Trigger** pipeline runs when external resources (eg Git repos, S3 buckets) change](#3-trigger-pipeline-runs)
+* _This post_ - [4. Use **inputs and outputs to tasks**](#4-use-inputs-and-outputs-to-tasks)
+* _This post_ - [5. Write **outputs externally** (like making a Git commit or pushing a file to S3)](#5-writing-output-to-external-resources)
+* _Third post_ - 6. **Re-use** pipeline configuration
+* _Third post_ - 7. Use the CI system as a **build monitor**
 
 ## 3. Trigger pipeline runs
 
@@ -22,7 +26,7 @@ Running tasks in CI manually is all well and good, but for CI to be useful, it'l
 
 * new commits to a git repository
 * new files in an S3 bucket
-* a schedule.
+* a timed schedule
 
 We'll also examine whether each of these systems supports a 'push' or 'pull' model when it comes to external triggers.
 
@@ -73,6 +77,8 @@ In a later blog post we'll encounter frustration with the lack of triggering on 
 </flow-definition>
 ```
 
+&nbsp;
+
 ### Concourse - *Great*
 
 [Resources](https://concourse-ci.org/resources.html) in Concourse are implemented based around a strict binary API; each resource can:
@@ -110,6 +116,8 @@ jobs:
         args: [hello]
 ```
 
+&nbsp;
+
 ### Tekton - *Poor*
 
 As covered in the first post, Tekton may be optionally deployed with a few other components to allow Events to trigger either a TaskRun or a PipelineRun. The sequence of events is:
@@ -120,7 +128,7 @@ As covered in the first post, Tekton may be optionally deployed with a few other
 
 All of this is exposed to the pipeline author and this is the method used for any programmatic triggering of Tekton pipelines.
 
-In configuring our Tekton pipeline to trigger hourly, we had to configure three separate Kubernetes resources using about 60 lines of YAML (for reference, configuring an hourly run of concourse involved deploying nothing and 4 lines of YAML).
+In configuring our Tekton pipeline to trigger hourly, we had to configure three separate Kubernetes resources using about 60 lines of YAML (for reference, configuring an hourly run of Concourse involved deploying nothing and 4 lines of YAML).
 
 Several things raised our eyebrows whilst configuring triggers for our Tekton pipeline. First of all we'll revisit an issue identified with triggering in Jenkins - this won't work for environments that have ingress disabled, unless there's some more network configuration performed.
 
@@ -199,6 +207,8 @@ metadata:
   name: cron-binding
 ```
 
+&nbsp;
+
 ### Argo Workflows - *Mediocre*
 
 Argo Workflows' triggering mechanisms are realised by using another tool from the Argo toolkit: [Argo Events](https://argoproj.github.io/argo-events/). Events are installed onto a Kubernetes cluster by applying configuration available via the [Argo Events installation docs](https://argoproj.github.io/argo-events/installation/).
@@ -250,6 +260,8 @@ spec:
               workflowTemplateRef: {name: workflow-template-hello}
 ```
 
+&nbsp;
+
 ### Summary
 
 Both Tekton and Argo Workflows require installation of additional components (such as a cron job or a sensor) in order to do trigger builds based on external changes such as timers. Approaching these two systems from nothing required an amount of reading and tinkering with YAML that seems defies the simplicity of 'run this once an hour'.
@@ -278,6 +290,8 @@ pipeline {
 }
 ```
 
+&nbsp;
+
 ### Concourse - *Great*
 
 Each Concourse Task begins with its working directory containing subdirectories for each input to that Task. For example, a Git resource "foo" provided as an input will be present within the Task container as a checked out Git repository at "./foo".
@@ -305,6 +319,8 @@ spec:
     image: "engineerbetter/iac-example-ci:15-promote"
     workingDir: *repo_dir
 ```
+
+&nbsp;
 
 ### Argo Workflows - *Good*
 
@@ -342,6 +358,8 @@ spec:
       - name: workdir
         mountPath: /workdir
 ```
+
+&nbsp;
 
 ### Summary
 
@@ -461,6 +479,8 @@ git push origin &quot;$( git rev-parse &quot;$GIT_REVISION&quot; ):refs/heads/${
 </project>
 ```
 
+&nbsp;
+
 ### Concourse - *Great*
 
 The previously visited Concourse resources each define a 'get' and a 'put' step. This means that we can use the [Git resource](https://github.com/concourse/git-resource) that was already defined in order to push a commit, branch or tag to that repository. This was ridiculously trivial.
@@ -472,6 +492,8 @@ jobs:
   plan:
   - put: iac-example-concourse
 ```
+
+&nbsp;
 
 ### Tekton - *Mediocre*
 
@@ -565,6 +587,8 @@ spec:
       git push origin HEAD:main
 ```
 
+&nbsp;
+
 ### Argo Workflows - *Mediocre*
 
 Just as with Tekton, pushing to a Git repository in Argo Workflows involved using the Git CLI directly in a script. In the case of Argo Workflows we had to disable StrictHostKeyChecking explicitly via an environment variable.
@@ -640,6 +664,8 @@ spec:
         value: ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 ```
 
+&nbsp;
+
 ### Summary
 
 Both Tekton and Argo Workflows offered no abstractions over performing a Git push.
@@ -653,6 +679,8 @@ It's interesting to compare the amount of time it took us to produce the above G
 * Jenkins took about 4 hours since we had to wade through bug reports and broken example code
 * Argo Workflows and Tekton both took about 2 hours to read through docs related to inputs/outputs and produce a working snippet
 * Producing the Concourse snippet and seeing it work took about 10 minutes
+
+## Scorecard
 
 <table class="comparison">
   <tr>
@@ -723,3 +751,12 @@ It's interesting to compare the amount of time it took us to produce the above G
     </td>
   </tr>
 </table>
+
+&nbsp;
+
+## Next time
+
+In the final post in this series we will see how good the systems are for the remaining use cases:
+
+* _**Re-use** pipeline configuration for promotion_
+* _Use the CI system as a **build monitor**_

@@ -23,7 +23,7 @@ We'll use the term _product thinking_ here to reflect that there are design and 
 
 Product thinking is a set of processes used to **identify, understand and prioritise problems** faced by a known set of **customers**, and then systematically **build and validate solutions** that are expected to have an **ongoing lifespan**.
 
-**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desired and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced.
+**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desired and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced. It is a waste and pointlessto invest your resources building the wrong things on time.
 
 > ### A real conversation with banking IT executives
 > Deejay: How do you know when a project has been successful?
@@ -49,7 +49,7 @@ There are four core themes of product thinking that we'll explain in more detail
 * Well-defined and measurable success
 * Customer empathy
 
-It is important understand that product thinking is not a phase or step that happens at a single point in a system, or level of an organisation, but instead a mindset. Mindsets do not live in one place, they are leveraged across an entire ecosystem. They speak to a way of thinking or set of approaches that can be applied to how we go about achieving a goal. These themes, therefore, do not apply at one level - rather, these principles are like a [stick of rock](https://en.wikipedia.org/wiki/Rock_(confectionery)) in that they run vertically throughout an organisation, applying at scales from the individual user story to corporate strategy.
+It is important to understand that product thinking is not a phase or step that happens at a single point in a system, or level of an organisation, but instead a mindset. Mindsets do not live in one place, they are leveraged across an entire ecosystem. They speak to a way of thinking or set of approaches that can be applied to how we go about achieving a goal. These themes, therefore, do not apply at one level - rather, these principles are like a [stick of rock](https://en.wikipedia.org/wiki/Rock_(confectionery)) in that they run vertically throughout an organisation, applying at scales from the individual user story to corporate strategy.
 
 ### Problem validation
 
@@ -97,9 +97,11 @@ Some examples in practice include:
 
 ### Customer empathy
 
-_Shared ownership means increased accountability and lighter individual loads._
+_Shared ownership of empathy for users in the team means increased accountability and lighter individual loads._
 
-Product thinking aids in creating empathy for users and an emphasis is placed on the importance of delivering value that is owned and understood by the entire team. This provides a sense of purpose and also an insight for the team into how their efforts directly impact the things they are producing, making for more commercially intelligent teams. Empowering teams to have the courage to ask why they're building and invest and take ownership in outcomes as opposed to outputs.
+Before your customer is a product, or a persona, or a user manual, or even a customer; they are a person. We in business often forget this, focusing more in codifying and extrapolating people to fit our business needs. The real value in product thinking comes from a readdressing of the balance of peoples' needs and business needs by listening much closer to the person speaking to us. Their lives, their situations, their wants, needs, desires, and fears. 
+
+Product thinking aids in building this empathy for users and an emphasis should be placed on the importance of delivering value that is owned and understood by the entire team. This provides a sense of purpose and also an insight for the team into how their efforts directly impact the things they are producing, making for more commercially intelligent teams. Empowering teams to have the courage to ask why they're building and invest and take ownership in outcomes as opposed to outputs.
 
 Increased empathy in teams can also work to increase the ability to show vulnerability earlier and more often. This means teams are able to ask the questions necessary to produce solid solutions. They can call out shortcomings so they can be addressed. Teams with emotionally robust environments are truly able to fail faster and do so without fear of blame or punishment.
 

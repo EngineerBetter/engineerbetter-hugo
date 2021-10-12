@@ -82,7 +82,6 @@ In a later blog post we'll encounter frustration with the lack of triggering on 
 ### Concourse - *Great*
 
 [Resources](https://concourse-ci.org/resources.html) in Concourse are implemented based around a strict binary API; each resource can:
-
 * **get** a version of that resource type
 * **put** a new version, or
 * **check** for new versions.
@@ -133,7 +132,7 @@ In configuring our Tekton pipeline to trigger hourly, we had to configure three 
 
 Several things raised our eyebrows whilst configuring triggers for our Tekton pipeline. First of all we'll revisit an issue identified with triggering in Jenkins - this won't work for environments that have ingress disabled, unless there's some more network configuration performed.
 
-Secondly, the number of moving parts involved to configure something as simple as an hourly run of our pipeline seemed excessively complicated, probably due to the fact that Tekton is Kubernetes-native and there's no getting around implementing it this way without introducing layers of abstraction over Tekton.
+Secondly, the number of moving parts involved to configure something as simple as an hourly run of our pipeline seemed excessively complicated, probably due to the fact that Tekton is Kubernetes native and there's no getting around implementing it this way without introducing layers of abstraction over Tekton.
 
 It seems as though Tekton is designed for higher layers of abstraction to be built over the top of it. For example it wouldn't be *too* difficult to introduce a polling adapter Cron job that interfaces with Concourse's resource binary interface to check for new version of resources.
 
@@ -265,7 +264,7 @@ spec:
 
 ### Summary
 
-Both Tekton and Argo Workflows require installation of additional components (such as a cron job or a sensor) in order to do trigger builds based on external changes such as timers. Approaching these two systems from nothing required an amount of reading and tinkering with YAML that seems defies the simplicity of 'run this once an hour'.
+Both Tekton and Argo Workflows require installation of additional components (such as a cron job or a sensor) in order to do trigger builds based on external changes such as timers. Approaching these two systems from nothing required an amount of reading and tinkering with YAML that seems to defy the simplicity of 'run this once an hour'.
 
 Jenkins and Concourse pipelines were trivial to trigger programmatically by comparison, with Jenkins falling shy of a "Great" rating due to the pipeline being coupled to a single repository.
 

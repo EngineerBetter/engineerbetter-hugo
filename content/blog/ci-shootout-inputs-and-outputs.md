@@ -362,7 +362,7 @@ spec:
     container:
       command: [make]
       args: [test]
-		  image: "engineerbetter/iac-example-ci:15-promote"
+      image: "engineerbetter/iac-example-ci:15-promote"
       workingDir: *repo_dir
       volumeMounts:
       - name: workdir

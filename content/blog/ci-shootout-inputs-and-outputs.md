@@ -391,8 +391,6 @@ Our other option was to directly invoke the Git CLI within a stage in the pipeli
 
 Eventually we created a _separate_ pipeline using an older syntax that was compatible with the Git plugin, and we had our main pipeline trigger this pipeline when it needed to make a commit.
 
-As for publishing to S3, there is a [Jenkins S3 publisher plugin](https://github.com/jenkinsci/pipeline-aws-plugin) that may be configured to publish artifacts to S3. In both instances the plugins could be configured via IaC by modifying our earlier Jenkins deployment configuration referenced by the helmfile. Redeploying the CI system in order to allow a pipeline to push a file to S3 felt heavy-handed.
-
 *pipeline.yaml*
 
 ```groovy

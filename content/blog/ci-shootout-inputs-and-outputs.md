@@ -306,18 +306,28 @@ Much like in Concourse, workspaces are simply directories available to the TaskR
 
 ```yaml
 apiVersion: tekton.dev/v1beta1
-kind: Task
-metadata: {name: iac-example-deploy-apps}
+kind: Pipeline
+metadata: {name: tkn-clone-demo}
 spec:
   workspaces:
-  - name: git-source
-    mountPath: &repo_dir /iac-example-tekton
-  steps:
-  - name: fetch-cluster-config
-    command: [make]
-    args: [test]
-    image: "engineerbetter/iac-example-ci:15-promote"
-    workingDir: *repo_dir
+  - name: ssh-directory
+  - name: iac-example-tekton
+  tasks:
+  - name: git-clone
+    taskRef: {name: git-clone}
+    workspaces:
+    - name: output
+      workspace: iac-example-tekton
+    - name: ssh-directory
+      workspace: ssh-directory
+    params:
+    - name: url
+      value: git@github.com:EngineerBetter/iac-example-tekton.git
+  - name: test
+    workspaces:
+    - name: iac-example-tekton
+    runAfter: git-clone
+    taskRef: {name: test-iac-example-tekton}
 ```
 
 &nbsp;

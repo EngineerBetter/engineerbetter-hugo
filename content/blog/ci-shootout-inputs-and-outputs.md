@@ -82,7 +82,8 @@ In a later blog post we'll encounter frustration with the lack of triggering on 
 ### Concourse - *Great*
 
 [Resources](https://concourse-ci.org/resources.html) in Concourse are implemented based around a strict binary API; each resource can:
-*  **get** a version of that resource type
+
+* **get** a version of that resource type
 * **put** a new version, or
 * **check** for new versions.
 

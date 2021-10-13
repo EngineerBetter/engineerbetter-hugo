@@ -130,11 +130,11 @@ All of this is exposed to the pipeline author and this is the method used for an
 
 In configuring our Tekton pipeline to trigger hourly, we had to configure three separate Kubernetes resources using about 60 lines of YAML (for reference, configuring an hourly run of Concourse involved deploying nothing and 4 lines of YAML).
 
-Several things raised our eyebrows whilst configuring triggers for our Tekton pipeline. First we revisit the issue identified with triggering in Jenkins - it only works if the CI server is accessible from the public internet.
+Several things raised our eyebrows whilst configuring triggers for our Tekton pipeline. First, the issue identified with triggering in Jenkins - it only works if the CI server is accessible from the public internet.
 
-Secondly, the number of moving parts involved to configure something as simple as an hourly run of our pipeline seemed excessively complicated, probably due to the fact that Tekton is Kubernetes native and there's no getting around implementing it this way without introducing layers of abstraction over Tekton.
+Secondly, the number of moving parts involved to configure something as simple as an hourly run of our pipeline seemed excessively complicated. This is probably due to the fact that Tekton is Kubernetes native and so there's no getting around implementing it this way without introducing layers of abstraction over Tekton.
 
-It seems as though Tekton is designed for higher layers of abstraction to be built over the top of it. For example it wouldn't be *too* difficult to introduce a polling adapter Cron job that interfaces with Concourse's resource binary interface to check for new version of resources.
+It seems as though Tekton is designed with the intention that higher layers of abstraction should be built over the top of it. For example it wouldn't be *too* difficult to introduce a polling adapter Cron job that interfaces with Concourse's resource binary interface to check for new version of resources.
 
 *cron.yaml*
 
@@ -389,7 +389,7 @@ Jenkins has a plugin that can be installed to provide helpers within your declar
 
 Our other option was to directly invoke the Git CLI within a stage in the pipeline, which also didn't work because of issues with the UID alias within the Jenkins container image. (We did manage to resolve the UID issue by building a container image within Jenkins, but the solution added so much complexity that we abandoned it).
 
-Eventually we created a _separate_ pipeline using an older syntax that was compatible with the Git plugin, and we had our main pipeline trigger this pipeline when it needed to make a commit.
+Eventually we created a _separate_ pipeline using an older syntax that was compatible with the Git plugin, and we had our main pipeline trigger this pipeline when it needed to make a commit. This meant we now had our CI logic split across two pipelines, each configured using a different paradigm.
 
 *pipeline.yaml*
 
@@ -511,7 +511,7 @@ Pushing to a Git repository using Tekton involved invoking the Git CLI in a shel
 
 Using a Kubernetes secret which contained the deploy key for our repository, we mounted the deploy key within our Task, at runtime added it to the keychain, and `git push`ed. Tekton and its ecosystem did not provide tooling to make this any easier.
 
-There's probably some value in publishing a `git push` task to Tekton Hub.
+There's probably some value in publishing a `git push` task to Tekton Hub, so that other people could use it.
 
 ```bash
 tkn hub install git-clone

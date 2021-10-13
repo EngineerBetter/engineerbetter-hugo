@@ -1,9 +1,8 @@
 ---
 author: Tom Godkin
-date: "2021-10-12"
+date: "2021-10-13"
 heroImage: /img/blog/gunfight-enchanted-springs.jpg
 title: "CI Shootout: Triggering, Inputs, and Outputs"
-draft: true
 
 heading: Our
 headingBold: blog

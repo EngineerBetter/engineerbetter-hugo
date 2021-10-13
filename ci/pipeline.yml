@@ -111,8 +111,6 @@ jobs:
     - get: kf-pipelines
   - task: hugo
     file: eb-hugo/ci/tasks/hugo-build.yml
-    params:
-      HUGO_BASEURL: https://eb-hugo-staging.engineerbetter.com
   - *generate-kubeconfig
   - task: setup-routes
     file: kf-pipelines/ci/tasks/kubectl/task.yml

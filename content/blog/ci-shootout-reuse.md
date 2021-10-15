@@ -17,10 +17,10 @@ In [the previous blog](/blog/ci-shootout-inputs-and-outputs) reading state from 
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 3. **Trigger** pipeline runs when external resources (eg Git repos, S3 buckets) change
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 4. Use **inputs and outputs to tasks**
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
-* _This post_ - 6. **Re-use** pipeline configuration
-* _This post_ - 7. Use the CI system as a **build monitor**
+* _This post_ - 6. [**Re-use** pipeline configuration](#6-composability-of-tasks)
+* _This post_ - 7. [Use the CI system as a **build monitor**](#7-using-the-ci-system-as-a-build-monitor)
 
-## 3. Trigger pipeline runs
+## 6. Composability of tasks
 
 Writing YAML (or XML) isn't much fun, how re-usable is what we've written? Can we use configuration written by someone else to have my pipeline achieve the same outcomes? In this section we'll evaluate how much of what we've written is re-usable by ourselves and others, and how easy it is to discover the work of others to avoid re-inventing the wheel.
 
@@ -167,7 +167,7 @@ Argo Workflows offers nothing that assists in code re-use other than finding and
 
 &nbsp;
 
-## 7. Using the pipeline as a build monitor
+## 7. Using the CI system as a build monitor
 
 Build monitors are enormously useful to teams writing software to solve problems. They should be in your face, making it very difficult to ignore problems and allow teams to "stop the line". Failures left in a failure state can at best rot and become more difficult to solve later and at worst they prevent further work. In this section we evaluate whether the UIs provided out of the box are appropriate as build monitors and if not, how much work is involved to use them as one.
 

@@ -238,3 +238,58 @@ In terms of presentation of the CI system as a build monitor - all four options 
 Concourse does not track "pipeline runs" as a concept, the pipeline is only ever a snapshot of right now and so displaying that snapshot on a build monitor is completely reasonable.
 
 Jenkins, Tekton and Argo Workflows are better presented by their summary view, even for single-pipeline teams since the pipelines can simultaneously take more than one shape at once - pipeline runs remember the shape of the pipeline *when it ran*.
+
+## Scorecard
+
+<table class="comparison">
+  <tr>
+    <td>
+    </td>
+    <th>
+      Jenkins
+    </th>
+    <th>
+      Concourse
+    </th>
+    <th>
+      Tekton
+    </th>
+    <th>
+      Argo Workflows
+    </th>
+  </tr>
+  <tr>
+    <td>
+      Re-use
+    </td>
+    <td>
+      Good
+    </td>
+    <td>
+      Good
+    </td>
+    <td>
+      Great
+    </td>
+    <td>
+      Mediocre
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Build monitor
+    </td>
+    <td>
+      Good
+    </td>
+    <td>
+      Great
+    </td>
+    <td>
+      Great
+    </td>
+    <td>
+      Great
+    </td>
+  </tr>
+</table>

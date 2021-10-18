@@ -2,7 +2,7 @@
 author: Chisara Nwabara
 date: "2021-10-31"
 heroImage: https://www.audi-technology-portal.de/files/images/_large/active_lane_assist1_en__large.jpg
-title: "Why Product Thinking Matters"
+title: "Why Product Thinking?"
 draft: true
 heading: Our
 headingBold: blog

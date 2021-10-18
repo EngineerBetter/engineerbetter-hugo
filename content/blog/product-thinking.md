@@ -42,6 +42,8 @@ Product thinking is a set of processes used to **identify, understand and priori
 
 ## Features of product thinking
 
+Foo
+
 There are four core themes of product thinking that we'll explain in more detail:
 
 * Problem validation

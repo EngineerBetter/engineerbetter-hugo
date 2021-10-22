@@ -1,6 +1,6 @@
 ---
 author: Tom Godkin
-date: "2021-10-13"
+date: "2021-10-22"
 heroImage: /img/blog/gunfight-enchanted-springs.jpg
 title: "CI Shootout: Re-use and build monitors"
 draft: true
@@ -10,7 +10,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-In [the previous blog](/blog/ci-shootout-inputs-and-outputs) reading state from and writing state to the outside world with four self-hosted CI systems: Jenkins, Concourse, Tekton & Argo Workflows. In this post we continue by looking at the re-usability of pipeline resources and build monitors:
+In [the previous blog](/blog/ci-shootout-inputs-and-outputs) we compared the act of reading state from, and writing state to, the outside world with four self-hosted CI systems: Jenkins, Concourse, Tekton & Argo Workflows. In this post we continue by looking at the re-usability of pipeline resources, and how well each serves as a build monitor:
 
 * [_First post_](/blog/ci-shootout-getting-started) - 1. **Install** and configure the CI system
 * [_First post_](/blog/ci-shootout-getting-started) - 2. **Run** a "Hello, World" task
@@ -22,15 +22,15 @@ In [the previous blog](/blog/ci-shootout-inputs-and-outputs) reading state from 
 
 ## 6. Composability of tasks
 
-Writing YAML (or XML) isn't much fun, how re-usable is what we've written? Can we use configuration written by someone else to have my pipeline achieve the same outcomes? In this section we'll evaluate how much of what we've written is re-usable by ourselves and others, and how easy it is to discover the work of others to avoid re-inventing the wheel.
+We'll evaluate how much of what we've written is re-usable by ourselves and others, and how easy it is to discover the work of others to avoid re-inventing the wheel.
 
 ### Jenkins - *Good*
 
-Jenkins reusability comes from plugins, for which there is [a repository of plugins](https://plugins.jenkins.io/) you can look through. Given Jenkins' age it's not surprising that there's a vast array of plugins (~1800 community plugins according to jenkins.io) and we've already used a few ([the Git plugin](https://plugins.jenkins.io/git/) for pushing commits and [Blue Ocean](https://plugins.jenkins.io/blueocean/) which we'll speak more about in section 7 of this blog).
+Jenkins reusability comes from plugins, for which there is [a repository](https://plugins.jenkins.io/) that you can browse through. Given Jenkins' age it's not surprising that there's a vast array of plugins (~1,800 community plugins at the time of writing) and we've already used a few: [the Git plugin](https://plugins.jenkins.io/git/) for pushing commits, and [Blue Ocean](https://plugins.jenkins.io/blueocean/) which we'll mention later in this post.
 
-Jenkins plugins were traditionally installed by pointing and clicking through the Jenkins UI, more recently it's possible to install them via the helm chart we used to deploy our Jenkins. It feels a little strange that installing a plugin requires a whole helm install.
+Jenkins plugins were traditionally installed by pointing and clicking through the Jenkins UI. More recently it become possible to install them via the Helm chart we used to deploy our Jenkins. It feels a little strange that installing a plugin requires a whole `helm install`.
 
-Once installed, Jenkins plugins can offer new options in the UI when creating pipelines or new blocks for use in the various pipeline syntax, such as the Git plugin's withCredentials extension.
+Once installed, Jenkins plugins can offer new options in the UI when creating pipelines or new blocks for use in the various pipeline syntax, such as the Git plugin's `withCredentials` extension.
 
 ```groovy
 withCredentials([gitUsernamePassword(
@@ -41,7 +41,7 @@ withCredentials([gitUsernamePassword(
 }
 ```
 
-Since Jenkins declarative pipelines support sprinkling in Groovy code, you're able to define functions that may be re-used within your own pipelines.
+If you need to implement your own custom, reusable logic, Jenkins declarative pipelines support sprinkling in Groovy functions that can be referenced in several places.
 
 ```groovy
 def hello = {
@@ -67,7 +67,9 @@ pipeline {
 
 Concourse has two ways to re-use the work of others: [resource types](https://concourse-ci.org/resource-types.html) and [tasks](https://concourse-ci.org/tasks.html).
 
-Resource types are the definition of the resources we've already encountered in previous blogs in this series. Resources we're already familiar with, such as the Git resource, have a corresponding resource type and is made available by Concourse by default. Including another resource type that isn't default in our pipeline trivial - we define the required resource type in our pipeline such as with the Terraform backend resource type below.
+Resource types are the definition of the resources we've already encountered in previous posts. Resources that we're already familiar with, such as the Git resource, have a corresponding resource type and is made available by Concourse by default.
+
+Including another resource type in our pipeline is trivial - as in the below Terraform example, a short YAML stanza is all that is needed. This references an image in a container registry that implements the Concourse resource contract.
 
 ```yaml
 resource_types:
@@ -98,9 +100,14 @@ resources:
         AWS_SECRET_ACCESS_KEY: {{environment_secret_key}}
 ```
 
-Tasks are definitions for executable units of a concourse pipeline that optionally receive inputs and produce outputs. Each task defines what is to be executed in a YAML file and tasks are referenced in pipelines. We could define a Task in another Git repository and use it in my pipeline as long as the repository has a corresponding `get` step in our concourse job.
+Tasks are definitions for executable units of a Concourse job that optionally receive inputs and produce outputs. Tasks can be defined in the pipeline YAML, or as external files that must be available when the job runs (eg in a Git repo that features as a `get` step in the job).
 
-Tasks may be provided with variables that are interpolated into the task config and parameters that are set as environment variables when the task is executed. Below is an example task and its usage in a pipeline.
+To reference an 'external' task configuration YAML, a `task` step is added to a job with a `file` entry pointing to where Concourse will find the YAML at runtime. This YAML in turn defines features of the task, such as the container image to be used, the executable to be invoked, and any environment variables that should be available.
+
+Tasks definitions can be parameterised in two ways:
+
+* `vars` which are provided for `((placeholders))` in the task configuration. These can be provided explicitly in the job's `vars` block, when the pipeline is set, or looked up in a secret manager such as Hashicorp Vault
+* `params` are environment variables provided when the task's executable is invoked. These can be set either in the task configuration or in the containing pipeline. For even more head-melting flexibility, you can use the templated variables described above _as_ params!
 
 ```yaml
 platform: linux
@@ -135,7 +142,7 @@ jobs:
     params: {VERBOSE: true}
 ```
 
-One killer feature of Concourse - *you can override task inputs using artefacts local to your own machine*. Why would you do that? You can execute a task and see if it worked *before you `git push` .*
+One killer feature of Concourse - *you can override task inputs using artefacts local to your own machine*. Why would you do that? You can execute a task and see if it works *before you `git push` .*
 
 ```bash
 fly execute --config task.yaml --input=iac-example-concourse=.
@@ -145,9 +152,11 @@ fly execute --config task.yaml --input=iac-example-concourse=.
 
 ### Tekton - *Great*
 
-Tekton Hub is a repository of re-usable Tekton tasks - we used one in the previous blog post to clone a git repository.
+Tekton Hub is a repository of re-usable Tekton tasks - we used one in the previous blog post to clone a Git repository.
 
-The Hub was delightfully simple to use to install the git-clone task, and it's great that there's a hosted community place to publish your own tasks and discover others. Unlike with Concourse where we had to use Google to find custom resource types, we found re-usable Tekton tasks by browsing the hub. Although we didn't use this feature, the hub can also share pipelines - I could imagine this being a fantastic way to share CI configuration to open source contributors for your projects.
+Tekton Hub was delightfully simple to use to install the git-clone task, and it's great that there's a hosted community place to publish your own tasks and discover others.
+
+Unlike with Concourse where we had to use Google to find custom resource types, we found re-usable Tekton tasks by browsing the hub. Although we didn't use this feature, the hub can also share pipelines - I could imagine this being a fantastic way to share CI configuration to open source contributors for your projects.
 
 ```bash
 tkn --namespace tekton-pipelines hub install git-clone
@@ -157,39 +166,50 @@ tkn --namespace tekton-pipelines hub install git-clone
 
 ### Argo Workflows - *Mediocre*
 
-You can imagine Argo Workflows template or workflow reusability as basically the same as Tekton but you don't get the hub - which is disappointing. Argo Workflows templates and workflows are just YAML files so sharing them is trivial - if you know where to find them. Without a central repository of these like Tekton Hub or a clear abstraction like Concourse's resource types - you're essentially left to copy and paste pre-written templates from Stack Overflow or other similar places.
+Argo Workflows template and workflow reusability is basically the same as Tekton, but you don't get the hub - which is disappointing.
+
+Argo Workflows templates and workflows are just YAML files so sharing them is trivial - if you know where to find them. Without a central repository of these like Tekton Hub or a clear abstraction like Concourse's resource types - you're essentially left to copy and paste pre-written templates from Stack Overflow or other similar places.
 
 &nbsp;
 
 ### Summary
 
-Argo Workflows offers nothing that assists in code re-use other than finding and copying YAML from the internet. Jenkins has a rich ecosystem of plugins available but installation of them feels little old-fashioned. There's also no guarantees that each plugin will work for different flavours of pipeline syntax. Concourse has fantastic resource types available that are easy to use but discovery of them is lacking. Tekton ships with marketplace integration to the Hub build in to the CLI and installation is seamless.
+* Argo Workflows offers nothing that assists in code re-use other than finding and copying YAML from the internet.
+* Jenkins has a rich ecosystem of plugins available but installation of them feels little old-fashioned. There's also no guarantees that each plugin will work for different flavours of pipeline syntax, plugins need to be updated, and they may not work well together.
+* Concourse has fantastic resource types available that are easy to use but discovery of them is lacking.
+* Tekton ships with marketplace integration to the Hub build in to the CLI and installation is seamless.
 
 &nbsp;
 
 ## 7. Using the CI system as a build monitor
 
-Build monitors are enormously useful to teams writing software to solve problems. They should be in your face, making it very difficult to ignore problems and allow teams to "stop the line". Failures left in a failure state can at best rot and become more difficult to solve later and at worst they prevent further work. In this section we evaluate whether the UIs provided out of the box are appropriate as build monitors and if not, how much work is involved to use them as one.
+Build monitors are enormously useful to continuously present information about changes being made. They should be 'in your face', making it very difficult to ignore problems and allow teams to 'stop the line'.
+
+Builds that are left in a failed state can block future work, and the longer the issue goes unnoticed the more context is lost before someone stumbles across the problem and is tasked with fixing it.
+
+In this section we evaluate whether the UIs provided out of the box are appropriate as build monitors and if not, how much work is involved to use them as one.
 
 ### Jenkins - *Good*
 
-Most of the value you can get from using Jenkins in a build monitor comes from plugins rather than Jenkins itself. With a vanilla Jenkins, you can see your pipelines represented compactly with a colour indicating their current state. One feature of this view I enjoyed is Jenkins renders a progress bar once you click into a pipeline's build history to give you a rough estimate of when you can expect a pipeline run to finish - it's the only CI system we looked at here that maintains an inter-job level awareness of performance.
+Most of the value you can get from using Jenkins as a build monitor comes from plugins rather than Jenkins itself. With a vanilla Jenkins you can see your *jobs* represented compactly with a colour indicating their current state, but without additional plugins there is no pipeline view.
+
+One feature of this view I enjoyed is that Jenkins renders a progress bar once you click into a pipeline's build history to give you a rough estimate of when you can expect a pipeline run to finish - it's the only CI system we looked at here that maintains an inter-execution level awareness of performance.
 
 <img src="/img/blog/ci-shootout/jenkins-aggregate.png" class="image fit" alt="Jenkins aggregate view" />
 
 The build logs for jobs are difficult to read. The entire output of the build is placed into a single stream of text in the Console Output and it's difficult to reason about which stages are causing issues at a glance.
 
-Things got better once we installed [Blue Ocean](https://www.jenkins.io/projects/blueocean/). It renders your pipeline in such a way that's it clear which order things are executed it and which things are parallel jobs.
+Things got better once we installed [Blue Ocean](https://www.jenkins.io/projects/blueocean/). It renders your jobs as a pipeline, making it clear which order they are executed in, and which things are run in parallel.
 
 <img src="/img/blog/ci-shootout/jenkins-pipeline.png" class="image fit" alt="Jenkins pipeline view" />
 
-There are two downsides to using Blue Ocean as a build monitor. Firstly, you'll only get the view above if you click into a specific run of the pipeline, otherwise you get a view that is essentially a re-skin of the default Jenkins pipeline list. Secondly, Blue Ocean is reportedly difficult to maintain and there's low appetite to continue doing it when there are alternatives appearing such as the [Pipeline Graph View Plugin](https://github.com/jenkinsci/pipeline-graph-view-plugin).
+There are two downsides to using Blue Ocean as a build monitor. Firstly, you'll only get the view above if you click into a specific run of the pipeline, otherwise you get a view that is essentially a re-skin of the default Jenkins pipeline list. Secondly, Blue Ocean is reportedly difficult to maintain and there's low appetite to continue doing so when there are alternatives appearing such as the [Pipeline Graph View Plugin](https://github.com/jenkinsci/pipeline-graph-view-plugin).
 
 ### Concourse - *Great*
 
-Concourse ships with a UI that is used to visualise flows of inputs and outputs through pipelines. It presents aggregate views of pipelines that give you information on which has failing jobs and more detailed views of individual pipelines that give an indication of what's running right now for a particular pipeline.
+Concourse ships with a UI that is used to visualise flows of inputs and outputs through pipelines. It presents aggregate views of pipelines that give you information on which has failing jobs, and more detailed views of individual pipelines that give an indication of what jobs are running right now.
 
-Software delivery teams with a single path to production would benefit most by displaying the individual pipeline on their build monitors. The view shows jobs, inputs, outputs and what triggers what with colours indicating the current state of each job.
+Software delivery teams with a single path to production would benefit most by displaying the individual pipeline on their build monitors. The view shows jobs, inputs, outputs and what-triggers-what with colours and animations indicating the current state of each job.
 
 <img src="/img/blog/ci-shootout/concourse-pipeline.png" class="image fit" alt="Concourse pipeline view" />
 
@@ -199,9 +219,11 @@ The aggregate view of the pipeline is suitable for folks that maintain many pipe
 
 The Concourse UI both looks great and is genuinely useful for at a glance indications of what's happening in CI right now. Jobs and tasks can be clicked into to see logs and a description of which inputs each job was triggered with. It's great at answering the question "which things were used to build this artefact?".
 
+Concourse was designed for integration, which means that it lends itself to representing entire value streams. This can be beneficial as a 'reverse Conway maneuvre' to force collaboration and shared ownership among teams - [something EngineerBetter has done to great effect](/blog/continuous-everything-regulated).
+
 ### Tekton - *Great*
 
-In an earlier blog we mentioned we'd installed Tekton with `tekton-dashboard` included. The dashboard provides us with a fairly thin UI over what can be achieved via the `kubectl` or `tkn` CLIs, but it has some use as a build monitor.
+In an earlier post we mentioned that we'd installed Tekton with `tekton-dashboard` included. The dashboard provides us with a fairly thin UI over what can be achieved via the `kubectl` or `tkn` CLIs, but it has some use as a build monitor.
 
 In the dashboard you can view any Tekton related resources you've created such as Tasks or Pipelines. Below we show the tasks we've created for an earlier code snippet which includes one task we installed from the hub, git-clone.
 
@@ -211,7 +233,9 @@ Displaying the PipelineRuns on a build monitor would provide an overview of the 
 
 <img src="/img/blog/ci-shootout/tekton-aggregate.png" class="image fit" alt="Tekton aggregate view" />
 
-For teams interested in a single pipeline, there's no way to watch runs of that pipeline without clicking into each individual run, as with Jenkins and unlike Concourse each PipelineRun's definition is a moment in time snapshot of a Pipeline which makes it great for auditing "what was the Pipeline definition when this ran?" which is possible with Concourse but more difficult.
+For teams interested in a single pipeline, there's no way to watch runs of that pipeline without clicking into each individual run, which is the same limitation we saw in Jenkins.
+
+Unlike Concourse each PipelineRun's definition is a moment-in-time snapshot of a Pipeline which makes it great for auditing "what was the Pipeline definition when this ran?" It is possible to piece together that information with Concourse, but it is not represented in a single UI view.
 
 Finally, by clicking into a PipelineRun we were able to see the stages involved in that run and their status and logs.
 
@@ -225,19 +249,19 @@ In the workflows view we can see a list of recently executed workflows and each 
 
 <img src="/img/blog/ci-shootout/argo-aggregate.png" class="image fit" alt="Argo Workflows aggregate view" />
 
-Unlike Tekton, argo renders the structure of the DAG we'd previously defined, clearly showing which templates depend on which. Clicking on individual templates in this view we can see more details related to the execution of that template such as logs.
+Unlike Tekton, Argo renders the structure of the DAG we'd previously defined, clearly showing which templates depend on which. Clicking on individual templates in this view we can see more details related to the execution of that template, such as build logs.
 
 <img src="/img/blog/ci-shootout/argo-pipeline.png" class="image fit" alt="Argo Workflows pipeline view" />
 
-As with Tekton, there is no way to keep watching individual pipeline runs without clicking into a specific run first so teams that work with a single workflow will have to be content with the workflow list view shown at the beginning of this section.
+As with Tekton, there is no way to keep watching individual pipeline runs without clicking into a specific run first. Teams that work with a single workflow will have to be content with the list view shown at the beginning of this section.
 
 ### Summary
 
 In terms of presentation of the CI system as a build monitor - all four options performed well *within their limitations and design philosophies.*
 
-Concourse does not track "pipeline runs" as a concept, the pipeline is only ever a snapshot of right now and so displaying that snapshot on a build monitor is completely reasonable.
+Concourse does not track 'pipeline runs' as a concept, and so the _one_ view of a pipeline is what's happening _right now_. There's no need to flip between views of different runs, making this view very suitable as a build monitor.
 
-Jenkins, Tekton and Argo Workflows are better presented by their summary view, even for single-pipeline teams since the pipelines can simultaneously take more than one shape at once - pipeline runs remember the shape of the pipeline *when it ran*.
+Jenkins, Tekton and Argo Workflows present one view per pipeline run, meaning that if you want to see the current build state of a project, the best place to do so is on the page that lists these runs. This has the downside of not being able to see the detail of each run without further clicking, but with the benefit of being able to discover exactly what the pipeline looked like for each run.
 
 ## Scorecard
 

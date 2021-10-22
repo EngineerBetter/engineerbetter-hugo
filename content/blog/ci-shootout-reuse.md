@@ -1,7 +1,7 @@
 ---
 author: Tom Godkin
 date: "2021-10-22"
-heroImage: /img/blog/gunfight-enchanted-springs.jpg
+heroImage: /img/blog/shootout-third-person.jpg
 title: "CI Shootout: Re-use and build monitors"
 draft: true
 

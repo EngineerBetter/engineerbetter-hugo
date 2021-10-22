@@ -19,13 +19,14 @@ At EngineerBetter we've evaluated four self-hosted CI systems in order to compar
 
 Across a series of blog posts, we'll be evaluating how each CI system supports the following use cases:
 
-* _First post_ - [1. **Install** and configure the CI system](#1-install-and-configure-the-ci-system)
-* _First post_ - [2. **Run** a "Hello, World" task](#2-run-a-hello-world-task)
+* _This post_ - [1. **Install** and configure the CI system](#1-install-and-configure-the-ci-system)
+* _This post_ - [2. **Run** a "Hello, World" task](#2-run-a-hello-world-task)
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 3. **Trigger** when external resources (eg Git repos, S3 buckets) change
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 4. Use **inputs and outputs to tasks**
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
-* _Third post_ - 6. **Re-use** pipeline configuration
-* _Third post_ - 7. Use the CI system as a **build monitor**
+* [_Third post_](/blog/ci-shootout-reuse) - 6. **Re-use** pipeline configuration
+* [_Third post_](/blog/ci-shootout-reuse) - 7. Use the CI system as a **build monitor**
+* _Final post_ - 8. Conclusion
 
 In this post we'll explore the first two of the use cases listed above. In each section we'll give each CI system a rating of either *Poor*, *Mediocre*, *Good* or *Great*.
 

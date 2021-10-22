@@ -19,6 +19,7 @@ In [the previous blog](/blog/ci-shootout-inputs-and-outputs) we compared the act
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
 * _This post_ - 6. [**Re-use** pipeline configuration](#6-composability-of-tasks)
 * _This post_ - 7. [Use the CI system as a **build monitor**](#7-using-the-ci-system-as-a-build-monitor)
+* _Final post_ - 8. Conclusion
 
 ## 6. Composability of tasks
 
@@ -317,3 +318,13 @@ Jenkins, Tekton and Argo Workflows present one view per pipeline run, meaning th
     </td>
   </tr>
 </table>
+
+&nbsp;
+
+## Next time
+
+Wait, wasn't this supposed to be a three-part series?
+
+We've learned a lot about each CI system, and how their different design philosophies lend them to different uses and ways of working.
+
+In the fourth and final (we mean it this time) post we'll reflect on how the four compare, and which CI system is the best choice in varying scenarios.

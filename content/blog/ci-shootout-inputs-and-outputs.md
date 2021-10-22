@@ -16,8 +16,9 @@ In [the previous blog](/blog/ci-shootout-getting-started/) we looked at getting 
 * _This post_ - [3. **Trigger** pipeline runs when external resources (eg Git repos, S3 buckets) change](#3-trigger-pipeline-runs)
 * _This post_ - [4. Use **inputs and outputs to tasks**](#4-use-inputs-and-outputs-to-tasks)
 * _This post_ - [5. Write **outputs externally** (like making a Git commit or pushing a file to S3)](#5-writing-output-to-external-resources)
-* _Third post_ - 6. **Re-use** pipeline configuration
-* _Third post_ - 7. Use the CI system as a **build monitor**
+* [_Third post_](/blog/ci-shootout-reuse) - 6. **Re-use** pipeline configuration
+* [_Third post_](/blog/ci-shootout-reuse) - 7. Use the CI system as a **build monitor**
+* _Final post_ - 8. Conclusion
 
 ## 3. Trigger pipeline runs
 
@@ -765,7 +766,7 @@ It's interesting to compare the amount of time it took us to produce the above G
 
 ## Next time
 
-In the final post in this series we will see how good the systems are for the remaining use cases:
+In [the third post](/blog/ci-shootout-reuse) in this series we will see how good the systems are for the remaining use cases:
 
 * _**Re-use** pipeline configuration for promotion_
 * _Use the CI system as a **build monitor**_

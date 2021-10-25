@@ -31,7 +31,7 @@ In the less extreme world of office work this can be banning or discouraging com
 
 The appeal to mysticism as validation of group beliefs. This can work in two manners:
 
-* Secretly-orchestrated events being presented as divine spontaneous acts. One such example is Jim Jones, leader of Peoples Temple, faking a gunshot wound so that he could claim spiritual healing had prevented his death
+* Secretly-orchestrated events being presented as divine spontaneous acts. One such example is Jim Jones, leader of [Peoples Temple](https://en.wikipedia.org/wiki/Peoples_Temple), faking a gunshot wound so that he could claim spiritual healing had prevented his death.
 * Genuinely spontaneous events being presented as being planned or orchestrated, such as "the volcano erupted, therefore this confirms that the gods are angry with us."
 
 Use of the term "mystical" here has the potential to be misleading. Opportunistic after-the-fact claims of validation despite an absence of initial hypothesis most certainly qualify: I'm sure we can bring to mind examples in social discourse.
@@ -66,7 +66,7 @@ I shall leave the reader to identify unquestionable and unfalsifiable 'sciences'
 
 ### 6. Loading the language
 
-New words and phrases are invented to further define the in-group. Existing terms are redefined in order to confuse and undermine outsiders. Thought-terminating clichés are used in order to prevent meaningful discussion and debate ("that's just one way of doing it" being an example the suggests that all approaches are equal).
+New words and phrases are invented to further define the in-group. Existing terms are redefined in order to confuse and undermine outsiders. Thought-terminating clichés are used in order to prevent meaningful discussion and debate ("that's just one way of doing it" being an example that suggests that all approaches are equal).
 
 The technology sector has quite the problem with inventing and overloading terms, and abusing them in order to sell products. The term "agile" seems to have been warped beyond all usefulness except meaning 'not waterfall'. If you're not "cloud native", then you're not part of the in-group. Many people would have you believe that continuous delivery doesn't require trunk-based development (spoiler: it does).
 

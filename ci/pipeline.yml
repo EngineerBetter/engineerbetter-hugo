@@ -69,13 +69,13 @@ jobs:
       HUGO_BUILDFUTURE: true
   - &generate-kubeconfig
     task: generate-kubeconfig
-    file: kf-pipelines/ci/tasks/generate-kubeconfig/task.yml
+    file: kf-pipelines/ci/tasks/generate-kubeconfig.yaml
     params:
       GOOGLE_CREDENTIALS: ((ebkf-prod-app-developer-creds.gcp_credentials_json))
       REGION: ((ebkf-prod-app-developer-creds.region))
       CLUSTER: ((ebkf-prod-app-developer-creds.cluster_name))
   - task: setup-routes
-    file: kf-pipelines/ci/tasks/kubectl/task.yml
+    file: kf-pipelines/ci/tasks/kubectl.yaml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
@@ -83,7 +83,7 @@ jobs:
     params:
       ARGS: apply -f input/virtual-service-dev.yml
   - task: kf-push
-    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    file: kf-pipelines/ci/tasks/kf-cli.yaml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
@@ -113,7 +113,7 @@ jobs:
     file: eb-hugo/ci/tasks/hugo-build.yml
   - *generate-kubeconfig
   - task: setup-routes
-    file: kf-pipelines/ci/tasks/kubectl/task.yml
+    file: kf-pipelines/ci/tasks/kubectl.yaml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
@@ -121,7 +121,7 @@ jobs:
     params:
       ARGS: apply -f input/virtual-service-staging.yml
   - task: kf-push
-    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    file: kf-pipelines/ci/tasks/kf-cli.yaml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
@@ -153,7 +153,7 @@ jobs:
     - get: kf-pipelines
   - *generate-kubeconfig
   - task: setup-routes
-    file: kf-pipelines/ci/tasks/kubectl/task.yml
+    file: kf-pipelines/ci/tasks/kubectl.yaml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:
@@ -161,7 +161,7 @@ jobs:
     params:
       ARGS: apply -f input/virtual-service-prod.yml -f input/virtual-service-redirect-www.yml
   - task: kf-push
-    file: kf-pipelines/ci/tasks/kf-cli/task.yml
+    file: kf-pipelines/ci/tasks/kf-cli.yaml
     vars:
       kf_version: ((ebkf-prod-version))
     input_mapping:

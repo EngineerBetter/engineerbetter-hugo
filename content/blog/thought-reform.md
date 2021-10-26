@@ -9,7 +9,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-I've previously written a [blog post about strategies to effect mindset change](/blog/changing-minds), because EngineerBetter is in the business of helping organisations to perform cultural transformations. I feel a moral obligation to bring people's attention to the malevolent side of mindset change. Just as I taught physical self-defence on a voluntary basis, I believe that it is important to raise awareness of intellectual self-defence.
+I've previously written a [blog post about strategies to effect mindset change](/blog/transforming-minds-and-organisations/), because EngineerBetter is in the business of helping organisations to perform cultural transformations. I feel a moral obligation to bring people's attention to the malevolent side of mindset change. Just as I taught physical self-defence on a voluntary basis, I believe that it is important to raise awareness of intellectual self-defence.
 
 [Robert Jay Lifton](https://en.wikipedia.org/wiki/Robert_Jay_Lifton) identified eight criteria for thought reform - a somewhat euphemistic term used to less-sensationally describe what was feverishly reported as "brainwashing". These themes were synthesised in part from his involvement in treating and studying surviving American prisoners of (what the West calls) [the Korean war](https://en.wikipedia.org/wiki/Korean_War). A small percentage of survivors opted to not return to the USA upon being granted their freedom, apparently having been 'converted' to support communist ideology and forsake their own.
 

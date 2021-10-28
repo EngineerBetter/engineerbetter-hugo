@@ -1,9 +1,8 @@
 ---
 author: Tom Godkin
-date: "2021-10-22"
+date: "2021-10-28"
 heroImage: /img/blog/shootout-third-person.jpg
 title: "CI Shootout: Re-use and build monitors"
-draft: true
 
 heading: Our
 headingBold: blog

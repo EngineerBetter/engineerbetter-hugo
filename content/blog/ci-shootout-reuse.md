@@ -10,7 +10,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-In [the previous blog](/blog/ci-shootout-inputs-and-outputs) we compared the act of reading state from, and writing state to, the outside world with four self-hosted CI systems: Jenkins, Concourse, Tekton & Argo Workflows. In this post we continue by looking at the re-usability of pipeline resources, and how well each serves as a build monitor:
+In [the previous blog](/blog/ci-shootout-inputs-and-outputs) we compared the act of reading state from, and writing state to, the outside world with four self-hosted CI systems: Jenkins, Concourse, Tekton & Argo Workflows. In this post we continue by looking at the re-usability of pipeline resources, and how well each serves as a build monitor.
 
 * [_First post_](/blog/ci-shootout-getting-started) - 1. **Install** and configure the CI system
 * [_First post_](/blog/ci-shootout-getting-started) - 2. **Run** a "Hello, World" task
@@ -27,9 +27,9 @@ We'll evaluate how much of what we've written is re-usable by ourselves and othe
 
 ### Jenkins - *Good*
 
-Jenkins reusability comes from plugins, for which there is [a repository](https://plugins.jenkins.io/) that you can browse through. Given Jenkins' age it's not surprising that there's a vast array of plugins (~1,800 community plugins at the time of writing) and we've already used a few: [the Git plugin](https://plugins.jenkins.io/git/) for pushing commits, and [Blue Ocean](https://plugins.jenkins.io/blueocean/) which we'll mention later in this post.
+Jenkins' reusability comes from plugins, for which there is [a repository](https://plugins.jenkins.io/) that you can browse through. Given Jenkins' age it's not surprising that there's a vast array of plugins (~1,800 community plugins at the time of writing) and we've already used a few: [the Git plugin](https://plugins.jenkins.io/git/) for pushing commits, and [Blue Ocean](https://plugins.jenkins.io/blueocean/) which we'll mention later in this post.
 
-Jenkins plugins were traditionally installed by pointing and clicking through the Jenkins UI. More recently it become possible to install them via the Helm chart we used to deploy our Jenkins. It feels a little strange that installing a plugin requires a whole `helm install`.
+Jenkins plugins were traditionally installed by pointing and clicking through the Jenkins UI. More recently it become possible to install them via the Helm chart that we used to deploy our Jenkins. It feels a little strange that installing a plugin requires a whole `helm install`.
 
 Once installed, Jenkins plugins can offer new options in the UI when creating pipelines or new blocks for use in the various pipeline syntax, such as the Git plugin's `withCredentials` extension.
 
@@ -92,13 +92,13 @@ resources:
         bucket: mybucket
         key: mydir/terraform.tfstate
         region: us-east-1
-        access_key: {{storage_access_key}}
-        secret_key: {{storage_secret_key}}
+        access_key: ((storage_access_key))
+        secret_key: ((storage_secret_key))
       vars:
         tag_name: concourse
       env:
-        AWS_ACCESS_KEY_ID: {{environment_access_key}}
-        AWS_SECRET_ACCESS_KEY: {{environment_secret_key}}
+        AWS_ACCESS_KEY_ID: ((environment_access_key))
+        AWS_SECRET_ACCESS_KEY: ((environment_secret_key))
 ```
 
 Tasks are definitions for executable units of a Concourse job that optionally receive inputs and produce outputs. Tasks can be defined in the pipeline YAML, or as external files that must be available when the job runs (eg in a Git repo that features as a `get` step in the job).
@@ -107,7 +107,7 @@ To reference an 'external' task configuration YAML, a `task` step is added to a 
 
 Tasks definitions can be parameterised in two ways:
 
-* `vars` which are provided for `((placeholders))` in the task configuration. These can be provided explicitly in the job's `vars` block, when the pipeline is set, or looked up in a secret manager such as Hashicorp Vault
+* `vars` which are provided for `((placeholders))` in the task configuration. These can be provided explicitly in the job's `vars` block, when the pipeline is set, or looked up in a secret manager such as Hashicorp Vault.
 * `params` are environment variables provided when the task's executable is invoked. These can be set either in the task configuration or in the containing pipeline. For even more head-melting flexibility, you can use the templated variables described above _as_ params!
 
 ```yaml
@@ -157,7 +157,7 @@ Tekton Hub is a repository of re-usable Tekton tasks - we used one in the previo
 
 Tekton Hub was delightfully simple to use to install the git-clone task, and it's great that there's a hosted community place to publish your own tasks and discover others.
 
-Unlike with Concourse where we had to use Google to find custom resource types, we found re-usable Tekton tasks by browsing the hub. Although we didn't use this feature, the hub can also share pipelines - I could imagine this being a fantastic way to share CI configuration to open source contributors for your projects.
+Unlike with Concourse where we had to search the web to find custom resource types, we found re-usable Tekton tasks by browsing the hub. Although we didn't use this feature, the hub can also share pipelines - I could imagine this being a fantastic way to share CI configuration to open source contributors for your projects.
 
 ```bash
 tkn --namespace tekton-pipelines hub install git-clone
@@ -176,15 +176,15 @@ Argo Workflows templates and workflows are just YAML files so sharing them is tr
 ### Summary
 
 * Argo Workflows offers nothing that assists in code re-use other than finding and copying YAML from the internet.
-* Jenkins has a rich ecosystem of plugins available but installation of them feels little old-fashioned. There's also no guarantees that each plugin will work for different flavours of pipeline syntax, plugins need to be updated, and they may not work well together.
-* Concourse has fantastic resource types available that are easy to use but discovery of them is lacking.
+* Jenkins has a rich ecosystem of plugins available but installation of them feels a little old-fashioned. There are no guarantees that each plugin will work for different flavours of pipeline syntax, plugins need to be updated, and they may not work well together.
+* Concourse has a wide range of resource types available that are easy to use, but discoverability of them is lacking.
 * Tekton ships with marketplace integration to the Hub build in to the CLI and installation is seamless.
 
 &nbsp;
 
 ## 7. Using the CI system as a build monitor
 
-Build monitors are enormously useful to continuously present information about changes being made. They should be 'in your face', making it very difficult to ignore problems and allow teams to 'stop the line'.
+Build monitors are enormously useful to continuously present information about changes being made. They should be 'in your face', making it very difficult to ignore problems, and therefore they should allow teams to 'stop the line'.
 
 Builds that are left in a failed state can block future work, and the longer the issue goes unnoticed the more context is lost before someone stumbles across the problem and is tasked with fixing it.
 
@@ -218,7 +218,7 @@ The aggregate view of the pipeline is suitable for folks that maintain many pipe
 
 <img src="/img/blog/ci-shootout/concourse-aggregate.png" class="image fit" alt="Concourse aggregate view" />
 
-The Concourse UI both looks great and is genuinely useful for at a glance indications of what's happening in CI right now. Jobs and tasks can be clicked into to see logs and a description of which inputs each job was triggered with. It's great at answering the question "which things were used to build this artefact?".
+The Concourse UI both looks great and is genuinely useful for at-a-glance indications of what's happening in CI right now. Jobs and tasks can be clicked into to see logs and a description of which inputs each job was triggered with. It's great at answering the question "which things were used to build this artefact?".
 
 Concourse was designed for integration, which means that it lends itself to representing entire value streams. This can be beneficial as a 'reverse Conway maneuvre' to force collaboration and shared ownership among teams - [something EngineerBetter has done to great effect](/blog/continuous-everything-regulated).
 

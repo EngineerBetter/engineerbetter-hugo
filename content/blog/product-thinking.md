@@ -1,19 +1,13 @@
 ---
 author: Chisara Nwabara
-date: "2021-10-31"
-heroImage: https://www.audi-technology-portal.de/files/images/_large/active_lane_assist1_en__large.jpg
+date: "2021-11-09"
+heroImage: /img/blog/product-thinking.png
 title: "What is a Product Thinking Mindset?"
-draft: true
+
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
-
-<figure>
-    <figcaption style="font-size: 8pt">
-    Image via <a href="https://www.audi-technology-portal.de/en/electrics-electronics/driver-assistant-systems/audi-active-lane-assist_en">Audi</a>
-    </figcaption>
-</figure>
 
 Properly applied, agile and related approaches such as DevOps and CI/CD allow teams to build software faster.. Product thinking is what allows us to deliver _useful_ software. Our Managing Director [Daniel Jones](https://www.linkedin.com/in/danieljoneseb/?originalSubdomain=uk) (known as Deejay) and I have had several chats around the potential benefits of leveraging a product thinking mindset in the work we do. This is the first in a series where we share some of those thoughts.
 
@@ -68,6 +62,8 @@ Some examples in practice include:
 
 _Address the riskiest assumptions first_
 
+<img src="/img/blog/doctor.png" class="fit image">
+
 Continuing the same metaphor, a patient may go see a doctor with several issues. The doctor will assess the patient and then do their best to determine which single issue is posing the greatest risk to their patient's welfare. This will most likely be the first concern that they will focus on and address.
 
 Fixing the most important thing first means the doctor still has a patient to continue working with - there's little point addressing someone's eczema if they're bleeding to death.
@@ -84,6 +80,8 @@ Some examples in practice include:
 
 _When you know what success looks like, you know when you're done and what to do next_
 
+<img src="/img/blog/test-results.png" class="fit image">
+
 Product thinking provides a way to test and measure outcomes to ensure you return **significant results, regardless of whether they are positive or negative**.
 
 Significance is the ultimate goal of a test. The worst situation that a doctor can be in is one where they run a test and the results are inconclusive. If the conditions of the test are not clear, variances have not been accounted for before starting, or the doctor is not sure what they are even testing for, any results that are returned are fairly useless to their ability to diagnose and treat their patient.
@@ -99,7 +97,7 @@ Some examples in practice include:
 
 _Shared ownership of empathy for users in the team means increased accountability and lighter individual loads._
 
-Before your customer is a product, or a persona, or a user manual, or even a customer; they are a person. We in business often forget this, focusing more on codifying and extrapolating people to fit our business needs. The real value in product thinking comes from a readdressing of the balance of peoples' needs and business needs by listening much more closely to the person speaking to us. Their lives, their situations, their wants, needs, desires, and fears. 
+Before your customer is a product, or a persona, or a user manual, or even a customer; they are a person. We in business often forget this, focusing more on codifying and extrapolating people to fit our business needs. The real value in product thinking comes from a readdressing of the balance of peoples' needs and business needs by listening much more closely to the person speaking to us. Their lives, their situations, their wants, needs, desires, and fears.
 
 Product thinking aids in building this empathy for users, and an emphasis should be placed on the importance of delivering value that is owned and understood by the entire team. This provides a sense of purpose and also an insight for the team into how their efforts directly impact the things they are producing; making for more commercially intelligent teams. The team should then feel more empowered to ask why they're building what they are, and to invest in, and take ownership of, outcomes as opposed to outputs.
 

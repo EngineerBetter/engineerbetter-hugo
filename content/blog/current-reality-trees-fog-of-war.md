@@ -46,7 +46,7 @@ The platform team comprised talented engineers, who wanted to automate - not per
 
 _“94% of the problems in business are system-driven, and only 6% are people-driven”_ - Deming
 
-The **root cause of incentivising the outsourcer to cut corners was also causing undesirable effects** in other teams, such as an significant accumulation of bugs that needed to be fixed by a separate application maintenance team. If left untreated, this root cause would also prevent management from achieving their strategic goal of reducing annual servicing costs per customer, as this could only be achieved if continuous deployment was realised.
+The **root cause of incentivising the outsourcer to cut corners was also causing undesirable effects** in other teams, such as a significant accumulation of bugs that needed to be fixed by a separate application maintenance team. If left untreated, this root cause would also prevent management from achieving their strategic goal of reducing annual servicing costs per customer, as this could only be achieved if continuous deployment was realised.
 
 ## Current Reality Tree
 

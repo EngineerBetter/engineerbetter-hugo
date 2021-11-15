@@ -6,6 +6,8 @@ CI: https://ci.engineerbetter.com/teams/main/pipelines/engineerbetter-hugo
 
 ## Running locally
 
+At the time of writing, you'll need an _ancient_ [version of Hugo(v0.32.2)](https://github.com/gohugoio/hugo/releases/tag/v0.32.2). If you have a more contemporary version already installed, we recommend renaming the old one `hugold` (see what we did there?).
+
 ```terminal
 hugo serve -FD
 ```

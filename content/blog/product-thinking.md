@@ -9,7 +9,7 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
-Properly applied, agile and related approaches such as DevOps and CI/CD allow teams to build software faster.. Product thinking is what allows us to deliver _useful_ software. Our Managing Director [Daniel Jones](https://www.linkedin.com/in/danieljoneseb/?originalSubdomain=uk) (known as Deejay) and I have had several chats around the potential benefits of leveraging a product thinking mindset in the work we do. This is the first in a series where we share some of those thoughts.
+Properly applied, agile and related approaches such as DevOps and CI/CD allow teams to build software faster. Product thinking is what allows us to deliver _useful_ software. Our Managing Director [Daniel Jones](https://www.linkedin.com/in/danieljoneseb/?originalSubdomain=uk) (known as Deejay) and I have had several chats around the potential benefits of leveraging a product thinking mindset in the work we do. This is the first in a series of blog posts in which we share some of those thoughts.
 
 ## What is product thinking?
 
@@ -17,7 +17,7 @@ We'll use the term _product thinking_ here to reflect that there are design and 
 
 Product thinking is a set of processes used to **identify, understand and prioritise problems** faced by a known set of **customers**, and then systematically **build and validate solutions** that are expected to have an **ongoing lifespan**.
 
-**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desired and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced. It is a waste and pointless to invest your resources building the wrong things on time.
+**Product thinking is in contrast to project execution**. When discussing a project one assumes that there will one day be a 'finished' state. This project's success is determined by meeting a fixed set of requirements by a given date and within a given budget (the ['iron triangle'](/blog/escaping-iron-triangle)). Product thinking, on the other hand, is a mindset that allows one to create continuous desired and meaningful value by allowing for a product to evolve based on real and demonstrable needs that can be evidenced. It is a pointless waste to invest your resources building the wrong things on time.
 
 > ### A real conversation with banking IT executives
 > Deejay: How do you know when a project has been successful?
@@ -30,7 +30,7 @@ Product thinking is a set of processes used to **identify, understand and priori
 >
 > Executives: Well, there was a requirements document, so we know it delivered the right thing because those requirements will have been met.
 >
-> Deejay: How do you know the requirements were right? How do you tell if the world changed the way you wanted after the project was delivered?
+> Deejay: How do you know the requirements were right? How do you tell, after the project was delivered, if the world changed in the way that you wanted?
 >
 > Executives: Oh... We've never thought of that.
 

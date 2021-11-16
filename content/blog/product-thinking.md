@@ -97,7 +97,7 @@ Some examples in practice include:
 
 _Shared ownership of empathy for users in the team means increased accountability and lighter individual loads._
 
-Before your customer is a product, or a persona, or a user manual, or even a customer; they are a person. We in business often forget this, focusing more on codifying and extrapolating people to fit our business needs. The real value in product thinking comes from a readdressing of the balance of peoples' needs and business needs by listening much more closely to the person speaking to us. Their lives, their situations, their wants, needs, desires, and fears.
+Before your customer is a product, or a persona, or a user, or even a customer; they are a person. We in business often forget this, focusing more on codifying and extrapolating people to fit our business needs. The real value in product thinking comes from a readdressing of the balance of peoples' needs and business needs by listening much more closely to the person speaking to us. Their lives, their situations, their wants, needs, desires, and fears.
 
 Product thinking aids in building this empathy for users, and an emphasis should be placed on the importance of delivering value that is owned and understood by the entire team. This provides a sense of purpose and also an insight for the team into how their efforts directly impact the things they are producing; making for more commercially intelligent teams. The team should then feel more empowered to ask why they're building what they are, and to invest in, and take ownership of, outcomes as opposed to outputs.
 

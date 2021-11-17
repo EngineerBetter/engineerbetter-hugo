@@ -66,7 +66,7 @@ _Address the riskiest assumptions first_
 
 Continuing the same metaphor, a patient may go see a doctor with several issues. The doctor will assess the patient and then do their best to determine which single issue is posing the greatest risk to their patient's welfare. This will most likely be the first concern that they will focus on and address.
 
-Fixing the most important thing first means the doctor still has a patient to continue working with - there's little point addressing someone's eczema if they're bleeding to death.
+Fixing the most important thing first means the doctor still has a patient to continue working with - there's little point addressing someone's athlete's foot if they're bleeding to death.
 
 One should make the biggest pains clear and prioritise what will be the most valuable and impactful to the customer, and do so ruthlessly. By doing this the overall risk is smaller and effort won't be wasted treating the wrong things.
 

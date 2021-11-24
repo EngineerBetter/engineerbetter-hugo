@@ -34,7 +34,7 @@ The deliverables that teams produce are services, experiences, __products__…
 
 These are teams that are tasked to deliver value to end users, but they may not have strong perspectives on how best to go about doing so, i.e. developers are not thought of as customers. There is little to no expertise on how best to prioritise internal backlogs. Most importantly, there is little guidance on how to validate that the platform-based decisions being made are solving the right problems
 
-By solving these pain points, the odds are increased that organisations will create sustainable internal systems that lead to less waste, better feedback loops and more effective teams who are capable of producing value for customers. 
+By solving these pain points, the odds are increased that organisations will create sustainable internal systems that lead to less waste, better feedback loops and more effective teams who are capable of producing value for customers.
 
 ## We think this is important because…
 
@@ -52,7 +52,7 @@ You can go as fast as you like, but if you’re building the wrong thing, you’
 
 [As previously mentioned](https://www.engineerbetter.com/blog/product-thinking/), if agile is the vehicle you are traveling in, Product Thinking is the GPS navigation ensuring that you're tracking in the right direction on your journey. Product Thinking captures and holds teams accountable to justifying the intent of their actions. In a space where work is justified and actions are intentional, less will happen without good reason.
 
-> A cautionary tale
+> ### A cautionary tale
 > 
 > EngineerBetter worked with a CTO who asked for help creating an effective software delivery practice and technology culture. Whilst performing this consultancy work, it became clear that the business was a __'feature factory'__ - the visionary CEO, who had willed this first-of-its-kind product into existence, was still dictating which features needed to be built. There were no success criteria associated with these features, nor any attempt to check that they were having a positive effect. If he woke up one morning with a new idea, it was suddenly the company's top priority.
 > 

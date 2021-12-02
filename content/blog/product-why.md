@@ -16,6 +16,8 @@ We’ve spent some time discussing what a Product Thinking mindset is, as well a
 
 ### “_Speed at the cost of productivity and efficiency is not progress. - Chisa Nwabara, EB_"
 
+<img src="/img/blog/agile-mobile.png" class="fit image">
+
 Technology is constantly changing and evolving. Oftentimes we’ve observed that in order to maintain a perceived speed of pace, companies and teams end up sacrificing more than they realise in the form of quality and team performance. 
 
 When this happens, productivity can be so affected and changed that one does not realise just how much efficiency is sacrificed. Typically, a desire to go quickly surpasses efficiency to the point that it ends up costing organisations an exponentially larger amount to sustain inefficient and unsustainable practices. 

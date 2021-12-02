@@ -1,7 +1,7 @@
 ---
 author: Chisara Nwabara
 date: "2021-11-24"
-heroImage: /img/blog/product-thinking.png
+heroImage: /img/blog/product-why.png
 title: "Why is Product Thinking important?"
 draft: true
 

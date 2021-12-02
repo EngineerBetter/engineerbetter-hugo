@@ -26,6 +26,8 @@ Nell Derick Debevoise, [writing for Forbes](https://www.forbes.com/sites/nelldeb
 
 ### _‘If I had an hour to solve a problem I'd spend 55 minutes thinking about the problem and five minutes thinking about solutions.’_
 
+<img src="/img/blog/einstein.png" class="fit image">
+
 “The point he makes,” she goes on to say, “is important: preparation has great value to problem solving. And what is any task worth doing but a problem to be solved?”
 
 When thinking about what success looks like, it’s important that we’re measuring the right things (or even taking measurements in the first place)...ultimately, these teams are providing a service to their end-users who oftentimes are likely to be other developers or internal peers. 
@@ -49,6 +51,8 @@ Product thinking used in conjunction with agile practices produces more effectiv
 Like Agile, product thinking is rooted in healthy experimentation and hypothesis-driven approaches. This continuous learning means once you’ve identified and solved a problem, you can feed it back into your method with strong agile practices and continuous improvement, i.e. create more accuracy in your feedback loops which in turn produces better-vetted results.
 
 ### What is the point of going fast in the wrong direction?
+
+<img src="/img/blog/maze.png" class="fit image">
 
 You can go as fast as you like, but if you’re building the wrong thing, you’re screwed anyway because no one will use it and chances are, a great deal of waste will be created in the process.  
 

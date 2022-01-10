@@ -13,7 +13,8 @@ EngineerBetter is known as a source of knowledge for helping back-end engineerin
 
 We’ve spent some time discussing what a Product Thinking mindset is, as well as a bit on why in the [first article of this series](https://www.engineerbetter.com/blog/product-thinking/). Now, let’s discuss why it matters in greater detail. To answer this question, there are three key points worth highlighting.
 
-### “_Speed at the cost of productivity and efficiency is not progress. - Chisa Nwabara, EngineerBetter_"
+> ### “Speed at the cost of productivity and efficiency is not progress."
+Chisa Nwabara, EngineerBetter
 
 <img src="/img/blog/agile-mobile.png" class="fit image">
 
@@ -21,17 +22,17 @@ Technology is constantly changing and evolving. Oftentimes we’ve observed that
 
 When this happens, productivity can be so affected and changed that one does not realise just how much efficiency is sacrificed. Typically, a desire to go quickly surpasses efficiency to the point that it ends up costing organisations an exponentially larger amount to sustain inefficient and unsustainable practices.
 
-Nell Derick Debevoise, [writing for Forbes](https://www.forbes.com/sites/nelldebevoise/2021/01/26/the-third-critical-step-in-problem-solving-that-einstein-missed/?sh=3105db9b3807) cites a quote attributed to Einstein:
-
-### _‘If I had an hour to solve a problem I'd spend 55 minutes thinking about the problem and five minutes thinking about solutions.’_
+> ### _"If I had only one hour to solve a problem, I would spend up to two-thirds of that hour in attempting to define what the problem is."_
+[Head of Industrial Engineering, Yale University](https://quoteinvestigator.com/2014/05/22/solve/)
 
 <img src="/img/blog/einstein.png" class="fit image">
 
-“The point he makes,” she goes on to say, “is important: preparation has great value to problem solving. And what is any task worth doing but a problem to be solved?”
+Nell Derick Debevoise, [writing for Forbes](https://www.forbes.com/sites/nelldebevoise/2021/01/26/the-third-critical-step-in-problem-solving-that-einstein-missed/?sh=3105db9b3807) cites a similar quote attributed to Einstein. “The point he makes,” she goes on to say, “is important: preparation has great value to problem solving. And what is any task worth doing but a problem to be solved?”
 
 When thinking about what success looks like, it’s important that we’re measuring the right things (or even taking measurements in the first place)...ultimately, these teams are providing a service to their end-users who oftentimes are likely to be other developers or internal peers.
 
-### _“Just because you’re not selling to a customer, doesn’t mean you don’t have users.” - Daniel Jones, EngineerBetter_
+> ### "Just because you’re not selling to a customer, doesn’t mean you don’t have users."
+Daniel Jones, EngineerBetter
 
 The deliverables that teams produce are services, experiences, __products__…
 
@@ -72,7 +73,7 @@ Product thinking makes each feature a bet - _if we spend X building Y, then we t
 An organisation without product thinking turns itself into the bet - _we'll build whatever we think is the right thing, and if we're wrong, we'll go bust_.
 
 
-### When teams are empowered to care about what they’re doing, it shows.
+### When teams are empowered to care about what they’re doing, it shows
 
 So many morale and people issues have crept  into the many of the delivery teams that we are later asked to help. Oftentimes, we find that the “people” aspect of our field is lost the moment we get to the teams doing the building. This directly affects how well those teams function and the things that they produce, as dysfunctional teams are unable to be as effective or productive as they could be.
 

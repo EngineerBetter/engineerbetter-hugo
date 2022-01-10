@@ -29,7 +29,7 @@ When this happens, productivity can be so affected and changed that one does not
 
 Nell Derick Debevoise, [writing for Forbes](https://www.forbes.com/sites/nelldebevoise/2021/01/26/the-third-critical-step-in-problem-solving-that-einstein-missed/?sh=3105db9b3807) cites a similar quote attributed to Einstein. “The point he makes,” she goes on to say, “is important: preparation has great value to problem solving. And what is any task worth doing but a problem to be solved?”
 
-When thinking about what success looks like, it’s important that we’re measuring the right things (or even taking measurements in the first place)...ultimately, these teams are providing a service to their end-users who oftentimes are likely to be other developers or internal peers.
+When thinking about what success looks like, it’s important that we’re measuring the right things (or even taking measurements in the first place)... Ultimately, these teams are providing a service to their end-users who oftentimes are likely to be other developers or internal peers.
 
 > ### "Just because you’re not selling to a customer, doesn’t mean you don’t have users."
 Daniel Jones, EngineerBetter

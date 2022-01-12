@@ -336,3 +336,17 @@ The downside of this is that Concourse attempts to do its own container scheduli
 > * rely heavily on pull request-based workflows
 > * have simple pipelines
 > * have a low tolerance for investigating scheduling issues
+
+## Discussion
+
+We started this comparison last year when working with Snyk on the [Continuous Delivery for Infrastructure-as-Code](https://resources.snyk.io/c/iac-book-continuous-?x=iiH-UX) book. We wanted to demonstrate those principles on all systems, so the practices could be adopted by the widest possible audience.
+
+We were also interested in finding out how other tools compare to Concourse. It's not the most popular tool out there, and the great cloud native hype train shows no sign of slowing down any time soon. Are we missing out? Are there better tools out there?
+
+Can we find something that does everything that Concourse does, and more?
+
+No. There's nothing on the market with a model as powerful, that is so well-suited to true continuous delivery and to projects that do a lot of integration.
+
+It's a great shame that Pivotal and VMware never marketed Concourse or tried to generate revenue from it, and that it was never donated to Cloud Native Computing Foundation or the (abhorrently-named) Continuous Delivery Foundation. It's a pity that Concourse's support for PR-based workflows still isn't better, and that it does its own somewhat-lacking container scheduling.
+
+That Concourse is not more popular is greatly frustrating. Nothing else out there does what it does, and if we have to move on, we're going to have to spend more time writing boilerplate YAML.

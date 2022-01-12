@@ -142,7 +142,7 @@ jobs:
     params: {VERBOSE: true}
 ```
 
-One killer feature of Concourse - *you can override task inputs using artefacts local to your own machine*. Why would you do that? You can execute a task and see if it works *before you `git push` .*
+One killer feature of Concourse - *you can override task inputs using artefacts local to your own machine*. Why would you do that? You can execute a task and see if it works *before you `git push` .* A friend of EngineerBetter [described this as a "hidden gem"](https://medium.com/@andrew_merrell/concourses-fly-execute-is-a-hidden-gem-5f4b54ffb249).
 
 ```bash
 fly execute --config task.yaml --input=iac-example-concourse=.

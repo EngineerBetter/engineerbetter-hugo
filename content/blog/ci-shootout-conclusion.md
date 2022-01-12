@@ -1,5 +1,5 @@
 ---
-author: Tom Godkin
+author: Daniel Jones
 date: "2022-01-14"
 heroImage: /img/blog/shootout-third-person.jpg
 title: "CI Shootout: Conclusion"

@@ -223,7 +223,7 @@ Let's discuss each in more detail.
 
 Jenkins is old and dated. It lacks isolation (shared workspace, workloads aren't containerised by default), and the plugin system almost guarantees surprise incompatibilities.
 
-Jenkins allows users to make snowflake servers and builds. Yes, you can get it to persist config to source control, but it allows a workflow that is considered an anti-pattern in a cloud native, GitOps world.
+Jenkins allows users to make snowflake servers and builds. Yes, you can get it to persist config to source control, but it allows a workflow that is considered an anti-pattern in a cloud native, GitOps world. That said, it is the only system reviewed that offers CI-as-_code_, and not CI-as-YAML.
 
 It is job-oriented by default, although newer plugins provide a pipeline view. Much like Tekton and Argo Workflows, Jenkins does not offer a 'single pane of glass' view on the current state of a pipeline.
 

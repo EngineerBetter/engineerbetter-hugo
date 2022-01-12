@@ -100,7 +100,7 @@ kubectl apply --filename "${tekton_releases}/triggers/latest/interceptors.yaml"
 
 ### Argo Workflows - *Great*
 
-We followed [Argo Workflows' own Quick Start instructions](https://argoproj.github.io/argo-workflows/quick-start/) to install Argo Workflows via a few kubectl commands that referenced [publicly available Kubernetes YAML files](https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml). Unlike Tekton, there is only a singly YAML manifest to apply. It worked for us out of the box without tweaking anything and was ready within a minute or two.
+We followed [Argo Workflows' own Quick Start instructions](https://argoproj.github.io/argo-workflows/quick-start/) to install Argo Workflows via a few kubectl commands that referenced [publicly available Kubernetes YAML files](https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests/quick-start-postgres.yaml). Unlike Tekton, there is only a single YAML manifest to apply. It worked for us out of the box without tweaking anything and was ready within a minute or two.
 
 ```bash
 export manifests="https://raw.githubusercontent.com/argoproj/argo-workflows/stable/manifests"

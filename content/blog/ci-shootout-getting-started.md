@@ -131,7 +131,7 @@ The configuration references _another_ file containing the bulk of the pipeline 
 
 Although we could achieve source controlled pipeline configuration, there were two 'flies in the ointment'.
 
-Firstly, the XML file was extremely difficult understand and author, and so we found it easier to configure our pipeline via Jenkins' UI and then use the CLI's "get-job" subcommand to then store the generated configuration in source control.
+Firstly, the XML file was extremely difficult to understand and author, and so we found it easier to configure our pipeline via Jenkins' UI and then use the CLI's "get-job" subcommand to then store the generated configuration in source control.
 
 Secondly, the Jenkins CLI has separate "create-job" and "update-job" subcommands, which means any automation that sets pipelines has to figure out if it's already set to know which command to use.
 
@@ -248,7 +248,7 @@ pipeline {
 
 ### Concourse - *Great*
 
-Concourse has the best problem domain abstraction of the four systems under evaluation. [Pipelines](https://concourse-ci.org/pipelines.html) and [Tasks](https://concourse-ci.org/tasks.html) are configured by YAML, but unlike Tekton and Argo Workflows the YAML configuration bespoke to Concourse and not made of Kubernetes resources - which makes sense since Concourse existed before Kubernetes was popular.
+Concourse has the best problem domain abstraction of the four systems under evaluation. [Pipelines](https://concourse-ci.org/pipelines.html) and [Tasks](https://concourse-ci.org/tasks.html) are configured by YAML, but unlike Tekton and Argo Workflows the YAML configuration is bespoke to Concourse and not made of Kubernetes resources - which makes sense since Concourse existed before Kubernetes was popular.
 
 Generally speaking task definitions are not 'applied' to Concourse, instead Concourse pipelines will look for them at runtime based on the pipeline configuration. Tasks can also be executed directly from Concourse's CLI, "[fly](https://concourse-ci.org/fly.html)" (which can be downloaded from the UI of your Concourse).
 

@@ -227,7 +227,7 @@ Jenkins allows users to make snowflake servers and builds. Yes, you can get it t
 
 It is job-oriented by default, although newer plugins provide a pipeline view. Much like Tekton and Argo Workflows, Jenkins does not offer a 'single pane of glass' view on the current state of a pipeline.
 
-It is difficult to recommend any new installs of Jenkins. Every competitor is better in every dimension. The one major strength that Jenkins has going for it is that _everyone_ who has been in the industry for more than a couple of years will have used it, and so it isn't hard or expensive to find Jenkins skills.
+It is difficult to recommend any new installs of Jenkins. Most competitors are better in every dimension. The one major strength that Jenkins has is that _everyone_ who has been in the industry for more than a couple of years will have used it, and so it isn't hard or expensive to find Jenkins skills.
 
 > ### Use Jenkins when you:
 >

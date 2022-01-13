@@ -238,41 +238,9 @@ It is difficult to recommend any new installs of Jenkins. Most competitors are b
 >
 > * have a choice
 
-## Tekton
-
-### Tekton Hub
-
-Tekton hub is a great idea. As anyone who's spent a few years in the industry will tell you, most CI pipelines end up repeating a lot of simple but error-prone tasks. Being able to leverage those from the community is great, and should be a productivity boon.
-
-> ### Use Tekton if you:
->
-> * are building a higher level of abstraction
-> * want to get started quickly
-> * use Slack alerting rather than a build monitor
->
-> ### Don't use Tekton when you:
->
-> * cannot use Kubernetes
-> * cannot use webhooks
-> * need to trigger builds for multiple reasons
-> * want a simple domain model
-
-## Argo Workflows
-
-> ### Use Argo Workflows if you:
->
-> * want to get started quickly
-> * use Slack alerting rather than a build monitor
->
-> ### Don't use Tekton when you:
->
-> * cannot use Kubernetes
-> * cannot use webhooks
-> * need to trigger builds for multiple reasons
-
 ## Tekton and Argo Workflows commonalities
 
-Both systems have a lot in common, so it makes sense to address those together.
+Both systems have a lot in common, so let's discuss the design constraints that they share before considering them in isolation. They really are very similar, and you'll be able to achieve similar outcomes with either.
 
 ### Kubernetes-only
 
@@ -291,6 +259,42 @@ This isn't really feasible in an air-gapped, regulated environment like a bank.
 ### Single entry point
 
 Tekton and Argo Workflows pipelines can only be triggered for one reason - a single code repository changing. If you have lots of reasons for a build to happen (perhaps you're integrating many upstream releases) then you're going to have to do a lot of work to stitch many jobs and pipelines together.
+
+## Tekton
+
+Tekton gives the impression of a set of building blocks from which more productive CI/CD solutions can be made. There's flexibility to be had here, but the low level of abstraction means there are lots of building blocks to put together.
+
+### Tekton Hub
+
+Tekton hub is a great idea. As anyone who's spent a few years in the industry will tell you, most CI pipelines end up repeating a lot of simple but error-prone tasks. Being able to leverage those from the community is great, and should be a productivity boon.
+
+> ### Use Tekton if you:
+>
+> * are building a higher level of abstraction
+> * have bespoke needs, and want to craft your own CI/CD system
+> * use Slack alerting rather than a build monitor
+>
+> ### Don't use Tekton when you:
+>
+> * cannot use Kubernetes
+> * cannot use webhooks
+> * need to trigger builds for multiple reasons
+> * want a simple domain model
+
+## Argo Workflows
+
+The suite of Argo components combine to make provide a higher level of abstraction than Tekton.
+
+> ### Use Argo Workflows if you:
+>
+> * want to get started quickly
+> * use Slack alerting rather than a build monitor
+>
+> ### Don't use Tekton when you:
+>
+> * cannot use Kubernetes
+> * cannot use webhooks
+> * need to trigger builds for multiple reasons
 
 ## Concourse
 

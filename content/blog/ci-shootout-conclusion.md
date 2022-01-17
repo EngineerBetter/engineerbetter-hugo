@@ -290,7 +290,7 @@ The suite of Argo components combine to make provide a higher level of abstracti
 > * want to get started quickly
 > * use Slack alerting rather than a build monitor
 >
-> ### Don't use Tekton when you:
+> ### Don't use Argo Workflows when you:
 >
 > * cannot use Kubernetes
 > * cannot use webhooks

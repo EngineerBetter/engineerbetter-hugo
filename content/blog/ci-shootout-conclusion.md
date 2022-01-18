@@ -256,7 +256,7 @@ Container creation on Tekton and Argo Workflows _just works_, which is exactly w
 
 There is a question of build history and Kubernetes' underlying etcd storage: sooner or later you'll need to archive build logs off to external storage, because etcd wasn't designed to store large volumes of text.
 
-There's one other problem with being Kubernetes-based - what happens if you don't have a Kubernetes cluster? What if you're writing a pipeline to _create_ a Kubes cluster? I've genuinely been in a conversation with platform engineers who have never known a world before Kubernetes, who are mystified how to do CI without a Kubernetes cluster.
+There's one other problem with being Kubernetes-based - what happens if you don't have a Kubernetes cluster? What if you're writing a pipeline to _create_ a Kubes cluster? Some of us have genuinely been in a conversation with platform engineers who never knew a world before Kubernetes, and who are mystified how to do CI without a Kubernetes cluster.
 
 ### Webhooks, public internet access
 

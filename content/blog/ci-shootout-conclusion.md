@@ -304,6 +304,10 @@ The suite of Argo components combine to make provide a higher level of abstracti
 
 ## Concourse
 
+### Pull request workflows
+
+Concourse has gotten better at visualising pull request-based workflows, but it's still not ideal. It was built with the opinions of its authors baked in, and they practised true continuous delivery (of which trunk-based development is a core tenet). [Instanced pipelines](https://concourse-ci.org/instanced-pipelines.html) make this sort of workflow easier to track, but we still haven't gotten to the [v10 vision](https://blog.concourse-ci.org/core-roadmap-towards-v10/).
+
 ### Single pane of glass
 
 Concourse's user interface always shows you the latest version of a pipeline. It's perfectly suited to use as a build monitor, constantly displaying the current state of the world to a team.

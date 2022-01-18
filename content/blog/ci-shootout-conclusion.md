@@ -1,13 +1,19 @@
 ---
 author: Daniel Jones
 date: "2022-01-14"
-heroImage: /img/blog/shootout-third-person.jpg
+heroImage: /img/blog/ci-shootout/goodbadugly.jpg
 title: "CI Shootout: Conclusion"
 draft: true
 heading: Our
 headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
+
+<figure>
+    <figcaption style="font-size: .75em; font-style: italic;">
+    The Good, The Bad, The Ugly by <a href="https://www.flickr.com/photos/kaptainkobold/1021866852">Alan</a>
+    </figcaption>
+</figure>
 
 When should you use Jenkins, Concourse, Tekton or Argo Workflows? What work is each suited to, and what limitations do they each have? How will your choice of CI server affect the way that you work?
 

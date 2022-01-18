@@ -214,7 +214,7 @@ Concourse comes out on top, with Jenkins very much in last place:
   <tr>
     <td>Argo Workflows</td>
     <td>25</td>
-    <td style="text-align: left;">Kube-native, needs hooks</td>
+    <td style="text-align: left;">Kube-native, needs hooks, higher-level than Tekton</td>
   </tr>
   <tr>
     <td>Jenkins</td>

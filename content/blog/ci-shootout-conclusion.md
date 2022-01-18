@@ -240,15 +240,17 @@ It is difficult to recommend any new installs of Jenkins. Most competitors are b
 
 ## Tekton and Argo Workflows commonalities
 
-Both systems have a lot in common, so let's discuss the design constraints that they share before considering them in isolation. They really are very similar, and you'll be able to achieve similar outcomes with either.
+Both systems have a lot in common, so let's discuss the design choices that they share before considering them in isolation. They really are very similar, and you'll be able to achieve similar outcomes with either.
 
 ### Kubernetes-only
 
 Tekton and Argo Workflows are both Kubernetes-native, which means they get to leverage a great container scheduler by default, and are built using modern paradigms.
 
-There's one obvious problem with being Kubernetes-based though - what happens if you don't have a Kubernetes cluster? What if you're writing a pipeline to _create_ a Kubes cluster?
+Container creation on Tekton and Argo Workflows _just works_, which is exactly what you'd want and expect. Given that their data are stored in the Kubernetes API server, there's no additional database to worry about, and all the tooling that Kubernauts are familiar with will be usable here.
 
-I've genuinely been in a conversation with platform engineers who have never known a world before Kubernetes, who are mystified how to do CI without a Kubernetes cluster.
+There is a question of build history and Kubernetes' underlying etcd storage: sooner or later you'll need to archive build logs off to external storage, because etcd wasn't designed to store large volumes of text.
+
+There's one other problem with being Kubernetes-based - what happens if you don't have a Kubernetes cluster? What if you're writing a pipeline to _create_ a Kubes cluster? I've genuinely been in a conversation with platform engineers who have never known a world before Kubernetes, who are mystified how to do CI without a Kubernetes cluster.
 
 ### Webhooks, public internet access
 
@@ -260,7 +262,7 @@ This isn't really feasible in an air-gapped, regulated environment like a bank.
 
 Tekton and Argo Workflows pipelines can only be triggered for one reason - a single code repository changing. If you have lots of reasons for a build to happen (perhaps you're integrating many upstream releases) then you're going to have to do a lot of work to stitch many jobs and pipelines together.
 
-## Tekton
+## Tekton specifics
 
 Tekton gives the impression of a set of building blocks from which more productive CI/CD solutions can be made. There's flexibility to be had here, but the low level of abstraction means there are lots of building blocks to put together.
 
@@ -273,6 +275,7 @@ Tekton hub is a great idea. As anyone who's spent a few years in the industry wi
 > * are building a higher level of abstraction
 > * have bespoke needs, and want to craft your own CI/CD system
 > * use Slack alerting rather than a build monitor
+> * want many small pipelines
 >
 > ### Don't use Tekton when you:
 >
@@ -280,8 +283,9 @@ Tekton hub is a great idea. As anyone who's spent a few years in the industry wi
 > * cannot use webhooks
 > * need to trigger builds for multiple reasons
 > * want a simple domain model
+> * want a single view that shows the current state of a project
 
-## Argo Workflows
+## Argo Workflows specifics
 
 The suite of Argo components combine to make provide a higher level of abstraction than Tekton.
 
@@ -289,12 +293,14 @@ The suite of Argo components combine to make provide a higher level of abstracti
 >
 > * want to get started quickly
 > * use Slack alerting rather than a build monitor
+> * want many small pipelines
 >
 > ### Don't use Argo Workflows when you:
 >
 > * cannot use Kubernetes
 > * cannot use webhooks
 > * need to trigger builds for multiple reasons
+> * want a single view that shows the current state of a project
 
 ## Concourse
 
@@ -324,7 +330,7 @@ I asked [Alex Suraci](https://www.linkedin.com/in/alex-suraci-62a64a1a1/), creat
 
 You can run Concourse anywhere, which is great if you don't want to be tied to Kubernetes, or haven't adopted it yet. To be clear: you can absolutely run Concourse on Kubernetes if you want to, but Concourse doesn't _require_ it.
 
-The downside of this is that Concourse attempts to do its own container scheduling, and doesn't always do a great job of it. We've not covered it in this series, but it's not uncommon to see snags where builds aren't scheduled as quickly as you'd like.
+The downside of this is that Concourse attempts to do its own container scheduling, and doesn't always do a great job of it. We've not covered it in this series, but it's not uncommon to see snags where builds aren't scheduled as quickly as you'd like. It's certainly not as quick as Tekton and Argo Workflows, and if you get down-and-dirty debugging the internals of Concourse, you're going to need to know a lot of idiosyncratic things.
 
 > ### Use Concourse when you:
 >
@@ -336,21 +342,21 @@ The downside of this is that Concourse attempts to do its own container scheduli
 >
 > ### Don't use Concourse if you
 >
-> * want to only use Kubernetes tooling
 > * rely heavily on pull request-based workflows
-> * have simple pipelines
+> * have short, simple pipelines
 > * have a low tolerance for investigating scheduling issues
+> * want to only use Kubernetes tooling
 
-## Discussion
+## Conclusion of the conclusion
 
 We started this comparison last year when working with Snyk on the [Continuous Delivery for Infrastructure-as-Code](https://resources.snyk.io/c/iac-book-continuous-?x=iiH-UX) book. We wanted to demonstrate those principles on all systems, so the practices could be adopted by the widest possible audience.
 
-We were also interested in finding out how other tools compare to Concourse. It's not the most popular tool out there, and the great cloud native hype train shows no sign of slowing down any time soon. Are we missing out? Are there better tools out there?
+We were also interested in finding out how other tools compare to Concourse, which we've used a lot. There's no equivalent tool that is capable of doing the same things in the same way.
 
-Can we find something that does everything that Concourse does, and more?
+So, in conclusion...
 
-No. There's nothing on the market with a model as powerful, that is so well-suited to true continuous delivery and to projects that do a lot of integration.
+Please stop using Jenkins.
 
-It's a great shame that Pivotal and VMware never marketed Concourse or tried to generate revenue from it, and that it was never donated to Cloud Native Computing Foundation or the (abhorrently-named) Continuous Delivery Foundation. It's a pity that Concourse's support for PR-based workflows still isn't better, and that it does its own somewhat-lacking container scheduling.
+Use Concourse if you're doing true continuous delivery, and find it desirable to have large integration pipelines that trigger for many reasons and present a snapshot view of the current state of a project/environment.
 
-That Concourse is not more popular is greatly frustrating. Nothing else out there does what it does, and if we have to move on, we're going to have to spend more time writing boilerplate YAML.
+Use Tekton or Argo Workflows if you want many small, decoupled pipelines that are only triggered by a single Git repository, and are happy being tied to Kubernetes, and don't need a great build monitor view.

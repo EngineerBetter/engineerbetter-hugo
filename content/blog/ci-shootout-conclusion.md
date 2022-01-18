@@ -363,4 +363,4 @@ Please stop using Jenkins.
 
 Use Concourse if you're doing true continuous delivery, and find it desirable to have large integration pipelines that trigger for many reasons and present a snapshot view of the current state of a project/environment.
 
-Use Tekton or Argo Workflows if you want many small, decoupled pipelines that are only triggered by a single Git repository, and are happy being tied to Kubernetes, and don't need a great build monitor view.
+Use Tekton or Argo Workflows if you want many small, decoupled pipelines that are only triggered by a single Git repository, and are happy being tied to Kubernetes, and don't need a single build monitor view.

@@ -227,11 +227,11 @@ Let's discuss each in more detail.
 
 ## Jenkins
 
-Jenkins is old and dated. It lacks isolation (shared workspace, workloads aren't containerised by default), and the plugin system almost guarantees surprise incompatibilities. That said, Jenkins does offer LTS releases and its use in enterprises increases the likelihood of security fixes being made.
+Jenkins is old and dated. It lacks isolation (workloads aren't containerised by default, there's a shared workspace, and global JVM settings), and the plugin system almost guarantees surprise incompatibilities. That said, Jenkins does offer LTS releases and its use in enterprises increases the likelihood of security fixes being made.
 
-Jenkins allows users to make snowflake servers and builds. Yes, you can get it to persist config to source control, but it allows a workflow that is considered an anti-pattern in a cloud native, GitOps world. That said, it is the only system reviewed that offers CI-as-_code_, and not CI-as-YAML.
+Jenkins allows users to make snowflake servers and builds. Yes, you can get it to persist config to source control, but it allows a workflow that is considered an anti-pattern in a cloud native, GitOps world. It is, however, the only system reviewed that offers CI-as-_code_, and not CI-as-YAML.
 
-Some people view Jenkins not as a CI server, but as a _platform_. This shows in its ability to do pretty much anything, which gives it great flexibility. This is as much of a weakness as a strength, as that flexibility allows all sorts of undesirable practices to creep in.
+Some people view Jenkins not as a CI server, but as a _platform_. This shows in its ability to do pretty much anything. This is as much of a weakness as a strength, as that flexibility allows all sorts of undesirable practices to creep in.
 
 It is job-oriented by default, although newer plugins provide a pipeline view. Much like Tekton and Argo Workflows, Jenkins does not offer a 'single pane of glass' view on the current state of a pipeline.
 
@@ -273,7 +273,7 @@ Tekton and Argo Workflows pipelines can only be triggered for one reason - a sin
 
 ## Tekton specifics
 
-Tekton gives the impression of a set of building blocks from which more productive CI/CD solutions can be made. There's flexibility to be had here, but the low level of abstraction means there are lots of building blocks to put together.
+Tekton gives the impression of a set of building blocks from which more productive CI/CD solutions can be made. There's flexibility to be had here, but the low level of abstraction means there are lots of pieces to put together.
 
 ### Tekton Hub
 
@@ -296,7 +296,7 @@ Tekton hub is a great idea. As anyone who's spent a few years in the industry wi
 
 ## Argo Workflows specifics
 
-The suite of Argo components combine to provide a higher level of abstraction than Tekton.
+The suite of Argo components combine to provide a higher level of abstraction than Tekton. Other than that, there's not a lot to separate them.
 
 > ### Use Argo Workflows if you:
 >
@@ -315,13 +315,15 @@ The suite of Argo components combine to provide a higher level of abstraction th
 
 ### Pull request workflows
 
-Concourse has gotten better at visualising pull request-based workflows, but it's still not ideal. It was built with the opinions of its authors baked in, and they practised true continuous delivery (of which trunk-based development is a core tenet). [Instanced pipelines](https://concourse-ci.org/instanced-pipelines.html) make this sort of workflow easier to track, but we still haven't gotten to the [v10 vision](https://blog.concourse-ci.org/core-roadmap-towards-v10/).
+Concourse has gotten better at visualising pull request-based workflows, but it's still not ideal. It was built with the opinions of its authors baked in, and they practised [true continuous delivery (of which trunk-based development is a core tenet)](https://trunkbaseddevelopment.com/continuous-delivery/). [Instanced pipelines](https://concourse-ci.org/instanced-pipelines.html) make this sort of workflow easier to track, but we still haven't gotten to the [v10 vision](https://blog.concourse-ci.org/core-roadmap-towards-v10/).
 
 ### Single pane of glass
 
 Concourse's user interface always shows you the latest version of a pipeline. It's perfectly suited to use as a build monitor, constantly displaying the current state of the world to a team.
 
 This is of more value to teams that practice continuous delivery, and not branch-based development. It wasn't covered in these posts but Concourse's UI has not been great at pull request workflows, although there are plans to change that.
+
+How much use is this in a world of developers working remotely, in isolation, on pull requests? Build monitors may be going out of fashion, but a single snapshot view is handy when debugging.
 
 ### Resources, polling, event-driven CI
 
@@ -331,13 +333,17 @@ Concourse resources encapsulate and make reusable polling logic that will reach 
 
 Concourse was built for _integration_. That means bringing lots of things from lots of places together, to run some tests, see if they work, and then bundle something up.
 
-Achieving something similar with Jenkins, Tekton or Argo Workflows simply isn't possible. You'd have to break one big pipeline up into lots of little ones. This might be in the best interests of small, manageable units, but the price is paid when trying to get visibility of the overall state of the system. I'd much rather look at one pipeline rather than fifteen to figure out why production is broken, and what has changed.
+Achieving something similar with Jenkins, Tekton or Argo Workflows simply isn't possible. You'd have to break one big pipeline up into lots of little ones. This might be in the best interests of small, manageable units, but the price is paid when trying to get visibility of the overall state of the system. I'd much rather look at one pipeline than fifteen to figure out why production is broken, and what has changed.
 
 There is a very subtle implication of this. Concourse has no notion of a 'pipeline run'. Tekton and Argo Workflows notice a new source code version at the single point of entry, and then create a plan based on the current state of the pipeline, which is then executed.
 
-By contrast, Concourse does not have this atomicity of pipeline executions. If some jobs in a Concourse pipeline are triggered, and then another new resource triggers other jobs in the pipeline, these start running immediately. You can protect against this using the [pool resource](https://github.com/concourse/pool-resource) as a lock, and sometimes you _want_ to integrate changes as soon as possible.
+By contrast, Concourse does not have this atomicity of pipeline executions, which has two consequences.
 
-I asked [Alex Suraci](https://www.linkedin.com/in/alex-suraci-62a64a1a1/), creator of Concourse whether this was some wise design choice in order to avoid bifurcations in causality. For instance, if Tekton allowed multiple entry points, and two pipelines executions occurred concurrently because of different triggers, causal history has forked - which of the resultant runs is the 'latest'? Despite (or perhaps because of) Alex's vast intellect and design skill, he said that it was a side effect rather than a conscious decision.
+Firstly, if some jobs in a Concourse pipeline are triggered, and then another new resource triggers other jobs in the pipeline, these start running immediately. You can protect against this using the [pool resource](https://github.com/concourse/pool-resource) as a lock, and sometimes you _want_ to integrate changes as soon as possible.
+
+Secondly, Jenkins, Tekton and Argo Workflows make it easy to see the shape of a pipeline for a given execution. Concourse does not, because in it there is no atomic pipeline execution.
+
+I asked [Alex Suraci](https://www.linkedin.com/in/alex-suraci-62a64a1a1/), creator of Concourse whether this was some wise design choice in order to avoid bifurcations in causality. For instance, if Tekton allowed multiple entry points, and two pipelines executions occurred concurrently because of different triggers, causal history has forked - which of the resultant runs is the 'latest'? Presumably because Alex is rather smart, he said that it was a side effect rather than a conscious decision.
 
 ### Kubernetes is not required
 
@@ -368,7 +374,7 @@ We were also interested in finding out how other tools compare to Concourse, whi
 
 So, in conclusion...
 
-Please stop using Jenkins.
+Your life will probably be better if you don't use Jenkins.
 
 Use Concourse if you're doing true continuous delivery, and find it desirable to have large integration pipelines that trigger for many reasons and present a snapshot view of the current state of a project/environment.
 

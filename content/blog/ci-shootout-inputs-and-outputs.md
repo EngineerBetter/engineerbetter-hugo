@@ -18,7 +18,7 @@ In [the previous blog](/blog/ci-shootout-getting-started/) we looked at getting 
 * _This post_ - [5. Write **outputs externally** (like making a Git commit or pushing a file to S3)](#5-writing-output-to-external-resources)
 * [_Third post_](/blog/ci-shootout-reuse) - 6. **Re-use** pipeline configuration
 * [_Third post_](/blog/ci-shootout-reuse) - 7. Use the CI system as a **build monitor**
-* _Final post_ - 8. Conclusion
+* [_Final post_](/blog/ci-shootout-conclusion) - 8. Conclusion
 
 ## 3. Trigger pipeline runs
 

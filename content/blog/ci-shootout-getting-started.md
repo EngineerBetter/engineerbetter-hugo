@@ -26,7 +26,7 @@ Across a series of blog posts, we'll be evaluating how each CI system supports t
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
 * [_Third post_](/blog/ci-shootout-reuse) - 6. **Re-use** pipeline configuration
 * [_Third post_](/blog/ci-shootout-reuse) - 7. Use the CI system as a **build monitor**
-* _Final post_ - 8. Conclusion
+* [_Final post_](/blog/ci-shootout-conclusion) - 8. Conclusion
 
 In this post we'll explore the first two of the use cases listed above. In each section we'll give each CI system a rating of either *Poor*, *Mediocre*, *Good* or *Great*.
 

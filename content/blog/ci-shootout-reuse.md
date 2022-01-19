@@ -18,7 +18,7 @@ In [the previous blog](/blog/ci-shootout-inputs-and-outputs) we compared the act
 * [_Second post_](/blog/ci-shootout-inputs-and-outputs) - 5. Write **outputs externally** (like making a Git commit or pushing a file to S3)
 * _This post_ - 6. [**Re-use** pipeline configuration](#6-composability-of-tasks)
 * _This post_ - 7. [Use the CI system as a **build monitor**](#7-using-the-ci-system-as-a-build-monitor)
-* _Final post_ - 8. Conclusion
+* [_Final post_](/blog/ci-shootout-conclusion) - 8. Conclusion
 
 ## 6. Composability of tasks
 

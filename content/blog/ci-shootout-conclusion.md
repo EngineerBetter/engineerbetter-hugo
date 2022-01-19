@@ -227,9 +227,11 @@ Let's discuss each in more detail.
 
 ## Jenkins
 
-Jenkins is old and dated. It lacks isolation (shared workspace, workloads aren't containerised by default), and the plugin system almost guarantees surprise incompatibilities.
+Jenkins is old and dated. It lacks isolation (shared workspace, workloads aren't containerised by default), and the plugin system almost guarantees surprise incompatibilities. That said, Jenkins does offer LTS releases and its use in enterprises increases the likelihood of security fixes being made.
 
 Jenkins allows users to make snowflake servers and builds. Yes, you can get it to persist config to source control, but it allows a workflow that is considered an anti-pattern in a cloud native, GitOps world. That said, it is the only system reviewed that offers CI-as-_code_, and not CI-as-YAML.
+
+Some people view Jenkins not as a CI server, but as a _platform_. This shows in its ability to do pretty much anything, which gives it great flexibility. This is as much of a weakness as a strength, as that flexibility allows all sorts of undesirable practices to creep in.
 
 It is job-oriented by default, although newer plugins provide a pipeline view. Much like Tekton and Argo Workflows, Jenkins does not offer a 'single pane of glass' view on the current state of a pipeline.
 
@@ -242,7 +244,8 @@ It is difficult to recommend any new installs of Jenkins. Most competitors are b
 >
 > ### Don't use Jenkins if you:
 >
-> * have a choice
+> * need to enforce a CI-as-code workflow
+> * have a low tolerance for ephemeral issues (dirty workspace, broken plugins)
 
 ## Tekton and Argo Workflows commonalities
 
@@ -293,7 +296,7 @@ Tekton hub is a great idea. As anyone who's spent a few years in the industry wi
 
 ## Argo Workflows specifics
 
-The suite of Argo components combine to make provide a higher level of abstraction than Tekton.
+The suite of Argo components combine to provide a higher level of abstraction than Tekton.
 
 > ### Use Argo Workflows if you:
 >
@@ -318,11 +321,11 @@ Concourse has gotten better at visualising pull request-based workflows, but it'
 
 Concourse's user interface always shows you the latest version of a pipeline. It's perfectly suited to use as a build monitor, constantly displaying the current state of the world to a team.
 
-This is of more value to teams practice continuous delivery, and not branch-based development. It wasn't covered in these posts but Concourse's UI has not been great at pull request workflows, although there are plans to change that.
+This is of more value to teams that practice continuous delivery, and not branch-based development. It wasn't covered in these posts but Concourse's UI has not been great at pull request workflows, although there are plans to change that.
 
 ### Resources, polling, event-driven CI
 
-Concourse resources encapsulate and make reusable polling logic that will reach out and detect changes in various things, like Git repos, S3 buckets, container image registries, Maven repositories, and more. Because Concourse reaches out to the world, you do not need the outside world to be able to each in to trigger builds.
+Concourse resources encapsulate and make reusable polling logic that will reach out and detect changes in various things, like Git repos, S3 buckets, container image registries, Maven repositories, and more. Because Concourse reaches out to the world, you do not need the outside world to be able to reach in to trigger builds.
 
 ### Multiple entry points
 

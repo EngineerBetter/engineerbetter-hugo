@@ -9,6 +9,11 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
+> This post is the second in a series on Product Thinking:
+>
+> * [What is a Product Thinking mindset?](/blog/product-thinking)
+> * [Product Thinking in practice](/blog/product-how)
+
 EngineerBetter is known as a source of knowledge for helping back-end engineering teams deliver platform-based technology solutions to their consumers, i.e. product and delivery teams. What we've learned over the years is that because these internal teams are often treated as support or supplemental functions, the same level of thought and care does not go into how they are positioned
 
 We've spent some time discussing what a Product Thinking mindset is, as well as a bit on why in the [first article of this series](https://www.engineerbetter.com/blog/product-thinking/). Now, let's discuss why it matters in greater detail. To answer this question, there are three key points worth highlighting.

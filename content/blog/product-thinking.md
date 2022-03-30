@@ -9,6 +9,11 @@ headingBold: blog
 Description: Get the very latest updates about recent projects, team updates, thoughts and industry news from our team of EngineerBetter experts.
 ---
 
+> This post is the first in a series on Product Thinking:
+>
+> * [Why is Product Thinking important?](/blog/product-why)
+> * [Product Thinking in practice](/blog/product-how)
+
 Properly applied, agile and related approaches such as DevOps and CI/CD allow teams to build software faster. Product thinking is what allows us to deliver _useful_ software. Our Managing Director [Daniel Jones](https://www.linkedin.com/in/danieljoneseb/?originalSubdomain=uk) (known as Deejay) and I have had several chats around the potential benefits of leveraging a product thinking mindset in the work we do. This is the first in a series of blog posts in which we share some of those thoughts.
 
 ## What is product thinking?

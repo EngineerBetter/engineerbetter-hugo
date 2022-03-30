@@ -3,7 +3,6 @@ author: Chisara Nwabara
 date: "2022-03-30"
 heroImage: /img/blog/product-how.jpg
 title: "Product Thinking in Practice"
-draft: true
 
 heading: Our
 headingBold: blog

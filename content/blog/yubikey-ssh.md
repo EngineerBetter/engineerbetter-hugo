@@ -41,7 +41,7 @@ You can even PIN protect the key, which means that if somebody physically steals
 
 ## Set Yubikey PINs
 
-Install `gpg` using your operating system's package manager so that you can interact with your Yubikey.
+**Install `gpg` using your operating system's package manager** so that you can interact with your Yubikey.
 
 > `gpg 2.2.23` has a bug that prevents on-card key generation. Despite what's written in the bug report, we've had success with version `2.2.22`.
 
@@ -117,6 +117,8 @@ echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
 ```
 
 <img src="/img/blog/pinentry-mac.png" class="image fit">
+
+**You _may_ need to restart your machine for all changes to take effect.**
 
 ## Generate an RSA key on your Yubikey
 

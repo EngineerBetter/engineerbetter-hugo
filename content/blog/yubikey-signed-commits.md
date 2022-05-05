@@ -15,7 +15,7 @@ By signing our Git commits, we can allow folks to verify that they were really w
 
 Your public key needs to be on your GPG installation's keychain.
 
-First, see if it already on your chain (using your own address!):
+First, see if it is already on your chain (using your own address!):
 
 ```terminal
 $ gpg --list-secret daniel.jones@engineerbetter.com

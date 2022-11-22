@@ -19,7 +19,7 @@ We use 1Password as our team secrets-management tool. It's great, but every user
 
 The following steps show you how to configure a Yubikey to store your 1Password secret key, so that you can type with a simple button-press.
 
-1. Download and install the [Yubikey Personalization Tool](https://www.yubico.com/products/services-software/personalization-tools/use/)
+1. Download and install the [Yubikey Personalization Tool](https://www.yubico.com/support/download/yubikey-personalization-tools/)
 1. Open the Yubikey Personalization Tool, which looks like this: <img src="/img/blog/yubikey-1password/yubikey-personalization-tool.png" class="image fit">
 1. Insert your Yubikey, checking that it shows up in the right-hand side of the window: <img src="/img/blog/yubikey-1password/ypt-inserted.png" class="image fit">
 1. Click **Static Password**:<img src="/img/blog/yubikey-1password/ypt-static-password.png" class="image fit">

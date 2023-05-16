@@ -58,8 +58,7 @@ jobs:
         run: |
           hugo \
             --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.host }}/"         
+            --minify         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
